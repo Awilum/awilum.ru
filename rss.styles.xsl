@@ -65,6 +65,9 @@
               </small>
             </div>
           </xsl:for-each>
+          <a class="head_link" target="_blank" href="https://awilum.ru/articles/">
+            Читать все статьи &#x2192;
+          </a>
         </div>
       </body>
     </html>
