@@ -1,4 +1,512 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Преимущества использования let и const по сравнению с var в JavaScript</title><link>https://awilum.ru/articles/advantages-of-using-let-and-const-over-var-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/advantages-of-using-let-and-const-over-var-in-javascript/</guid><description>Преимущества использования let и const по сравнению с var в JavaScript</description><pubDate>Mon, 19 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Рисование контуров в Canvas</title><link>https://awilum.ru/articles/canvas-draw-path/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-draw-path/</guid><description>Рисование контуров в Canvas</description><pubDate>Sat, 24 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+&lt;p&gt;&lt;strong&gt;Рисование контуров&lt;/strong&gt;, также известное как &lt;strong&gt;работа с путями (path)&lt;/strong&gt;, представляет собой способ создания сложных форм и фигур на холсте. Работа с путями позволяет создавать кривые, ломаные линии, а также комбинировать различные фигуры в одном элементе. В основе работы с путями лежит использование методов для создания пути, а затем применение методов для его рисования и/или заливки.&lt;/p&gt;
+
+&lt;p&gt;Создание фигур с использованием контуров включает в себя несколько важных шагов:&lt;/p&gt;
+
+&lt;ol&gt;
+	&lt;li&gt;Начинается с создания контура.&lt;/li&gt;
+	&lt;li&gt;Затем, с помощью команд рисования, контур рисуется.&lt;/li&gt;
+	&lt;li&gt;После этого контур закрывается.&lt;/li&gt;
+	&lt;li&gt;Созданный контур можно обвести или заполнить для его отображения.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Ниже приведены некоторые методы, которые могут быть использованы на каждом из описанных шагов.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Создание пути:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table border=&quot;1&quot; cellpadding=&quot;1&quot; cellspacing=&quot;1&quot; style=&quot;width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td&gt;&lt;code&gt;beginPath()&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Метод начинает новый путь или очищает текущий путь.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;
+			&lt;p&gt;&lt;code&gt;...()&lt;/code&gt;&lt;/p&gt;
+			&lt;/td&gt;
+			&lt;td&gt;Методы для установки различных контуров объекта.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;&lt;code&gt;closePath()&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Закрывает текущий путь, соединяя последнюю точку с первой.&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Рисование пути:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table border=&quot;1&quot; cellpadding=&quot;1&quot; cellspacing=&quot;1&quot; style=&quot;width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td&gt;&lt;code&gt;stroke()&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Рисует контур пути.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;&lt;code&gt;fill()&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Заливает внутренность пути.&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Пример (рисование треугольника):&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+// Начинаем новый путь
+ctx.beginPath();
+
+// Перемещаем &quot;курсор&quot; в точку (50, 50)
+ctx.moveTo(50, 50);
+
+// Добавляем линии до двух других точек, чтобы создать треугольник
+ctx.lineTo(100, 100);
+ctx.lineTo(150, 50);
+
+// Закрываем путь, соединяя последнюю точку с первой
+ctx.closePath();
+
+// Рисуем контур пути
+ctx.strokeStyle = &apos;blue&apos;; // Цвет контура
+ctx.lineWidth = 2; // Толщина линии
+ctx.stroke();
+```
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/BabOymY?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Рисование прямоугольника в Canvas</title><link>https://awilum.ru/articles/canvas-draw-rect/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-draw-rect/</guid><description>Рисование прямоугольника в Canvas</description><pubDate>Fri, 23 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+&lt;p&gt;Рисование прямоугольников на элементе &lt;strong&gt;Canvas&lt;/strong&gt; &amp;mdash;&amp;nbsp;одно из самых базовых и часто используемых действий при создании графики на веб-странице с помощью &lt;strong&gt;JavaScript&lt;/strong&gt;. Прямоугольники можно использовать для создания различных элементов интерфейса, фонов, рамок и многого другого. Давайте рассмотрим подробно, как рисовать прямоугольники на &lt;strong&gt;Canvas&lt;/strong&gt;.&lt;/p&gt;
+
+### Использование метода &lt;code&gt;fillRect()&lt;/code&gt;
+
+&lt;p&gt;Метод &lt;code&gt;fillRect()&lt;/code&gt; используется для создания прямоугольника, который заполняется цветом и находится в заданных координатах (x, y), имея размеры, определяемые параметрами &lt;code&gt;width&lt;/code&gt; и &lt;code&gt;height&lt;/code&gt;. Стиль заполнения прямоугольника задается с помощью свойства &lt;code&gt;fillStyle&lt;/code&gt;.&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Синтаксис:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+fillRect(x, y, width, height)
+```
+
+&lt;p&gt;&lt;strong&gt;Параметры:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table border=&quot;1&quot; cellpadding=&quot;1&quot; cellspacing=&quot;1&quot; style=&quot;width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;x&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координата начальной точки прямоугольника по оси x.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;y&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;&amp;nbsp;Координата начальной точки прямоугольника по оси y.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;width&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Ширина прямоугольника.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;height&lt;/code&gt;&amp;nbsp;&lt;/td&gt;
+			&lt;td&gt;Высота прямоугольника.&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Пример:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+// Задаем цвет заливки
+ctx.fillStyle = &apos;red&apos;;
+
+// Рисуем прямоугольник с координатами (x, y) и размерами (width, height)
+ctx.fillRect(50, 50, 100, 100);
+```
+
+&lt;p&gt;В этом примере мы рисуем красный прямоугольник с верхним левым углом в точке (50, 50) и размерами 100 пикселей в ширину и 100 пикселей в высоту.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/WNmgNPZ?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+### Использование метода &lt;code&gt;strokeRect()&lt;/code&gt;
+
+&lt;p&gt;Метод &lt;code&gt;strokeRect()&lt;/code&gt; используется для рисования на холсте с начальной точкой в заданных координатах (x, y), а также с заданной шириной (w) и высотой (h), используя текущий стиль линий.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Синтаксис:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+strokeRect(x, y, width, height)
+```
+
+&lt;p&gt;&lt;strong&gt;Параметры:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table border=&quot;1&quot; cellpadding=&quot;1&quot; cellspacing=&quot;1&quot; style=&quot;width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;x&lt;/code&gt;&amp;nbsp;&lt;/td&gt;
+			&lt;td&gt;Координата начальной точки прямоугольника по оси x.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;y&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координата начальной точки прямоугольника по оси y.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;width&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Ширина прямоугольника.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;height&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Высота прямоугольника.&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Пример:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+// Задаем цвет обводки и толщину линии
+ctx.strokeStyle = &apos;blue&apos;;
+ctx.lineWidth = 2;
+
+// Рисуем обведенный прямоугольник с координатами (x, y) и размерами (width, height)
+ctx.strokeRect(200, 50, 100, 100);
+```
+
+&lt;p&gt;В этом примере мы рисуем синий прямоугольник с верхним левым углом в точке (200, 50) и размерами 100 пикселей в ширину и 100 пикселей в высоту.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/wvOEvbe?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+### Настройка цвета и стиля
+
+&lt;p&gt;Вы можете настраивать цвет и стиль заливки и обводки прямоугольника, используя свойства &lt;code&gt;fillStyle&lt;/code&gt;, &lt;code&gt;strokeStyle&lt;/code&gt; и &lt;code&gt;lineWidth&lt;/code&gt; контекста рисования.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Пример:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+// Задаем цвет заливки и обводки
+ctx.fillStyle = &apos;green&apos;;
+ctx.strokeStyle = &apos;purple&apos;;
+
+// Задаем толщину линии
+ctx.lineWidth = 4;
+
+// Рисуем прямоугольник с заливкой и обводкой
+ctx.fillRect(50, 150, 100, 50);
+ctx.strokeRect(200, 150, 100, 50);
+```
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/rNRZaVP?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+&lt;p&gt;В &lt;strong&gt;Canvas&lt;/strong&gt; цвет можно задавать в различных форматах.&lt;/p&gt;
+
+&lt;p&gt;Ниже перечислены некоторые из наиболее распространенных форматов:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Именованные цвета&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Вы можете использовать предопределенные имена цветов, такие как &amp;quot;red&amp;quot; (красный), &amp;quot;blue&amp;quot; (синий), &amp;quot;green&amp;quot; (зеленый) и т. д.&lt;/p&gt;
+
+```javascript
+ctx.fillStyle = &apos;red&apos;;
+ctx.strokeStyle = &apos;blue&apos;;
+```
+
+&lt;p&gt;&lt;strong&gt;HEX-коды&lt;/strong&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;Цвет можно задать в формате HEX-кода, который представляет собой шестнадцатеричное значение RGB (красный, зеленый, синий).&lt;/p&gt;
+
+```javascript
+ctx.fillStyle = &apos;#ff0000&apos;; // Красный
+ctx.strokeStyle = &apos;#0000ff&apos;; // Синий
+```
+
+&lt;p&gt;&lt;strong&gt;RGB-значения&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Вы можете указать цвет, используя значения красного (R), зеленого (G) и синего (B) компонентов в диапазоне от 0 до 255.&lt;/p&gt;
+
+```javascript
+ctx.fillStyle = &apos;rgb(255, 0, 0)&apos;; // Красный
+ctx.strokeStyle = &apos;rgb(0, 0, 255)&apos;; // Синий
+```
+
+&lt;p&gt;&lt;strong&gt;RGBA-значения&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Также можно задать цвет с альфа-каналом (прозрачность), добавив четвертый параметр, который представляет собой значение альфа в диапазоне от 0 до 1.&lt;/p&gt;
+
+```javascript
+ctx.fillStyle = &apos;rgba(255, 0, 0, 0.5)&apos;; // Полупрозрачный красный
+ctx.strokeStyle = &apos;rgba(0, 0, 255, 0.7)&apos;; // Полупрозрачный синий
+```
+
+&lt;p&gt;Выбор формата для задания цвета зависит от ваших предпочтений и требований проекта.&lt;/p&gt;
+
+&lt;p&gt;Вот некоторые соображения, которые могут помочь вам принять решение:&lt;/p&gt;
+
+&lt;table border=&quot;1&quot; cellpadding=&quot;1&quot; cellspacing=&quot;1&quot; style=&quot;width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td&gt;&lt;strong&gt;Простота использования&lt;/strong&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;strong&gt;Гибкость и точность&lt;/strong&gt;&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;Именованные цвета (например, &amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;) - самые простые в использовании, поскольку они легко запоминаются и читаются. Однако они ограничены предопределенным списком цветов.&lt;/td&gt;
+			&lt;td&gt;Форматы HEX-кодов, RGB и RGBA обеспечивают большую гибкость и точность при выборе цвета. Вы можете точно настроить каждый канал (красный, зеленый, синий) и альфа-канал (прозрачность), чтобы получить нужный цвет.&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+### Использование метода&amp;nbsp;&lt;code&gt;clearRect()&lt;/code&gt;
+
+&lt;p&gt;Метод &lt;code&gt;clearRect()&lt;/code&gt; используется для очистки прямоугольной области на холсте, удаляя любые нарисованные ранее объекты или цвет заливки.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Синтаксис:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+clearRect(x, y, width, height)
+```
+
+&lt;p&gt;&lt;strong&gt;Параметры:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table border=&quot;1&quot; cellpadding=&quot;1&quot; cellspacing=&quot;1&quot; style=&quot;width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;x&lt;/code&gt;&amp;nbsp;&lt;/td&gt;
+			&lt;td&gt;Координата начальной точки прямоугольника по оси x.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;y&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координата начальной точки прямоугольника по оси y.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;width&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Ширина прямоугольника.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;height&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Высота прямоугольника.&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Пример:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+// Рисуем что-то на холсте
+ctx.fillStyle = &apos;blue&apos;;
+ctx.fillRect(50, 50, 100, 100);
+
+// Очищаем прямоугольную область
+ctx.clearRect(60, 60, 80, 80);
+```
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/VwRGYPj?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Координатная система в Canvas</title><link>https://awilum.ru/articles/canvas-coordinates/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-coordinates/</guid><description>Координатная система в Canvas</description><pubDate>Thu, 22 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+&lt;p&gt;&lt;strong&gt;Координатная система&lt;/strong&gt; &amp;mdash; это математический инструмент, используемый для определения положения точек в пространстве или на плоскости. Она состоит из двух осей (или трех, в трехмерном пространстве), пересекающихся в точке, которая называется началом координат. Каждая из осей имеет определенное направление, и на них отложены числа, которые обозначают координаты точек.&lt;/p&gt;
+
+&lt;p&gt;Существует несколько различных типов координатных систем, но наиболее распространенные из них - это декартова координатная система и полярная координатная система.&lt;/p&gt;
+
+### Декартова координатная система
+
+&lt;center&gt;&lt;img alt=&quot;&quot; height=&quot;400&quot; name=&quot;&quot; src=&quot;https://ik.imagekit.io/awilum/awilum-ru/coordinates-cartesian.png?updatedAt=1709815703088&quot; width=&quot;400&quot; /&gt;&lt;/center&gt;
+
+&lt;p&gt;В декартовой координатной системе используются две перпендикулярные оси, обычно обозначаемые как x и y.&lt;/p&gt;
+
+&lt;p&gt;Начало координат располагается в точке пересечения этих осей.&lt;/p&gt;
+
+&lt;p&gt;Каждая точка в этой системе определяется уникальной парой чисел (x, y), где x - это расстояние по горизонтальной оси (ось x), а y - это расстояние по вертикальной оси (ось y).&lt;/p&gt;
+
+&lt;p&gt;Расстояние от начала координат до точки на плоскости может быть определено с использованием теоремы Пифагора или формулы расстояния между двумя точками.&lt;/p&gt;
+
+### Полярная координатная система
+
+&lt;center&gt;&lt;img alt=&quot;&quot; height=&quot;500&quot; name=&quot;Polar_graph_paper.svg.png&quot; src=&quot;https://ik.imagekit.io/awilum/awilum-ru/coordinates-polar.png?updatedAt=1709815703107&quot; width=&quot;500&quot; /&gt;&lt;/center&gt;
+
+&lt;p&gt;В полярной координатной системе точки задаются расстоянием (обычно обозначается как r) от начала координат и углом (обычно обозначается как &amp;theta;), который эта точка образует с положительным направлением оси x.&lt;/p&gt;
+
+&lt;p&gt;Начало координат также располагается в центре системы.&lt;/p&gt;
+
+&lt;p&gt;Таким образом, каждая точка в полярной координатной системе определяется уникальной парой (r, &amp;theta;).&lt;/p&gt;
+
+&lt;p&gt;В трехмерном пространстве добавляется третья ось (обычно обозначаемая как z) для создания трехмерной декартовой координатной системы. В этом случае каждая точка определяется тройкой координат (x, y, z).&lt;/p&gt;
+
+&lt;p&gt;В компьютерной графике также широко используются координатные системы, особенно для определения положения объектов на экране монитора или в трехмерном пространстве в виртуальном мире. Однако, в компьютерной графике используются свои концепции и терминология.&lt;/p&gt;
+
+### Двумерная координатная система
+
+&lt;center&gt;&lt;img alt=&quot;&quot; height=&quot;363&quot; name=&quot;&quot; src=&quot;https://ik.imagekit.io/awilum/awilum-ru/coordinates-2d.png?updatedAt=1709815703191&quot; width=&quot;500&quot; /&gt;&lt;/center&gt;
+
+
+&lt;p&gt;В двумерной компьютерной графике обычно используется декартова координатная система с началом координат в левом верхнем углу экрана.&lt;/p&gt;
+
+&lt;p&gt;Ось x направлена вправо, а ось y направлена вниз.&lt;/p&gt;
+
+&lt;p&gt;Пиксели на экране идентифицируются их координатами (x, y), где x - это расстояние от левого края экрана, а y - это расстояние от верхнего края экрана.&lt;/p&gt;
+
+&lt;p&gt;Обычно для измерения расстояний используются пиксели, а начало координат (0, 0) находится в левом верхнем углу экрана.&lt;/p&gt;
+
+### Трехмерная координатная система
+
+&lt;center&gt;&lt;img alt=&quot;&quot; height=&quot;487&quot; name=&quot;&quot; src=&quot;https://ik.imagekit.io/awilum/awilum-ru/coordinates-3d.png?updatedAt=1709815703184&quot; width=&quot;487&quot; /&gt;&lt;/center&gt;
+
+&lt;p&gt;В трехмерной компьютерной графике используется трехмерная декартова координатная система, включающая ось z, которая направлена вглубь экрана.&lt;/p&gt;
+
+&lt;p&gt;Каждая точка в трехмерном пространстве определяется тройкой координат (x, y, z).&lt;/p&gt;
+
+&lt;p&gt;В этой системе начало координат обычно находится в центре экрана, хотя в различных графических движках и приложениях это может быть изменено.&lt;/p&gt;
+
+### Координатная система в Canvas
+
+&lt;p&gt;Координатная система в &lt;strong&gt;Canvas&lt;/strong&gt; работает следующим образом: начало координат находится в верхнем левом углу, ось X направлена вправо, а ось Y - вниз.&lt;/p&gt;
+
+&lt;center&gt;&lt;img alt=&quot;&quot; height=&quot;410&quot; name=&quot;&quot; src=&quot;https://ik.imagekit.io/awilum/awilum-ru/coordinates-canvas.jpg?updatedAt=1709815703350&quot; width=&quot;500&quot; /&gt;&lt;/center&gt;
+
+&lt;p&gt;Давайте рассмотрим более подробно, как работает координатная система на &lt;strong&gt;Canvas&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;ol&gt;
+	&lt;li&gt;
+	&lt;p&gt;&lt;strong&gt;Начало координат.&lt;/strong&gt;&lt;br /&gt;
+	Верхний левый угол Canvas является началом координат.&lt;br /&gt;
+	Координата (0,0) находится в этой точке.&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+	&lt;p&gt;&lt;strong&gt;Ось X.&lt;/strong&gt;&lt;br /&gt;
+	Ось X направлена вправо от начала координат.&lt;br /&gt;
+	Положительные значения X увеличиваются вправо, а отрицательные - влево.&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+	&lt;p&gt;&lt;strong&gt;Ось Y.&lt;/strong&gt;&lt;br /&gt;
+	Ось Y направлена вниз от начала координат.&lt;br /&gt;
+	Положительные значения Y увеличиваются вниз, а отрицательные - вверх.&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+	&lt;p&gt;&lt;strong&gt;Единицы измерения.&lt;/strong&gt;&lt;br /&gt;
+	По умолчанию, единицы измерения на Canvas - это пиксели.&lt;br /&gt;
+	Каждый пиксель представляет одну единицу по осям X и Y.&lt;/p&gt;
+	&lt;/li&gt;
+&lt;/ol&gt;
+</content:encoded></item><item><title>Начинаем работать с Canvas</title><link>https://awilum.ru/articles/canvas-getting-started/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-getting-started/</guid><description>Начинаем работать с Canvas</description><pubDate>Wed, 21 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+&lt;p&gt;&lt;strong&gt;Canvas&lt;/strong&gt;&amp;nbsp;&amp;mdash; это элемент &lt;strong&gt;HTML5&lt;/strong&gt;, который позволяет создавать и рисовать графику на веб-странице с использованием &lt;strong&gt;JavaScript&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Давайте рассмотрим основные шаги по работе с &lt;strong&gt;Canvas&lt;/strong&gt;.&lt;/p&gt;
+
+### Шаг 1: Создание Canvas элемента
+
+&lt;p&gt;Первым шагом является создание элемента &lt;strong&gt;Canvas&lt;/strong&gt; на веб-странице. Это можно сделать с помощью тега &lt;code&gt;&amp;lt;canvas&amp;gt;&lt;/code&gt; в HTML.&lt;/p&gt;
+
+&lt;pre&gt;
+&lt;code class=&quot;language-html&quot;&gt;&amp;lt;canvas id=&quot;myCanvas&quot; width=&quot;500&quot; height=&quot;300&quot;&amp;gt;&amp;lt;/canvas&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Этот тег создаст &lt;strong&gt;Canvas&lt;/strong&gt; с уникальным идентификатором &lt;code&gt;myCanvas&lt;/code&gt; и размерами &lt;code&gt;500&lt;/code&gt; пикселей в ширину и &lt;code&gt;300&lt;/code&gt; пикселей в высоту.&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+### Шаг 2: Получение контекста рисования
+
+&lt;p&gt;Для работы с &lt;strong&gt;Canvas&lt;/strong&gt; нам нужно получить контекст рисования.&lt;/p&gt;
+
+&lt;p&gt;В &lt;strong&gt;JavaScript&lt;/strong&gt; мы можем сделать это с помощью метода &lt;code&gt;getContext()&lt;/code&gt;.&lt;/p&gt;
+
+```javascript
+const canvas = document.getElementById(&apos;myCanvas&apos;);
+const ctx = canvas.getContext(&apos;2d&apos;);
+```
+
+&lt;p&gt;Мы получаем элемент &lt;strong&gt;Canvas&lt;/strong&gt; по его идентификатору, а затем получаем контекст рисования &lt;strong&gt;2D&lt;/strong&gt;, который используется для рисования на &lt;strong&gt;Canvas&lt;/strong&gt;.&amp;nbsp;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;В &lt;strong&gt;JavaScript&lt;/strong&gt;, объект &lt;code&gt;document&lt;/code&gt; представляет текущий &lt;strong&gt;HTML-документ &lt;/strong&gt;в браузере. Этот объект предоставляет интерфейс для взаимодействия с содержимым и структурой веб-страницы. Он является частью &lt;strong&gt;DOM&lt;/strong&gt; &lt;strong&gt;(Document Object Model) API&lt;/strong&gt;, который представляет документ в виде иерархического дерева узлов, таких как элементы, атрибуты и текстовые узлы.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Метод &lt;code&gt;getContext()&lt;/code&gt; используется для получения контекста рисования для элемента &lt;code&gt;&amp;lt;canvas&amp;gt;&lt;/code&gt; в &lt;strong&gt;HTML&lt;/strong&gt;. Этот метод может принимать различные аргументы в зависимости от типа контекста, который вы хотите получить.&lt;/p&gt;
+
+&lt;table border=&quot;1&quot; cellpadding=&quot;1&quot; cellspacing=&quot;1&quot; style=&quot;width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td&gt;&lt;strong&gt;&amp;nbsp;&lt;/strong&gt;&lt;code&gt;2d&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Этот контекст используется для рисования &lt;strong&gt;2D графики&lt;/strong&gt;.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;&lt;code&gt;webgl&lt;/code&gt;&amp;nbsp;или &lt;code&gt;experimental-webgl&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Этот контекст используется для создания &lt;strong&gt;3D графики&lt;/strong&gt; с помощью &lt;strong&gt;WebGL&lt;/strong&gt;.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;&lt;code&gt;bitmaprenderer&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Этот контекст используется для рендеринга векторной графики.&amp;nbsp;&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;В курсе будет рассмотрен &lt;code&gt;2d&lt;/code&gt;&amp;nbsp;контекст используемый&amp;nbsp;для рисования &lt;strong&gt;2D графики&lt;/strong&gt; на элементе &lt;code&gt;&amp;lt;canvas&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+### Шаг 3: Рисование простых фигур
+
+&lt;p&gt;Теперь, когда у нас есть контекст рисования, мы можем рисовать на &lt;strong&gt;Canvas&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Ниже приведены примеры рисования нескольких простых фигур.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Рисование прямоугольника:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+// Устанавливаем цвет заливки
+ctx.fillStyle = &apos;red&apos;;
+
+// Рисуем прямоугольник
+ctx.fillRect(50, 50, 100, 100);
+```
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/abMjKzp?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Рисование окружности:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+// Начинаем новый путь
+ctx.beginPath();
+
+// Рисуем окружность
+ctx.arc(200, 150, 50, 0, Math.PI * 2);
+
+// Устанавливаем цвет заливки
+ctx.fillStyle = &apos;blue&apos;;
+
+// Заливаем окружность
+ctx.fill();
+```
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/dyrjKPZ?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;Это базовые шаги по использованию &lt;strong&gt;Canvas&lt;/strong&gt; в &lt;strong&gt;JavaScript&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Вы можете использовать эти примеры для создания простых графических элементов на вашей веб-странице.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Canvas&lt;/strong&gt; предоставляет широкий набор методов для рисования, и вы можете экспериментировать с ними, чтобы создать различные визуальные эффекты и другую графику.&lt;/p&gt;
+</content:encoded></item><item><title>Краткая история Canvas</title><link>https://awilum.ru/articles/canvas-short-history/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-short-history/</guid><description>Краткая история Canvas</description><pubDate>Tue, 20 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+
+&lt;p&gt;&lt;strong&gt;Canvas&lt;/strong&gt; &amp;mdash; это элемент &lt;strong&gt;HTML5&lt;/strong&gt;, который представляет собой прямоугольную область на странице, которую можно настраивать и рисовать на ней с помощью &lt;strong&gt;JavaScript&lt;/strong&gt;.&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;Первые признаки тогда еще проприетарного элемента &lt;strong&gt;Canvas&lt;/strong&gt;&amp;nbsp;были внесены в древо исходного кода &lt;strong&gt;WebKit&lt;/strong&gt;&amp;nbsp;&amp;mdash;&amp;nbsp;&lt;strong&gt;Ричардом Уильямсоном&lt;/strong&gt; 25 мая 2004 года. Идея &lt;strong&gt;Apple&lt;/strong&gt; заключалась в том, чтобы предоставить доступ к системе рисования &lt;strong&gt;Quartz&lt;/strong&gt; операционной системы &lt;strong&gt;Mac OS X&lt;/strong&gt; для &lt;strong&gt;JavaScript&lt;/strong&gt; и &lt;strong&gt;HTML&lt;/strong&gt;, чтобы упростить написание графических виджетов для &lt;strong&gt;Apple Dashboard&lt;/strong&gt;. Следовательно, поскольку оба продукта используют один и тот же движок рендеринга, элемент стал доступен также в браузере &lt;strong&gt;Safari&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Несколько лет ранее, в конце октября 2001 года, Джо Хьюитт открыл issue &lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=102285&quot; rel=&quot;noopener noreferrer nofollow&quot;&gt;#102285&lt;/a&gt; в системе отслеживания ошибок &lt;strong&gt;Mozilla&lt;/strong&gt;. Предлагая тот же самый элемент и мотивацию, его предложение заключалось в реализации пользовательского элемента управления рисованием для &lt;strong&gt;XML User Interface Language Mozilla&lt;/strong&gt;. &lt;strong&gt;Брендан Айк&lt;/strong&gt;, создатель языка &lt;strong&gt;JavaScript&lt;/strong&gt;, отверг идею как нечто для фанатов рендеринга.&lt;/p&gt;
+
+&lt;p&gt;Первого апреля 2005 года &lt;strong&gt;Владимир Вукичевич &lt;/strong&gt;из &lt;strong&gt;Mozilla&lt;/strong&gt; загрузил патч с базовыми функциями &lt;strong&gt;Canvas&lt;/strong&gt;, который открыл путь для дальнейшей работы в &lt;strong&gt;Firefox&lt;/strong&gt;. Хотя эта первая реализация работала только в &lt;strong&gt;Linux&lt;/strong&gt; из-за разных форматов цвета в &lt;strong&gt;Windows&lt;/strong&gt; и &lt;strong&gt;Mac OS X&lt;/strong&gt;, выход их проекта &amp;quot;Deer Park&amp;quot; в конце ноября, известного как Firefox 1.5, представил кросс-платформенную реализацию &lt;strong&gt;Canvas&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Opera ввел элемент &lt;strong&gt;Canvas&lt;/strong&gt; в середине 2006 года с выпуском &lt;strong&gt;Opera 9&lt;/strong&gt;. Это означало, что все основные браузеры, за исключением &lt;strong&gt;Internet Explorer&lt;/strong&gt;, реализовали элемент на уровне ядра. Однако это не означало, что элемент &lt;strong&gt;Canvas&lt;/strong&gt;&amp;nbsp;был непригоден для использования, так как проекты Google ExCanvas и Mozilla IECanvas обеспечили ограниченную поддержку элемента в браузере Microsoft.&lt;/p&gt;
+
+&lt;p&gt;Путь к правильной стандартизации был далеко не гладким. Это началось с отсутствия должного предложения со стороны &lt;strong&gt;Apple&lt;/strong&gt;, что привело к тому, что первая спецификация была основана на работах по обратной инженерии Иэна Хиксона, редактора спецификации &lt;strong&gt;HTML5&lt;/strong&gt;. В 2005 году Джаянт Сай выдвинул первую идею относительно рисования текста на холсте, которая позже была оформлена в приличное предложение Стефаном Хаустайном.&lt;/p&gt;
+
+&lt;p&gt;Тем не менее, не все прошло гладко. После того как Mozilla Firefox и Opera реализовали элемент &lt;strong&gt;Canvas&lt;/strong&gt;, Хелен Плотка Уоркман, старший юрист &lt;strong&gt;Apple&lt;/strong&gt; по патентам, отправила сообщение в &lt;strong&gt;WHATWG&lt;/strong&gt; и Иэну Хиксону, заявив, что Apple считает себя владельцем интеллектуальной собственности по элементу холста и рассмотрит возможность предоставления этих прав интеллектуальной собственности только в случае принятия чернового стандарта Веб-приложений в качестве формализованного стандарта с &lt;strong&gt;W3C&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;В феврале 2008 года, был опубликован первый черновик спецификации &lt;strong&gt;HTML5&lt;/strong&gt; как рабочий черновик &lt;strong&gt;W3C&lt;/strong&gt;. 18 июня того же года &lt;strong&gt;Apple&lt;/strong&gt; раскрыла патент &lt;a href=&quot;https://www.freepatentsonline.com/y2006/0005114.html&quot; rel=&quot;noopener noreferrer nofollow&quot;&gt;11/144384&lt;/a&gt; для использования спецификации &lt;strong&gt;HTML5&lt;/strong&gt;. Тот же патент был раскрыт в еще шести юрисдикциях, что позволило &lt;strong&gt;WHATWG&lt;/strong&gt; продолжать включать новый элемент &lt;strong&gt;Canvas&lt;/strong&gt;.&lt;/p&gt;
+</content:encoded></item><item><title>Преимущества использования let и const по сравнению с var в JavaScript</title><link>https://awilum.ru/articles/advantages-of-using-let-and-const-over-var-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/advantages-of-using-let-and-const-over-var-in-javascript/</guid><description>Преимущества использования let и const по сравнению с var в JavaScript</description><pubDate>Mon, 19 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
 До появления **ECMAScript 6(ES6)**, ключевое слово `var` использовалось для объявления переменных в **JavaScript**. Однако, с появлением **ES6**, были введены два новых способа объявления переменных: `let` и `const`. С появлением этих новых возможностей, использование `var` стало менее желательным по нескольким причинам.
 
 

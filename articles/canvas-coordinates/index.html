@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="ru" data-theme="lofi" class="text-[18px] lg:text-[20px]"> <head><meta charset="UTF-8"><meta name="description" content="Координатная система в Canvas"><meta name="keywords" content="javascript, canvas"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.4.0"><meta name="yandex-verification" content="a1d97fb868e5cf5e"><meta name="google-site-verification" content="RTPsZF1G_xrcJ2yo3IPl9OCzSd6m7xOdTLFSJ9myT6I"><meta property="og:locale" content="ru_RU"><meta property="og:title" content="Координатная система в Canvas"><meta property="og:site_name" content="awilum.ru"><meta property="og:url" content="/articles/canvas-coordinates/"><meta property="og:description" content="Координатная система в Canvas"><meta property="og:type" content="website"><title>Координатная система в Canvas</title><link rel="sitemap" href="/sitemap-index.xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/_slug_.BVM3dcQy.css" /><script type="module">
+</script><script src="/_astro/ArticleEntry.astro_astro_type_script_index_0_lang.CEDrOUWK.js" type="module"></script></head> <body class="p-4 lg:p-0" data-pagefind-body> <div class="lg:flex bg-base-100 max-w-[1000px] mx-auto lg:mt-10 items-center lowercase"> <div class="text-left lg:text-center text-2xl mr-4 mb-6 lg:mb-0"> <a class="block font-black underline" href="/">awilum.ru</a> </div> <div class="lg:flex text-left lg:text-center w-full lg:text-2xl text-xl lowercase"> <a class="px-2 pl-0 lg:px-4 underline" href="/articles/">Статьи</a> <a class="px-2 lg:px-4 underline" href="/courses/">Курсы</a> <a class="px-2 lg:px-4 underline" href="/about/">Об авторе</a> </div> </div> <div class="max-w-[1000px] mx-auto">  <h1 class="text-2xl lg:text-6xl py-14 text-left block border-b-2 border-solid border-black">Координатная система в Canvas</h1> <div class="text-lg py-10 mx-auto"> <p><strong>Координатная система</strong> — это математический инструмент, используемый для определения положения точек в пространстве или на плоскости. Она состоит из двух осей (или трех, в трехмерном пространстве), пересекающихся в точке, которая называется началом координат. Каждая из осей имеет определенное направление, и на них отложены числа, которые обозначают координаты точек.</p>
+<p>Существует несколько различных типов координатных систем, но наиболее распространенные из них - это декартова координатная система и полярная координатная система.</p>
+<h3 id="декартова-координатная-система">Декартова координатная система</h3>
+<center><img alt="" height="400" name="" src="https://ik.imagekit.io/awilum/awilum-ru/coordinates-cartesian.png?updatedAt=1709815703088" width="400"></center>
+<p>В декартовой координатной системе используются две перпендикулярные оси, обычно обозначаемые как x и y.</p>
+<p>Начало координат располагается в точке пересечения этих осей.</p>
+<p>Каждая точка в этой системе определяется уникальной парой чисел (x, y), где x - это расстояние по горизонтальной оси (ось x), а y - это расстояние по вертикальной оси (ось y).</p>
+<p>Расстояние от начала координат до точки на плоскости может быть определено с использованием теоремы Пифагора или формулы расстояния между двумя точками.</p>
+<h3 id="полярная-координатная-система">Полярная координатная система</h3>
+<center><img alt="" height="500" name="Polar_graph_paper.svg.png" src="https://ik.imagekit.io/awilum/awilum-ru/coordinates-polar.png?updatedAt=1709815703107" width="500"></center>
+<p>В полярной координатной системе точки задаются расстоянием (обычно обозначается как r) от начала координат и углом (обычно обозначается как θ), который эта точка образует с положительным направлением оси x.</p>
+<p>Начало координат также располагается в центре системы.</p>
+<p>Таким образом, каждая точка в полярной координатной системе определяется уникальной парой (r, θ).</p>
+<p>В трехмерном пространстве добавляется третья ось (обычно обозначаемая как z) для создания трехмерной декартовой координатной системы. В этом случае каждая точка определяется тройкой координат (x, y, z).</p>
+<p>В компьютерной графике также широко используются координатные системы, особенно для определения положения объектов на экране монитора или в трехмерном пространстве в виртуальном мире. Однако, в компьютерной графике используются свои концепции и терминология.</p>
+<h3 id="двумерная-координатная-система">Двумерная координатная система</h3>
+<center><img alt="" height="363" name="" src="https://ik.imagekit.io/awilum/awilum-ru/coordinates-2d.png?updatedAt=1709815703191" width="500"></center>
+<p>В двумерной компьютерной графике обычно используется декартова координатная система с началом координат в левом верхнем углу экрана.</p>
+<p>Ось x направлена вправо, а ось y направлена вниз.</p>
+<p>Пиксели на экране идентифицируются их координатами (x, y), где x - это расстояние от левого края экрана, а y - это расстояние от верхнего края экрана.</p>
+<p>Обычно для измерения расстояний используются пиксели, а начало координат (0, 0) находится в левом верхнем углу экрана.</p>
+<h3 id="трехмерная-координатная-система">Трехмерная координатная система</h3>
+<center><img alt="" height="487" name="" src="https://ik.imagekit.io/awilum/awilum-ru/coordinates-3d.png?updatedAt=1709815703184" width="487"></center>
+<p>В трехмерной компьютерной графике используется трехмерная декартова координатная система, включающая ось z, которая направлена вглубь экрана.</p>
+<p>Каждая точка в трехмерном пространстве определяется тройкой координат (x, y, z).</p>
+<p>В этой системе начало координат обычно находится в центре экрана, хотя в различных графических движках и приложениях это может быть изменено.</p>
+<h3 id="координатная-система-в-canvas">Координатная система в Canvas</h3>
+<p>Координатная система в <strong>Canvas</strong> работает следующим образом: начало координат находится в верхнем левом углу, ось X направлена вправо, а ось Y - вниз.</p>
+<center><img alt="" height="410" name="" src="https://ik.imagekit.io/awilum/awilum-ru/coordinates-canvas.jpg?updatedAt=1709815703350" width="500"></center>
+<p>Давайте рассмотрим более подробно, как работает координатная система на <strong>Canvas</strong>.</p>
+<ol>
+	<li>
+	<p><strong>Начало координат.</strong><br>
+	Верхний левый угол Canvas является началом координат.<br>
+	Координата (0,0) находится в этой точке.</p>
+	</li>
+	<li>
+	<p><strong>Ось X.</strong><br>
+	Ось X направлена вправо от начала координат.<br>
+	Положительные значения X увеличиваются вправо, а отрицательные - влево.</p>
+	</li>
+	<li>
+	<p><strong>Ось Y.</strong><br>
+	Ось Y направлена вниз от начала координат.<br>
+	Положительные значения Y увеличиваются вниз, а отрицательные - вверх.</p>
+	</li>
+	<li>
+	<p><strong>Единицы измерения.</strong><br>
+	По умолчанию, единицы измерения на Canvas - это пиксели.<br>
+	Каждый пиксель представляет одну единицу по осям X и Y.</p>
+	</li>
+</ol> </div> <div class="text-sm py-10 text-center border-t-2 border-solid border-black">
+Обнаружили ошибку в этой статье? Хотите уточнить, обновить или добавить что-то?<br>
+Все мои статьи доступны для <a target="_blank" href="https://github.com/Awilum/awilum.src/blob/master/src/content/articles/canvas-coordinates.md">редактирования на GitHub</a>. Буду благодарен за любое улучшение или исправление!
+</div> <div class="lg:flex py-10 border-t-2 border-solid border-black"> <div class="lg:flex-auto text-left"> <!-- AddToAny BEGIN --> <div class="mb-10 lg:mb-0 flex"> <div class="a2a_kit a2a_kit_size_32 a2a_default_style"> <a class="a2a_dd grayscale" href="https://www.addtoany.com/share"></a> <a class="a2a_button_twitter grayscale"></a> <a class="a2a_button_telegram grayscale"></a> <a class="a2a_button_copy_link grayscale"></a> </div> </div>  <script async src="https://static.addtoany.com/menu/page.js"></script> <!-- AddToAny END --> </div> <div class="lg:flex-auto lg:text-right"> <a href="/articles/categories/javascript/" class="bg-gray-200 px-3 py-1 no-underline text-sm">JavaScript</a> <span class="mx-2 opacity-10">|</span> <a href="/articles/" class="bg-gray-200 px-3 py-1 no-underline text-sm">Все статьи</a> </div> </div>  </div> <footer class="max-w-[1000px] mx-auto py-12 border-t-2 border-black"> <p> <span class="mr-1 font-bold">Курсы:</span> <a href="/courses/javascript-basic/" class="underline mr-2">JavaScript Базовый уровень</a> <a href="/courses/javascript-advanced/" class="underline mr-2">JavaScript Продвинутый уровень</a> <a href="https://stepik.org/a/172576" class="underline mr-2">JavaScript Тренажер</a> <a href="/courses/" class="underline">Все курсы</a> </p> <p class="lg:pr-10"> <span class="mr-1 font-bold">Статьи:</span> <a href="/articles/canvas-draw-path/" class="underline mr-2">Рисование контуров в Canvas</a><a href="/articles/canvas-draw-rect/" class="underline mr-2">Рисование прямоугольника в Canvas</a><a href="/articles/canvas-coordinates/" class="underline mr-2">Координатная система в Canvas</a> <a href="/articles/" class="underline">Все статьи</a> </p> <p class="flex flex-wrap"> <span class="mr-1 font-bold">Подписаться на меня в:</span> <a target="_blank" href="https://twitter.com/awilum_" class="underline mr-2">Twitter</a> <a target="_blank" href="https://www.linkedin.com/in/sergey-romanenko/" class="underline mr-2">LinkedIn</a> <a target="_blank" href="https://github.com/Awilum" class="underline mr-2">GitHub</a> </p> <p class="flex flex-wrap"> <span class="mr-1 font-bold">Связаться со мной в:</span> <a target="_blank" href="https://awilum.t.me" class="underline">Telegram</a> </p> <div class="border-t-2 border-black my-12 pt-12 text-xs opacity-70"> <p class="uppercase mb-1">Работает на <a href="https://astro.build/" class="underline">Astro</a>. Хостинг от <a href="http://www.smartape.ru/?partner=146659" class="underline">SmartApe</a>.</p> <p class="m-0">&copy; SERGEY ROMANENKO. ALL RIGHTS RESERVED.</p> </div> </footer> <!-- Yandex.Metrika counter --> <script type="text/javascript">
+			(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+			m[i].l=1*new Date();
+			for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+			k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+			(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+		
+			ym(95236209, "init", {
+				clickmap:true,
+				trackLinks:true,
+				accurateTrackBounce:true
+			});
+		</script> <noscript><div><img src="https://mc.yandex.ru/watch/95236209" style="position:absolute; left:-9999px;" alt=""></div></noscript> <!-- /Yandex.Metrika counter --> </body></html>
