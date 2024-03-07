@@ -1,4 +1,51 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Рисование контуров в Canvas</title><link>https://awilum.ru/articles/canvas-draw-path/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-draw-path/</guid><description>Рисование контуров в Canvas</description><pubDate>Sat, 24 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Перемещение курсора в Canvas</title><link>https://awilum.ru/articles/canvas-move-cursor/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-move-cursor/</guid><description>Перемещение курсора в Canvas</description><pubDate>Sun, 25 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+&lt;p&gt;Перемещение курсора полезно, когда вы хотите начать новый путь или перейти к другой части холста без создания видимой линии. Метод &lt;code&gt;moveTo()&lt;/code&gt; используется для управления позицией, откуда начинается рисование. Он позволяет перемещать &quot;курсор&quot; по холсту без рисования линии.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Синтаксис:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+moveTo(x, y);
+```
+
+&lt;p&gt;&lt;strong&gt;Параметры:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table align=&quot;center&quot; style=&quot;width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;x&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координата X новой позиции курсора.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;y&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координата Y новой позиции курсора.&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Пример:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+// Начинаем новый путь
+ctx.beginPath();
+
+// Перемещаем &quot;курсор&quot; в точку (50, 50)
+ctx.moveTo(50, 50);
+
+// Добавляем линию от текущей позиции до указанной точки (100, 100)
+ctx.lineTo(100, 100);
+
+// Закрываем путь
+ctx.closePath();
+
+// Рисуем контур пути
+ctx.strokeStyle = &apos;blue&apos;; // Цвет контура
+ctx.lineWidth = 2; // Толщина линии
+ctx.stroke();
+```
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/MWxqwLb?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;</content:encoded></item><item><title>Рисование контуров в Canvas</title><link>https://awilum.ru/articles/canvas-draw-path/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-draw-path/</guid><description>Рисование контуров в Canvas</description><pubDate>Sat, 24 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
 &lt;p&gt;&lt;strong&gt;Рисование контуров&lt;/strong&gt;, также известное как &lt;strong&gt;работа с путями (path)&lt;/strong&gt;, представляет собой способ создания сложных форм и фигур на холсте. Работа с путями позволяет создавать кривые, ломаные линии, а также комбинировать различные фигуры в одном элементе. В основе работы с путями лежит использование методов для создания пути, а затем применение методов для его рисования и/или заливки.&lt;/p&gt;
 
 &lt;p&gt;Создание фигур с использованием контуров включает в себя несколько важных шагов:&lt;/p&gt;
@@ -490,7 +537,6 @@ ctx.fill();
 
 &lt;p&gt;&lt;strong&gt;Canvas&lt;/strong&gt; предоставляет широкий набор методов для рисования, и вы можете экспериментировать с ними, чтобы создать различные визуальные эффекты и другую графику.&lt;/p&gt;
 </content:encoded></item><item><title>Краткая история Canvas</title><link>https://awilum.ru/articles/canvas-short-history/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-short-history/</guid><description>Краткая история Canvas</description><pubDate>Tue, 20 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
-
 &lt;p&gt;&lt;strong&gt;Canvas&lt;/strong&gt; &amp;mdash; это элемент &lt;strong&gt;HTML5&lt;/strong&gt;, который представляет собой прямоугольную область на странице, которую можно настраивать и рисовать на ней с помощью &lt;strong&gt;JavaScript&lt;/strong&gt;.&amp;nbsp;&lt;/p&gt;
 
 &lt;p&gt;Первые признаки тогда еще проприетарного элемента &lt;strong&gt;Canvas&lt;/strong&gt;&amp;nbsp;были внесены в древо исходного кода &lt;strong&gt;WebKit&lt;/strong&gt;&amp;nbsp;&amp;mdash;&amp;nbsp;&lt;strong&gt;Ричардом Уильямсоном&lt;/strong&gt; 25 мая 2004 года. Идея &lt;strong&gt;Apple&lt;/strong&gt; заключалась в том, чтобы предоставить доступ к системе рисования &lt;strong&gt;Quartz&lt;/strong&gt; операционной системы &lt;strong&gt;Mac OS X&lt;/strong&gt; для &lt;strong&gt;JavaScript&lt;/strong&gt; и &lt;strong&gt;HTML&lt;/strong&gt;, чтобы упростить написание графических виджетов для &lt;strong&gt;Apple Dashboard&lt;/strong&gt;. Следовательно, поскольку оба продукта используют один и тот же движок рендеринга, элемент стал доступен также в браузере &lt;strong&gt;Safari&lt;/strong&gt;.&lt;/p&gt;
