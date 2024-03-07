@@ -14,7 +14,7 @@
 
 &lt;p&gt;&lt;strong&gt;Создание пути:&lt;/strong&gt;&lt;/p&gt;
 
-&lt;table border=&quot;1&quot; cellpadding=&quot;1&quot; cellspacing=&quot;1&quot; style=&quot;width:100%&quot;&gt;
+&lt;table align=&quot;center&quot; style=&quot;width:100%&quot;&gt;
 	&lt;tbody&gt;
 		&lt;tr&gt;
 			&lt;td&gt;&lt;code&gt;beginPath()&lt;/code&gt;&lt;/td&gt;
@@ -35,7 +35,7 @@
 
 &lt;p&gt;&lt;strong&gt;Рисование пути:&lt;/strong&gt;&lt;/p&gt;
 
-&lt;table border=&quot;1&quot; cellpadding=&quot;1&quot; cellspacing=&quot;1&quot; style=&quot;width:100%&quot;&gt;
+&lt;table align=&quot;center&quot; style=&quot;width:100%&quot;&gt;
 	&lt;tbody&gt;
 		&lt;tr&gt;
 			&lt;td&gt;&lt;code&gt;stroke()&lt;/code&gt;&lt;/td&gt;
@@ -242,7 +242,7 @@ ctx.strokeStyle = &apos;rgba(0, 0, 255, 0.7)&apos;; // Полупрозрачн�
 
 &lt;p&gt;Вот некоторые соображения, которые могут помочь вам принять решение:&lt;/p&gt;
 
-&lt;table border=&quot;1&quot; cellpadding=&quot;1&quot; cellspacing=&quot;1&quot; style=&quot;width:100%&quot;&gt;
+&lt;table align=&quot;center&quot; style=&quot;width:100%&quot;&gt;
 	&lt;tbody&gt;
 		&lt;tr&gt;
 			&lt;td&gt;&lt;strong&gt;Простота использования&lt;/strong&gt;&lt;/td&gt;
@@ -267,7 +267,7 @@ clearRect(x, y, width, height)
 
 &lt;p&gt;&lt;strong&gt;Параметры:&lt;/strong&gt;&lt;/p&gt;
 
-&lt;table border=&quot;1&quot; cellpadding=&quot;1&quot; cellspacing=&quot;1&quot; style=&quot;width:100%&quot;&gt;
+&lt;table align=&quot;center&quot; style=&quot;width:100%&quot;&gt;
 	&lt;tbody&gt;
 		&lt;tr&gt;
 			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;x&lt;/code&gt;&amp;nbsp;&lt;/td&gt;
@@ -421,7 +421,7 @@ const ctx = canvas.getContext(&apos;2d&apos;);
 
 &lt;p&gt;Метод &lt;code&gt;getContext()&lt;/code&gt; используется для получения контекста рисования для элемента &lt;code&gt;&amp;lt;canvas&amp;gt;&lt;/code&gt; в &lt;strong&gt;HTML&lt;/strong&gt;. Этот метод может принимать различные аргументы в зависимости от типа контекста, который вы хотите получить.&lt;/p&gt;
 
-&lt;table border=&quot;1&quot; cellpadding=&quot;1&quot; cellspacing=&quot;1&quot; style=&quot;width:100%&quot;&gt;
+&lt;table align=&quot;center&quot; style=&quot;width:100%&quot;&gt;
 	&lt;tbody&gt;
 		&lt;tr&gt;
 			&lt;td&gt;&lt;strong&gt;&amp;nbsp;&lt;/strong&gt;&lt;code&gt;2d&lt;/code&gt;&lt;/td&gt;
