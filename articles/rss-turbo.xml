@@ -291,7 +291,25 @@ ctx.fillRect(100, 100, 100, 100);
 &lt;p&gt;&lt;strong&gt;Результат: &lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/XWGxYjJ?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
-</content:encoded></item><item><title>Сохранение и восстановление состояния в Canvas</title><link>https://awilum.ru/articles/canvas-save-and-restore/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-save-and-restore/</guid><description>Сохранение и восстановление состояния в Canvas</description><pubDate>Fri, 01 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+
+&lt;div&gt;
+&lt;h3 class=&quot;text-3xl mt-4 mb-4&quot;&gt;Cтатьи про Canvas&lt;/h4&gt;
+&lt;div class=&quot;pt-10 pb-10 border-black border-t-2 text-center grid grid-cols-1 lg:grid-cols-2 gap-4&quot;&gt;
+&lt;a href=&quot;/articles/canvas-short-history/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Краткая история Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-getting-started/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Начинаем работать с Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-coordinates/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Координатная система в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-rect/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование прямоугольника в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-path/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование контуров в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-move-cursor/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Перемещение курсора в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-line/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование линии в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-arc/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование дуги в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-curve/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование кривых Безье в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-images/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование изображений в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-transformations/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Преобразования в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-save-and-restore/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Сохранение и восстановление состояния в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-composite/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Композиция в Canvas&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content:encoded></item><item><title>Сохранение и восстановление состояния в Canvas</title><link>https://awilum.ru/articles/canvas-save-and-restore/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-save-and-restore/</guid><description>Сохранение и восстановление состояния в Canvas</description><pubDate>Fri, 01 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 &lt;p&gt;Сохранение и восстановление состояния представляет собой механизм, который позволяет сохранять текущее состояние контекста рисования, включая текущие преобразования, стили и другие настройки, а затем восстанавливать их при необходимости. Этот механизм особенно полезен, когда вы хотите временно изменить настройки рисования, а затем вернуться к предыдущему состоянию без необходимости вручную сохранять и восстанавливать каждый атрибут.&lt;/p&gt;
 
 ### Использование методов &lt;code&gt;save()&lt;/code&gt; и &lt;code&gt;restore()&lt;/code&gt;
@@ -350,7 +368,26 @@ ctx.fill();
 
 &lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/xxByjVM?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;</content:encoded></item><item><title>Преобразования в Canvas</title><link>https://awilum.ru/articles/canvas-transformations/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-transformations/</guid><description>Преобразования в Canvas</description><pubDate>Thu, 29 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/xxByjVM?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+&lt;div&gt;
+&lt;h3 class=&quot;text-3xl mt-4 mb-4&quot;&gt;Cтатьи про Canvas&lt;/h4&gt;
+&lt;div class=&quot;pt-10 pb-10 border-black border-t-2 text-center grid grid-cols-1 lg:grid-cols-2 gap-4&quot;&gt;
+&lt;a href=&quot;/articles/canvas-short-history/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Краткая история Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-getting-started/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Начинаем работать с Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-coordinates/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Координатная система в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-rect/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование прямоугольника в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-path/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование контуров в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-move-cursor/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Перемещение курсора в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-line/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование линии в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-arc/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование дуги в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-curve/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование кривых Безье в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-images/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование изображений в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-transformations/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Преобразования в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-save-and-restore/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Сохранение и восстановление состояния в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-composite/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Композиция в Canvas&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content:encoded></item><item><title>Преобразования в Canvas</title><link>https://awilum.ru/articles/canvas-transformations/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-transformations/</guid><description>Преобразования в Canvas</description><pubDate>Thu, 29 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
 &lt;p&gt;&lt;strong&gt;Преобразования &lt;/strong&gt;в &lt;strong&gt;Canvas&lt;/strong&gt; позволяют изменять положение, размер, вращение и искажение элементов, рисуемых на холсте. С помощью преобразований можно создавать сложные и динамичные визуальные эффекты.&lt;/p&gt;
 
 &lt;p&gt;Преобразования включают в себя &lt;strong&gt;сдвиг (translate)&lt;/strong&gt;, &lt;strong&gt;вращение (rotate)&lt;/strong&gt;, &lt;strong&gt;масштабирование (scale)&lt;/strong&gt; и &lt;strong&gt;искажение (transform)&lt;/strong&gt;.&lt;/p&gt;
@@ -581,7 +618,26 @@ ctx.fill();
 
 &lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/wvOYpXr?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;</content:encoded></item><item><title>Рисование изображений в Canvas</title><link>https://awilum.ru/articles/canvas-draw-images/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-draw-images/</guid><description>Рисование изображений в Canvas</description><pubDate>Wed, 28 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/wvOYpXr?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+&lt;div&gt;
+&lt;h3 class=&quot;text-3xl mt-4 mb-4&quot;&gt;Cтатьи про Canvas&lt;/h4&gt;
+&lt;div class=&quot;pt-10 pb-10 border-black border-t-2 text-center grid grid-cols-1 lg:grid-cols-2 gap-4&quot;&gt;
+&lt;a href=&quot;/articles/canvas-short-history/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Краткая история Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-getting-started/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Начинаем работать с Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-coordinates/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Координатная система в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-rect/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование прямоугольника в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-path/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование контуров в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-move-cursor/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Перемещение курсора в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-line/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование линии в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-arc/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование дуги в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-curve/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование кривых Безье в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-images/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование изображений в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-transformations/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Преобразования в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-save-and-restore/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Сохранение и восстановление состояния в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-composite/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Композиция в Canvas&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content:encoded></item><item><title>Рисование изображений в Canvas</title><link>https://awilum.ru/articles/canvas-draw-images/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-draw-images/</guid><description>Рисование изображений в Canvas</description><pubDate>Wed, 28 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
 &lt;p&gt;Рисование изображений на холсте - это процесс отображения растровых изображений, таких как фотографии или другие изображения, Этот процесс обычно включает загрузку изображения и его отображение на холсте с использованием контекста рисования.&lt;/p&gt;
 
 &lt;p&gt;Прежде чем отобразить изображение на холсте, необходимо загрузить его с помощью объекта &lt;code&gt;Image&lt;/code&gt; &lt;strong&gt;JavaScript.&lt;/strong&gt;&lt;/p&gt;
@@ -736,7 +792,26 @@ img.onload = function() {
 	&lt;p&gt;&lt;strong&gt;Выполнение действий после загрузки.&lt;/strong&gt;&lt;br&gt;
 	Обработчик &lt;code&gt;onload&lt;/code&gt; позволяет вам выполнить определенные действия только после того, как изображение загружено, например, установить его как фон холста или выполнить манипуляции с изображением.&lt;/p&gt;
 	&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title>Рисование кривых Безье в Canvas</title><link>https://awilum.ru/articles/canvas-draw-curve/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-draw-curve/</guid><description>Рисование кривых Безье в Canvas</description><pubDate>Tue, 27 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+&lt;/ul&gt;
+
+&lt;div&gt;
+&lt;h3 class=&quot;text-3xl mt-4 mb-4&quot;&gt;Cтатьи про Canvas&lt;/h4&gt;
+&lt;div class=&quot;pt-10 pb-10 border-black border-t-2 text-center grid grid-cols-1 lg:grid-cols-2 gap-4&quot;&gt;
+&lt;a href=&quot;/articles/canvas-short-history/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Краткая история Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-getting-started/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Начинаем работать с Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-coordinates/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Координатная система в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-rect/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование прямоугольника в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-path/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование контуров в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-move-cursor/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Перемещение курсора в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-line/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование линии в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-arc/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование дуги в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-curve/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование кривых Безье в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-images/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование изображений в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-transformations/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Преобразования в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-save-and-restore/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Сохранение и восстановление состояния в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-composite/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Композиция в Canvas&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content:encoded></item><item><title>Рисование кривых Безье в Canvas</title><link>https://awilum.ru/articles/canvas-draw-curve/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-draw-curve/</guid><description>Рисование кривых Безье в Canvas</description><pubDate>Tue, 27 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
 &lt;p&gt;&lt;strong&gt;Кривые Безье &lt;/strong&gt;— это математические кривые, которые широко используются в компьютерной графике для создания плавных и красивых кривых. Они были впервые разработаны французским инженером &lt;strong&gt;Пьером Безье&lt;/strong&gt; в 1960-х годах для описания автомобильных кузовов в компании Renault. Кривые Безье могут быть различных порядков, включая линейные (порядка 1), квадратичные (порядка 2), кубические (порядка 3) и т. д.&lt;/p&gt;
 
 &lt;p&gt;Для рисования кривых Безье в Canvas доступны следующие методы: &lt;code&gt;quadraticCurveTo()&lt;/code&gt; и &lt;code&gt;bezierCurveTo()&lt;/code&gt;&lt;/p&gt;
@@ -834,7 +909,26 @@ ctx.stroke(); // Рисуем контур пути
 
 &lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/GReXjRj?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;</content:encoded></item><item><title>Рисование дуги в Canvas</title><link>https://awilum.ru/articles/canvas-draw-arc/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-draw-arc/</guid><description>Рисование дуги в Canvas</description><pubDate>Mon, 26 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/GReXjRj?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+&lt;div&gt;
+&lt;h3 class=&quot;text-3xl mt-4 mb-4&quot;&gt;Cтатьи про Canvas&lt;/h4&gt;
+&lt;div class=&quot;pt-10 pb-10 border-black border-t-2 text-center grid grid-cols-1 lg:grid-cols-2 gap-4&quot;&gt;
+&lt;a href=&quot;/articles/canvas-short-history/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Краткая история Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-getting-started/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Начинаем работать с Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-coordinates/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Координатная система в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-rect/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование прямоугольника в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-path/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование контуров в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-move-cursor/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Перемещение курсора в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-line/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование линии в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-arc/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование дуги в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-curve/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование кривых Безье в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-images/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование изображений в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-transformations/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Преобразования в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-save-and-restore/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Сохранение и восстановление состояния в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-composite/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Композиция в Canvas&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content:encoded></item><item><title>Рисование дуги в Canvas</title><link>https://awilum.ru/articles/canvas-draw-arc/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-draw-arc/</guid><description>Рисование дуги в Canvas</description><pubDate>Mon, 26 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
 &lt;p&gt;Дуга создается с использованием методов&amp;nbsp;&lt;code&gt;arc()&lt;/code&gt; и&amp;nbsp;&lt;code&gt;arcTo()&lt;/code&gt;&lt;/p&gt;
 
 ### Рисование с помощью метода&amp;nbsp;&lt;code&gt;arc()&lt;/code&gt;
@@ -944,7 +1038,26 @@ ctx.stroke();
 &lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/abMaZOY?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
-</content:encoded></item><item><title>Рисование линии в Canvas</title><link>https://awilum.ru/articles/canvas-draw-line/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-draw-line/</guid><description>Рисование линии в Canvas</description><pubDate>Sun, 25 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+
+
+&lt;div&gt;
+&lt;h3 class=&quot;text-3xl mt-4 mb-4&quot;&gt;Cтатьи про Canvas&lt;/h4&gt;
+&lt;div class=&quot;pt-10 pb-10 border-black border-t-2 text-center grid grid-cols-1 lg:grid-cols-2 gap-4&quot;&gt;
+&lt;a href=&quot;/articles/canvas-short-history/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Краткая история Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-getting-started/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Начинаем работать с Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-coordinates/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Координатная система в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-rect/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование прямоугольника в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-path/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование контуров в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-move-cursor/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Перемещение курсора в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-line/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование линии в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-arc/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование дуги в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-curve/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование кривых Безье в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-images/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование изображений в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-transformations/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Преобразования в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-save-and-restore/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Сохранение и восстановление состояния в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-composite/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Композиция в Canvas&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content:encoded></item><item><title>Рисование линии в Canvas</title><link>https://awilum.ru/articles/canvas-draw-line/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-draw-line/</guid><description>Рисование линии в Canvas</description><pubDate>Sun, 25 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
 &lt;p&gt;&lt;strong&gt;Рисование прямой линии&lt;/strong&gt; &amp;mdash;&amp;nbsp;одно из самых простых и распространенных действий при использовании &lt;strong&gt;Canvas&lt;/strong&gt; для создания графики с помощью &lt;strong&gt;JavaScript&lt;/strong&gt;. Для рисования прямой линии используется метод &lt;code&gt;lineTo(x, y)&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Метод &lt;code&gt;lineTo(x, y)&lt;/code&gt; используется для добавления линии от текущей позиции (позиции &amp;quot;курсора&amp;quot;) до указанной точки (x, y) на холсте. При этом сама линия не рисуется, пока не будет вызван метод для рисования контура или заливки.&lt;/p&gt;
@@ -1122,7 +1235,26 @@ ctx.stroke();
 &lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/YzgJEom?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
-</content:encoded></item><item><title>Перемещение курсора в Canvas</title><link>https://awilum.ru/articles/canvas-move-cursor/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-move-cursor/</guid><description>Перемещение курсора в Canvas</description><pubDate>Sun, 25 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+
+
+&lt;div&gt;
+&lt;h3 class=&quot;text-3xl mt-4 mb-4&quot;&gt;Cтатьи про Canvas&lt;/h4&gt;
+&lt;div class=&quot;pt-10 pb-10 border-black border-t-2 text-center grid grid-cols-1 lg:grid-cols-2 gap-4&quot;&gt;
+&lt;a href=&quot;/articles/canvas-short-history/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Краткая история Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-getting-started/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Начинаем работать с Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-coordinates/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Координатная система в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-rect/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование прямоугольника в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-path/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование контуров в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-move-cursor/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Перемещение курсора в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-line/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование линии в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-arc/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование дуги в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-curve/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование кривых Безье в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-images/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование изображений в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-transformations/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Преобразования в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-save-and-restore/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Сохранение и восстановление состояния в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-composite/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Композиция в Canvas&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content:encoded></item><item><title>Перемещение курсора в Canvas</title><link>https://awilum.ru/articles/canvas-move-cursor/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-move-cursor/</guid><description>Перемещение курсора в Canvas</description><pubDate>Sun, 25 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
 &lt;p&gt;Перемещение курсора полезно, когда вы хотите начать новый путь или перейти к другой части холста без создания видимой линии. Метод &lt;code&gt;moveTo()&lt;/code&gt; используется для управления позицией, откуда начинается рисование. Он позволяет перемещать &quot;курсор&quot; по холсту без рисования линии.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Синтаксис:&lt;/strong&gt;&lt;/p&gt;
@@ -1169,7 +1301,26 @@ ctx.stroke();
 
 &lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/MWxqwLb?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;</content:encoded></item><item><title>Рисование контуров в Canvas</title><link>https://awilum.ru/articles/canvas-draw-path/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-draw-path/</guid><description>Рисование контуров в Canvas</description><pubDate>Sat, 24 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/MWxqwLb?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+&lt;div&gt;
+&lt;h3 class=&quot;text-3xl mt-4 mb-4&quot;&gt;Cтатьи про Canvas&lt;/h4&gt;
+&lt;div class=&quot;pt-10 pb-10 border-black border-t-2 text-center grid grid-cols-1 lg:grid-cols-2 gap-4&quot;&gt;
+&lt;a href=&quot;/articles/canvas-short-history/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Краткая история Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-getting-started/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Начинаем работать с Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-coordinates/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Координатная система в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-rect/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование прямоугольника в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-path/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование контуров в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-move-cursor/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Перемещение курсора в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-line/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование линии в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-arc/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование дуги в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-curve/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование кривых Безье в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-images/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование изображений в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-transformations/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Преобразования в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-save-and-restore/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Сохранение и восстановление состояния в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-composite/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Композиция в Canvas&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content:encoded></item><item><title>Рисование контуров в Canvas</title><link>https://awilum.ru/articles/canvas-draw-path/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-draw-path/</guid><description>Рисование контуров в Canvas</description><pubDate>Sat, 24 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
 &lt;p&gt;&lt;strong&gt;Рисование контуров&lt;/strong&gt;, также известное как &lt;strong&gt;работа с путями (path)&lt;/strong&gt;, представляет собой способ создания сложных форм и фигур на холсте. Работа с путями позволяет создавать кривые, ломаные линии, а также комбинировать различные фигуры в одном элементе. В основе работы с путями лежит использование методов для создания пути, а затем применение методов для его рисования и/или заливки.&lt;/p&gt;
 
 &lt;p&gt;Создание фигур с использованием контуров включает в себя несколько важных шагов:&lt;/p&gt;
@@ -1244,7 +1395,26 @@ ctx.stroke();
 &lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/BabOymY?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
-</content:encoded></item><item><title>Рисование прямоугольника в Canvas</title><link>https://awilum.ru/articles/canvas-draw-rect/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-draw-rect/</guid><description>Рисование прямоугольника в Canvas</description><pubDate>Fri, 23 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+
+
+&lt;div&gt;
+&lt;h3 class=&quot;text-3xl mt-4 mb-4&quot;&gt;Cтатьи про Canvas&lt;/h4&gt;
+&lt;div class=&quot;pt-10 pb-10 border-black border-t-2 text-center grid grid-cols-1 lg:grid-cols-2 gap-4&quot;&gt;
+&lt;a href=&quot;/articles/canvas-short-history/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Краткая история Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-getting-started/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Начинаем работать с Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-coordinates/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Координатная система в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-rect/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование прямоугольника в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-path/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование контуров в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-move-cursor/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Перемещение курсора в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-line/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование линии в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-arc/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование дуги в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-curve/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование кривых Безье в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-images/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование изображений в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-transformations/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Преобразования в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-save-and-restore/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Сохранение и восстановление состояния в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-composite/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Композиция в Canvas&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content:encoded></item><item><title>Рисование прямоугольника в Canvas</title><link>https://awilum.ru/articles/canvas-draw-rect/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-draw-rect/</guid><description>Рисование прямоугольника в Canvas</description><pubDate>Fri, 23 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
 &lt;p&gt;Рисование прямоугольников на элементе &lt;strong&gt;Canvas&lt;/strong&gt; &amp;mdash;&amp;nbsp;одно из самых базовых и часто используемых действий при создании графики на веб-странице с помощью &lt;strong&gt;JavaScript&lt;/strong&gt;. Прямоугольники можно использовать для создания различных элементов интерфейса, фонов, рамок и многого другого. Давайте рассмотрим подробно, как рисовать прямоугольники на &lt;strong&gt;Canvas&lt;/strong&gt;.&lt;/p&gt;
 
 ### Использование метода &lt;code&gt;fillRect()&lt;/code&gt;
@@ -1473,7 +1643,26 @@ ctx.clearRect(60, 60, 80, 80);
 &lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/VwRGYPj?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
-</content:encoded></item><item><title>Координатная система в Canvas</title><link>https://awilum.ru/articles/canvas-coordinates/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-coordinates/</guid><description>Координатная система в Canvas</description><pubDate>Thu, 22 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+
+
+&lt;div&gt;
+&lt;h3 class=&quot;text-3xl mt-4 mb-4&quot;&gt;Cтатьи про Canvas&lt;/h4&gt;
+&lt;div class=&quot;pt-10 pb-10 border-black border-t-2 text-center grid grid-cols-1 lg:grid-cols-2 gap-4&quot;&gt;
+&lt;a href=&quot;/articles/canvas-short-history/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Краткая история Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-getting-started/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Начинаем работать с Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-coordinates/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Координатная система в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-rect/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование прямоугольника в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-path/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование контуров в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-move-cursor/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Перемещение курсора в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-line/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование линии в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-arc/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование дуги в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-curve/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование кривых Безье в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-images/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование изображений в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-transformations/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Преобразования в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-save-and-restore/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Сохранение и восстановление состояния в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-composite/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Композиция в Canvas&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content:encoded></item><item><title>Координатная система в Canvas</title><link>https://awilum.ru/articles/canvas-coordinates/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-coordinates/</guid><description>Координатная система в Canvas</description><pubDate>Thu, 22 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
 &lt;p&gt;&lt;strong&gt;Координатная система&lt;/strong&gt; &amp;mdash; это математический инструмент, используемый для определения положения точек в пространстве или на плоскости. Она состоит из двух осей (или трех, в трехмерном пространстве), пересекающихся в точке, которая называется началом координат. Каждая из осей имеет определенное направление, и на них отложены числа, которые обозначают координаты точек.&lt;/p&gt;
 
 &lt;p&gt;Существует несколько различных типов координатных систем, но наиболее распространенные из них - это декартова координатная система и полярная координатная система.&lt;/p&gt;
@@ -1557,7 +1746,25 @@ ctx.clearRect(60, 60, 80, 80);
 	Каждый пиксель представляет одну единицу по осям X и Y.&lt;/p&gt;
 	&lt;/li&gt;
 &lt;/ol&gt;
-</content:encoded></item><item><title>Начинаем работать с Canvas</title><link>https://awilum.ru/articles/canvas-getting-started/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-getting-started/</guid><description>Начинаем работать с Canvas</description><pubDate>Wed, 21 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+
+&lt;div&gt;
+&lt;h3 class=&quot;text-3xl mt-4 mb-4&quot;&gt;Cтатьи про Canvas&lt;/h4&gt;
+&lt;div class=&quot;pt-10 pb-10 border-black border-t-2 text-center grid grid-cols-1 lg:grid-cols-2 gap-4&quot;&gt;
+&lt;a href=&quot;/articles/canvas-short-history/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Краткая история Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-getting-started/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Начинаем работать с Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-coordinates/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Координатная система в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-rect/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование прямоугольника в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-path/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование контуров в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-move-cursor/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Перемещение курсора в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-line/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование линии в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-arc/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование дуги в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-curve/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование кривых Безье в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-images/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование изображений в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-transformations/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Преобразования в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-save-and-restore/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Сохранение и восстановление состояния в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-composite/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Композиция в Canvas&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content:encoded></item><item><title>Начинаем работать с Canvas</title><link>https://awilum.ru/articles/canvas-getting-started/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-getting-started/</guid><description>Начинаем работать с Canvas</description><pubDate>Wed, 21 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
 &lt;p&gt;&lt;strong&gt;Canvas&lt;/strong&gt;&amp;nbsp;&amp;mdash; это элемент &lt;strong&gt;HTML5&lt;/strong&gt;, который позволяет создавать и рисовать графику на веб-странице с использованием &lt;strong&gt;JavaScript&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;Давайте рассмотрим основные шаги по работе с &lt;strong&gt;Canvas&lt;/strong&gt;.&lt;/p&gt;
@@ -1660,7 +1867,26 @@ ctx.fill();
 &lt;p&gt;Вы можете использовать эти примеры для создания простых графических элементов на вашей веб-странице.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Canvas&lt;/strong&gt; предоставляет широкий набор методов для рисования, и вы можете экспериментировать с ними, чтобы создать различные визуальные эффекты и другую графику.&lt;/p&gt;
-</content:encoded></item><item><title>Краткая история Canvas</title><link>https://awilum.ru/articles/canvas-short-history/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-short-history/</guid><description>Краткая история Canvas</description><pubDate>Tue, 20 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+
+
+&lt;div&gt;
+&lt;h3 class=&quot;text-3xl mt-4 mb-4&quot;&gt;Cтатьи про Canvas&lt;/h4&gt;
+&lt;div class=&quot;pt-10 pb-10 border-black border-t-2 text-center grid grid-cols-1 lg:grid-cols-2 gap-4&quot;&gt;
+&lt;a href=&quot;/articles/canvas-short-history/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Краткая история Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-getting-started/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Начинаем работать с Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-coordinates/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Координатная система в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-rect/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование прямоугольника в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-path/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование контуров в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-move-cursor/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Перемещение курсора в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-line/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование линии в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-arc/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование дуги в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-curve/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование кривых Безье в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-images/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование изображений в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-transformations/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Преобразования в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-save-and-restore/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Сохранение и восстановление состояния в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-composite/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Композиция в Canvas&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content:encoded></item><item><title>Краткая история Canvas</title><link>https://awilum.ru/articles/canvas-short-history/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-short-history/</guid><description>Краткая история Canvas</description><pubDate>Tue, 20 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
 &lt;p&gt;&lt;strong&gt;Canvas&lt;/strong&gt; &amp;mdash; это элемент &lt;strong&gt;HTML5&lt;/strong&gt;, который представляет собой прямоугольную область на странице, которую можно настраивать и рисовать на ней с помощью &lt;strong&gt;JavaScript&lt;/strong&gt;.&amp;nbsp;&lt;/p&gt;
 
 &lt;p&gt;Первые признаки тогда еще проприетарного элемента &lt;strong&gt;Canvas&lt;/strong&gt;&amp;nbsp;были внесены в древо исходного кода &lt;strong&gt;WebKit&lt;/strong&gt;&amp;nbsp;&amp;mdash;&amp;nbsp;&lt;strong&gt;Ричардом Уильямсоном&lt;/strong&gt; 25 мая 2004 года. Идея &lt;strong&gt;Apple&lt;/strong&gt; заключалась в том, чтобы предоставить доступ к системе рисования &lt;strong&gt;Quartz&lt;/strong&gt; операционной системы &lt;strong&gt;Mac OS X&lt;/strong&gt; для &lt;strong&gt;JavaScript&lt;/strong&gt; и &lt;strong&gt;HTML&lt;/strong&gt;, чтобы упростить написание графических виджетов для &lt;strong&gt;Apple Dashboard&lt;/strong&gt;. Следовательно, поскольку оба продукта используют один и тот же движок рендеринга, элемент стал доступен также в браузере &lt;strong&gt;Safari&lt;/strong&gt;.&lt;/p&gt;
@@ -1676,6 +1902,26 @@ ctx.fill();
 &lt;p&gt;Тем не менее, не все прошло гладко. После того как Mozilla Firefox и Opera реализовали элемент &lt;strong&gt;Canvas&lt;/strong&gt;, Хелен Плотка Уоркман, старший юрист &lt;strong&gt;Apple&lt;/strong&gt; по патентам, отправила сообщение в &lt;strong&gt;WHATWG&lt;/strong&gt; и Иэну Хиксону, заявив, что Apple считает себя владельцем интеллектуальной собственности по элементу холста и рассмотрит возможность предоставления этих прав интеллектуальной собственности только в случае принятия чернового стандарта Веб-приложений в качестве формализованного стандарта с &lt;strong&gt;W3C&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;В феврале 2008 года, был опубликован первый черновик спецификации &lt;strong&gt;HTML5&lt;/strong&gt; как рабочий черновик &lt;strong&gt;W3C&lt;/strong&gt;. 18 июня того же года &lt;strong&gt;Apple&lt;/strong&gt; раскрыла патент &lt;a href=&quot;https://www.freepatentsonline.com/y2006/0005114.html&quot; rel=&quot;noopener noreferrer nofollow&quot;&gt;11/144384&lt;/a&gt; для использования спецификации &lt;strong&gt;HTML5&lt;/strong&gt;. Тот же патент был раскрыт в еще шести юрисдикциях, что позволило &lt;strong&gt;WHATWG&lt;/strong&gt; продолжать включать новый элемент &lt;strong&gt;Canvas&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div&gt;
+&lt;h3 class=&quot;text-3xl mt-4 mb-4&quot;&gt;Cтатьи про Canvas&lt;/h4&gt;
+&lt;div class=&quot;pt-10 pb-10 border-black border-t-2 text-center grid grid-cols-1 lg:grid-cols-2 gap-4&quot;&gt;
+&lt;a href=&quot;/articles/canvas-short-history/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Краткая история Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-getting-started/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white px-4 py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Начинаем работать с Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-coordinates/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Координатная система в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-rect/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование прямоугольника в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-path/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование контуров в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-move-cursor/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Перемещение курсора в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-line/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование линии в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-arc/&quot; class=&quot;bg-white text-black border-2 border-black rounded  hover:bg-black hover:text-white py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование дуги в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-curve/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование кривых Безье в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-draw-images/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Рисование изображений в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-transformations/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Преобразования в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-save-and-restore/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Сохранение и восстановление состояния в Canvas&lt;/a&gt;
+&lt;a href=&quot;/articles/canvas-composite/&quot; class=&quot;bg-white text-black border-2 border-black rounded hover:bg-black hover:text-white  py-2 mr-2 flex items-center justify-center no-underline&quot;&gt;Композиция в Canvas&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
 </content:encoded></item><item><title>Преимущества использования let и const по сравнению с var в JavaScript</title><link>https://awilum.ru/articles/advantages-of-using-let-and-const-over-var-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/advantages-of-using-let-and-const-over-var-in-javascript/</guid><description>Преимущества использования let и const по сравнению с var в JavaScript</description><pubDate>Mon, 19 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
 До появления **ECMAScript 6(ES6)**, ключевое слово `var` использовалось для объявления переменных в **JavaScript**. Однако, с появлением **ES6**, были введены два новых способа объявления переменных: `let` и `const`. С появлением этих новых возможностей, использование `var` стало менее желательным по нескольким причинам.
 
