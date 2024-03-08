@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang="ru" data-theme="lofi" class="text-[18px] lg:text-[20px]"> <head><meta charset="UTF-8"><meta name="description" content="Преобразования в Canvas"><meta name="keywords" content="javascript, canvas"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.4.0"><meta name="yandex-verification" content="a1d97fb868e5cf5e"><meta name="google-site-verification" content="RTPsZF1G_xrcJ2yo3IPl9OCzSd6m7xOdTLFSJ9myT6I"><meta property="og:locale" content="ru_RU"><meta property="og:title" content="Преобразования в Canvas"><meta property="og:site_name" content="awilum.ru"><meta property="og:url" content="/articles/canvas-transformations/"><meta property="og:description" content="Преобразования в Canvas"><meta property="og:type" content="website"><title>Преобразования в Canvas</title><link rel="sitemap" href="/sitemap-index.xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/_slug_.BM0Aq_3L.css" /><script type="module">
+</script><script src="/_astro/ArticleEntry.astro_astro_type_script_index_0_lang.CEDrOUWK.js" type="module"></script></head> <body class="p-4 lg:p-0" data-pagefind-body> <div class="lg:flex bg-base-100 max-w-[1000px] mx-auto lg:mt-10 items-center lowercase"> <div class="text-left lg:text-center text-2xl mr-4 mb-6 lg:mb-0"> <a class="block font-black underline" href="/">awilum.ru</a> </div> <div class="lg:flex text-left lg:text-center w-full lg:text-2xl text-xl lowercase"> <a class="px-2 pl-0 lg:px-4 underline" href="/articles/">Статьи</a> <a class="px-2 lg:px-4 underline" href="/courses/">Курсы</a> <a class="px-2 lg:px-4 underline" href="/about/">Об авторе</a> </div> </div> <div class="max-w-[1000px] mx-auto">  <h1 class="text-2xl lg:text-6xl py-14 text-left block border-b-2 border-solid border-black">Преобразования в Canvas</h1> <div class="text-lg py-10 mx-auto"> <p><strong>Преобразования </strong>в <strong>Canvas</strong> позволяют изменять положение, размер, вращение и искажение элементов, рисуемых на холсте. С помощью преобразований можно создавать сложные и динамичные визуальные эффекты.</p>
+<p>Преобразования включают в себя <strong>сдвиг (translate)</strong>, <strong>вращение (rotate)</strong>, <strong>масштабирование (scale)</strong> и <strong>искажение (transform)</strong>.</p>
+<h3 id="сдвиг-translate">Сдвиг (Translate)</h3>
+<p><strong>Сдвиг (Translate)</strong> позволяет перемещать начало координат и элементы на холсте в определенном направлении. Это полезное преобразование, которое позволяет создавать анимации, располагать объекты в нужных местах и создавать сложные композиции из простых фигур.</p>
+<h4 id="использование-метода-translate">Использование метода <code>translate()</code></h4>
+<p>Метод <code>translate()</code>  сдвигает начало координат холста на заданные значения по горизонтали и вертикали. После сдвига все последующие операции рисования будут выполняться относительно нового начала координат.</p>
+<p><strong>Cинтаксис:</strong></p>
+<pre class="language-javascript"><code is:raw="" class="language-javascript"><span class="token function">translate</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><strong>Параметры:</strong></p>
+<table align="center" style="width:100%">
+	<tbody>
+		<tr>
+			<td style="text-align: center;"><code>x</code></td>
+			<td>Сдвиг по горизонтали.</td>
+		</tr>
+		<tr>
+			<td style="text-align: center;"><code>y</code></td>
+			<td>Сдвиг по вертикали.</td>
+		</tr>
+	</tbody>
+</table>
+<p><strong>Пример:</strong></p>
+<pre class="language-javascript"><code is:raw="" class="language-javascript"><span class="token comment">// Нарисуем квадрат до сдвига</span>
+ctx<span class="token punctuation">.</span>fillStyle <span class="token operator">=</span> <span class="token string">'blue'</span><span class="token punctuation">;</span>
+ctx<span class="token punctuation">.</span><span class="token function">fillRect</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Сдвиг начала координат на (100, 50)</span>
+ctx<span class="token punctuation">.</span><span class="token function">translate</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Нарисуем квадрат после сдвига</span>
+ctx<span class="token punctuation">.</span>fillStyle <span class="token operator">=</span> <span class="token string">'red'</span><span class="token punctuation">;</span>
+ctx<span class="token punctuation">.</span><span class="token function">fillRect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>В этом примере после вызова <code>translate(100, 50)</code> все последующие операции рисования будут сдвигаться на 100 пикселей вправо и 50 пикселей вниз относительно исходного начала координат.</p>
+<p><strong>Результат:</strong></p>
+<p><iframe allowfullscreen height="500" scrolling="no" src="https://codepen.io/Awilum/embed/oNVaoKO?default-tab=result" width="100%"></iframe></p>
+<h4 id="совмещение-сдвигов">Совмещение сдвигов</h4>
+<p>Вы можете вызывать <code>translate()</code> несколько раз для применения нескольких сдвигов последовательно.</p>
+<pre class="language-javascript"><code is:raw="" class="language-javascript">ctx<span class="token punctuation">.</span><span class="token function">translate</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Сдвиг на (50, 50)</span>
+ctx<span class="token punctuation">.</span><span class="token function">translate</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Сдвиг на (100, 0)</span></code></pre>
+<h4 id="обратный-сдвиг">Обратный сдвиг</h4>
+<p>Чтобы вернуть начало координат к исходному состоянию, примените обратный сдвиг с отрицательными значениями.</p>
+<pre class="language-javascript"><code is:raw="" class="language-javascript">ctx<span class="token punctuation">.</span><span class="token function">translate</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Обратный сдвиг на (-100, -50)</span></code></pre>
+<h3 id="вращение-rotate"><strong>Вращение (Rotate)</strong></h3>
+<p><strong>Вращение (Rotate)</strong> поворачивать элементы относительно их начальной позиции. </p>
+<h4 id="использование-метода-rotate">Использование метода <code>rotate()</code></h4>
+<p>Метод <code>rotate()</code> контекста рисования вращает координатную систему холста на заданный угол в радианах.</p>
+<p><strong>Cинтаксис:</strong></p>
+<pre class="language-javascript"><code is:raw="" class="language-javascript"><span class="token function">rotate</span><span class="token punctuation">(</span>angle<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><strong>Параметры:</strong></p>
+<table style="width:100%">
+	<tbody>
+		<tr>
+			<td style="text-align: center;"><code>angle</code></td>
+			<td>Угол вращения в радианах.</td>
+		</tr>
+	</tbody>
+</table>
+<p><strong>Пример:</strong></p>
+<pre class="language-javascript"><code is:raw="" class="language-javascript"><span class="token comment">// Сдвиг начала координат на (100, 0)</span>
+ctx<span class="token punctuation">.</span><span class="token function">translate</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Нарисуем квадрат до вращения</span>
+ctx<span class="token punctuation">.</span>fillStyle <span class="token operator">=</span> <span class="token string">'blue'</span><span class="token punctuation">;</span>
+ctx<span class="token punctuation">.</span><span class="token function">fillRect</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Вращение координатной системы на 45 градусов</span>
+ctx<span class="token punctuation">.</span><span class="token function">rotate</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Нарисуем квадрат после вращения</span>
+ctx<span class="token punctuation">.</span>fillStyle <span class="token operator">=</span> <span class="token string">'red'</span><span class="token punctuation">;</span>
+ctx<span class="token punctuation">.</span><span class="token function">fillRect</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>В этом примере второй квадрат будет нарисован после поворота координатной системы на 45 градусов. Все последующие операции рисования будут выполняться относительно повернутой системы координат.</p>
+<p><strong>Результат:</strong></p>
+<p><iframe allowfullscreen height="500" scrolling="no" src="https://codepen.io/Awilum/embed/eYXPyvL?default-tab=result" width="100%"></iframe></p>
+<h3 id="масштабирование-scale">Масштабирование (Scale)</h3>
+<p><strong>Масштабирование (Scale)</strong> позволяет изменять размер элементов, нарисованных на холсте. Это преобразование позволяет увеличивать или уменьшать объекты, создавать эффекты перспективы и применять масштабирование в анимациях.</p>
+<h4 id="использование-метода-scale">Использование метода <code>scale()</code></h4>
+<p>Метод <code>scale()</code> контекста рисования масштабирует объекты на холсте по горизонтали и вертикали.</p>
+<p><strong>Cинтаксис:</strong></p>
+<pre class="language-javascript"><code is:raw="" class="language-javascript"><span class="token function">scale</span><span class="token punctuation">(</span>scaleX<span class="token punctuation">,</span> scaleY<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><strong>Параметры:</strong></p>
+<table style="width:100%">
+	<tbody>
+		<tr>
+			<td style="text-align: center;"><code>scaleX</code></td>
+			<td>Коэффициент масштабирования по горизонтали.</td>
+		</tr>
+		<tr>
+			<td style="text-align: center;"><code>scaleY</code></td>
+			<td>Коэффициент масштабирования по вертикали.</td>
+		</tr>
+	</tbody>
+</table>
+<p><strong>Пример:</strong></p>
+<pre class="language-javascript"><code is:raw="" class="language-javascript"><span class="token comment">// Нарисуем круг до масштабирования</span>
+ctx<span class="token punctuation">.</span>fillStyle <span class="token operator">=</span> <span class="token string">'blue'</span><span class="token punctuation">;</span>
+ctx<span class="token punctuation">.</span><span class="token function">beginPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ctx<span class="token punctuation">.</span><span class="token function">arc</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ctx<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Масштабирование объекта</span>
+ctx<span class="token punctuation">.</span><span class="token function">scale</span><span class="token punctuation">(</span><span class="token number">1.5</span><span class="token punctuation">,</span> <span class="token number">1.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Нарисуем круг после масштабирования</span>
+ctx<span class="token punctuation">.</span>fillStyle <span class="token operator">=</span> <span class="token string">'red'</span><span class="token punctuation">;</span>
+ctx<span class="token punctuation">.</span><span class="token function">beginPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ctx<span class="token punctuation">.</span><span class="token function">arc</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ctx<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>В этом примере второй круг будет нарисован после масштабирования по горизонтали в 1.5 раза. Масштабирование применяется ко всем последующим операциям рисования, и все они будут масштабироваться с использованием указанных коэффициентов.</p>
+<p><strong>Результат:</strong></p>
+<p><iframe allowfullscreen height="500" scrolling="no" src="https://codepen.io/Awilum/embed/NWJOXva?default-tab=result" width="100%"></iframe></p>
+<h3 id="искажение-transform">Искажение (Transform)</h3>
+<p>Метод <code>transform()</code> позволяет производить произвольные преобразования объектов, такие как сдвиг, масштабирование, вращение и искажение. Этот метод применяет матрицу трансформации к текущему состоянию контекста рисования, что позволяет создавать сложные визуальные эффекты.</p>
+<h4 id="использование-метода-transform">Использование метода <code>transform()</code></h4>
+<p>Метод <code>transform()</code> позволяет производить произвольные преобразования путем применения матрицы трансформации.</p>
+<p><strong>Cинтаксис:</strong></p>
+<pre class="language-javascript"><code is:raw="" class="language-javascript"><span class="token function">transform</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">,</span> d<span class="token punctuation">,</span> e<span class="token punctuation">,</span> f<span class="token punctuation">)</span></code></pre>
+<p><strong>Параметры:</strong></p>
+<table style="width:100%">
+	<tbody>
+		<tr>
+			<td style="text-align: center;"><code>a</code>, <code>b</code>, <code>c</code>, <code>d</code>, <code>e</code>, <code>f</code></td>
+			<td> Элементы матрицы трансформации.</td>
+		</tr>
+	</tbody>
+</table>
+<p><strong>Матрица трансформации имеет следующий вид:</strong></p>
+<pre class="language-plaintext"><code is:raw="" class="language-plaintext">| a  c  e |
+| b  d  f |
+| 0  0  1 |</code></pre>
+<p><strong>Пример:</strong></p>
+<pre class="language-plaintext"><code is:raw="" class="language-plaintext">// Нарисуем круг до масштабирования
+ctx.fillStyle = 'blue';
+ctx.beginPath();
+ctx.arc(100, 100, 50, 0, Math.PI * 2);
+ctx.fill();
+
+// Масштабирование объекта
+ctx.scale(1.5, 1.5);
+
+// Нарисуем круг после масштабирования
+ctx.fillStyle = 'red';
+ctx.beginPath();
+ctx.arc(100, 100, 50, 0, Math.PI * 2);
+ctx.fill();</code></pre>
+<p>В этом примере <code>transform(1, 0.5, 0.5, 1, 0, 0)</code> применяет искажение, увеличивая квадрат по горизонтали вдвое и сжимая по вертикали вдвое. Коэффициенты <code>a</code>, <code>b</code>, <code>c</code> и <code>d</code> определяют масштабирование и искажение, а <code>e</code> и <code>f</code> определяют сдвиг.</p>
+<p><strong>Результат:</strong></p>
+<p><iframe allowfullscreen height="500" scrolling="no" src="https://codepen.io/Awilum/embed/wvOYpXr?default-tab=result" width="100%"></iframe></p> </div> <div class="py-10 px-10 text-center border-t-2 border-solid border-black bg-yellow-50">
+Хотите освоить <strong>JavaScript</strong> и стать востребованным разработчиком?<br>Присоединяйтесь к курсу <strong><a href="/courses/javascript-basic/">JavaScript Базовый уровень</a></strong> прямо сейчас!<br>Изучите основы и продвинутые концепции, создавайте интерактивные веб-приложения и воплотите свои идеи в реальности. Не упустите шанс стать экспертом в мире разработки – начните свой путь прямо сейчас!
+</div> <div class="text-sm py-10 text-center border-t-2 border-solid border-black">
+Обнаружили ошибку в этой статье? Хотите уточнить, обновить или добавить что-то?<br>
+Все мои статьи доступны для <a target="_blank" href="https://github.com/Awilum/awilum.src/blob/master/src/content/articles/canvas-transformations.md">редактирования на GitHub</a>. Буду благодарен за любое улучшение или исправление!
+</div> <div class="lg:flex py-10 border-t-2 border-solid border-black"> <div class="lg:flex-auto text-left"> <!-- AddToAny BEGIN --> <div class="mb-10 lg:mb-0 flex"> <div class="a2a_kit a2a_kit_size_32 a2a_default_style"> <a class="a2a_dd grayscale" href="https://www.addtoany.com/share"></a> <a class="a2a_button_twitter grayscale"></a> <a class="a2a_button_telegram grayscale"></a> <a class="a2a_button_copy_link grayscale"></a> </div> </div>  <script async src="https://static.addtoany.com/menu/page.js"></script> <!-- AddToAny END --> </div> <div class="lg:flex-auto lg:text-right"> <a href="/articles/categories/javascript/" class="bg-gray-200 px-3 py-1 ml-4 no-underline text-sm">JavaScript</a><a href="/articles/categories/canvas/" class="bg-gray-200 px-3 py-1 ml-4 no-underline text-sm">Canvas</a> <span class="mx-2 opacity-10">|</span> <a href="/articles/" class="bg-gray-200 px-3 py-1 no-underline text-sm">Все статьи</a> </div> </div>  </div> <footer class="max-w-[1000px] mx-auto py-12 border-t-2 border-black"> <p> <span class="mr-1 font-bold">Курсы:</span> <a href="/courses/javascript-basic/" class="underline mr-2">JavaScript Базовый уровень</a> <a href="/courses/javascript-advanced/" class="underline mr-2">JavaScript Продвинутый уровень</a> <a href="https://stepik.org/a/172576" class="underline mr-2">JavaScript Тренажер</a> <a href="/courses/" class="underline">Все курсы</a> </p> <p class="lg:pr-10"> <span class="mr-1 font-bold">Статьи:</span> <a href="/articles/canvas-composite/" class="underline mr-2">Композиция в Canvas</a><a href="/articles/canvas-save-and-restore/" class="underline mr-2">Сохранение и восстановление состояния в Canvas</a><a href="/articles/canvas-transformations/" class="underline mr-2">Преобразования в Canvas</a> <a href="/articles/" class="underline">Все статьи</a> </p> <p class="flex flex-wrap"> <span class="mr-1 font-bold">Подписаться на меня в:</span> <a target="_blank" href="https://twitter.com/awilum_" class="underline mr-2">Twitter</a> <a target="_blank" href="https://www.linkedin.com/in/sergey-romanenko/" class="underline mr-2">LinkedIn</a> <a target="_blank" href="https://github.com/Awilum" class="underline mr-2">GitHub</a> </p> <p class="flex flex-wrap"> <span class="mr-1 font-bold">Связаться со мной в:</span> <a target="_blank" href="https://awilum.t.me" class="underline">Telegram</a> </p> <div class="border-t-2 border-black my-12 pt-12 text-xs opacity-70"> <p class="uppercase mb-1">Работает на <a href="https://astro.build/" class="underline">Astro</a>. Хостинг от <a href="http://www.smartape.ru/?partner=146659" class="underline">SmartApe</a>.</p> <p class="m-0">&copy; SERGEY ROMANENKO. ALL RIGHTS RESERVED.</p> </div> </footer> <!-- Yandex.Metrika counter --> <script type="text/javascript">
+			(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+			m[i].l=1*new Date();
+			for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+			k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+			(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+		
+			ym(95236209, "init", {
+				clickmap:true,
+				trackLinks:true,
+				accurateTrackBounce:true
+			});
+		</script> <noscript><div><img src="https://mc.yandex.ru/watch/95236209" style="position:absolute; left:-9999px;" alt=""></div></noscript> <!-- /Yandex.Metrika counter --> </body></html>

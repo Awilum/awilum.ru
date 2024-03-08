@@ -1,4 +1,1128 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Перемещение курсора в Canvas</title><link>https://awilum.ru/articles/canvas-move-cursor/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-move-cursor/</guid><description>Перемещение курсора в Canvas</description><pubDate>Sun, 25 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Композиция в Canvas</title><link>https://awilum.ru/articles/canvas-composite/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-composite/</guid><description>Композиция в Canvas</description><pubDate>Fri, 01 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+&lt;p&gt;Композиция включает в себя различные способы наложения одного изображения или элемента рисунка на другой. Существует несколько режимов композиции, которые определяют, как цвета двух объектов смешиваются при их наложении.&lt;/p&gt;
+
+### Использование свойства &lt;code&gt;globalCompositeOperation&lt;/code&gt;
+
+&lt;p&gt;Свойство &lt;code&gt;globalCompositeOperation&lt;/code&gt; контекста рисования позволяет устанавливать режим композиции. Его значения определяют, как цвета рисуемого объекта будут смешиваться с цветами объектов, находящихся под ним.&lt;/p&gt;
+
+```javascript
+globalCompositeOperation = &apos;value&apos;;
+```
+
+&lt;p&gt;Где &lt;code&gt;value&lt;/code&gt; - одно из допустимых значений для режима композиции.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Примеры значений:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table border=&quot;1&quot; cellpadding=&quot;1&quot; cellspacing=&quot;1&quot; style=&quot;width: 100%;&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;source-over&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Значение по умолчанию.&lt;br&gt;
+			Исходное изображение накрывает целевое&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;source-atop&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Исходное изображение накладывается поверх целевого.&lt;br&gt;
+			При этом часть исходного изображения, которая выходит&lt;br&gt;
+			за границы целевого изображения, не отображается&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;source-in&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Исходное изображение отображается внутри целевого изображения.&lt;br&gt;
+			При этом отображается только та часть исходного изображения,&lt;br&gt;
+			которая находится в границах целевого изображения.&lt;br&gt;
+			Само целевое изображение становится прозрачным&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;source-out&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Исходное изображение отображается вне границ целевого изображения.&lt;br&gt;
+			При этом отображается только та часть исходного изображения,&lt;br&gt;
+			которая находится за пределами целевого изображения.&lt;br&gt;
+			Само целевое изображение становится прозрачным&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;destination-over&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Целевое изображение накрывает исходное&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;destination-atop&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;
+			&lt;p&gt;Целевое изображение накладывается поверх исходного.&lt;br&gt;
+			При этом часть целевого изображения, которая выходит за границы&lt;br&gt;
+			исходного изображения, не отображается&lt;/p&gt;
+			&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;destination-in&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Целевое изображение отображается внутри исходного изображения.&lt;br&gt;
+			При этом отображается только та часть целевого изображения,&lt;br&gt;
+			которая находится в границах исходного изображения.&lt;br&gt;
+			Само исходное изображение становится прозрачным&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;destination-out&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Целевое изображение отображается вне границ исходного изображения.&lt;br&gt;
+			При этом отображается только та часть целевого изображения,&lt;br&gt;
+			которая находится за пределами исходного изображения.&lt;br&gt;
+			Само исходное изображение становится прозрачным&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;lighter&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Отображает исходное изображение + целевое изображение&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;copy&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Отображает исходное изображение.&lt;br&gt;
+			Целевое изображение игнорируется&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;xor&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Исходное изображение комбинируется с целевым используя операцию исключающего ИЛИ&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+### Наложение прямоугольников с режимом &lt;code&gt;source-over&lt;/code&gt;
+
+```javascript
+// Рисуем первый прямоугольник (синий)
+ctx.fillStyle = &apos;blue&apos;;
+ctx.fillRect(50, 50, 100, 100);
+
+// Применяем режим композиции
+ctx.globalCompositeOperation = &apos;source-over&apos;;
+
+// Рисуем второй прямоугольник (красный) поверх первого
+ctx.fillStyle = &apos;red&apos;;
+ctx.fillRect(100, 100, 100, 100);
+```
+
+&lt;p&gt;&lt;strong&gt;Результат: &lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/oNVadpg?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+### Наложение прямоугольников с режимом &lt;code&gt;source-atop&lt;/code&gt;
+
+```javascript
+// Рисуем первый прямоугольник (синий)
+ctx.fillStyle = &apos;blue&apos;;
+ctx.fillRect(50, 50, 100, 100);
+
+// Применяем режим композиции
+ctx.globalCompositeOperation = &apos;source-atop&apos;;
+
+// Рисуем второй прямоугольник (красный) поверх первого
+ctx.fillStyle = &apos;red&apos;;
+ctx.fillRect(100, 100, 100, 100);
+```
+
+&lt;p&gt;&lt;strong&gt;Результат: &lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/PoLyegJ?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+### Наложение прямоугольников с режимом &lt;code&gt;source-in&lt;/code&gt;
+
+```javascript
+// Рисуем первый прямоугольник (синий)
+ctx.fillStyle = &apos;blue&apos;;
+ctx.fillRect(50, 50, 100, 100);
+
+// Применяем режим композиции
+ctx.globalCompositeOperation = &apos;source-in&apos;;
+
+// Рисуем второй прямоугольник (красный) поверх первого
+ctx.fillStyle = &apos;red&apos;;
+ctx.fillRect(100, 100, 100, 100);
+```
+
+&lt;p&gt;&lt;strong&gt;Результат: &lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/MWxPGMx?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+### Наложение прямоугольников с режимом &lt;code&gt;source-out&lt;/code&gt;
+
+```javascript
+// Рисуем первый прямоугольник (синий)
+ctx.fillStyle = &apos;blue&apos;;
+ctx.fillRect(50, 50, 100, 100);
+
+// Применяем режим композиции
+ctx.globalCompositeOperation = &apos;source-out&apos;;
+
+// Рисуем второй прямоугольник (красный) поверх первого
+ctx.fillStyle = &apos;red&apos;;
+ctx.fillRect(100, 100, 100, 100);
+```
+
+&lt;p&gt;&lt;strong&gt;Результат: &lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/ZEPqogZ?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+### Наложение прямоугольников с режимом &lt;code&gt;destination-over&lt;/code&gt;
+
+```javascript
+// Рисуем первый прямоугольник (синий)
+ctx.fillStyle = &apos;blue&apos;;
+ctx.fillRect(50, 50, 100, 100);
+
+// Применяем режим композиции
+ctx.globalCompositeOperation = &apos;destination-over&apos;;
+
+// Рисуем второй прямоугольник (красный) поверх первого
+ctx.fillStyle = &apos;red&apos;;
+ctx.fillRect(100, 100, 100, 100);
+```
+
+&lt;p&gt;&lt;strong&gt;Результат: &lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/LYagrYN?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+
+### Наложение прямоугольников с режимом &lt;code&gt;destination-atop&lt;/code&gt;
+
+```javascript
+// Рисуем первый прямоугольник (синий)
+ctx.fillStyle = &apos;blue&apos;;
+ctx.fillRect(50, 50, 100, 100);
+
+// Применяем режим композиции
+ctx.globalCompositeOperation = &apos;destination-atop&apos;;
+
+// Рисуем второй прямоугольник (красный) поверх первого
+ctx.fillStyle = &apos;red&apos;;
+ctx.fillRect(100, 100, 100, 100);
+```
+
+&lt;p&gt;&lt;strong&gt;Результат: &lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/RwdeJNg?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+### Наложение прямоугольников с режимом &lt;code&gt;destination-in&lt;/code&gt;
+
+```javascript
+// Рисуем первый прямоугольник (синий)
+ctx.fillStyle = &apos;blue&apos;;
+ctx.fillRect(50, 50, 100, 100);
+
+// Применяем режим композиции
+ctx.globalCompositeOperation = &apos;destination-in&apos;;
+
+// Рисуем второй прямоугольник (красный) поверх первого
+ctx.fillStyle = &apos;red&apos;;
+ctx.fillRect(100, 100, 100, 100);
+```
+
+&lt;p&gt;&lt;strong&gt;Результат: &lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/RwdeJPg?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+### Наложение прямоугольников с режимом &lt;code&gt;destination-out&lt;/code&gt;
+
+```javascript
+// Рисуем первый прямоугольник (синий)
+ctx.fillStyle = &apos;blue&apos;;
+ctx.fillRect(50, 50, 100, 100);
+
+// Применяем режим композиции
+ctx.globalCompositeOperation = &apos;destination-out&apos;;
+
+// Рисуем второй прямоугольник (красный) поверх первого
+ctx.fillStyle = &apos;red&apos;;
+ctx.fillRect(100, 100, 100, 100);
+```
+
+&lt;p&gt;&lt;strong&gt;Результат: &lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/jOJeKPQ?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+### Наложение прямоугольников с режимом &lt;code&gt;lighter&lt;/code&gt;
+
+```javascript
+// Рисуем первый прямоугольник (синий)
+ctx.fillStyle = &apos;blue&apos;;
+ctx.fillRect(50, 50, 100, 100);
+
+// Применяем режим композиции
+ctx.globalCompositeOperation = &apos;lighter&apos;;
+
+// Рисуем второй прямоугольник (красный) поверх первого
+ctx.fillStyle = &apos;red&apos;;
+ctx.fillRect(100, 100, 100, 100);
+```
+
+&lt;p&gt;&lt;strong&gt;Результат: &lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/JjzmZKX?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+### Наложение прямоугольников с режимом &lt;code&gt;copy&lt;/code&gt;
+
+```javascript
+// Рисуем первый прямоугольник (синий)
+ctx.fillStyle = &apos;blue&apos;;
+ctx.fillRect(50, 50, 100, 100);
+
+// Применяем режим композиции
+ctx.globalCompositeOperation = &apos;copy&apos;;
+
+// Рисуем второй прямоугольник (красный) поверх первого
+ctx.fillStyle = &apos;red&apos;;
+ctx.fillRect(100, 100, 100, 100);
+```
+
+&lt;p&gt;&lt;strong&gt;Результат: &lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/NWJOzrL?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+### Наложение прямоугольников с режимом &lt;code&gt;xor&lt;/code&gt;
+
+```javascript
+// Рисуем первый прямоугольник (синий)
+ctx.fillStyle = &apos;blue&apos;;
+ctx.fillRect(50, 50, 100, 100);
+
+// Применяем режим композиции
+ctx.globalCompositeOperation = &apos;xor&apos;;
+
+// Рисуем второй прямоугольник (красный) поверх первого
+ctx.fillStyle = &apos;red&apos;;
+ctx.fillRect(100, 100, 100, 100);
+```
+
+&lt;p&gt;&lt;strong&gt;Результат: &lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/XWGxYjJ?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Сохранение и восстановление состояния в Canvas</title><link>https://awilum.ru/articles/canvas-save-and-restore/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-save-and-restore/</guid><description>Сохранение и восстановление состояния в Canvas</description><pubDate>Fri, 01 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+&lt;p&gt;Сохранение и восстановление состояния представляет собой механизм, который позволяет сохранять текущее состояние контекста рисования, включая текущие преобразования, стили и другие настройки, а затем восстанавливать их при необходимости. Этот механизм особенно полезен, когда вы хотите временно изменить настройки рисования, а затем вернуться к предыдущему состоянию без необходимости вручную сохранять и восстанавливать каждый атрибут.&lt;/p&gt;
+
+### Использование методов &lt;code&gt;save()&lt;/code&gt; и &lt;code&gt;restore()&lt;/code&gt;
+
+&lt;p&gt;Существуют два метода для сохранения и восстановления состояния:&lt;/p&gt;
+
+&lt;ul&gt;
+	&lt;li&gt;Метод &lt;code&gt;save()&lt;/code&gt; сохраняет текущее состояние контекста рисования на стеке состояний.&lt;/li&gt;
+	&lt;li&gt;Метод &lt;code&gt;restore()&lt;/code&gt; восстанавливает последнее сохраненное состояние контекста рисования из стека состояний.&lt;/li&gt;
+&lt;/ul&gt;
+
+```javascript
+// Сохраняем текущее состояние
+ctx.save(); 
+
+// Выполняем изменения состояния (например, изменяем преобразования, стили и т. д.)
+// ...
+
+// Восстанавливаем предыдущее состояние
+ctx.restore();
+```
+
+&lt;p&gt;&lt;strong&gt;Пример:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+// Рисуем круг до изменений
+ctx.fillStyle = &apos;blue&apos;;
+ctx.beginPath();
+ctx.arc(100, 100, 50, 0, Math.PI * 2);
+ctx.fill();
+
+// Сохраняем текущее состояние
+ctx.save();
+
+// Применяем преобразование
+ctx.translate(200, 0);
+ctx.rotate(Math.PI / 4);
+
+// Рисуем круг после изменений
+ctx.fillStyle = &apos;red&apos;;
+ctx.beginPath();
+ctx.arc(100, 100, 50, 0, Math.PI * 2);
+ctx.fill();
+
+// Восстанавливаем предыдущее состояние
+ctx.restore();
+
+// Рисуем круг после восстановления
+ctx.fillStyle = &apos;green&apos;;
+ctx.beginPath();
+ctx.arc(100, 100, 50, 0, Math.PI * 2);
+ctx.fill();
+```
+
+&lt;p&gt;В этом примере после вызова &lt;code&gt;save()&lt;/code&gt; текущее состояние контекста сохраняется на стеке состояний. Затем выполняется преобразование (сдвиг и поворот) и рисуется красный круг. После этого с помощью &lt;code&gt;restore()&lt;/code&gt; состояние контекста восстанавливается до предыдущего состояния (до преобразований), и зеленый круг рисуется в исходном положении.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/xxByjVM?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;</content:encoded></item><item><title>Преобразования в Canvas</title><link>https://awilum.ru/articles/canvas-transformations/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-transformations/</guid><description>Преобразования в Canvas</description><pubDate>Thu, 29 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+&lt;p&gt;&lt;strong&gt;Преобразования &lt;/strong&gt;в &lt;strong&gt;Canvas&lt;/strong&gt; позволяют изменять положение, размер, вращение и искажение элементов, рисуемых на холсте. С помощью преобразований можно создавать сложные и динамичные визуальные эффекты.&lt;/p&gt;
+
+&lt;p&gt;Преобразования включают в себя &lt;strong&gt;сдвиг (translate)&lt;/strong&gt;, &lt;strong&gt;вращение (rotate)&lt;/strong&gt;, &lt;strong&gt;масштабирование (scale)&lt;/strong&gt; и &lt;strong&gt;искажение (transform)&lt;/strong&gt;.&lt;/p&gt;
+
+### Сдвиг (Translate)
+
+&lt;p&gt;&lt;strong&gt;Сдвиг (Translate)&lt;/strong&gt; позволяет перемещать начало координат и элементы на холсте в определенном направлении. Это полезное преобразование, которое позволяет создавать анимации, располагать объекты в нужных местах и создавать сложные композиции из простых фигур.&lt;/p&gt;
+
+#### Использование метода &lt;code&gt;translate()&lt;/code&gt;
+
+&lt;p&gt;Метод &lt;code&gt;translate()&lt;/code&gt;  сдвигает начало координат холста на заданные значения по горизонтали и вертикали. После сдвига все последующие операции рисования будут выполняться относительно нового начала координат.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cинтаксис:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+translate(x, y);
+```
+
+&lt;p&gt;&lt;strong&gt;Параметры:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table align=&quot;center&quot; style=&quot;width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;x&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Сдвиг по горизонтали.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;y&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Сдвиг по вертикали.&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Пример:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+// Нарисуем квадрат до сдвига
+ctx.fillStyle = &apos;blue&apos;;
+ctx.fillRect(50, 50, 100, 100);
+
+// Сдвиг начала координат на (100, 50)
+ctx.translate(100, 50);
+
+// Нарисуем квадрат после сдвига
+ctx.fillStyle = &apos;red&apos;;
+ctx.fillRect(0, 0, 100, 100);
+```
+
+&lt;p&gt;В этом примере после вызова &lt;code&gt;translate(100, 50)&lt;/code&gt; все последующие операции рисования будут сдвигаться на 100 пикселей вправо и 50 пикселей вниз относительно исходного начала координат.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/oNVaoKO?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+#### Совмещение сдвигов
+
+&lt;p&gt;Вы можете вызывать &lt;code&gt;translate()&lt;/code&gt; несколько раз для применения нескольких сдвигов последовательно.&lt;/p&gt;
+
+```javascript
+ctx.translate(50, 50); // Сдвиг на (50, 50)
+ctx.translate(100, 0); // Сдвиг на (100, 0)
+```
+
+#### Обратный сдвиг
+
+&lt;p&gt;Чтобы вернуть начало координат к исходному состоянию, примените обратный сдвиг с отрицательными значениями.&lt;/p&gt;
+
+```javascript
+ctx.translate(-100, -50); // Обратный сдвиг на (-100, -50)
+```
+
+### &lt;strong&gt;Вращение (Rotate)&lt;/strong&gt;
+
+&lt;p&gt;&lt;strong&gt;Вращение (Rotate)&lt;/strong&gt; поворачивать элементы относительно их начальной позиции. &lt;/p&gt;
+
+#### Использование метода &lt;code&gt;rotate()&lt;/code&gt;
+
+&lt;p&gt;Метод &lt;code&gt;rotate()&lt;/code&gt; контекста рисования вращает координатную систему холста на заданный угол в радианах.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cинтаксис:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+rotate(angle);
+```
+
+&lt;p&gt;&lt;strong&gt;Параметры:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table style=&quot;width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;angle&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Угол вращения в радианах.&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Пример:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+// Сдвиг начала координат на (100, 0)
+ctx.translate(100, 0);
+
+// Нарисуем квадрат до вращения
+ctx.fillStyle = &apos;blue&apos;;
+ctx.fillRect(50, 50, 100, 100);
+
+// Вращение координатной системы на 45 градусов
+ctx.rotate(Math.PI / 4);
+
+// Нарисуем квадрат после вращения
+ctx.fillStyle = &apos;red&apos;;
+ctx.fillRect(50, 50, 100, 100);
+```
+
+&lt;p&gt;В этом примере второй квадрат будет нарисован после поворота координатной системы на 45 градусов. Все последующие операции рисования будут выполняться относительно повернутой системы координат.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/eYXPyvL?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+### Масштабирование (Scale)
+
+&lt;p&gt;&lt;strong&gt;Масштабирование (Scale)&lt;/strong&gt; позволяет изменять размер элементов, нарисованных на холсте. Это преобразование позволяет увеличивать или уменьшать объекты, создавать эффекты перспективы и применять масштабирование в анимациях.&lt;/p&gt;
+
+#### Использование метода &lt;code&gt;scale()&lt;/code&gt;
+
+&lt;p&gt;Метод &lt;code&gt;scale()&lt;/code&gt; контекста рисования масштабирует объекты на холсте по горизонтали и вертикали.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cинтаксис:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+scale(scaleX, scaleY);
+```
+
+&lt;p&gt;&lt;strong&gt;Параметры:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table style=&quot;width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;scaleX&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Коэффициент масштабирования по горизонтали.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;scaleY&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Коэффициент масштабирования по вертикали.&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Пример:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+// Нарисуем круг до масштабирования
+ctx.fillStyle = &apos;blue&apos;;
+ctx.beginPath();
+ctx.arc(100, 100, 50, 0, Math.PI * 2);
+ctx.fill();
+
+// Масштабирование объекта
+ctx.scale(1.5, 1.5);
+
+// Нарисуем круг после масштабирования
+ctx.fillStyle = &apos;red&apos;;
+ctx.beginPath();
+ctx.arc(100, 100, 50, 0, Math.PI * 2);
+ctx.fill();
+```
+
+&lt;p&gt;В этом примере второй круг будет нарисован после масштабирования по горизонтали в 1.5 раза. Масштабирование применяется ко всем последующим операциям рисования, и все они будут масштабироваться с использованием указанных коэффициентов.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/NWJOXva?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+### Искажение (Transform)
+
+&lt;p&gt;Метод &lt;code&gt;transform()&lt;/code&gt; позволяет производить произвольные преобразования объектов, такие как сдвиг, масштабирование, вращение и искажение. Этот метод применяет матрицу трансформации к текущему состоянию контекста рисования, что позволяет создавать сложные визуальные эффекты.&lt;/p&gt;
+
+#### Использование метода &lt;code&gt;transform()&lt;/code&gt;
+
+&lt;p&gt;Метод &lt;code&gt;transform()&lt;/code&gt; позволяет производить произвольные преобразования путем применения матрицы трансформации.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cинтаксис:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+transform(a, b, c, d, e, f)
+```
+
+&lt;p&gt;&lt;strong&gt;Параметры:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table style=&quot;width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;a&lt;/code&gt;, &lt;code&gt;b&lt;/code&gt;, &lt;code&gt;c&lt;/code&gt;, &lt;code&gt;d&lt;/code&gt;, &lt;code&gt;e&lt;/code&gt;, &lt;code&gt;f&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt; Элементы матрицы трансформации.&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Матрица трансформации имеет следующий вид:&lt;/strong&gt;&lt;/p&gt;
+
+```
+| a  c  e |
+| b  d  f |
+| 0  0  1 |
+```
+
+&lt;p&gt;&lt;strong&gt;Пример:&lt;/strong&gt;&lt;/p&gt;
+
+```
+// Нарисуем круг до масштабирования
+ctx.fillStyle = &apos;blue&apos;;
+ctx.beginPath();
+ctx.arc(100, 100, 50, 0, Math.PI * 2);
+ctx.fill();
+
+// Масштабирование объекта
+ctx.scale(1.5, 1.5);
+
+// Нарисуем круг после масштабирования
+ctx.fillStyle = &apos;red&apos;;
+ctx.beginPath();
+ctx.arc(100, 100, 50, 0, Math.PI * 2);
+ctx.fill();
+```
+
+&lt;p&gt;В этом примере &lt;code&gt;transform(1, 0.5, 0.5, 1, 0, 0)&lt;/code&gt; применяет искажение, увеличивая квадрат по горизонтали вдвое и сжимая по вертикали вдвое. Коэффициенты &lt;code&gt;a&lt;/code&gt;, &lt;code&gt;b&lt;/code&gt;, &lt;code&gt;c&lt;/code&gt; и &lt;code&gt;d&lt;/code&gt; определяют масштабирование и искажение, а &lt;code&gt;e&lt;/code&gt; и &lt;code&gt;f&lt;/code&gt; определяют сдвиг.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/wvOYpXr?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;</content:encoded></item><item><title>Рисование изображений в Canvas</title><link>https://awilum.ru/articles/canvas-draw-images/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-draw-images/</guid><description>Рисование изображений в Canvas</description><pubDate>Wed, 28 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+&lt;p&gt;Рисование изображений на холсте - это процесс отображения растровых изображений, таких как фотографии или другие изображения, Этот процесс обычно включает загрузку изображения и его отображение на холсте с использованием контекста рисования.&lt;/p&gt;
+
+&lt;p&gt;Прежде чем отобразить изображение на холсте, необходимо загрузить его с помощью объекта &lt;code&gt;Image&lt;/code&gt; &lt;strong&gt;JavaScript.&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+const img = new Image();
+
+// Указываем путь к изображению
+img.src = &apos;https://ik.imagekit.io/awilum/welcome-to-hawkins.jpg?updatedAt=1702540829891&apos;;
+```
+
+&lt;p&gt;После загрузки изображения источник изображения установлен, и мы можем использовать его для отображения на холсте с помощью метода &lt;code&gt;drawImage()&lt;/code&gt; контекста рисования.&lt;/p&gt;
+
+```javascript
+// Отображаем изображение на холсте в координатах (x, y)
+ctx.drawImage(img, x, y);
+```
+
+&lt;p&gt;Метод &lt;code&gt;drawImage()&lt;/code&gt; имеет несколько вариантов использования, позволяющих управлять размерами и масштабированием изображения.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Синтакcис&lt;/strong&gt;:&lt;/p&gt;
+
+```javascript
+drawImage(img, dx, dy);
+drawImage(img, dx, dy, dWidth, dHeight);
+drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+```
+
+&lt;p&gt;&lt;strong&gt;Параметры:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table align=&quot;center&quot; style=&quot;width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;img&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Элемент для отображения в контексте.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;dx&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координата по оси Х, обозначающая стартовую точку холста-приёмника,&lt;br&gt;
+			в которую будет помещён верхний левый угол исходного &lt;code&gt;image&lt;/code&gt;.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;dy&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координата по оси Y, обозначающая стартовую точку холста-приёмника,&lt;br&gt;
+			в которую будет помещён верхний левый угол исходного &lt;code&gt;image&lt;/code&gt;.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;dWidth&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Ширина изображения, полученного из исходного &lt;code&gt;image&lt;/code&gt;.&lt;br&gt;
+			Эта опция позволяет масштабировать изображение по ширине.&lt;br&gt;
+			Если опция не задана, изображение не будет масштабировано.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;dHeight&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Высота изображения, полученного из исходного &lt;code&gt;image&lt;/code&gt;.&lt;br&gt;
+			Эта опция позволяет масштабировать изображение по высоте.&lt;br&gt;
+			Если опция не задана, изображение не будет масштабировано.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;sx&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координата по оси X верхнего левого угла фрагмента,&lt;br&gt;
+			который будет вырезан из изображения-источника и помещён в контекст-приёмник.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;sy&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координата по оси Y верхнего левого угла фрагмента,&lt;br&gt;
+			который будет вырезан из изображения-источника и помещён в контекст-приёмник.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;sWidth&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;
+			&lt;p&gt;Ширина фрагмента, который будет вырезан из изображения источника&lt;br&gt;
+			и помещён в контекст-приёмник. Если не задана, фрагмент от точки,&lt;br&gt;
+			заданной &lt;code&gt;sx&lt;/code&gt; и &lt;code&gt;sy&lt;/code&gt; до правого нижнего угла источника будет целиком&lt;br&gt;
+			скопирован в контекст-приёмник.&lt;/p&gt;
+			&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;sHeight&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Высота фрагмента, который будет вырезан из изображения источника и помещён в контекст-приёмник.&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Отображение изображения в его естественном размере:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+ctx.drawImage(img, 0, 0);
+```
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/MWxPOJJ?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Масштабирование изображения до определенной ширины и высоты:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+// Изображение будет масштабировано до размеров 100x100 пикселей
+ctx.drawImage(img, 0, 0, 100, 100);
+```
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/zYbmPWR?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Масштабирование изображения до размеров холста:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
+```
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/RwdejJz?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+### Использование метода &lt;code&gt;onLoad()&lt;/code&gt;
+
+&lt;p&gt;Метод &lt;code&gt;onload&lt;/code&gt; объекта &lt;code&gt;Image&lt;/code&gt; является обработчиком события, который вызывается, когда изображение загружено. Это очень важный момент при работе с изображениями в веб-разработке, потому что до момента загрузки изображения вы не можете гарантировать, что оно доступно для отображения или манипуляций.&lt;/p&gt;
+
+&lt;p&gt;Создаем новый объект &lt;code&gt;Image&lt;/code&gt; и устанавливаем его &lt;code&gt;src&lt;/code&gt; на путь к изображению. На этом этапе происходит начало загрузки изображения.&lt;/p&gt;
+
+```javascript
+const img = new Image();
+img.src = &apos;https://ik.imagekit.io/awilum/welcome-to-hawkins.jpg?updatedAt=1702540829891&apos;;
+```
+
+&lt;p&gt;После того как изображение полностью загружено, событие &lt;code&gt;onload&lt;/code&gt; срабатывает, и код внутри обработчика выполняется.&lt;/p&gt;
+
+```javascript
+img.onload = function() {
+    // В этом блоке кода можно выполнять действия с изображением,
+    // которые должны произойти после его загрузки.
+
+   ctx.drawImage(img, 0, 0);
+   console.log(&apos;Изображение загружено!&apos;);
+};
+```
+
+### Зачем это нужно?
+
+&lt;ul&gt;
+	&lt;li&gt;
+	&lt;p&gt;&lt;strong&gt;Гарантия доступности изображения.&lt;/strong&gt;&lt;br&gt;
+	Используя &lt;code&gt;onload&lt;/code&gt;, вы убеждаетесь, что изображение загружено и доступно для использования, прежде чем пытаться отобразить его или выполнить другие операции с ним.&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+	&lt;p&gt;&lt;strong&gt;Избегание ошибок.&lt;/strong&gt;&lt;br&gt;
+	Без обработчика &lt;code&gt;onload&lt;/code&gt; существует риск попытаться отобразить изображение, которое еще не загружено, что может привести к ошибкам.&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+	&lt;p&gt;&lt;strong&gt;Выполнение действий после загрузки.&lt;/strong&gt;&lt;br&gt;
+	Обработчик &lt;code&gt;onload&lt;/code&gt; позволяет вам выполнить определенные действия только после того, как изображение загружено, например, установить его как фон холста или выполнить манипуляции с изображением.&lt;/p&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title>Рисование кривых Безье в Canvas</title><link>https://awilum.ru/articles/canvas-draw-curve/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-draw-curve/</guid><description>Рисование кривых Безье в Canvas</description><pubDate>Tue, 27 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+&lt;p&gt;&lt;strong&gt;Кривые Безье &lt;/strong&gt;— это математические кривые, которые широко используются в компьютерной графике для создания плавных и красивых кривых. Они были впервые разработаны французским инженером &lt;strong&gt;Пьером Безье&lt;/strong&gt; в 1960-х годах для описания автомобильных кузовов в компании Renault. Кривые Безье могут быть различных порядков, включая линейные (порядка 1), квадратичные (порядка 2), кубические (порядка 3) и т. д.&lt;/p&gt;
+
+&lt;p&gt;Для рисования кривых Безье в Canvas доступны следующие методы: &lt;code&gt;quadraticCurveTo()&lt;/code&gt; и &lt;code&gt;bezierCurveTo()&lt;/code&gt;&lt;/p&gt;
+
+### Рисование с помощью метода &lt;code&gt;quadraticCurveTo()&lt;/code&gt;
+
+&lt;p&gt;Этот метод добавляет кривую Безье к текущему пути, определяемую начальной точкой пути (текущей позицией), одной контрольной точкой &lt;code&gt;(cp1x, cp1y)&lt;/code&gt; и конечной точкой &lt;code&gt;(x, y)&lt;/code&gt;. Это квадратичная кривая Безье.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Синтаксис:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+quadraticCurveTo(cpx, cpy, x, y)
+```
+
+&lt;p&gt;&lt;strong&gt;Параметры:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table align=&quot;center&quot; style=&quot;width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;cpx&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координата оси X контрольной точки.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;cpy&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координата оси Y контрольной точки.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;x&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координата X новой позиции курсора.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;y&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координата Y новой позиции курсора.&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Пример:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+ctx.beginPath();
+ctx.moveTo(50, 50); // Начальная точка
+
+// Квадратичная кривая Безье с одной контрольной точкой
+ctx.quadraticCurveTo(100, 150, 150, 50);
+
+ctx.stroke(); // Рисуем контур пути
+```
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/ExMeygL?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+### Рисование с помощью метода &lt;code&gt;bezierCurveTo()&lt;/code&gt;
+
+&lt;p&gt;Этот метод добавляет кривую Безье к текущему пути, определяемую начальной точкой пути (текущей позицией), двумя контрольными точками &lt;code&gt;(cp1x, cp1y)&lt;/code&gt; и &lt;code&gt;(cp2x, cp2y)&lt;/code&gt; и конечной точкой &lt;code&gt;(x, y)&lt;/code&gt;. Это кубическая кривая Безье.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Синтаксис:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)
+```
+
+&lt;p&gt;&lt;strong&gt;Параметры:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table style=&quot;width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;cp1x, cp1y&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координата первой контрольной точки по оси X и Y.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;cp2x, cp2y&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координата второй контрольной точки по оси X и Y.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;x&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координата X конечной позиции курсора.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;y&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координата Y конечной позиции курсора.&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Пример:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+ctx.beginPath();
+ctx.moveTo(50, 50); // Начальная точка
+ctx.bezierCurveTo(100, 100, 150, 150, 200, 50); // Кубическая кривая Безье
+ctx.stroke(); // Рисуем контур пути
+```
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/GReXjRj?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;</content:encoded></item><item><title>Рисование дуги в Canvas</title><link>https://awilum.ru/articles/canvas-draw-arc/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-draw-arc/</guid><description>Рисование дуги в Canvas</description><pubDate>Mon, 26 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+&lt;p&gt;Дуга создается с использованием методов&amp;nbsp;&lt;code&gt;arc()&lt;/code&gt; и&amp;nbsp;&lt;code&gt;arcTo()&lt;/code&gt;&lt;/p&gt;
+
+### Рисование с помощью метода&amp;nbsp;&lt;code&gt;arc()&lt;/code&gt;
+
+&lt;p&gt;Метод &lt;code&gt;arc()&lt;/code&gt; используется для создания дуги или круга на холсте. Он задает дугу с центром в точке &lt;code&gt;(x, y)&lt;/code&gt;, указанным радиусом, начальным и конечным углом в радианах и направлением (по или против часовой стрелки).&lt;/p&gt;
+
+&lt;table align=&quot;center&quot; style=&quot;width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;x&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координата X центра дуги.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;y&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координата Y центра дуги.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;radius&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Радиус дуги.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;startAngle&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Начальный угол в радианах, с которого начинается дуга (0 - находится на правой горизонтальной оси).&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;endAngle&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Конечный угол в радианах, на котором заканчивается дуга.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;anticlockwise&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Направление дуги (против часовой стрелки - &lt;code&gt;true&lt;/code&gt;, по часовой - &lt;code&gt;false&lt;/code&gt;).&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Пример (рисование круга):&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+// Начинаем новый путь
+ctx.beginPath();
+
+// Рисуем дугу (круг) с центром в точке (100, 100) и радиусом 50
+ctx.arc(100, 100, 50, 0, Math.PI * 2);
+
+// Закрываем путь (для круга это не обязательно)
+// ctx.closePath();
+
+// Рисуем контур пути
+ctx.strokeStyle = &apos;blue&apos;; // Цвет контура
+ctx.lineWidth = 2; // Толщина линии
+ctx.stroke();
+```
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/xxBaObj?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+
+### Рисование с помощью метода&amp;nbsp;&lt;code&gt;arcTo()&lt;/code&gt;
+
+&lt;p&gt;Метод &lt;code&gt;arcTo()&lt;/code&gt;&amp;nbsp;используется для добавления дуги к текущему пути, соединяющей текущую точку с точкой &lt;code&gt;(x2, y2)&lt;/code&gt; с радиусом &lt;code&gt;radius&lt;/code&gt;, и предыдущей линией с точки &lt;code&gt;(x1, y1)&lt;/code&gt;. Это позволяет создавать более плавные углы между линиями, чем просто использование метода &lt;code&gt;lineTo()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;table align=&quot;center&quot; style=&quot;width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;x1, y1&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координаты начальной точки предыдущей линии.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;x2, y2&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координаты конечной точки текущей линии.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;radius&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Радиус дуги.&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Пример:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+// Начинаем новый путь
+ctx.beginPath();
+
+// Перемещаем &quot;курсор&quot; в точку (20, 20)
+ctx.moveTo(20, 20);
+
+// Рисуем прямую линию до точки (100, 20)
+ctx.lineTo(100, 20);
+
+// Добавляем дугу, соединяющую текущую линию и предыдущую, с радиусом 30
+ctx.arcTo(150, 20, 150, 70, 30);
+
+// Рисуем прямую линию до точки (150, 120)
+ctx.lineTo(150, 120);
+
+// Закрываем путь
+ctx.closePath();
+
+// Рисуем контур пути
+ctx.strokeStyle = &apos;blue&apos;; // Цвет контура
+ctx.lineWidth = 2; // Толщина линии
+ctx.stroke();
+```
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/abMaZOY?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Рисование линии в Canvas</title><link>https://awilum.ru/articles/canvas-draw-line/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-draw-line/</guid><description>Рисование линии в Canvas</description><pubDate>Sun, 25 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
+&lt;p&gt;&lt;strong&gt;Рисование прямой линии&lt;/strong&gt; &amp;mdash;&amp;nbsp;одно из самых простых и распространенных действий при использовании &lt;strong&gt;Canvas&lt;/strong&gt; для создания графики с помощью &lt;strong&gt;JavaScript&lt;/strong&gt;. Для рисования прямой линии используется метод &lt;code&gt;lineTo(x, y)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Метод &lt;code&gt;lineTo(x, y)&lt;/code&gt; используется для добавления линии от текущей позиции (позиции &amp;quot;курсора&amp;quot;) до указанной точки (x, y) на холсте. При этом сама линия не рисуется, пока не будет вызван метод для рисования контура или заливки.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Параметры:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table align=&quot;center&quot; style=&quot;width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;x&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координата X позиции конца линии.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;y&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Координата Y&amp;nbsp;позиции конца линии.&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Пример:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+// Начинаем новый путь
+ctx.beginPath();
+
+// Перемещаем &quot;курсор&quot; в точку (50, 50)
+ctx.moveTo(50, 50);
+
+// Добавляем линию от текущей позиции до точки (150, 150)
+ctx.lineTo(150, 150);
+
+// Закрываем путь
+ctx.closePath();
+
+// Рисуем контур пути
+ctx.strokeStyle = &apos;blue&apos;; // Цвет контура
+ctx.lineWidth = 2; // Толщина линии
+ctx.stroke();
+```
+
+&lt;p&gt;В этом примере мы начинаем новый путь с помощью &lt;code&gt;beginPath()&lt;/code&gt;, затем перемещаем &amp;quot;курсор&amp;quot; в точку (50, 50) с помощью &lt;code&gt;moveTo(50, 50)&lt;/code&gt;, добавляем линию до точки (150, 150) с помощью &lt;code&gt;lineTo(150, 150)&lt;/code&gt;, а затем рисуем контур пути с помощью &lt;code&gt;stroke()&lt;/code&gt;. Линия будет нарисована в указанных координатах с заданным цветом и толщиной линии.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/zYbJGVP?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+
+### Рисование линии на основе пользовательского ввода
+
+&lt;p&gt;Допустим, у пользователя есть возможность рисовать линию, задавая точки с помощью мыши. В этом примере мы можем использовать события мыши для отслеживания пользовательского ввода и рисования линии.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&amp;nbsp;Пример:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+let isDrawing = false;
+let lastX = 0;
+let lastY = 0;
+
+function draw(e) {
+  if (!isDrawing) return;
+  ctx.beginPath();
+  ctx.moveTo(lastX, lastY);
+  ctx.lineTo(e.offsetX, e.offsetY);
+  ctx.stroke();
+  [lastX, lastY] = [e.offsetX, e.offsetY];
+}
+
+canvas.addEventListener(&apos;mousedown&apos;, (e) =&amp;gt; {
+  isDrawing = true;
+  [lastX, lastY] = [e.offsetX, e.offsetY];
+});
+
+canvas.addEventListener(&apos;mousemove&apos;, draw);
+canvas.addEventListener(&apos;mouseup&apos;, () =&amp;gt; isDrawing = false);
+canvas.addEventListener(&apos;mouseout&apos;, () =&amp;gt; isDrawing = false);
+```
+
+&lt;p&gt;Этот код позволяет пользователю рисовать линию, перетаскивая мышь по холсту.&lt;/p&gt;
+
+&lt;p&gt;Давайте разберем, как это работает:&lt;/p&gt;
+
+&lt;ol&gt;
+	&lt;li&gt;
+	&lt;p&gt;Переменные &lt;code&gt;isDrawing&lt;/code&gt;, &lt;code&gt;lastX&lt;/code&gt; и &lt;code&gt;lastY&lt;/code&gt; используются для отслеживания состояния рисования (включено или выключено) и последней позиции мыши.&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+	&lt;p&gt;Функция &lt;code&gt;draw(e)&lt;/code&gt; вызывается каждый раз при перемещении мыши по холсту &lt;code&gt;mousemove&lt;/code&gt;. Она проверяет, включено ли рисование &lt;code&gt;isDrawing&lt;/code&gt;. Если рисование выключено, функция завершает свое выполнение. Если рисование включено, функция начинает новый путь &lt;code&gt;beginPath()&lt;/code&gt;, перемещает &amp;quot;курсор&amp;quot; в предыдущие координаты &lt;code&gt;moveTo(lastX, lastY)&lt;/code&gt;&amp;nbsp;и рисует линию от предыдущих координат до текущих координат мыши &lt;code&gt;lineTo(e.offsetX, e.offsetY)&lt;/code&gt;. После этого линия обводится c помощью&amp;nbsp;&lt;code&gt;stroke()&lt;/code&gt;. Последние координаты мыши обновляются на текущие координаты &lt;code&gt;lastX = e.offsetX&lt;/code&gt;, &lt;code&gt;lastY = e.offsetY&lt;/code&gt;.&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+	&lt;p&gt;Событие &lt;code&gt;mousedown&lt;/code&gt; срабатывает при нажатии кнопки мыши на холсте. При этом флаг &lt;code&gt;isDrawing&lt;/code&gt; устанавливается в &lt;code&gt;true&lt;/code&gt;, и переменные &lt;code&gt;lastX&lt;/code&gt; и &lt;code&gt;lastY&lt;/code&gt; устанавливаются в текущие координаты мыши &lt;code&gt;e.offsetX&lt;/code&gt;, &lt;code&gt;e.offsetY&lt;/code&gt;.&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+	&lt;p&gt;Событие &lt;code&gt;mouseup&lt;/code&gt; срабатывает, когда кнопка мыши отпускается. Это приводит к установке флага &lt;code&gt;isDrawing&lt;/code&gt; в &lt;code&gt;false&lt;/code&gt;, что прекращает рисование на холсте.&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+	&lt;p&gt;Событие &lt;code&gt;mouseout&lt;/code&gt; срабатывает, когда курсор мыши покидает область холста. Аналогично событию &lt;code&gt;mouseup&lt;/code&gt;, это также приводит к установке флага &lt;code&gt;isDrawing&lt;/code&gt; в &lt;code&gt;false&lt;/code&gt;, чтобы предотвратить рисование при перемещении мыши вне холста.&lt;/p&gt;
+	&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/poYOEJK?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+&lt;p&gt;Для очистки холста, нажмите на кнопку &amp;quot;Rerun&amp;quot; или перезагрузите страницу.&lt;/p&gt;
+
+### Рисование кардиоиды
+
+&lt;p&gt;&lt;strong&gt;Кардиоида&lt;/strong&gt; &amp;mdash; плоская линия, которая описывается фиксированной точкой окружности, катящейся по неподвижной окружности с таким же радиусом. Получила своё название из-за схожести своих очертаний со стилизованным изображением сердца.&lt;/p&gt;
+
+&lt;p style=&quot;text-align:center&quot;&gt;&lt;img alt=&quot;&quot; height=&quot;250&quot; name=&quot;&quot; src=&quot;https://upload.wikimedia.org/wikipedia/commons/8/83/EpicycloidK1.gif&quot; width=&quot;250&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Пример:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+ctx.beginPath();
+ctx.strokeStyle = &apos;green&apos;;
+ctx.lineWidth = 2;
+
+for (let t = 0; t &amp;lt;= Math.PI * 2; t += 0.01) {
+    const x = 16 * Math.pow(Math.sin(t), 3);
+    const y = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
+    ctx.lineTo(x + canvas.width / 2, -y + canvas.height / 2);
+}
+
+ctx.stroke();
+```
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/ExMdbrp?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+### Рисование параболы
+
+&lt;p&gt;&lt;strong&gt;Парабола&lt;/strong&gt; &amp;mdash; плоская кривая, один из типов конических сечений.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Пример:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+ctx.beginPath();
+ctx.strokeStyle = &apos;blue&apos;;
+ctx.lineWidth = 2;
+
+for (let x = -canvas.width / 2; x &amp;lt;= canvas.width / 2; x += 0.1) {
+    const y = x * x / 100;
+    ctx.lineTo(x + canvas.width / 2, -y + canvas.height / 2);
+}
+
+ctx.stroke();
+```
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/GReYObJ?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+
+### Рисование синусоиды
+
+&lt;p&gt;&lt;strong&gt;Синусоида&lt;/strong&gt; &amp;mdash; плоская кривая, задаваемая в прямоугольных координатах уравнением График уравнения вида также зачастую называется синусоидой. Данный график получается из синусоидального сдвигом на в отрицательном направлении оси абсцисс.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Пример:&lt;/strong&gt;&lt;/p&gt;
+
+```javascript
+ctx.beginPath();
+ctx.strokeStyle = &apos;red&apos;;
+ctx.lineWidth = 2;
+
+for (let x = -canvas.width / 2; x &amp;lt;= canvas.width / 2; x += 0.1) {
+    const y = Math.sin(x / 50) * 50; 
+    ctx.lineTo(x + canvas.width / 2, -y + canvas.height / 2);
+}
+
+ctx.stroke();
+```
+
+&lt;p&gt;&lt;strong&gt;Результат:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe allowfullscreen=&quot;true&quot; height=&quot;500&quot; scrolling=&quot;no&quot; src=&quot;https://codepen.io/Awilum/embed/YzgJEom?default-tab=result&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Перемещение курсора в Canvas</title><link>https://awilum.ru/articles/canvas-move-cursor/</link><guid isPermaLink="true">https://awilum.ru/articles/canvas-move-cursor/</guid><description>Перемещение курсора в Canvas</description><pubDate>Sun, 25 Feb 2024 00:00:00 GMT</pubDate><content:encoded>
 &lt;p&gt;Перемещение курсора полезно, когда вы хотите начать новый путь или перейти к другой части холста без создания видимой линии. Метод &lt;code&gt;moveTo()&lt;/code&gt; используется для управления позицией, откуда начинается рисование. Он позволяет перемещать &quot;курсор&quot; по холсту без рисования линии.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Синтаксис:&lt;/strong&gt;&lt;/p&gt;
@@ -135,7 +1259,7 @@ fillRect(x, y, width, height)
 
 &lt;p&gt;&lt;strong&gt;Параметры:&lt;/strong&gt;&lt;/p&gt;
 
-&lt;table border=&quot;1&quot; cellpadding=&quot;1&quot; cellspacing=&quot;1&quot; style=&quot;width:100%&quot;&gt;
+&lt;table style=&quot;width:100%&quot;&gt;
 	&lt;tbody&gt;
 		&lt;tr&gt;
 			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;x&lt;/code&gt;&lt;/td&gt;
@@ -184,7 +1308,7 @@ strokeRect(x, y, width, height)
 
 &lt;p&gt;&lt;strong&gt;Параметры:&lt;/strong&gt;&lt;/p&gt;
 
-&lt;table border=&quot;1&quot; cellpadding=&quot;1&quot; cellspacing=&quot;1&quot; style=&quot;width:100%&quot;&gt;
+&lt;table style=&quot;width:100%&quot;&gt;
 	&lt;tbody&gt;
 		&lt;tr&gt;
 			&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;x&lt;/code&gt;&amp;nbsp;&lt;/td&gt;
