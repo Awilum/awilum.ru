@@ -1,4 +1,116 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Руководство по стилю написания кода на JavaScript</title><link>https://awilum.ru/articles/javascript-coding-style-guide/</link><guid isPermaLink="true">https://awilum.ru/articles/javascript-coding-style-guide/</guid><description>Руководство по стилю написания кода на JavaScript</description><pubDate>Mon, 04 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Как определить темный режим с помощью JavaScript</title><link>https://awilum.ru/articles/how-to-detect-dark-mode-using-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/how-to-detect-dark-mode-using-javascript/</guid><description>Как определить темный режим с помощью JavaScript</description><pubDate>Wed, 06 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Обнаружение темной темы (dark mode) с помощью **JavaScript** можно осуществить, используя функциональность медиа-запросов **CSS** и свойства **window.matchMedia**. Это позволяет вашему веб-сайту или веб-приложению реагировать на изменения темы, которые сделал пользователь в настройках своего устройства или браузера.
+
+Вот пример кода, который демонстрирует, как это можно сделать:
+
+```javascript
+// Функция для проверки, включен ли темный режим
+function isDarkModeEnabled() {
+  // Создаем медиа-запрос для проверки темной темы
+  const darkModeQuery = window.matchMedia(&apos;(prefers-color-scheme: dark)&apos;);
+  
+  // Возвращаем результат проверки текущего состояния медиа-запроса
+  return darkModeQuery.matches;
+}
+
+// Пример использования
+if (isDarkModeEnabled()) {
+  // Если включен темный режим
+  console.log(&apos;Темный режим включен&apos;);
+} else {
+  // Если темный режим выключен
+  console.log(&apos;Темный режим выключен&apos;);
+}
+
+// Добавляем обработчик событий для изменения состояния темы
+window.matchMedia(&apos;(prefers-color-scheme: dark)&apos;).addEventListener(&apos;change&apos;, (e) =&gt; {
+  if (e.matches) {
+    // Если переключились на темный режим
+    console.log(&apos;Темный режим включен&apos;);
+  } else {
+    // Если переключились на светлую тему
+    console.log(&apos;Темный режим выключен&apos;);
+  }
+});
+```
+
+Этот код включает обработку изменения темы в реальном времени, реагируя на событие **change** в медиа-запросе. Таким образом, когда пользователь изменяет тему на своем устройстве или браузере, ваше веб-приложение будет автоматически обновляться и соответствовать выбранной теме.</content:encoded></item><item><title>Как удалить первый символ строки в JavaScript</title><link>https://awilum.ru/articles/how-to-remove-the-first-character-of-a-string-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/how-to-remove-the-first-character-of-a-string-in-javascript/</guid><description>Как удалить первый символ строки в JavaScript</description><pubDate>Wed, 06 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Чтобы удалить первый символ из строки в **JavaScript**, можно использовать несколько различных способов. 
+
+### Использование метода `substring()`
+
+Метод `substring()` позволяет вырезать подстроку из строки по указанным индексам. Мы можем использовать этот метод, указав начальный индекс как 1 (что соответствует второму символу) и конечный индекс, равный длине строки.
+
+```javascript
+let str = &quot;example&quot;;
+
+str = str.substring(1);
+
+console.log(str); // &quot;xample&quot;
+```
+
+### Использование метода `slice()`
+
+Метод `slice()` также позволяет вырезать подстроку из строки. Мы можем использовать его, указав начальный индекс как 1 (опять же, соответствует второму символу).
+
+```javascript
+let str = &quot;example&quot;;
+
+str = str.slice(1);
+
+console.log(str); // &quot;xample&quot;
+```
+
+### Использование метода `substr()`
+
+Метод `substr()` позволяет выбирать подстроку начиная с определенного индекса и указывая количество символов. Мы можем использовать его, указав начальный индекс как 1 и количество символов равным длине строки минус один.
+
+```javascript
+let str = &quot;example&quot;;
+
+str = str.substr(1);
+
+console.log(str); // &quot;xample&quot;
+```
+
+&lt;br&gt;
+
+Все эти методы выполняют одно и то же действие - удаляют первый символ из строки и возвращают измененную строку. Выбор метода зависит от предпочтений и конкретных требований вашего проекта.</content:encoded></item><item><title>Разбиение строк на слова в JavaScript</title><link>https://awilum.ru/articles/splitting-strings-into-words-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/splitting-strings-into-words-in-javascript/</guid><description>Разбиение строк на слова в JavaScript</description><pubDate>Tue, 05 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Для разбиения строки на слова в **JavaScript** можно воспользоваться различными методами. Один из наиболее распространенных способов - использовать метод `split()`. 
+
+```javascript
+// Исходная строка
+let str = &quot;Пример строки для разбиения на слова&quot;;
+
+// Разбиваем строку на массив слов, используя пробел в качестве разделителя
+let wordsArray = str.split(&quot; &quot;);
+
+// Теперь массив wordsArray содержит отдельные слова из исходной строки
+console.log(wordsArray);
+
+// [ &apos;Пример&apos;, &apos;строки&apos;, &apos;для&apos;, &apos;разбиения&apos;, &apos;на&apos;, &apos;слова&apos; ]
+```
+
+Этот код разобьет исходную строку на массив слов, разделенных пробелами.
+
+Для исключения знаков пунктуации в словах можно воспользоваться регулярным выражением, которое будет учитывать только буквенные символы. 
+
+Вот как это можно сделать:
+
+```javascript
+// Исходная строка
+let str = &quot;Пример, строки! с? знаками: препинания.&quot;;
+
+// Разбиваем строку на массив слов, используя регулярное выражение
+let wordsArray = str.match(/[а-яА-ЯёЁ]+/g);
+
+// Теперь массив wordsArray содержит отдельные слова из исходной строки без знаков пунктуации
+console.log(wordsArray);
+
+// [ &apos;Пример&apos;, &apos;строки&apos;, &apos;с&apos;, &apos;знаками&apos;, &apos;препинания&apos; ]
+```
+
+В этом примере мы используем регулярное выражение `/[а-яА-ЯёЁ]+/g`, которое соответствует русским словам (включая буквы и символы &quot;ё&quot; и &quot;Ё&quot;) и исключает знаки пунктуации.</content:encoded></item><item><title>Руководство по стилю написания кода на JavaScript</title><link>https://awilum.ru/articles/javascript-coding-style-guide/</link><guid isPermaLink="true">https://awilum.ru/articles/javascript-coding-style-guide/</guid><description>Руководство по стилю написания кода на JavaScript</description><pubDate>Mon, 04 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 Придерживаться руководства по стилю написания кода на &lt;strong&gt;JavaScript&lt;/strong&gt; имеет несколько важных преимуществ:
 
 &lt;ol&gt;
