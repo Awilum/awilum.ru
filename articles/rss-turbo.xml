@@ -1,4 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Округление чисел в JavaScript</title><link>https://awilum.ru/articles/rounding-numbers-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/rounding-numbers-in-javascript/</guid><description>Округление чисел в JavaScript</description><pubDate>Sat, 09 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Генерация случайных чисел с фокусом на диапазоне в JavaScript</title><link>https://awilum.ru/articles/range-focused-random-number-generation-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/range-focused-random-number-generation-in-javascript/</guid><description>Генерация случайных чисел с фокусом на диапазоне в JavaScript</description><pubDate>Sat, 09 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Генерация случайных чисел в **JavaScript** может быть выполнена с использованием встроенных методов и функций языка. Для генерации случайных чисел в определенном диапазоне в JavaScript можно воспользоваться следующими методами.
+
+### Math.random() 
+
+Этот метод возвращает псевдослучайное число в диапазоне от 0 (включительно) до 1 (исключительно). Для получения числа в определенном диапазоне, например, от 0 до 10, можно использовать следующий подход:
+
+```javascript
+// Генерация числа от 0 до 10
+let randomNumber = Math.random() * 10;
+
+console.log(randomNumber);
+```
+
+Однако этот метод вернет число с плавающей точкой, и оно не будет целым.
+
+### Math.floor() или Math.ceil()
+
+Для округления числа можно использовать `Math.floor()` или `Math.ceil()`. `Math.floor()` округляет число вниз до ближайшего целого, а `Math.ceil()` округляет число вверх до ближайшего целого.
+
+```javascript
+// Генерация целого числа от 0 до 9
+let randomNumber = Math.floor(Math.random() * 10);
+
+console.log(randomNumber);
+```
+
+### Генерация числа в определенном диапазоне
+
+Для генерации случайного числа в заданном диапазоне [min, max] можно воспользоваться формулой:
+
+```javascript
+let min = 5;
+let max = 15;
+
+// Генерация целого числа от 5 до 15 включительно
+let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+```
+
+В данной формуле:
+
+- `Math.random()` генерирует число от 0 до 1 (не включительно).
+- `(max - min + 1)` задает диапазон чисел, которые можно получить.
+- `Math.floor()` округляет число вниз до ближайшего целого.
+- `+ min` смещает результат так, чтобы он попадал в заданный диапазон [min, max].
+
+&lt;br&gt;&lt;br&gt;
+
+Таким образом, при помощи этих методов можно генерировать случайные числа в JavaScript в заданном диапазоне.</content:encoded></item><item><title>Округление чисел в JavaScript</title><link>https://awilum.ru/articles/rounding-numbers-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/rounding-numbers-in-javascript/</guid><description>Округление чисел в JavaScript</description><pubDate>Sat, 09 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 Округление чисел в **JavaScript** можно выполнять различными способами, в зависимости от требуемой точности и правил, которые нужно применить.
 
 ### Math.round()
@@ -3003,7 +3051,7 @@ let result = `${str1}${str2}`;
 console.log(result); // Привет, мир!
 ```
 
-Здесь `${}` используется для вставки переменных в строку.</content:encoded></item><item><title>Как проверить, является ли значение числом в JavaScript</title><link>https://awilum.ru/articles/how-to-check-if-a-value-is-a-number-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/how-to-check-if-a-value-is-a-number-in-javascript/</guid><description>Удалить все node_modules</description><pubDate>Wed, 10 Jan 2024 00:00:00 GMT</pubDate><content:encoded>
+Здесь `${}` используется для вставки переменных в строку.</content:encoded></item><item><title>Как проверить, является ли значение числом в JavaScript</title><link>https://awilum.ru/articles/how-to-check-if-a-value-is-a-number-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/how-to-check-if-a-value-is-a-number-in-javascript/</guid><description>Как проверить, является ли значение числом в JavaScript</description><pubDate>Wed, 10 Jan 2024 00:00:00 GMT</pubDate><content:encoded>
 В JavaScript существует несколько способов проверки, является ли значение числом. 
 
 ### Использование `typeof`
