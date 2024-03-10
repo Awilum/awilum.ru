@@ -1,4 +1,117 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Запуск функции каждые 60 секунд в JavaScript</title><link>https://awilum.ru/articles/running-a-function-every-60-seconds-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/running-a-function-every-60-seconds-in-javascript/</guid><description>Запуск функции каждые 60 секунд в JavaScript</description><pubDate>Sun, 10 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Определение сенсорного экрана устройства в JavaScript</title><link>https://awilum.ru/articles/detecting-a-devices-touchscreen-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/detecting-a-devices-touchscreen-in-javascript/</guid><description>Определение сенсорного экрана устройства в JavaScript</description><pubDate>Sun, 10 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Определение сенсорного экрана устройства в **JavaScript** можно осуществить с помощью объекта `window`, который предоставляет информацию о различных характеристиках окна браузера и устройства. Для определения наличия сенсорного экрана можно использовать свойство `ontouchstart`, которое является событием, вызываемым при касании сенсорного экрана устройства.
+
+Вот как это можно сделать:
+
+```javascript
+// Проверка наличия сенсорного экрана
+if (&apos;ontouchstart&apos; in window || navigator.maxTouchPoints) {
+    console.log(&quot;Устройство имеет сенсорный экран.&quot;);
+} else {
+    console.log(&quot;Устройство не имеет сенсорного экрана.&quot;);
+}
+```
+
+В этом примере мы проверяем наличие свойства `ontouchstart` в объекте `window`, что указывает на поддержку сенсорного ввода. Также мы можем использовать `navigator.maxTouchPoints`, который указывает на количество одновременных касаний, чтобы более точно определить, поддерживает ли устройство сенсорный экран.
+
+В результате выполнения этого кода в консоль будет выведено сообщение о наличии или отсутствии сенсорного экрана на устройстве.
+
+Это может быть полезно при разработке веб-приложений, чтобы адаптировать интерфейс под различные типы устройств и способы ввода данных. Например, если устройство имеет сенсорный экран, вы можете предоставить более интуитивный интерфейс, оптимизированный для использования пальцами.</content:encoded></item><item><title>Извлечение строки между скобками в Javascript</title><link>https://awilum.ru/articles/extracting-string-between-brackets-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/extracting-string-between-brackets-in-javascript/</guid><description>Извлечение строки между скобками в Javascript</description><pubDate>Sun, 10 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Извлечение строки между скобками в **JavaScript** можно выполнить различными способами, в зависимости от конкретной ситуации и формата данных. Одним из наиболее универсальных способов является использование регулярных выражений.
+
+Вот пример, как можно извлечь строку между скобками с помощью регулярного выражения в **JavaScript**:
+
+```javascript
+// Входная строка, содержащая скобки и текст между ними
+var inputString = &quot;Это текст (который нужно извлечь) из строки&quot;;
+
+// Регулярное выражение для поиска текста между скобками
+var regex = /\((.*?)\)/;
+
+// Используем метод match для поиска совпадений с регулярным выражением
+var matches = inputString.match(regex);
+
+// Если найдены совпадения
+if (matches) {
+    // matches[0] содержит всю строку между скобками
+    // matches[1] содержит только текст между скобками (без самих скобок)
+    var textInsideBrackets = matches[1];
+    console.log(&quot;Текст между скобками:&quot;, textInsideBrackets);
+} else {
+    console.log(&quot;Текст между скобками не найден.&quot;);
+}
+```
+
+Этот код ищет текст, заключенный в круглые скобки `()`. 
+
+Регулярное выражение `/\((.*?)\)/` используется для поиска таких подстрок.
+
+- `(` и `)` - это метасимволы, которые означают сами скобки.
+- `.*?` - это регулярное выражение, которое соответствует любому символу (кроме перевода строки `\n`) ноль или более раз `*`, но с минимальным количеством совпадений `?`. Это обеспечивает нахождение текста между скобками.
+- `\(` и `\)` - используются для экранирования скобок, чтобы они интерпретировались как обычные символы.
+- Метод `match` применяется к строке и возвращает массив совпадений, где первый элемент массива `matches[0]` содержит всю строку между скобками, а второй элемент `matches[1]` содержит только текст между скобками (без самих скобок).  
+
+&lt;br&gt;
+
+Этот код довольно универсален и может быть адаптирован для различных форматов данных и различных типов скобок, таких как квадратные `[ ]`, фигурные `{ }` и т. д. Просто замените символы в регулярном выражении соответствующим образом.</content:encoded></item><item><title>Форматирование JSON из объекта в JavaScript</title><link>https://awilum.ru/articles/formatting-json-from-an-object-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/formatting-json-from-an-object-in-javascript/</guid><description>Форматирование JSON из объекта в JavaScript</description><pubDate>Sun, 10 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Форматирование **JSON** из объекта в **JavaScript** обычно означает преобразование **JavaScript** объекта в строку **JSON** с красивым форматированием для удобочитаемости. **JSON (JavaScript Object Notation)** является легким форматом обмена данными, который удобен для передачи данных между сервером и клиентом. В **JavaScript** есть встроенный объект **JSON**, который предоставляет методы для преобразования данных в формат **JSON** и обратно.
+
+Процесс форматирования **JSON** из объекта в **JavaScript** выглядит следующим образом:
+
+### 1. Создание объекта в JavaScript
+
+Вы создаете объект в JavaScript, который вы хотите преобразовать в формат JSON.
+
+```javascript
+const myObject = {
+  name: &quot;John&quot;,
+  age: 30,
+  city: &quot;New York&quot;
+};
+```
+
+### 2. Преобразование объекта в JSON
+
+Используя метод `JSON.stringify()`, вы преобразуете **JavaScript** объект в строку **JSON**.
+
+```javascript
+const jsonString = JSON.stringify(myObject);
+```
+
+### 3. Форматирование JSON
+
+При необходимости вы можете добавить дополнительные параметры для форматирования **JSON**, чтобы сделать его более читаемым. Это делается, передавая второй параметр метода `JSON.stringify()`, который устанавливает пробелы и отступы.
+
+```javascript
+const formattedJsonString = JSON.stringify(myObject, null, 2);
+```
+
+В приведенном выше примере 2 передано в качестве параметра, чтобы установить отступ в два пробела между элементами **JSON**.
+
+Полный пример:
+
+```javascript
+const myObject = {
+  name: &quot;John&quot;,
+  age: 30,
+  city: &quot;New York&quot;
+};
+
+const formattedJsonString = JSON.stringify(myObject, null, 2);
+console.log(formattedJsonString);
+```
+
+Этот код выведет отформатированную **JSON**-строку:
+
+```javascript
+{
+  &quot;name&quot;: &quot;John&quot;,
+  &quot;age&quot;: 30,
+  &quot;city&quot;: &quot;New York&quot;
+}
+```
+
+Это делает **JSON** более читаемым и удобным для работы как для разработчиков, так и для отладки.</content:encoded></item><item><title>Запуск функции каждые 60 секунд в JavaScript</title><link>https://awilum.ru/articles/running-a-function-every-60-seconds-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/running-a-function-every-60-seconds-in-javascript/</guid><description>Запуск функции каждые 60 секунд в JavaScript</description><pubDate>Sun, 10 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 В **JavaScript** есть несколько способов запуска функции каждые 60 секунд. Один из наиболее распространенных способов - использовать функцию `setInterval()`. Другой способ - использовать функцию `setTimeout()` для вызова функции через определенный интервал времени и вызывать ее снова внутри самой себя. Давайте рассмотрим оба способа подробнее.
 
 ### Использование `setInterval()`
