@@ -1,4 +1,79 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Генерация случайных чисел с фокусом на диапазоне в JavaScript</title><link>https://awilum.ru/articles/range-focused-random-number-generation-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/range-focused-random-number-generation-in-javascript/</guid><description>Генерация случайных чисел с фокусом на диапазоне в JavaScript</description><pubDate>Sat, 09 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Запуск функции каждые 60 секунд в JavaScript</title><link>https://awilum.ru/articles/running-a-function-every-60-seconds-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/running-a-function-every-60-seconds-in-javascript/</guid><description>Запуск функции каждые 60 секунд в JavaScript</description><pubDate>Sun, 10 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В **JavaScript** есть несколько способов запуска функции каждые 60 секунд. Один из наиболее распространенных способов - использовать функцию `setInterval()`. Другой способ - использовать функцию `setTimeout()` для вызова функции через определенный интервал времени и вызывать ее снова внутри самой себя. Давайте рассмотрим оба способа подробнее.
+
+### Использование `setInterval()`
+
+Функция `setInterval()` позволяет вызывать определенную функцию через определенный интервал времени. Вот пример, как можно использовать `setInterval()` для запуска функции каждые 60 секунд:
+
+```javascript
+// Определение функции, которую нужно запускать
+function myFunction() {
+    console.log(&quot;Функция запущена!&quot;);
+}
+
+// Запуск функции каждые 60 секунд
+setInterval(myFunction, 60000); // 60 * 1000 миллисекунд = 60 секунд
+```
+
+Этот код будет вызывать функцию `myFunction()` каждые 60 секунд (60000 миллисекунд).
+
+### Использование `setTimeout()`
+
+С другой стороны, вы можете использовать функцию `setTimeout()` для запуска функции через определенное время и вызывать ее снова внутри самой себя. Этот метод обычно используется для создания циклических вызовов функции:
+
+```javascript
+// Определение функции, которую нужно запускать
+function myFunction() {
+    console.log(&quot;Функция запущена!&quot;);
+    
+    // Вызываем функцию снова через 60 секунд
+    setTimeout(myFunction, 60000);
+}
+
+// Запуск функции в первый раз
+myFunction();
+```
+
+Этот код также будет вызывать функцию `myFunction()` каждые 60 секунд, но использует рекурсивный подход с `setTimeout()`, чтобы вызвать функцию снова после каждого запуска.
+
+&lt;br&gt;
+
+Оба этих метода могут быть полезны в различных ситуациях, и выбор между ними зависит от вашего конкретного случая использования.</content:encoded></item><item><title>Проверка на пустоту или отсутствие массива в JavaScript</title><link>https://awilum.ru/articles/checking-if-an-array-is-empty-or-missing-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/checking-if-an-array-is-empty-or-missing-in-javascript/</guid><description>Проверка на пустоту или отсутствие массива в JavaScript</description><pubDate>Sat, 09 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В **JavaScript** проверка на пустоту или отсутствие массива может быть выполнена различными способами в зависимости от вашей точки зрения на &quot;пустоту&quot; и &quot;отсутствие&quot;. 
+
+Давайте рассмотрим несколько вариантов.
+
+### Проверка на пустоту
+
+Если под &quot;пустотой&quot; массива - это отсутствие элементов в нем, вы можете проверить его длину.
+
+```javascript
+let arr = []; // пустой массив
+
+if (arr.length === 0) {
+    console.log(&quot;Массив пуст&quot;);
+} else {
+    console.log(&quot;Массив не пуст&quot;);
+}
+```
+
+В этом случае мы используем свойство `length` массива, чтобы определить, сколько элементов в нем содержится. Если длина равна 0, то массив считается пустым.
+
+### Проверка на отсутствие массива
+
+Cпособ проверки на отсутствие массива - использовать метод `Array.isArray()`.
+
+```javascript
+let arr; // массив не определен
+
+if (Array.isArray(arr)) {
+    console.log(&quot;Это массив&quot;);
+} else {
+    console.log(&quot;Это не массив или массив отсутствует&quot;);
+}
+```
+
+Этот метод проверяет, является ли переданный объект массивом. Если переданный объект является массивом, метод вернет `true`, в противном случае `false`.</content:encoded></item><item><title>Генерация случайных чисел с фокусом на диапазоне в JavaScript</title><link>https://awilum.ru/articles/range-focused-random-number-generation-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/range-focused-random-number-generation-in-javascript/</guid><description>Генерация случайных чисел с фокусом на диапазоне в JavaScript</description><pubDate>Sat, 09 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 Генерация случайных чисел в **JavaScript** может быть выполнена с использованием встроенных методов и функций языка. Для генерации случайных чисел в определенном диапазоне в JavaScript можно воспользоваться следующими методами.
 
 ### Math.random() 
@@ -46,7 +121,56 @@ let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
 
 &lt;br&gt;&lt;br&gt;
 
-Таким образом, при помощи этих методов можно генерировать случайные числа в JavaScript в заданном диапазоне.</content:encoded></item><item><title>Округление чисел в JavaScript</title><link>https://awilum.ru/articles/rounding-numbers-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/rounding-numbers-in-javascript/</guid><description>Округление чисел в JavaScript</description><pubDate>Sat, 09 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Таким образом, при помощи этих методов можно генерировать случайные числа в JavaScript в заданном диапазоне.</content:encoded></item><item><title>Замена символа на указанном индексе в JavaScript</title><link>https://awilum.ru/articles/replacing-a-character-at-a-specified-index-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/replacing-a-character-at-a-specified-index-in-javascript/</guid><description>Замена символа на указанном индексе в JavaScript</description><pubDate>Sat, 09 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В **JavaScript** существует несколько методов для замены символа в указанном индексе строки. Один из них включает использование встроенных методов строки, таких как `slice()` или `replace()`, которые позволяют создать новую строку с заменой символа по указанному индексу. Другой подход включает преобразование строки в массив символов, замену символа в массиве и последующее объединение символов обратно в строку с помощью метода `join()`. Каждый из этих методов имеет свои преимущества и может быть выбран в зависимости от конкретных требований задачи или предпочтений разработчика.
+
+### Использование методов строк
+
+Первый способ: с использованием `slice()` и конкатенации
+
+```javascript
+let str = &quot;Hello, world!&quot;;
+let index = 7; // Индекс символа для замены
+let replacementChar = &apos;W&apos;; // Новый символ для замены
+
+let newStr = str.slice(0, index) + replacementChar + str.slice(index + 1);
+
+console.log(newStr); // Выведет &quot;Hello, World!&quot;
+```
+
+Второй способ: с использованием метода `replace()`
+
+```javascript
+let str = &quot;Hello, world!&quot;;
+let index = 7; // Индекс символа для замены
+let replacementChar = &apos;W&apos;; // Новый символ для замены
+
+// Первый способ: с использованием slice и конкатенации
+let newStr = str.substr(0, index) + replacementChar + str.substr(index + 1);
+
+console.log(newStr); // Выведет &quot;Hello, World!&quot;
+```
+
+### Использование массива символов
+
+```javascript
+let str = &quot;Hello, world!&quot;;
+let index = 7; // Индекс символа для замены
+let replacementChar = &apos;W&apos;; // Новый символ для замены
+
+// Преобразование строки в массив символов
+let charArray = str.split(&apos;&apos;);
+charArray[index] = replacementChar;
+
+// Обратное преобразование массива символов в строку
+let newStr = charArray.join(&apos;&apos;);
+
+console.log(newStr); // Выведет &quot;Hello, World!&quot;
+```
+
+&lt;br&gt;
+
+Оба эти подхода эффективны и могут быть использованы в зависимости от вашего предпочтения или требований конкретной задачи.</content:encoded></item><item><title>Округление чисел в JavaScript</title><link>https://awilum.ru/articles/rounding-numbers-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/rounding-numbers-in-javascript/</guid><description>Округление чисел в JavaScript</description><pubDate>Sat, 09 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 Округление чисел в **JavaScript** можно выполнять различными способами, в зависимости от требуемой точности и правил, которые нужно применить.
 
 ### Math.round()
@@ -94,7 +218,51 @@ console.log(num.toFixed(2)); // 5.68
 
 &lt;br&gt;
 
-Каждый из этих методов имеет свои особенности и подходит для разных сценариев. Выбор метода зависит от конкретной задачи и требуемого результата.</content:encoded></item><item><title>Как определить операционную систему пользователя в JavaScript</title><link>https://awilum.ru/articles/how-to-detect-the-users-operating-system-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/how-to-detect-the-users-operating-system-in-javascript/</guid><description>Как определить операционную систему пользователя в JavaScript</description><pubDate>Fri, 08 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Каждый из этих методов имеет свои особенности и подходит для разных сценариев. Выбор метода зависит от конкретной задачи и требуемого результата.</content:encoded></item><item><title>Разделение строки по запятым в JavaScript</title><link>https://awilum.ru/articles/splitting-a-string-by-commas-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/splitting-a-string-by-commas-in-javascript/</guid><description>Разделение строки по запятым в JavaScript</description><pubDate>Sat, 09 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В **JavaScript** есть несколько способов разделить строку по запятым. Это может быть полезно, если вы хотите разбить строку на подстроки или извлечь значения из CSV (comma-separated values).
+
+### Использование метода `split()`
+
+Метод `split()` разбивает строку на массив подстрок, используя разделитель, который вы указываете в качестве аргумента. В случае разделения строки по запятым, аргументом будет сама запятая &quot;,&quot;.
+
+Пример:
+
+```javascript
+let str = &quot;apple,banana,orange&quot;;
+let arr = str.split(&quot;,&quot;);
+
+console.log(arr); // [&quot;apple&quot;, &quot;banana&quot;, &quot;orange&quot;]
+```
+
+### Регулярные выражения
+
+Регулярные выражения в **JavaScript** могут быть использованы для поиска и разбиения строк на основе шаблонов. Можно использовать регулярное выражение /,/, чтобы разбить строку по запятым.
+
+Пример:
+
+```javascript
+let str = &quot;apple,banana,orange&quot;;
+let arr = str.split(/,/);
+
+console.log(arr); // [&quot;apple&quot;, &quot;banana&quot;, &quot;orange&quot;]
+```
+
+### Использование метода `match()`
+
+Метод `match()` использует регулярное выражение для поиска совпадений в строке. Если передать ему регулярное выражение, которое соответствует запятым, он вернет массив, содержащий все совпадения.
+
+Пример:
+
+```javascript
+let str = &quot;apple,banana,orange&quot;;
+let arr = str.match(/[^,]+/g);
+
+console.log(arr); // [&quot;apple&quot;, &quot;banana&quot;, &quot;orange&quot;]
+```
+
+&lt;br&gt;
+
+Во всех примерах выше строка &quot;apple,banana,orange&quot; была успешно разделена на массив подстрок, каждая из которых представляет собой отдельный фрукт. Вы можете выбрать любой из этих методов в зависимости от вашего случая использования и предпочтений.</content:encoded></item><item><title>Как определить операционную систему пользователя в JavaScript</title><link>https://awilum.ru/articles/how-to-detect-the-users-operating-system-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/how-to-detect-the-users-operating-system-in-javascript/</guid><description>Как определить операционную систему пользователя в JavaScript</description><pubDate>Fri, 08 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 В **JavaScript** существует несколько способов определить операционную систему пользователя. 
 
 ### navigator.platform
