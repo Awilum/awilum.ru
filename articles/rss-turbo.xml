@@ -1,4 +1,233 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Конвертация десятичного числа в двоичное и обратно в JavaScript</title><link>https://awilum.ru/articles/converting-decimal-to-binary-and-back-again-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/converting-decimal-to-binary-and-back-again-in-javascript/</guid><description>Конвертация десятичного числа в двоичное и обратно в JavaScript</description><pubDate>Sun, 10 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Извлечение якоря из URL в JavaScript</title><link>https://awilum.ru/articles/extracting-anchor-from-url-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/extracting-anchor-from-url-in-javascript/</guid><description>Извлечение якоря из URL в JavaScript</description><pubDate>Mon, 11 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Извлечение якоря из **URL** в **JavaScript** может быть достаточно простым с использованием встроенных методов и свойств. Якорь в **URL** представляет собой часть строки после символа решетки `#`. Обычно он используется для указания на конкретное место на веб-странице.
+
+Вот несколько способов извлечения якоря из **URL** в **JavaScript**.
+
+### Свойство window.location.hash
+
+```javascript
+let anchor = window.location.hash;
+
+console.log(anchor); 
+```
+
+`anchor` - содержит значение якоря, например, если URL: http://example.com/page#section1, то anchor будет равен &apos;#section1&apos;
+
+Этот способ прост и прямолинеен. Он просто возвращает часть **UR**L, начиная с символа `#`.
+
+### Регулярное выражение
+
+```javascript
+let url = &quot;http://example.com/page#section1&quot;;
+let anchor = url.match(/#(.*)/);
+
+console.log(anchor[1]); // содержит значение якоря, т.е. &apos;section1&apos;
+```
+
+Этот метод использует регулярное выражение, чтобы найти часть строки после символа `#`.
+
+### Разбиение строки по символу `#`
+
+```javascript
+let url = &quot;http://example.com/page#section1&quot;;
+let parts = url.split(&apos;#&apos;);
+let anchor = parts[1];
+
+console.log(anchor); // содержит значение якоря, т.е. &apos;section1&apos;
+```
+
+Этот метод разбивает строку **URL** на массив строк, используя символ `#` в качестве разделителя, и затем берет второй элемент массива, содержащий якорь.
+
+### Использование URL API (современный подход)
+
+```javascript
+let url = new URL(&quot;http://example.com/page#section1&quot;);
+let anchor = url.hash.substring(1); // отрезаем решетку (#)
+
+console.log(anchor); // содержит значение якоря, т.е. &apos;section1&apos;
+```
+
+Этот метод использует встроенный **URL API**, который предоставляет доступ к различным частям **URL**, включая якорь.
+
+&lt;br&gt;
+
+Выбор метода зависит от контекста вашего проекта и требований к поддержке браузеров. В большинстве случаев использование свойства `window.location.hash` будет наиболее удобным и эффективным способом.
+
+</content:encoded></item><item><title>Извлечение расширения из имени файла на Javascript</title><link>https://awilum.ru/articles/extracting-extension-from-filename-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/extracting-extension-from-filename-in-javascript/</guid><description>Извлечение расширения из имени файла на Javascript</description><pubDate>Mon, 11 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Извлечение расширения файла из его имени - это распространенная задача во многих программных приложениях, включая веб-приложения на **JavaScript**. Это часто используется для определения типа файла или для валидации ввода пользователя. В **JavaScript** можно легко извлечь расширение файла с помощью различных методов. 
+
+### Использование метода `split()`
+
+**JavaScript** предоставляет метод `split()`, который позволяет разделить строку на подстроки с помощью разделителя. Мы можем использовать этот метод, чтобы разделить имя файла и извлечь расширение. 
+
+Например:
+
+```javascript
+function getFileExtension(filename) {
+    return filename.split(&apos;.&apos;).pop();
+}
+
+// Пример использования
+let filename = &quot;example.docx&quot;;
+let extension = getFileExtension(filename);
+
+console.log(extension); // docx
+```
+
+### Использование метода `lastIndexOf()`
+
+Метод `lastIndexOf()` находит последнее вхождение указанного значения в строке и возвращает его позицию. Мы можем использовать этот метод для поиска последней точки в имени файла и извлечения расширения после нее. 
+
+Например:
+
+```javascript
+function getFileExtension(filename) {
+    const lastDotIndex = filename.lastIndexOf(&apos;.&apos;);
+
+    // Проверка на случай, если точка не найдена или она первый символ
+    if (lastDotIndex === -1 || lastDotIndex === 0) return &quot;&quot;;
+    
+    return filename.slice(lastDotIndex + 1);
+}
+
+// Пример использования
+let filename = &quot;example.pdf&quot;;
+let extension = getFileExtension(filename);
+
+console.log(extension); // pdf
+```
+
+### Использование регулярных выражений
+
+Мы также можем использовать регулярные выражения для извлечения расширения файла. 
+
+Например:
+
+```javascript
+function getFileExtension(filename) {
+    const regex = /(?:\.([^.]+))?$/;
+    const match = regex.exec(filename);
+    return match[1] ? match[1] : &apos;&apos;;
+}
+
+// Пример использования
+let filename = &quot;example.jpg&quot;;
+let extension = getFileExtension(filename);
+
+console.log(extension); // jpg
+```</content:encoded></item><item><title>Извлечение протокола, домена и порта из URL в JavaScript</title><link>https://awilum.ru/articles/extracting-protocol-domain-and-port-from-url-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/extracting-protocol-domain-and-port-from-url-in-javascript/</guid><description>Извлечение протокола, домена и порта из URL в JavaScript</description><pubDate>Mon, 11 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Извлечение протокола, домена и порта из **URL** в **JavaScript** можно выполнить с помощью объекта **URL** или регулярных выражений.
+
+### Использование объекта URL
+
+Объект **URL** в **JavaScript** предоставляет удобный способ для разбора и работы с **URL**-адресами. 
+
+Вот как можно извлечь протокол, домен и порт:
+
+```javascript
+// URL-адрес, который нужно разобрать
+let urlString = &quot;https://www.example.com:8080/path/to/resource&quot;;
+
+// Создание объекта URL
+let url = new URL(urlString);
+
+// Извлечение протокола
+let protocol = url.protocol;
+
+// Извлечение домена
+let domain = url.hostname;
+
+// Извлечение порта
+let port = url.port;
+
+console.log(protocol); // https:
+console.log(domain);   // www.example.com
+console.log(port);     // 8080
+```
+
+### Использование регулярных выражений:
+
+Для извлечения данных из URL можно использовать регулярные выражения. 
+
+Ниже пример кода:
+
+```javascript
+// URL-адрес, который нужно разобрать
+let urlString = &quot;https://www.example.com:8080/path/to/resource&quot;;
+
+// Регулярное выражение для извлечения протокола, домена и порта
+let urlRegex = /^(https?:)\/\/([^:/]+)(:\d+)?/i;
+
+// Получение совпадений с помощью регулярного выражения
+let matches = urlString.match(urlRegex);
+
+let protocol, domain, port; // Объявляем переменные в более широкой области видимости
+
+if (matches) {
+    protocol = matches[1]; // https:
+    domain = matches[2];   // www.example.com
+    port = matches[3] ? matches[3].slice(1) : &quot;&quot;; // 8080 (если есть), иначе &quot;&quot;
+}
+
+console.log(protocol); // https:
+console.log(domain);   // www.example.com
+console.log(port);     // 8080
+```</content:encoded></item><item><title>Интерполяция строк в JavaScript</title><link>https://awilum.ru/articles/string-interpolation-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/string-interpolation-in-javascript/</guid><description>Интерполяция строк в JavaScript</description><pubDate>Mon, 11 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Интерполяция строк в **JavaScript** - это способ вставки значений переменных или выражений в строковые литералы. Это более удобный и читаемый способ, чем конкатенация строк с помощью оператора `+`. Интерполяция строк делает код более ясным и уменьшает вероятность ошибок при создании длинных или сложных строк. Этот механизм был добавлен в язык **JavaScript** в **ECMAScript 2015 (ES6)**.
+
+Для выполнения интерполяции строк используется синтаксис с использованием обратных кавычек, также называемых шаблонными строками, в сочетании с синтаксисом `${...}` для вставки значений.
+
+Пример:
+
+```javascript
+let name = &quot;Лия&quot;;
+let age = 20;
+
+// Интерполяция строк
+let message = `Привет, меня зовут ${name} и мне ${age} лет.`;
+
+console.log(message);
+// Привет, меня зовут Лия и мне 20 лет.
+```
+
+В этом примере `${name}` и `${age}` являются местозаполнителями, в которые подставляются значения переменных `name` и `age` соответственно.
+
+Интерполяция строк также позволяет вставлять результаты выражений **JavaScript** внутрь шаблонных строк. 
+
+Например:
+
+```javascript
+let a = 10;
+let b = 20;
+
+// Интерполяция выражений
+let result = `Сумма ${a} и ${b} равна ${a + b}`;
+
+console.log(result);
+// Сумма 10 и 20 равна 30
+```
+
+Такой подход существенно упрощает создание строковых шаблонов, особенно в случае, когда вам нужно вставить несколько значений или результатов выражений в строку.
+
+Интерполяция строк также может быть использована в многострочных строках, что упрощает создание более читаемого кода при работе с длинными текстовыми блоками:
+
+```javascript
+let name = &quot;Лия&quot;;
+
+let multilineString = `
+Это многострочная строка,
+которая может содержать
+переносы строк и ${name}.
+`;
+
+console.log(multilineString);
+/*
+Вывод:
+Это многострочная строка,
+которая может содержать
+переносы строк и Лия.
+*/
+```</content:encoded></item><item><title>Конвертация десятичного числа в двоичное и обратно в JavaScript</title><link>https://awilum.ru/articles/converting-decimal-to-binary-and-back-again-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/converting-decimal-to-binary-and-back-again-in-javascript/</guid><description>Конвертация десятичного числа в двоичное и обратно в JavaScript</description><pubDate>Sun, 10 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 Конвертация чисел из десятичной системы счисления в двоичную и обратно — это простая операция в **JavaScript**. В процессе разработки приложений и алгоритмов часто возникает необходимость работать с числами в различных системах счисления. Десятичная система является наиболее распространённой и естественной для человека, но для многих задач удобнее использовать двоичную систему, особенно в контексте работы с битами и бинарными данными. Поэтому умение эффективно конвертировать числа между этими двумя системами является важным навыком для программиста. В JavaScript для этого имеются удобные методы и функции, которые облегчают этот процесс.
 
 **Двоичная система счисления (или база 2)** — это система счисления, которая использует только две цифры: 0 и 1. В этой системе каждая цифра называется битом (от англ. binary digit). По мере увеличения разрядности числа в двоичной системе, каждый бит в числе обозначает удвоение предыдущего разряда. Например, в числе 1010 каждая цифра представляет собой 2 в степени разряда, начиная справа: 
