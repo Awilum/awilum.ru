@@ -1,4 +1,285 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Извлечение якоря из URL в JavaScript</title><link>https://awilum.ru/articles/extracting-anchor-from-url-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/extracting-anchor-from-url-in-javascript/</guid><description>Извлечение якоря из URL в JavaScript</description><pubDate>Mon, 11 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Определение простых чисел в JavaScript</title><link>https://awilum.ru/articles/defining-prime-numbers-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/defining-prime-numbers-in-javascript/</guid><description>Определение простых чисел в JavaScript</description><pubDate>Tue, 12 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Определение того, является ли число простым или нет, является одной из базовых задач в математике и программировании. 
+
+**Простые числа** - это натуральные числа больше 1, которые имеют ровно два делителя: 1 и само число. 
+
+&lt;table width=&quot;100%&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th colspan=&quot;8&quot;&gt;Простые числа до 997&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;7&lt;/td&gt;&lt;td&gt;11&lt;/td&gt;&lt;td&gt;13&lt;/td&gt;&lt;td&gt;17&lt;/td&gt;&lt;td&gt;19&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;23&lt;/td&gt;&lt;td&gt;29&lt;/td&gt;&lt;td&gt;31&lt;/td&gt;&lt;td&gt;37&lt;/td&gt;&lt;td&gt;41&lt;/td&gt;&lt;td&gt;43&lt;/td&gt;&lt;td&gt;47&lt;/td&gt;&lt;td&gt;53&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;59&lt;/td&gt;&lt;td&gt;61&lt;/td&gt;&lt;td&gt;67&lt;/td&gt;&lt;td&gt;71&lt;/td&gt;&lt;td&gt;73&lt;/td&gt;&lt;td&gt;79&lt;/td&gt;&lt;td&gt;83&lt;/td&gt;&lt;td&gt;89&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;97&lt;/td&gt;&lt;td&gt;101&lt;/td&gt;&lt;td&gt;103&lt;/td&gt;&lt;td&gt;107&lt;/td&gt;&lt;td&gt;109&lt;/td&gt;&lt;td&gt;113&lt;/td&gt;&lt;td&gt;127&lt;/td&gt;&lt;td&gt;131&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;137&lt;/td&gt;&lt;td&gt;139&lt;/td&gt;&lt;td&gt;149&lt;/td&gt;&lt;td&gt;151&lt;/td&gt;&lt;td&gt;157&lt;/td&gt;&lt;td&gt;163&lt;/td&gt;&lt;td&gt;167&lt;/td&gt;&lt;td&gt;173&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;179&lt;/td&gt;&lt;td&gt;181&lt;/td&gt;&lt;td&gt;191&lt;/td&gt;&lt;td&gt;193&lt;/td&gt;&lt;td&gt;197&lt;/td&gt;&lt;td&gt;199&lt;/td&gt;&lt;td&gt;211&lt;/td&gt;&lt;td&gt;223&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;227&lt;/td&gt;&lt;td&gt;229&lt;/td&gt;&lt;td&gt;233&lt;/td&gt;&lt;td&gt;239&lt;/td&gt;&lt;td&gt;241&lt;/td&gt;&lt;td&gt;251&lt;/td&gt;&lt;td&gt;257&lt;/td&gt;&lt;td&gt;263&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;269&lt;/td&gt;&lt;td&gt;271&lt;/td&gt;&lt;td&gt;277&lt;/td&gt;&lt;td&gt;281&lt;/td&gt;&lt;td&gt;283&lt;/td&gt;&lt;td&gt;293&lt;/td&gt;&lt;td&gt;307&lt;/td&gt;&lt;td&gt;311&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;313&lt;/td&gt;&lt;td&gt;317&lt;/td&gt;&lt;td&gt;331&lt;/td&gt;&lt;td&gt;337&lt;/td&gt;&lt;td&gt;347&lt;/td&gt;&lt;td&gt;349&lt;/td&gt;&lt;td&gt;353&lt;/td&gt;&lt;td&gt;359&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;367&lt;/td&gt;&lt;td&gt;373&lt;/td&gt;&lt;td&gt;379&lt;/td&gt;&lt;td&gt;383&lt;/td&gt;&lt;td&gt;389&lt;/td&gt;&lt;td&gt;397&lt;/td&gt;&lt;td&gt;401&lt;/td&gt;&lt;td&gt;409&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;419&lt;/td&gt;&lt;td&gt;421&lt;/td&gt;&lt;td&gt;431&lt;/td&gt;&lt;td&gt;433&lt;/td&gt;&lt;td&gt;439&lt;/td&gt;&lt;td&gt;443&lt;/td&gt;&lt;td&gt;449&lt;/td&gt;&lt;td&gt;457&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;461&lt;/td&gt;&lt;td&gt;463&lt;/td&gt;&lt;td&gt;467&lt;/td&gt;&lt;td&gt;479&lt;/td&gt;&lt;td&gt;487&lt;/td&gt;&lt;td&gt;491&lt;/td&gt;&lt;td&gt;499&lt;/td&gt;&lt;td&gt;503&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;509&lt;/td&gt;&lt;td&gt;521&lt;/td&gt;&lt;td&gt;523&lt;/td&gt;&lt;td&gt;541&lt;/td&gt;&lt;td&gt;547&lt;/td&gt;&lt;td&gt;557&lt;/td&gt;&lt;td&gt;563&lt;/td&gt;&lt;td&gt;569&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;571&lt;/td&gt;&lt;td&gt;577&lt;/td&gt;&lt;td&gt;587&lt;/td&gt;&lt;td&gt;593&lt;/td&gt;&lt;td&gt;599&lt;/td&gt;&lt;td&gt;601&lt;/td&gt;&lt;td&gt;607&lt;/td&gt;&lt;td&gt;613&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;617&lt;/td&gt;&lt;td&gt;619&lt;/td&gt;&lt;td&gt;631&lt;/td&gt;&lt;td&gt;641&lt;/td&gt;&lt;td&gt;643&lt;/td&gt;&lt;td&gt;647&lt;/td&gt;&lt;td&gt;653&lt;/td&gt;&lt;td&gt;659&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;661&lt;/td&gt;&lt;td&gt;673&lt;/td&gt;&lt;td&gt;677&lt;/td&gt;&lt;td&gt;683&lt;/td&gt;&lt;td&gt;691&lt;/td&gt;&lt;td&gt;701&lt;/td&gt;&lt;td&gt;709&lt;/td&gt;&lt;td&gt;719&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;727&lt;/td&gt;&lt;td&gt;733&lt;/td&gt;&lt;td&gt;739&lt;/td&gt;&lt;td&gt;743&lt;/td&gt;&lt;td&gt;751&lt;/td&gt;&lt;td&gt;757&lt;/td&gt;&lt;td&gt;761&lt;/td&gt;&lt;td&gt;769&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;773&lt;/td&gt;&lt;td&gt;787&lt;/td&gt;&lt;td&gt;797&lt;/td&gt;&lt;td&gt;809&lt;/td&gt;&lt;td&gt;811&lt;/td&gt;&lt;td&gt;821&lt;/td&gt;&lt;td&gt;823&lt;/td&gt;&lt;td&gt;827&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;829&lt;/td&gt;&lt;td&gt;839&lt;/td&gt;&lt;td&gt;853&lt;/td&gt;&lt;td&gt;857&lt;/td&gt;&lt;td&gt;859&lt;/td&gt;&lt;td&gt;863&lt;/td&gt;&lt;td&gt;877&lt;/td&gt;&lt;td&gt;881&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;883&lt;/td&gt;&lt;td&gt;887&lt;/td&gt;&lt;td&gt;907&lt;/td&gt;&lt;td&gt;911&lt;/td&gt;&lt;td&gt;919&lt;/td&gt;&lt;td&gt;929&lt;/td&gt;&lt;td&gt;937&lt;/td&gt;&lt;td&gt;941&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;947&lt;/td&gt;&lt;td&gt;953&lt;/td&gt;&lt;td&gt;967&lt;/td&gt;&lt;td&gt;971&lt;/td&gt;&lt;td&gt;977&lt;/td&gt;&lt;td&gt;983&lt;/td&gt;&lt;td&gt;991&lt;/td&gt;&lt;td&gt;997&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+### Перебор делителей
+
+Один из простых способов определить, является ли число простым или нет, - это перебрать все возможные делители числа и проверить их. Если у числа есть делитель, отличный от 1 и самого числа, то оно не является простым.
+
+```javascript
+function isPrime(num) {
+    if (num &lt;= 1) {
+        return false;
+    }
+    for (let i = 2; i &lt;= Math.sqrt(num); i++) {
+        if (num % i === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// Пример использования:
+console.log(isPrime(2));   // true
+console.log(isPrime(992)); // false
+```
+
+Этот метод эффективен, когда нужно определить простоту небольших чисел.
+
+### Решето Эратосфена
+
+**Решето Эратосфена** - это алгоритм, который приписывают древнегреческому математику Эратосфену Киренскому, и который позволяет найти все простые числа в заданном диапазоне. Метод Решето Эратосфена основан на идее исключения кратных чисел.
+
+```javascript
+function sieveOfEratosthenes(max) {
+    let sieve = [];
+    let primes = [];
+    for (let i = 2; i &lt;= max; i++) {
+        if (!sieve[i]) {
+            primes.push(i);
+            for (let j = i * 2; j &lt;= max; j += i) {
+                sieve[j] = true;
+            }
+        }
+    }
+    return primes;
+}
+
+// Пример использования:
+console.log(sieveOfEratosthenes(30)); [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+```
+
+Этот метод эффективен для поиска всех простых чисел в большом диапазоне.</content:encoded></item><item><title>Как определить, является ли число харшадом или нет в JavaScript</title><link>https://awilum.ru/articles/how-to-determine-if-a-number-is-a-harshad-or-not-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/how-to-determine-if-a-number-is-a-harshad-or-not-in-javascript/</guid><description>Как определить, является ли число харшадом или нет в JavaScript</description><pubDate>Tue, 12 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Харшадское число, также известное как число Нивена, является числом, которое делится на сумму своих цифр. Другими словами, если число делится на сумму его цифр без остатка, то оно считается харшадским числом. В этой статье мы рассмотрим, как можно определить, является ли число харшадом или нет с помощью **JavaScript**.
+
+Числа харшад, или числа Нивена, — натуральные числа, делящиеся нацело на сумму своих цифр.
+Таким числом является, например, **1729**, так как `1729 = (1 + 7 + 2 + 9) × 91`.
+
+&lt;br&gt;
+
+&lt;table width=&quot;100%&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th colspan=&quot;10&quot;&gt;Первые 50 чисел харшад, не меньших 10&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;10&lt;/td&gt;
+          &lt;td&gt;12&lt;/td&gt;
+          &lt;td&gt;18&lt;/td&gt;
+          &lt;td&gt;20&lt;/td&gt;
+          &lt;td&gt;21&lt;/td&gt;
+          &lt;td&gt;24&lt;/td&gt;
+          &lt;td&gt;27&lt;/td&gt;
+          &lt;td&gt;30&lt;/td&gt;
+          &lt;td&gt;36&lt;/td&gt;
+          &lt;td&gt;40&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;42&lt;/td&gt;
+          &lt;td&gt;45&lt;/td&gt;
+          &lt;td&gt;48&lt;/td&gt;
+          &lt;td&gt;50&lt;/td&gt;
+          &lt;td&gt;54&lt;/td&gt;
+          &lt;td&gt;60&lt;/td&gt;
+          &lt;td&gt;63&lt;/td&gt;
+          &lt;td&gt;70&lt;/td&gt;
+          &lt;td&gt;72&lt;/td&gt;
+          &lt;td&gt;80&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;81&lt;/td&gt;
+          &lt;td&gt;84&lt;/td&gt;
+          &lt;td&gt;90&lt;/td&gt;
+          &lt;td&gt;100&lt;/td&gt;
+          &lt;td&gt;102&lt;/td&gt;
+          &lt;td&gt;108&lt;/td&gt;
+          &lt;td&gt;110&lt;/td&gt;
+          &lt;td&gt;111&lt;/td&gt;
+          &lt;td&gt;112&lt;/td&gt;
+          &lt;td&gt;114&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;117&lt;/td&gt;
+          &lt;td&gt;120&lt;/td&gt;
+          &lt;td&gt;126&lt;/td&gt;
+          &lt;td&gt;132&lt;/td&gt;
+          &lt;td&gt;133&lt;/td&gt;
+          &lt;td&gt;135&lt;/td&gt;
+          &lt;td&gt;140&lt;/td&gt;
+          &lt;td&gt;144&lt;/td&gt;
+          &lt;td&gt;150&lt;/td&gt;
+          &lt;td&gt;152&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;153&lt;/td&gt;
+          &lt;td&gt;156&lt;/td&gt;
+          &lt;td&gt;162&lt;/td&gt;
+          &lt;td&gt;171&lt;/td&gt;
+          &lt;td&gt;180&lt;/td&gt;
+          &lt;td&gt;190&lt;/td&gt;
+          &lt;td&gt;192&lt;/td&gt;
+          &lt;td&gt;195&lt;/td&gt;
+          &lt;td&gt;198&lt;/td&gt;
+          &lt;td&gt;200&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+
+### Алгоритм проверки
+
+Прежде чем начать писать код, давайте определим шаги алгоритма, который мы будем использовать для проверки, является ли число харшадом или нет:
+
+1. Преобразовать число в строку.
+2. Разбить строку на массив символов.
+3. Преобразовать каждый символ обратно в число.
+4. Просуммировать все числа из массива.
+5. Проверить, делится ли исходное число на сумму своих цифр без остатка.
+
+### Реализация на JavaScript
+
+Теперь давайте переведем этот алгоритм в код **JavaScript**:
+
+```javascript
+function isHarshad(number) {
+    // Преобразование числа в строку
+    let numberStr = number.toString();
+    
+    // Разбиение строки на массив символов
+    let digits = numberStr.split(&apos;&apos;);
+    
+    // Просуммировать все числа из массива
+    let sum = digits.reduce((acc, curr) =&gt; acc + parseInt(curr), 0);
+    
+    // Проверка, делится ли число на сумму своих цифр без остатка
+    return number % sum === 0;
+}
+```
+
+Протестируем нашу функцию на нескольких примерах:
+
+```javascript
+console.log(isHarshad(18));   // true
+console.log(isHarshad(19));   // false
+console.log(isHarshad(2021)); // false
+console.log(isHarshad(2024)); // true
+```
+</content:encoded></item><item><title>Различия между Number() и parseInt() при преобразовании строк в числа в JavaScript</title><link>https://awilum.ru/articles/differences-between-number-and-parseint-when-converting-strings-to-numbers-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/differences-between-number-and-parseint-when-converting-strings-to-numbers-in-javascript/</guid><description>Различия между Number() и parseInt() при преобразовании строк в числа в JavaScript</description><pubDate>Mon, 11 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Оба способа, `Number()` и `parseInt()`, могут быть использованы для преобразования строки в число в **JavaScript**. Однако у них есть некоторые различия в поведении, которые следует учитывать при выборе.
+
+Выбор между `Number()` и `parseInt()` зависит от вашей конкретной задачи и того, какие типы чисел мы ожидаем обрабатывать.
+
+Если нам нужно полноценное числовое значение с плавающей точкой, используйте `Number()`.
+
+Если нам нужно преобразовать строку в целое число и игнорировать десятичные значения, используйте `parseInt()`.
+
+Если мы уверены, что в строке не будет дополнительных символов или десятичных чисел, и мы хотим получить целое число, `parseInt()` может быть более подходящим выбором.
+ 
+
+### Особенности этих двух подходов
+
+#### Number()
+
+Этот метод преобразует строку в число, учитывая возможные числа с плавающей точкой.
+
+```javascript
+console.log(Number(&apos;5.5&apos;)); // 5.5
+```
+
+Если строка не может быть полностью преобразована в число, результат будет `NaN (Not-a-Number)`.
+
+```javascript
+console.log(Number(&apos;5&apos;));  // 5
+console.log(Number(&apos;5A&apos;))  // NaN
+console.log(Number(&apos;5A5&apos;)) // NaN
+```
+
+#### parseInt()
+
+Этот метод преобразует строку в целое число.
+
+Он останавливается, как только встречает недопустимый символ или конец строки.
+
+```javascript
+console.log(parseInt(&apos;5A3&apos;));  // 5
+console.log(parseInt(&apos;5.67&apos;)); // 5
+```</content:encoded></item><item><title>Извлечение якоря из URL в JavaScript</title><link>https://awilum.ru/articles/extracting-anchor-from-url-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/extracting-anchor-from-url-in-javascript/</guid><description>Извлечение якоря из URL в JavaScript</description><pubDate>Mon, 11 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 Извлечение якоря из **URL** в **JavaScript** может быть достаточно простым с использованием встроенных методов и свойств. Якорь в **URL** представляет собой часть строки после символа решетки `#`. Обычно он используется для указания на конкретное место на веб-странице.
 
 Вот несколько способов извлечения якоря из **URL** в **JavaScript**.
