@@ -240,7 +240,119 @@ console.log(isHarshad(19));   // false
 console.log(isHarshad(2021)); // false
 console.log(isHarshad(2024)); // true
 ```
-</content:encoded></item><item><title>Различия между Number() и parseInt() при преобразовании строк в числа в JavaScript</title><link>https://awilum.ru/articles/differences-between-number-and-parseint-when-converting-strings-to-numbers-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/differences-between-number-and-parseint-when-converting-strings-to-numbers-in-javascript/</guid><description>Различия между Number() и parseInt() при преобразовании строк в числа в JavaScript</description><pubDate>Mon, 11 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+</content:encoded></item><item><title>Как получить текущую метку времени в Python</title><link>https://awilum.ru/articles/how-to-get-the-current-timestamp-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/how-to-get-the-current-timestamp-in-python/</guid><description>Как получить текущую метку времени в Python</description><pubDate>Tue, 12 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+**Таймстамп (timestamp)** представляет собой способ представления времени в виде числа, обычно количества прошедших миллисекунд с определенного момента времени. В большинстве случаев используется начало эпохи **Unix**, которое приходится на 1 января 1970 года 00:00:00 UTC. Таймстампы широко используются в программировании и компьютерных системах для обработки и хранения временной информации.
+
+В **Python** есть несколько способов получить текущее время и дату в виде метки времени **(timestamp)**, которая обычно представляет собой количество миллисекунд, прошедших с начала эпохи **Unix (1 января 1970 года 00:00:00 UTC)**. 
+
+### Использование `datetime.datetime.now()`
+
+```python
+import datetime
+
+current_time = datetime.datetime.now()
+
+print(&quot;Текущая метка времени:&quot;, current_time)
+```
+
+### Использование `datetime.datetime.now().timestamp()`
+
+```python
+import datetime
+
+current_time = datetime.datetime.now().timestamp()
+
+print(&quot;Текущая метка времени:&quot;, current_time)
+```
+
+### Использование `strftime()` для форматированного вывода
+
+```python
+import datetime
+
+current_time = datetime.datetime.now()
+formatted_time = current_time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;)
+
+print(&quot;Текущая метка времени в формате YYYY-MM-DD HH:MM:SS:&quot;, formatted_time)
+```
+
+### Использование `time.time()`
+
+```python
+import time
+
+current_time = time.time()
+
+print(&quot;Текущая метка времени:&quot;, current_time)
+```
+
+&lt;br&gt;
+
+Каждый из этих способов имеет свои особенности и может быть использован в зависимости от вашего конкретного случая. Например, `datetime.now()` предоставляет объект` datetime`, который можно легко форматировать или использовать для выполнения различных операций с датами и временем. `time.time()` возвращает время в секундах с начала эпохи **Unix (1 января 1970 года 00:00:00 UTC)**, что может быть полезно для вычислений временных интервалов или операций с временем, не требующих дополнительного форматирования.</content:encoded></item><item><title>Разбиение строк на слова в Python</title><link>https://awilum.ru/articles/splitting-strings-into-words-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/splitting-strings-into-words-in-python/</guid><description>Разбиение строк на слова в Python</description><pubDate>Tue, 12 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В **Python** разбиение строки на слова – это обычная операция, которая часто используется при обработке текста. 
+
+### Метод `split()`
+
+Метод `split()` разбивает строку на список подстрок, используя указанный разделитель. По умолчанию разделительом считается пробел. 
+
+Например:
+
+```python
+text = &quot;Это пример строки, которую мы разобьем на слова.&quot;
+words = text.split()
+
+print(words)
+```
+
+Этот код выведет:
+
+```
+[&apos;Это&apos;, &apos;пример&apos;, &apos;строки,&apos;, &apos;которую&apos;, &apos;мы&apos;, &apos;разобьем&apos;, &apos;на&apos;, &apos;слова.&apos;]
+```
+
+### Метод `split()` с пользовательским разделителем
+
+Вы также можете использовать метод `split()` с пользовательским разделителем. 
+
+Например, чтобы разделить строку по запятой:
+
+```python
+text = &quot;Яблоко, груша, вишня, апельсин&quot;
+fruits = text.split(&quot;, &quot;)
+
+print(fruits)
+```
+
+Этот код выведет:
+
+```
+[&apos;Яблоко&apos;, &apos;груша&apos;, &apos;вишня&apos;, &apos;апельсин&apos;]
+```
+
+### Метод `re.split()`
+
+Модуль `re` предоставляет более гибкий способ разбиения строки с помощью регулярных выражений. 
+
+Например, чтобы разделить строку по пробелам или запятым:
+
+```python
+import re
+
+text = &quot;Это пример, где мы используем регулярное выражение.&quot;
+words = re.split(r&apos;\s|,\s*&apos;, text)
+
+print(words)
+```
+
+Этот код выведет:
+
+```
+[&apos;Это&apos;, &apos;пример&apos;, &apos;где&apos;, &apos;мы&apos;, &apos;используем&apos;, &apos;регулярное&apos;, &apos;выражение.&apos;]
+```
+
+Это лишь некоторые из способов разбиения строки на слова в **Python**. 
+
+Выбор метода зависит от вашей конкретной задачи и уровня гибкости, который вам требуется.</content:encoded></item><item><title>Различия между Number() и parseInt() при преобразовании строк в числа в JavaScript</title><link>https://awilum.ru/articles/differences-between-number-and-parseint-when-converting-strings-to-numbers-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/differences-between-number-and-parseint-when-converting-strings-to-numbers-in-javascript/</guid><description>Различия между Number() и parseInt() при преобразовании строк в числа в JavaScript</description><pubDate>Mon, 11 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 Оба способа, `Number()` и `parseInt()`, могут быть использованы для преобразования строки в число в **JavaScript**. Однако у них есть некоторые различия в поведении, которые следует учитывать при выборе.
 
 Выбор между `Number()` и `parseInt()` зависит от вашей конкретной задачи и того, какие типы чисел мы ожидаем обрабатывать.
