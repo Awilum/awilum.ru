@@ -1,4 +1,115 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Определение простых чисел в JavaScript</title><link>https://awilum.ru/articles/defining-prime-numbers-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/defining-prime-numbers-in-javascript/</guid><description>Определение простых чисел в JavaScript</description><pubDate>Tue, 12 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Определение наличия повторяющихся подряд букв в слове с использованием JavaScript</title><link>https://awilum.ru/articles/determining-if-there-are-duplicate-letters-in-a-word-using-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/determining-if-there-are-duplicate-letters-in-a-word-using-javascript/</guid><description>Определение наличия повторяющихся подряд букв в слове с использованием JavaScript</description><pubDate>Wed, 13 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В **JavaScript** существует несколько способов определить, есть ли повторяющиеся подряд буквы в слове. 
+
+Вот один из простых способов с использованием цикла `for` и метода `charAt()`:
+
+```javascript
+function hasConsecutiveLetters(word) {
+    for (let i = 0; i &lt; word.length - 1; i++) {
+        if (word.charAt(i) === word.charAt(i + 1)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Пример использования
+console.log(hasConsecutiveLetters(&quot;hello&quot;)); // true
+console.log(hasConsecutiveLetters(&quot;world&quot;)); // false
+console.log(hasConsecutiveLetters(&quot;Анна&quot;));  // true
+console.log(hasConsecutiveLetters(&quot;Аня&quot;));   // false
+```
+
+Этот код проверяет каждую букву в слове, начиная с первой, и сравнивает её с буквой, следующей за ней. Если они равны, функция возвращает `true`, что означает наличие повторяющихся подряд букв. Если ни одна пара букв не совпадает, функция `hasConsecutiveLetters` возвращает `false`.
+
+Другой способ - использовать регулярные выражения:
+
+```javascript
+function hasConsecutiveLettersRegex(word) {
+    return /(.)\1/.test(word);
+}
+
+// Пример использования
+console.log(hasConsecutiveLettersRegex(&quot;hello&quot;)); // true
+console.log(hasConsecutiveLettersRegex(&quot;world&quot;)); // false
+console.log(hasConsecutiveLettersRegex(&quot;Анна&quot;));  // true
+console.log(hasConsecutiveLettersRegex(&quot;Аня&quot;));   // false
+```
+
+В этом случае регулярное выражение `(.)\1` означает любой символ, за которым следует точно такой же символ, найденный ранее `\1`. Если такое совпадение найдено в слове, то функция `hasConsecutiveLettersRegex` возвращает `true`.</content:encoded></item><item><title>Как проверить наличие дубликатов слов в строке на JavaScript</title><link>https://awilum.ru/articles/how-to-check-for-duplicate-words-in-a-string-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/how-to-check-for-duplicate-words-in-a-string-in-javascript/</guid><description>Как проверить наличие дубликатов слов в строке на JavaScript</description><pubDate>Wed, 13 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В **JavaScript** существует множество способов проверки строки на наличие дубликатов слов. Один из наиболее эффективных и простых подходов заключается в использовании объекта `Set`, который поможет быстро отследить уникальные значения. 
+
+Давайте рассмотрим пример кода, демонстрирующий этот метод:
+
+```javascript 
+function hasDuplicates(str) {
+    // Разбиваем строку на массив слов
+    const words = str.split(&quot; &quot;);
+    
+    // Создаем новый объект Set из массива слов,
+    // Set автоматически удалит все дубликаты
+    const uniqueWords = new Set(words);
+    
+    // Если длина массива слов и уникальных слов не совпадает,
+    // значит, в строке были дубликаты
+    return words.length !== uniqueWords.size;
+}
+
+// Пример использования
+const string1 = &quot;это строка без дубликатов&quot;;
+const string2 = &quot;это строка с дубликатами дубликатами&quot;;
+
+console.log(hasDuplicates(string1)); // false
+console.log(hasDuplicates(string2)); // true
+```
+
+Этот код сначала разбивает входную строку на массив слов с помощью метода `split()`. Затем он создает новый объект `Set` из этого массива. Поскольку `Set` может содержать только уникальные значения, все дубликаты будут автоматически удалены. После этого код сравнивает длину исходного массива со размером уникального `Set`. Если они не совпадают, то в строке есть дубликаты, и функция возвращает `true`, в противном случае `false`.</content:encoded></item><item><title>Как подсчитать количество вхождений определённой буквы в строку в JavaScript</title><link>https://awilum.ru/articles/how-to-count-the-number-of-occurrences-of-a-specific-letter-in-a-string-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/how-to-count-the-number-of-occurrences-of-a-specific-letter-in-a-string-in-javascript/</guid><description>Как подсчитать количество вхождений определённой буквы в строку в JavaScript</description><pubDate>Wed, 13 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Вы можете подсчитать количество раз, которое определенная буква встречается в строке в **JavaScript**, используя различные методы.
+
+### Цикл `for`
+
+```javascript
+function countOccurrences(str, char) {
+    let count = 0;
+
+    for (let i = 0; i &lt; str.length; i++) {
+        if (str.charAt(i) === char) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+let myString = &quot;Hello, world!&quot;;
+let charToCount = &quot;o&quot;;
+let occurrences = countOccurrences(myString, charToCount);
+
+console.log(&quot;Количество вхождений символа &apos;&quot; + charToCount + &quot;&apos;: &quot; + occurrences);
+
+// Количество вхождений символа &apos;o&apos;: 2
+```
+
+Этот код проходит по каждому символу в строке и увеличивает счетчик, если текущий символ соответствует искомому.
+
+### Метод `split`
+
+```javascript
+function countOccurrences(str, char) {
+    return str.split(char).length - 1;
+}
+
+let myString = &quot;Hello, world!&quot;;
+let charToCount = &quot;l&quot;;
+let occurrences = countOccurrences(myString, charToCount);
+
+console.log(&quot;Количество вхождений символа &apos;&quot; + charToCount + &quot;&apos;: &quot; + occurrences);
+
+// Количество вхождений символа &apos;l&apos;: 3
+```
+
+Этот код разбивает строку по заданному символу и затем подсчитывает количество частей. Количество вхождений символа будет на один меньше, чем количество частей, поэтому мы вычитаем 1.
+</content:encoded></item><item><title>Определение простых чисел в JavaScript</title><link>https://awilum.ru/articles/defining-prime-numbers-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/defining-prime-numbers-in-javascript/</guid><description>Определение простых чисел в JavaScript</description><pubDate>Tue, 12 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 Определение того, является ли число простым или нет, является одной из базовых задач в математике и программировании. 
 
 **Простые числа** - это натуральные числа больше 1, которые имеют ровно два делителя: 1 и само число. 
