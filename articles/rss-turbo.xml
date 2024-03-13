@@ -36,7 +36,72 @@ console.log(hasConsecutiveLettersRegex(&quot;Анна&quot;));  // true
 console.log(hasConsecutiveLettersRegex(&quot;Аня&quot;));   // false
 ```
 
-В этом случае регулярное выражение `(.)\1` означает любой символ, за которым следует точно такой же символ, найденный ранее `\1`. Если такое совпадение найдено в слове, то функция `hasConsecutiveLettersRegex` возвращает `true`.</content:encoded></item><item><title>Как проверить наличие дубликатов слов в строке на JavaScript?</title><link>https://awilum.ru/articles/how-to-check-for-duplicate-words-in-a-string-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/how-to-check-for-duplicate-words-in-a-string-in-javascript/</guid><description>Как проверить наличие дубликатов слов в строке на JavaScript?</description><pubDate>Wed, 13 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В этом случае регулярное выражение `(.)\1` означает любой символ, за которым следует точно такой же символ, найденный ранее `\1`. Если такое совпадение найдено в слове, то функция `hasConsecutiveLettersRegex` возвращает `true`.</content:encoded></item><item><title>Как работает метод toString() в JavaScript?</title><link>https://awilum.ru/articles/how-does-the-tostring-method-work-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/how-does-the-tostring-method-work-in-javascript/</guid><description>Как работает метод toString() в JavaScript?</description><pubDate>Wed, 13 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Метод `toString()` в **JavaScript** используется для преобразования объекта в строку. Этот метод принадлежит к общему прототипу объекта `Object`, что означает, что он доступен для всех объектов в **JavaScript**, поскольку они унаследованы от `Object`.
+
+По умолчанию метод `toString()` возвращает строковое представление объекта. Однако различные типы объектов могут реализовывать этот метод по-разному, чтобы предоставить более информативное представление.
+
+Вот как работает `toString()` для различных случаях в **JavaScript**:
+
+### String (строки)
+
+Для строк метод `toString()` возвращает саму строку. Это связано с тем, что строки уже являются примитивными типами данных и не требуют дополнительного преобразования.
+
+```javascript
+let str = &quot;Hello&quot;;
+
+console.log(str.toString()); // Hello
+```
+
+### Number (числа)
+
+Для чисел метод `toString()` возвращает строковое представление числа.
+
+```javascript
+let num = 42;
+
+console.log(num.toString()); // 42
+```
+
+### Array (массивы)
+
+Для массивов метод `toString()` объединяет все элементы массива в одну строку, разделяя их запятыми.
+
+```javascript
+let arr = [1, 2, 3];
+
+console.log(arr.toString()); // 1,2,3
+```
+
+### Object (объекты)
+
+По умолчанию для объектов метод `toString()` возвращает строку, содержащую информацию о типе объекта.
+
+```javascript
+let obj = { key: &apos;value&apos; };
+
+console.log(obj.toString()); // [object Object]
+```
+
+### Custom Objects (пользовательские объекты)
+
+Вы можете переопределить метод `toString()` для своих объектов, чтобы он возвращал пользовательское строковое представление.
+
+```javascript
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+Person.prototype.toString = function() {
+    return `Name: ${this.name}, Age: ${this.age}`;
+};
+
+const person = new Person(&apos;John&apos;, 30);
+
+console.log(person.toString()); // Name: John, Age: 30
+```
+</content:encoded></item><item><title>Как проверить наличие дубликатов слов в строке на JavaScript?</title><link>https://awilum.ru/articles/how-to-check-for-duplicate-words-in-a-string-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/how-to-check-for-duplicate-words-in-a-string-in-javascript/</guid><description>Как проверить наличие дубликатов слов в строке на JavaScript?</description><pubDate>Wed, 13 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 В **JavaScript** существует множество способов проверки строки на наличие дубликатов слов. Один из наиболее эффективных и простых подходов заключается в использовании объекта `Set`, который поможет быстро отследить уникальные значения. 
 
 Давайте рассмотрим пример кода, демонстрирующий этот метод:
@@ -169,10 +234,10 @@ console.log(Number.isInteger(-5));   // true
 ```javascript
 function findDivisors(number) {
     // Создаем массив для хранения делителей
-    var divisors = [];
+    let divisors = [];
 
     // Проверяем делители от 1 до половины числа (включительно)
-    for (var i = 1; i &lt;= number / 2; i++) {
+    for (let i = 1; i &lt;= number / 2; i++) {
         // Если число делится без остатка, добавляем его в массив делителей
         if (number % i === 0) {
             divisors.push(i);
@@ -1612,7 +1677,7 @@ console.log(&quot;Inner width: &quot; + windowWidth + &quot;, Inner height: &quo
 console.log(&quot;Outer width: &quot; + outerWindowWidth + &quot;, Outer height: &quot; + outerWindowHeight);
 ```
 
-Обратите внимание, что значения свойств могут быть недоступными или неопределенными в некоторых случаях, например, если скрипт выполняется в контексте **iframe** или если браузер заблокировал доступ к свойствам окна в целях безопасности.</content:encoded></item><item><title>Как определить темный режим с помощью JavaScript</title><link>https://awilum.ru/articles/how-to-detect-dark-mode-using-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/how-to-detect-dark-mode-using-javascript/</guid><description>Как определить темный режим с помощью JavaScript</description><pubDate>Wed, 06 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Обратите внимание, что значения свойств могут быть недоступными или неопределенными в некоторых случаях, например, если скрипт выполняется в контексте **iframe** или если браузер заблокировал доступ к свойствам окна в целях безопасности.</content:encoded></item><item><title>Как определить темный режим с помощью JavaScript?</title><link>https://awilum.ru/articles/how-to-detect-dark-mode-using-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/how-to-detect-dark-mode-using-javascript/</guid><description>Как определить темный режим с помощью JavaScript?</description><pubDate>Wed, 06 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 Обнаружение темной темы (dark mode) с помощью **JavaScript** можно осуществить, используя функциональность медиа-запросов **CSS** и свойства **window.matchMedia**. Это позволяет вашему веб-сайту или веб-приложению реагировать на изменения темы, которые сделал пользователь в настройках своего устройства или браузера.
 
 Вот пример кода, который демонстрирует, как это можно сделать:
@@ -4482,7 +4547,7 @@ let result = `${str1}${str2}`;
 console.log(result); // Привет, мир!
 ```
 
-Здесь `${}` используется для вставки переменных в строку.</content:encoded></item><item><title>Как проверить, является ли значение числом в JavaScript</title><link>https://awilum.ru/articles/how-to-check-if-a-value-is-a-number-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/how-to-check-if-a-value-is-a-number-in-javascript/</guid><description>Как проверить, является ли значение числом в JavaScript</description><pubDate>Wed, 10 Jan 2024 00:00:00 GMT</pubDate><content:encoded>
+Здесь `${}` используется для вставки переменных в строку.</content:encoded></item><item><title>Как проверить, является ли значение числом в JavaScript?</title><link>https://awilum.ru/articles/how-to-check-if-a-value-is-a-number-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/how-to-check-if-a-value-is-a-number-in-javascript/</guid><description>Как проверить, является ли значение числом в JavaScript?</description><pubDate>Wed, 10 Jan 2024 00:00:00 GMT</pubDate><content:encoded>
 В JavaScript существует несколько способов проверки, является ли значение числом. 
 
 ### Использование `typeof`
