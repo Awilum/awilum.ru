@@ -14,16 +14,11 @@ console<span class="token punctuation">.</span><span class="token function">log<
 
 <span class="token comment">/*
 
-[[object Object] {
-  x: 15,
-  y: 30
-}, [object Object] {
-  x: 25,
-  y: 40
-}, [object Object] {
-  x: 35,
-  y: 50
-}]
+[
+  { x: 15, y: 30 },
+  { x: 25, y: 40 },
+  { x: 35, y: 50 },
+]
 
 */</span></code></pre>
 <p>Метод <code>forEach()</code> выполняет <code>callback</code> функцию для каждого элемента в массиве.</p>
@@ -42,19 +37,11 @@ enemies<span class="token punctuation">.</span><span class="token function">forE
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>enemies<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">/*
-[[object Object] {
-  name: "Гоблин",
-  x: 110,
-  y: 55
-}, [object Object] {
-  name: "Скелет",
-  x: 210,
-  y: 105
-}, [object Object] {
-  name: "Орк",
-  x: 310,
-  y: 155
-}]
+[
+  { name: "Гоблин", x: 110, y: 55 },
+  { name: "Скелет", x: 210, y: 105 },
+  { name: "Орк", x: 310, y: 155 },
+]
 */</span></code></pre>
 <p>Основное отличие между <code>forEach()</code> и <code>map()</code> заключается в том, что <code>forEach()</code> используется, когда нужно выполнить действие для каждого элемента массива, в то время как <code>map()</code> используется, чтобы создать новый массив, преобразовывая каждый элемент исходного массива.</p>
 <p>Пример с <code>map()</code>:</p>
@@ -68,7 +55,12 @@ console<span class="token punctuation">.</span><span class="token function">log<
 
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment">// [ { x: 205, y: 110 }, { x: 305, y: 160 } ]</span></code></pre>
+<span class="token comment">/*
+[
+    { x: 205, y: 110 },
+    { x: 305, y: 160 },
+]
+*/</span></code></pre>
 <p>Пример с <code>forEach()</code>:</p>
 <pre class="language-javascript"><code is:raw="" class="language-javascript"><span class="token keyword">let</span> enemies <span class="token operator">=</span> <span class="token punctuation">[</span>
   <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Гоблин"</span><span class="token punctuation">,</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">50</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
