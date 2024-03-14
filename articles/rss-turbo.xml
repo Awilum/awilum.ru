@@ -1,4 +1,154 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Определение наличия повторяющихся подряд букв в слове с использованием JavaScript</title><link>https://awilum.ru/articles/determining-if-there-are-duplicate-letters-in-a-word-using-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/determining-if-there-are-duplicate-letters-in-a-word-using-javascript/</guid><description>Определение наличия повторяющихся подряд букв в слове с использованием JavaScript</description><pubDate>Wed, 13 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Выход из цикла в JavaScript</title><link>https://awilum.ru/articles/exiting-a-loop-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/exiting-a-loop-in-javascript/</guid><description>Выход из цикла в JavaScript</description><pubDate>Thu, 14 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Выход из цикла в **JavaScript** может быть достигнут различными способами, в зависимости от типа цикла и требуемого поведения. 
+
+Рассмотрим основные способы выхода из циклов в **JavaScript**.
+
+### Использование оператора break
+
+`break` используется для выхода из цикла, когда определенное условие выполняется. 
+
+Это работает для циклов `for`, `while` и `do...while`.
+
+Пример с использованием цикла `for`
+
+```javascript
+for (let i = 0; i &lt; 10; i++) {
+    if (i === 5) {
+        break; // выход из цикла, когда i достигает 5
+    }
+    console.log(i);
+}
+```
+
+Пример с использованием цикла `while`
+
+```javascript
+let i = 0;
+while (i &lt; 10) {
+    if (i === 5) {
+        break; // выход из цикла, когда i достигает 5
+    }
+    console.log(i);
+    i++;
+}
+```
+
+Пример с использованием цикла `do...while`
+
+```javascript
+let i = 0;
+do {
+    if (i === 5) {
+        break; // выход из цикла, когда i достигает 5
+    }
+    console.log(i);
+    i++;
+} while (i &lt; 10);
+```
+
+Во всех этих примерах оператор break используется для прерывания выполнения цикла, когда значение переменной `i` достигает 5.
+
+### Использование функции `return`
+
+Если цикл находится внутри функции, можно использовать `return` для выхода из нее.
+
+Пример: 
+
+```javascript
+function findIndex(arr, target) {
+    for (let i = 0; i &lt; arr.length; i++) {
+        if (arr[i] === target) {
+            return i; // выход из функции при условии
+        }
+    }
+    return -1; // если элемент не найден
+}
+
+console.log(findIndex([1, 2, 3, 4, 5], 3)); // 2
+```
+
+### Использование флага
+
+Можно использовать переменную-флаг для управления циклом и выхода из него при необходимости.
+
+Пример:
+
+```javascript
+let shouldExit = false;
+let count = 0;
+
+while (!shouldExit) {
+    console.log(&quot;Итерация&quot;, count);
+    
+    // Проверяем условие на каждой итерации
+    if (count === 5) {
+        console.log(&quot;Условие выполнено. Выходим из цикла.&quot;);
+        shouldExit = true; // установка флага для выхода из цикла
+    } else {
+        console.log(&quot;Условие не выполнено. Продолжаем цикл.&quot;);
+    }
+    count++;
+}
+```
+
+Цикл будет выполняться до тех пор, пока значение переменной `shouldExit` не станет `true`. Здесь `!shouldExit` означает *&quot;пока shouldExit не равно true&quot;*. На каждой итерации цикла выводится сообщение в консоль, которое указывает текущий номер итерации. Здесь мы проверяем условие: если count равно `5`, то мы выводим сообщение о том, что условие выполнено, и устанавливаем переменную `shouldExit` в `true`, чтобы завершить цикл. Если count не равно `5`, мы выводим сообщение о продолжении цикла. В конце каждой итерации переменная count увеличивается на `1`, чтобы отслеживать количество выполненных итераций. Таким образом, в результате этого кода мы будем выполнять цикл до тех пор, пока count не достигнет `5`, после чего мы выйдем из цикла.</content:encoded></item><item><title>Передача функции в функцию в JavaScript</title><link>https://awilum.ru/articles/passing-a-function-to-a-function-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/passing-a-function-to-a-function-in-javascript/</guid><description>Передача функции в функцию в JavaScript</description><pubDate>Thu, 14 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Передача функции в качестве аргумента в другую функцию в **JavaScript** является одним из ключевых аспектов функционального программирования. Этот прием позволяет создавать более гибкий и мощный код, так как функции могут быть использованы в качестве параметров, возвращаемых значений и присваиваемых переменным.
+
+&gt; **Функциональное программирование (FP)** - это парадигма программирования, в которой программа рассматривается как набор функций, которые манипулируют данными. В функциональном программировании функции рассматриваются как основные строительные блоки программы, и они могут быть переданы и использованы так же, как и любые другие значения.
+
+Давайте рассмотрим примеры использования передачи функции в функцию в **JavaScript**.
+
+### Передача функции в качестве аргумента
+
+```javascript
+function greet(name) {
+    return &apos;Hello, &apos; + name + &apos;!&apos;;
+}
+
+function greetUser(greeterFunc) {
+    let userName = &quot;Lia&quot;;
+
+    console.log(greeterFunc(userName));
+}
+
+greetUser(greet);
+```
+
+В этом примере у нас есть две функции: `greet` и `greetUser`. Функция `greet` принимает имя и возвращает приветствие. Функция` greetUser` принимает другую функцию в качестве аргумента и вызывает ее, передавая ей имя пользователя. В примере мы передаем функцию `greet` в качестве аргумента для `greetUser`.
+
+### Использование анонимной функции в качестве аргумента
+
+```javascript
+function performOperation(num1, num2, operation) {
+    return operation(num1, num2);
+}
+
+let addition = function(a, b) {
+    return a + b;
+};
+
+let result = performOperation(5, 3, addition);
+
+console.log(result); // 8
+```
+
+В этом примере мы передаем анонимную функцию напрямую в качестве третьего аргумента функции `performOperation`. Функция `performOperation` принимает два числа и операцию в качестве аргументов и применяет эту операцию к этим числам. Мы создаем анонимную функцию для выполнения операции сложения и передаем ее в `performOperation`.
+
+### Использование стрелочных функций
+
+```javascript
+function modifyArray(array, modifier) {
+    return array.map(modifier);
+}
+
+let numbers = [1, 2, 3, 4, 5];
+
+let squaredNumbers = modifyArray(numbers, x =&gt; x * x);
+
+console.log(squaredNumbers); // [1, 4, 9, 16, 25]
+```
+
+В этом примере мы используем стрелочную функцию как аргумент для метода `map`. Функция `modifyArray` принимает массив и функцию-модификатор и применяет этот модификатор к каждому элементу массива с помощью метода `map`. Мы передаем стрелочную функцию, которая возводит каждое число в квадрат, в качестве аргумента `modifier`.</content:encoded></item><item><title>Определение наличия повторяющихся подряд букв в слове с использованием JavaScript</title><link>https://awilum.ru/articles/determining-if-there-are-duplicate-letters-in-a-word-using-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/determining-if-there-are-duplicate-letters-in-a-word-using-javascript/</guid><description>Определение наличия повторяющихся подряд букв в слове с использованием JavaScript</description><pubDate>Wed, 13 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 В **JavaScript** существует несколько способов определить, есть ли повторяющиеся подряд буквы в слове. 
 
 Вот один из простых способов с использованием цикла `for` и метода `charAt()`:
