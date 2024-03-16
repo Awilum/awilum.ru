@@ -1,0 +1,307 @@
+<!DOCTYPE html><html lang="ru" data-theme="lofi" class="text-[18px] lg:text-[20px]"> <head><meta charset="UTF-8"><meta name="description" content="Brainfuck интерпретатор на JavaScript"><meta name="keywords" content="javascript, brainfuck, кодирование, интерпретатор, программирование, stepik"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.4.15"><meta name="yandex-verification" content="a1d97fb868e5cf5e"><meta name="google-site-verification" content="RTPsZF1G_xrcJ2yo3IPl9OCzSd6m7xOdTLFSJ9myT6I"><meta property="og:locale" content="ru_RU"><meta property="og:title" content="Brainfuck интерпретатор на JavaScript"><meta property="og:site_name" content="awilum.ru"><meta property="og:url" content="href=`https://awilum.ru${currentPath}`"><meta property="og:description" content="Brainfuck интерпретатор на JavaScript"><meta property="og:type" content="website"><title>Brainfuck интерпретатор на JavaScript</title><link rel="canonical" href="https://awilum.ru/articles/brainfuck-javascript-interpreter/"><link rel="sitemap" href="/sitemap-index.xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/_slug_.D8vFzB-X.css" /><script type="module">
+</script><script src="/_astro/ArticleEntry.astro_astro_type_script_index_0_lang.CEDrOUWK.js" type="module"></script></head> <body class="p-4 lg:p-0" data-pagefind-body> <div class="lg:flex bg-base-100 max-w-[1000px] mx-auto lg:mt-10 items-center lowercase"> <div class="text-left lg:text-center text-2xl mr-4 mb-6 lg:mb-0"> <a class="block font-black underline" href="/">awilum.ru</a> </div> <div class="lg:flex text-left lg:text-center w-full lg:text-2xl text-xl lowercase"> <a class="px-2 pl-0 lg:px-4 underline" href="/articles/">Статьи</a> <a class="px-2 lg:px-4 underline" href="/courses/">Курсы</a> <a class="px-2 lg:px-4 underline" href="/about/">Об авторе</a> </div> </div> <div class="max-w-[1000px] mx-auto">  <h1 class="text-2xl lg:text-6xl py-14 text-left block border-b-2 border-solid border-black">Brainfuck интерпретатор на JavaScript</h1> <div class="text-lg py-10 mx-auto"> <p><strong>Brainfuck</strong> — это один из эзотерических языков программирования, придуманный Урбаном Мюллером в 1993 году, и он известен своим минимализмом. Название языка можно перевести как “вынос мозга”, оно напрямую происходит от английского выражения “brainfuck” (где “brain” означает мозг, а “fuck” — вынос), подразумевая занятие нелепостями. В <strong>Brainfuck</strong> всего восемь команд, каждая из которых представлена одним символом. Исходный код программы на <strong>Brainfuck</strong> представляет собой простую последовательность этих символов без дополнительного синтаксиса.</p>
+<p>Одним из основных мотивов создания <strong>Brainfuck</strong> было стремление Урбана Мюллера создать язык с наименьшим возможным компилятором. Вдохновение он черпал, в частности, из языка <strong>FALSE</strong>, для которого существовал компилятор размером всего 2044 байта. На сегодняшний день существуют компиляторы <strong>Brainfuck</strong> размером менее 200 байт. Написание программ на языке <strong>Brainfuck</strong> сложно, что иногда заставляет называть его языком для мазохистов. Тем не менее, <strong>Brainfuck</strong> является естественным, полным и простым языком, который может использоваться для определения понятия вычислимости.</p>
+<blockquote>
+<p><strong>FALSE</strong> — эзотерический язык программирования, созданный в 1993 году Ваутером ван Ортмерссеном с двумя, по его словам, целями: чтобы можно было написать компилятор для него размером не более одного килобайта. придумать синтаксис, который бы выглядел шифровкой, случайным набором символов.</p>
+</blockquote>
+<blockquote>
+<p><strong>Байт (Byte)</strong> — единица хранения и обработки цифровой информации; совокупность битов, обрабатываемая компьютером одновременно.</p>
+</blockquote>
+<br>
+<p>Cписок восьми команд языка программирования <strong>Brainfuck</strong>:</p>
+<table width="100%">
+    <thead>
+        <tr>
+            <th>Команда</th>
+            <th>Описание</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="center">></td>
+            <td>Перемещение указателя данных на одну ячейку вправо.</td>
+        </tr>
+        <tr>
+            <td align="center">&#x3C;</td>
+            <td>Перемещение указателя данных на одну ячейку влево.</td>
+        </tr>
+        <tr>
+            <td align="center">+</td>
+            <td>Увеличение значения текущей ячейки на единицу.</td>
+        </tr>
+        <tr>
+            <td align="center">-</td>
+            <td>Уменьшение значения текущей ячейки на единицу.</td>
+        </tr>
+        <tr>
+            <td align="center">.</td>
+            <td>Вывод значения текущей ячейки (как символ ASCII).</td>
+        </tr>
+        <tr>
+            <td align="center">,</td>
+            <td>Ввод значения и сохранение его в текущей ячейке (как символ ASCII).</td>
+        </tr>
+        <tr>
+            <td align="center">[</td>
+            <td>Начало цикла (переход к соответствующей <code>]</code>, если значение текущей ячейки равно нулю).</td>
+        </tr>
+        <tr>
+            <td align="center">]</td>
+            <td>Конец цикла (переход к соответствующей <code>[</code>, если значение текущей ячейки не равно нулю).</td>
+        </tr>
+    </tbody>
+</table>
+<p>Эти простые команды позволяют управлять памятью, изменять ее содержимое и выполнять циклические операции, что достаточно для реализации алгоритмов любой сложности.</p>
+<p>Несмотря на свою примитивность, <strong>Brainfuck</strong> с его бесконечным набором ячеек обладает тьюринговской полнотой. Следовательно, по потенциальным возможностям он не уступает “настоящим” языкам программирования, таким как <strong>С</strong>, <strong>Pascal</strong> или <strong>Java</strong>.</p>
+<p><strong>Тьюринговская полнота</strong> - это концепция, связанная с теорией вычислимости, которая определяет способность системы (обычно вычислительной) выполнить любое вычисление, которое может быть выполнено с помощью машины Тьюринга. Машина Тьюринга - это абстрактная модель компьютера, предложенная Аланом Тьюрингом в 1936 году. Она состоит из бесконечной ленты, разделенной на ячейки, и управляющего устройства, способного читать/писать на этой ленте и перемещать головку.<br><br>
+Система считается тьюринговски полной, если она может быть использована для эмуляции машины Тьюринга, то есть если она способна выполнять любой алгоритм, который может быть представлен в виде машины Тьюринга. Практически это означает, что система может решать широкий класс задач, включая вычисление любой рекурсивной функции или выполнение любого алгоритма.<br><br>
+Системы с тьюринговской полнотой широко используются в компьютерах и программном обеспечении, поскольку они предоставляют универсальный способ выполнения разнообразных задач. В том числе, они обычно используются для оценки вычислительной мощности различных языков программирования и архитектур компьютеров.</p>
+<p><strong>Brainfuck</strong> подходит для проведения экспериментов в области генетического программирования из-за своей простоты синтаксиса и, как следствие, легкости генерации исходного кода.</p>
+<p>В “классическом” варианте <strong>Brainfuck</strong>, созданном Мюллером, размер ячейки составляет один байт, а количество ячеек равно 30 000. При начальной установке указатель находится в крайней левой позиции, а все ячейки заполнены нулями. Увеличение или уменьшение значений ячеек происходит по модулю 256. Ввод-вывод также происходит побайтно, используя кодировку ASCII. Например, при операции ввода (,) символ “1” будет записан в текущую ячейку как число 0x31 (49), а операция вывода (.) над ячейкой, содержащей 0x41 (65), напечатает латинскую букву “A”. В других вариантах языка размер и количество ячеек могут отличаться. Существуют версии, где значения ячеек не являются целочисленными (с плавающей точкой).</p>
+<h3 id="пример-программы-hello-world">Пример программы Hello World</h3>
+<p>Пошаговая программа на языке <strong>Brainfuck</strong>, печатающая <code>Hello World!</code> с переносом строки (в виде <strong>ASCII-кода</strong>:  <code>72 101 108 108 111 32 87 111 114 108 100 33 10</code>):</p>
+<blockquote>
+<p>++++++++++[>+++++++>++++++++++>+++>+&#x3C;&#x3C;&#x3C;&#x3C;-]>++.>+.+++++++..+++.>++.&#x3C;&#x3C;+++++++++++++++.>.+++.------.--------.>+.>.</p>
+</blockquote>
+<p><strong>Разбор программы:</strong></p>
+<table border="1">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Описание</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="center">++++++++++</td>
+            <td>Присваивание ячейке 0 значения 10</td>
+        </tr>
+        <tr>
+            <td align="center">[</td>
+            <td>Повторять описанные этой скобкой команды, пока значение текущей ячейки 0 не равно нулю</td>
+        </tr>
+        <tr>
+            <td align="center">>+++++++</td>
+            <td>Приращение ячейки 1 на 7</td>
+        </tr>
+        <tr>
+            <td align="center">>++++++++++</td>
+            <td>Приращение ячейки 2 на 10</td>
+        </tr>
+        <tr>
+            <td align="center">>+++</td>
+            <td>Приращение ячейки 3 на 3</td>
+        </tr>
+        <tr>
+            <td align="center">>+</td>
+            <td>Приращение ячейки 4 на 1</td>
+        </tr>
+        <tr>
+            <td align="center">&#x3C;&#x3C;&#x3C;&#x3C;-</td>
+            <td>Декремент ячейки 0 на 1</td>
+        </tr>
+        <tr>
+            <td align="center">]</td>
+            <td>Проверка, не равна ли ячейка 0 нулю</td>
+        </tr>
+        <tr>
+            <td align="center">>++.</td>
+            <td>В ячейке 1 добавление 2 к 70 и вывод на печать ASCII-кода 72, т.е. буквы «Н».</td>
+        </tr>
+        <tr>
+            <td align="center">>+.</td>
+            <td>В ячейке 2 добавление 1 к 100 = 101, печать буквы «e»</td>
+        </tr>
+        <tr>
+            <td align="center">+++++++..</td>
+            <td>В этой же ячейке добавление 7 к 101 = 108, печать «l» дважды</td>
+        </tr>
+        <tr>
+            <td align="center">+++.</td>
+            <td>В этой же ячейке добавление 3 к 108 = 111, печать «o»</td>
+        </tr>
+        <tr>
+            <td align="center">>++.</td>
+            <td>В ячейке 3 добавление 2 к 30 = 32, печать пробела</td>
+        </tr>
+        <tr>
+            <td align="center">&#x3C;&#x3C;+++++++++++++++.</td>
+            <td>В ячейке 1 добавление 15 к 72 = 87, печать «W»</td>
+        </tr>
+        <tr>
+            <td align="center">>.</td>
+            <td>В ячейке 2 уже есть 111, сразу печать «o»</td>
+        </tr>
+        <tr>
+            <td align="center">+++.</td>
+            <td>В этой же ячейке добавление 3 к 111 = 114, печать «r»</td>
+        </tr>
+        <tr>
+            <td align="center">------.</td>
+            <td>В этой же ячейке вычитание 6 из 114 = 108, печать «l»</td>
+        </tr>
+        <tr>
+            <td align="center">--------.</td>
+            <td>В этой же ячейке вычитание 8 из 108 = 100, печать «d»</td>
+        </tr>
+        <tr>
+            <td align="center">>+.</td>
+            <td>В ячейке 3 добавление 1 к 32 = 33, печать «!»</td>
+        </tr>
+        <tr>
+            <td align="center">>.</td>
+            <td>В ячейке 4 уже есть 10, сразу печать перевода строки</td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="реализация-интерпретатора-на-javascript">Реализация интерпретатора на JavaScript</h3>
+<p>Реализация интерпретатора <strong>Brainfuck</strong> на <strong>JavaScript</strong> не так уж сложна благодаря простоте языка.</p>
+<p>Вот простая реализация интерпретатора <strong>Brainfuck</strong> на <strong>JavaScript</strong>:</p>
+<pre class="language-javascript"><code is:raw="" class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">BrainfuckInterpreter</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 30000 ячеек памяти, как в стандарте Brainfuck</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>memory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span><span class="token number">30000</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        <span class="token keyword">this</span><span class="token punctuation">.</span>pointer <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// Указатель на текущую ячейку</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>input <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>  <span class="token comment">// Ввод</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>output <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span> <span class="token comment">// Вывод</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">interpret</span><span class="token punctuation">(</span>code<span class="token punctuation">,</span> input <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>code <span class="token operator">=</span> code<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>input <span class="token operator">=</span> input<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>pointer <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>output <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Стек для отслеживания начала и конца циклов</span>
+        <span class="token keyword">let</span> loopStack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&#x3C;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>code<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">let</span> instruction <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>code<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">switch</span> <span class="token punctuation">(</span>instruction<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">case</span> <span class="token string">'>'</span><span class="token operator">:</span>
+                    <span class="token keyword">this</span><span class="token punctuation">.</span>pointer<span class="token operator">++</span><span class="token punctuation">;</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token keyword">case</span> <span class="token string">'&#x3C;'</span><span class="token operator">:</span>
+                    <span class="token keyword">this</span><span class="token punctuation">.</span>pointer<span class="token operator">--</span><span class="token punctuation">;</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token keyword">case</span> <span class="token string">'+'</span><span class="token operator">:</span>
+                    <span class="token keyword">this</span><span class="token punctuation">.</span>memory<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>pointer<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token keyword">case</span> <span class="token string">'-'</span><span class="token operator">:</span>
+                    <span class="token keyword">this</span><span class="token punctuation">.</span>memory<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>pointer<span class="token punctuation">]</span><span class="token operator">--</span><span class="token punctuation">;</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token keyword">case</span> <span class="token string">'.'</span><span class="token operator">:</span>
+                    <span class="token keyword">this</span><span class="token punctuation">.</span>output <span class="token operator">+=</span> String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>memory<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>pointer<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token keyword">case</span> <span class="token string">','</span><span class="token operator">:</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>input<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token keyword">this</span><span class="token punctuation">.</span>memory<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>pointer<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>input<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">this</span><span class="token punctuation">.</span>input <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>input<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                        <span class="token comment">// Если ввод закончился, просто устанавливаем значение ячейки в 0</span>
+                        <span class="token keyword">this</span><span class="token punctuation">.</span>memory<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>pointer<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token keyword">case</span> <span class="token string">'['</span><span class="token operator">:</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>memory<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>pointer<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token keyword">let</span> depth <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                        <span class="token keyword">while</span> <span class="token punctuation">(</span>depth <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                            i<span class="token operator">++</span><span class="token punctuation">;</span>
+                            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>code<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'['</span><span class="token punctuation">)</span> depth<span class="token operator">++</span><span class="token punctuation">;</span>
+                            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>code<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">']'</span><span class="token punctuation">)</span> depth<span class="token operator">--</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                        loopStack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token keyword">case</span> <span class="token string">']'</span><span class="token operator">:</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>memory<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>pointer<span class="token punctuation">]</span> <span class="token operator">!==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        i <span class="token operator">=</span> loopStack<span class="token punctuation">[</span>loopStack<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                        loopStack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token keyword">default</span><span class="token operator">:</span>
+                    <span class="token comment">// Игнорируем любые другие символы, которые могут встретиться</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>output<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Этот код создает класс <code>BrainfuckInterpreter</code>, который содержит метод <code>interpret</code>, принимающий код <strong>Brainfuck</strong> и ввод, и возвращает результат выполнения кода. Мы используем массив <code>memory</code>, чтобы хранить состояние ячеек памяти, и указатель <code>pointer</code>, чтобы отслеживать текущую ячейку. Метод <code>interpret</code> выполняет каждую инструкцию из кода <strong>Brainfuck</strong>, изменяя состояние <code>memory</code> и <code>pointer</code> соответственно.</p>
+<p>Такая реализация является базовой и может быть расширена для обработки дополнительных функций, таких как ввод-вывод файлов, оптимизация производительности и т.д.</p>
+<h3 id="примеры-использования">Примеры использования</h3>
+<p><strong>Программа для вывода: Hello World!</strong></p>
+<blockquote>
+<p>++++++++++[>+++++++>++++++++++>+++>+&#x3C;&#x3C;&#x3C;&#x3C;-]>++.>+.+++++++..+++.>++.&#x3C;&#x3C;+++++++++++++++.>.+++.------.--------.>+.>.</p>
+</blockquote>
+<pre class="language-javascript"><code is:raw="" class="language-javascript"><span class="token keyword">let</span> interpreter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrainfuckInterpreter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> code <span class="token operator">=</span> <span class="token string">'++++++++++[>+++++++>++++++++++>+++>+&#x3C;&#x3C;&#x3C;&#x3C;-]>++.>+.+++++++..+++.>++.&#x3C;&#x3C;+++++++++++++++.>.+++.------.--------.>+.>.'</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> input <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> result <span class="token operator">=</span> interpreter<span class="token punctuation">.</span><span class="token function">interpret</span><span class="token punctuation">(</span>code<span class="token punctuation">,</span> input<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Hello World!</span></code></pre>
+<p><strong>Программа для копирования ввода в вывод</strong></p>
+<blockquote>
+<p>,[.,]</p>
+</blockquote>
+<pre class="language-javascript"><code is:raw="" class="language-javascript"><span class="token keyword">let</span> interpreter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrainfuckInterpreter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> code <span class="token operator">=</span> <span class="token string">',[.,]'</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> input <span class="token operator">=</span> <span class="token string">'Hello, Brainfuck!'</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> result <span class="token operator">=</span> interpreter<span class="token punctuation">.</span><span class="token function">interpret</span><span class="token punctuation">(</span>code<span class="token punctuation">,</span> input<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Hello, Brainfuck!</span></code></pre>
+<p><strong>Программа которая выводит обратный ввод</strong></p>
+<blockquote>
+<p>>,[>,]&#x3C;[.&#x3C;]</p>
+</blockquote>
+<pre class="language-javascript"><code is:raw="" class="language-javascript"><span class="token keyword">let</span> interpreter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrainfuckInterpreter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> code <span class="token operator">=</span> <span class="token string">'>,[>,]&#x3C;[.&#x3C;]'</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> input <span class="token operator">=</span> <span class="token string">'Hello'</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> result <span class="token operator">=</span> interpreter<span class="token punctuation">.</span><span class="token function">interpret</span><span class="token punctuation">(</span>code<span class="token punctuation">,</span> input<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// olleH</span></code></pre>
+<p><strong>Программа для очистки командной консоли</strong></p>
+<blockquote>
+<p>++++++++++[>++++++++++>+&#x3C;&#x3C;-]>[>.&#x3C;-]</p>
+</blockquote>
+<pre class="language-javascript"><code is:raw="" class="language-javascript"><span class="token keyword">let</span> interpreter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrainfuckInterpreter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> code <span class="token operator">=</span> <span class="token string">'++++++++++[>++++++++++>+&#x3C;&#x3C;-]>[>.&#x3C;-]'</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> input <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> result <span class="token operator">=</span> interpreter<span class="token punctuation">.</span><span class="token function">interpret</span><span class="token punctuation">(</span>code<span class="token punctuation">,</span> input<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token comment">// Консоль будет очищена.</span></code></pre>
+<p><strong>Программа кодирования строки ввода в Brainfuck</strong></p>
+<blockquote>
+<p>+++++[>+++++++++&#x3C;-],[[>—.++>+&#x3C;&#x3C;-]>+.->[&#x3C;.>-]&#x3C;&#x3C;,]</p>
+</blockquote>
+<pre class="language-javascript"><code is:raw="" class="language-javascript"><span class="token keyword">let</span> interpreter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrainfuckInterpreter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> code <span class="token operator">=</span> <span class="token string">'+++++[>+++++++++&#x3C;-],[[>--.++>+&#x3C;&#x3C;-]>+.->[&#x3C;.>-]&#x3C;&#x3C;,]'</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>interpreter<span class="token punctuation">.</span><span class="token function">interpret</span><span class="token punctuation">(</span>code<span class="token punctuation">,</span> <span class="token string">"42"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token comment">// ++++++++++++++++++++++++++++++++++++++++++++++++++++.----------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++.--------------------------------------------------</span></code></pre>
+<h3 id="brainfuck-interpreter-stepik">Brainfuck Interpreter (Stepik)</h3>
+<p>Так как <a href="/stepik">Stepik</a> не поддерживает язык программирования  <strong>Brainfuck</strong>, я добавил его реализацию на <strong>JavaScript</strong> в виде публичного урока. Теперь вы можете использовать этот урок как <strong>Brainfuck Interpreter</strong>!</p>
+<p>Пройдите по <a href="https://stepik.org/lesson/1258323/">ссылке</a> и начните пользоваться этим интерпретатором <strong>Brainfuck</strong>. Этот интерпретатор позволит вам запускать программы на языке Brainfuck прямо в вашем браузере, просто вставив код и, при необходимости, ввод данных.</p>
+<p>Теперь вам не придется искать другие ресурсы для работы с <strong>Brainfuck</strong> - у вас есть все необходимое прямо на <a href="/stepik">Stepik</a>! Наслаждайтесь программированием на этом удивительном эзотерическим языке и делитесь своими результатами с сообществом :)</p> </div> <div class="py-10 px-10 text-center border-t-2 border-solid border-black bg-yellow-50">
+Хотите освоить <strong>JavaScript</strong> и стать востребованным разработчиком?<br>Присоединяйтесь к курсу <strong><a href="/courses/javascript-basic/">JavaScript Базовый уровень</a></strong> прямо сейчас!<br>Изучите основы и продвинутые концепции, создавайте интерактивные веб-приложения и воплотите свои идеи в реальности. Не упустите шанс стать экспертом в мире разработки – начните свой путь прямо сейчас!
+</div> <div class="text-sm py-10 text-center border-t-2 border-solid border-black">
+Обнаружили ошибку в этой статье? Хотите уточнить, обновить или добавить что-то?<br>
+Все мои статьи доступны для <a target="_blank" href="https://github.com/Awilum/awilum.src/blob/master/src/content/articles/brainfuck-javascript-interpreter.md">редактирования на GitHub</a>. Буду благодарен за любое улучшение или исправление!
+</div> <div class="lg:flex py-10 border-t-2 border-solid border-black"> <div class="lg:flex-auto text-left"> <!-- AddToAny BEGIN --> <div class="mb-10 lg:mb-0 flex"> <div class="a2a_kit a2a_kit_size_32 a2a_default_style"> <a class="a2a_dd grayscale" href="https://www.addtoany.com/share"></a> <a class="a2a_button_twitter grayscale"></a> <a class="a2a_button_telegram grayscale"></a> <a class="a2a_button_copy_link grayscale"></a> </div> </div>  <script async src="https://static.addtoany.com/menu/page.js"></script> <!-- AddToAny END --> </div> <div class="lg:flex-auto lg:text-right"> <a href="/articles/categories/javascript/" class="bg-gray-200 px-3 py-1 ml-4 no-underline text-sm">JavaScript</a> <span class="mx-2 opacity-10">|</span> <a href="/articles/" class="bg-gray-200 px-3 py-1 no-underline text-sm">Все статьи</a> </div> </div>  </div> <footer class="max-w-[1000px] mx-auto py-12 border-t-2 border-black"> <p> <span class="mr-1 font-bold">Курсы:</span> <a href="/courses/javascript-basic/" class="underline mr-2">JavaScript Базовый уровень</a> <a href="/courses/javascript-advanced/" class="underline mr-2">JavaScript Продвинутый уровень</a> <a href="https://stepik.org/a/172576" class="underline mr-2">JavaScript Тренажер</a> <a href="/courses/" class="underline">Все курсы</a> </p> <p class="lg:pr-10"> <span class="mr-1 font-bold">Статьи:</span> <a href="/articles/brainfuck-javascript-interpreter/" class="underline mr-2">Brainfuck интерпретатор на JavaScript</a><a href="/articles/comparing-strings-in-javascript/" class="underline mr-2">Сравнение строк в JavaScript</a><a href="/articles/how-the-parseint-function-works-in-javascript/" class="underline mr-2">Как работает функция parseInt() в JavaScript?</a> <a href="/articles/" class="underline">Все статьи</a> </p> <p class="flex flex-wrap"> <span class="mr-1 font-bold">Подписаться на меня в:</span> <a target="_blank" href="https://twitter.com/awilum_" class="underline mr-2">Twitter</a> <a target="_blank" href="https://www.linkedin.com/in/sergey-romanenko/" class="underline mr-2">LinkedIn</a> <a target="_blank" href="https://github.com/Awilum" class="underline mr-2">GitHub</a> </p> <p class="flex flex-wrap"> <span class="mr-1 font-bold">Связаться со мной в:</span> <a target="_blank" href="https://awilum.t.me" class="underline">Telegram</a> </p> <div class="border-t-2 border-black my-12 pt-12 text-xs opacity-70"> <p class="uppercase mb-1">Работает на <a href="https://astro.build/" class="underline">Astro</a>. Хостинг от <a href="http://www.smartape.ru/?partner=146659" class="underline">SmartApe</a>.</p> <p class="m-0">&copy; SERGEY ROMANENKO. ALL RIGHTS RESERVED.</p> </div> </footer> <!-- Yandex.Metrika counter --> <script type="text/javascript">
+			(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+			m[i].l=1*new Date();
+			for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+			k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+			(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+		
+			ym(95236209, "init", {
+				clickmap:true,
+				trackLinks:true,
+				accurateTrackBounce:true
+			});
+		</script> <noscript><div><img src="https://mc.yandex.ru/watch/95236209" style="position:absolute; left:-9999px;" alt=""></div></noscript> <!-- /Yandex.Metrika counter --> </body></html>

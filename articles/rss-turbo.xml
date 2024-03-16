@@ -1,4 +1,522 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Выход из цикла в JavaScript</title><link>https://awilum.ru/articles/exiting-a-loop-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/exiting-a-loop-in-javascript/</guid><description>Выход из цикла в JavaScript</description><pubDate>Thu, 14 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Brainfuck интерпретатор на JavaScript</title><link>https://awilum.ru/articles/brainfuck-javascript-interpreter/</link><guid isPermaLink="true">https://awilum.ru/articles/brainfuck-javascript-interpreter/</guid><description>Brainfuck интерпретатор на JavaScript</description><pubDate>Sat, 16 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+**Brainfuck** — это один из эзотерических языков программирования, придуманный Урбаном Мюллером в 1993 году, и он известен своим минимализмом. Название языка можно перевести как &quot;вынос мозга&quot;, оно напрямую происходит от английского выражения &quot;brainfuck&quot; (где &quot;brain&quot; означает мозг, а &quot;fuck&quot; — вынос), подразумевая занятие нелепостями. В **Brainfuck** всего восемь команд, каждая из которых представлена одним символом. Исходный код программы на **Brainfuck** представляет собой простую последовательность этих символов без дополнительного синтаксиса.   
+
+Одним из основных мотивов создания **Brainfuck** было стремление Урбана Мюллера создать язык с наименьшим возможным компилятором. Вдохновение он черпал, в частности, из языка **FALSE**, для которого существовал компилятор размером всего 2044 байта. На сегодняшний день существуют компиляторы **Brainfuck** размером менее 200 байт. Написание программ на языке **Brainfuck** сложно, что иногда заставляет называть его языком для мазохистов. Тем не менее, **Brainfuck** является естественным, полным и простым языком, который может использоваться для определения понятия вычислимости.
+
+&gt; **FALSE** — эзотерический язык программирования, созданный в 1993 году Ваутером ван Ортмерссеном с двумя, по его словам, целями: чтобы можно было написать компилятор для него размером не более одного килобайта. придумать синтаксис, который бы выглядел шифровкой, случайным набором символов.
+
+&gt; **Байт (Byte)** — единица хранения и обработки цифровой информации; совокупность битов, обрабатываемая компьютером одновременно.
+
+&lt;br&gt;
+
+Cписок восьми команд языка программирования **Brainfuck**:
+
+&lt;table width=&quot;100%&quot;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Команда&lt;/th&gt;
+            &lt;th&gt;Описание&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;&lt;/td&gt;
+            &lt;td&gt;Перемещение указателя данных на одну ячейку вправо.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;lt;&lt;/td&gt;
+            &lt;td&gt;Перемещение указателя данных на одну ячейку влево.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;+&lt;/td&gt;
+            &lt;td&gt;Увеличение значения текущей ячейки на единицу.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;-&lt;/td&gt;
+            &lt;td&gt;Уменьшение значения текущей ячейки на единицу.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;.&lt;/td&gt;
+            &lt;td&gt;Вывод значения текущей ячейки (как символ ASCII).&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;,&lt;/td&gt;
+            &lt;td&gt;Ввод значения и сохранение его в текущей ячейке (как символ ASCII).&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;[&lt;/td&gt;
+            &lt;td&gt;Начало цикла (переход к соответствующей &lt;code&gt;]&lt;/code&gt;, если значение текущей ячейки равно нулю).&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;]&lt;/td&gt;
+            &lt;td&gt;Конец цикла (переход к соответствующей &lt;code&gt;[&lt;/code&gt;, если значение текущей ячейки не равно нулю).&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+
+Эти простые команды позволяют управлять памятью, изменять ее содержимое и выполнять циклические операции, что достаточно для реализации алгоритмов любой сложности.
+
+Несмотря на свою примитивность, **Brainfuck** с его бесконечным набором ячеек обладает тьюринговской полнотой. Следовательно, по потенциальным возможностям он не уступает &quot;настоящим&quot; языкам программирования, таким как **С**, **Pascal** или **Java**.
+
+**Тьюринговская полнота** - это концепция, связанная с теорией вычислимости, которая определяет способность системы (обычно вычислительной) выполнить любое вычисление, которое может быть выполнено с помощью машины Тьюринга. Машина Тьюринга - это абстрактная модель компьютера, предложенная Аланом Тьюрингом в 1936 году. Она состоит из бесконечной ленты, разделенной на ячейки, и управляющего устройства, способного читать/писать на этой ленте и перемещать головку.&lt;br&gt;&lt;br&gt;
+Система считается тьюринговски полной, если она может быть использована для эмуляции машины Тьюринга, то есть если она способна выполнять любой алгоритм, который может быть представлен в виде машины Тьюринга. Практически это означает, что система может решать широкий класс задач, включая вычисление любой рекурсивной функции или выполнение любого алгоритма.&lt;br&gt;&lt;br&gt;
+Системы с тьюринговской полнотой широко используются в компьютерах и программном обеспечении, поскольку они предоставляют универсальный способ выполнения разнообразных задач. В том числе, они обычно используются для оценки вычислительной мощности различных языков программирования и архитектур компьютеров.
+
+**Brainfuck** подходит для проведения экспериментов в области генетического программирования из-за своей простоты синтаксиса и, как следствие, легкости генерации исходного кода.
+
+В &quot;классическом&quot; варианте **Brainfuck**, созданном Мюллером, размер ячейки составляет один байт, а количество ячеек равно 30 000. При начальной установке указатель находится в крайней левой позиции, а все ячейки заполнены нулями. Увеличение или уменьшение значений ячеек происходит по модулю 256. Ввод-вывод также происходит побайтно, используя кодировку ASCII. Например, при операции ввода (,) символ &quot;1&quot; будет записан в текущую ячейку как число 0x31 (49), а операция вывода (.) над ячейкой, содержащей 0x41 (65), напечатает латинскую букву &quot;A&quot;. В других вариантах языка размер и количество ячеек могут отличаться. Существуют версии, где значения ячеек не являются целочисленными (с плавающей точкой).
+
+### Пример программы Hello World
+
+Пошаговая программа на языке **Brainfuck**, печатающая `Hello World!` с переносом строки (в виде **ASCII-кода**:  `72 101 108 108 111 32 87 111 114 108 100 33 10`):
+
+&gt; ++++++++++[&gt;+++++++&gt;++++++++++&gt;+++&gt;+&lt;&lt;&lt;&lt;-]&gt;++.&gt;+.+++++++..+++.&gt;++.&lt;&lt;+++++++++++++++.&gt;.+++.------.--------.&gt;+.&gt;.
+
+**Разбор программы:**
+
+&lt;table border=&quot;1&quot;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;&lt;/th&gt;
+            &lt;th&gt;Описание&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;++++++++++&lt;/td&gt;
+            &lt;td&gt;Присваивание ячейке 0 значения 10&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;[&lt;/td&gt;
+            &lt;td&gt;Повторять описанные этой скобкой команды, пока значение текущей ячейки 0 не равно нулю&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;+++++++&lt;/td&gt;
+            &lt;td&gt;Приращение ячейки 1 на 7&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;++++++++++&lt;/td&gt;
+            &lt;td&gt;Приращение ячейки 2 на 10&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;+++&lt;/td&gt;
+            &lt;td&gt;Приращение ячейки 3 на 3&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;+&lt;/td&gt;
+            &lt;td&gt;Приращение ячейки 4 на 1&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;-&lt;/td&gt;
+            &lt;td&gt;Декремент ячейки 0 на 1&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;]&lt;/td&gt;
+            &lt;td&gt;Проверка, не равна ли ячейка 0 нулю&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;++.&lt;/td&gt;
+            &lt;td&gt;В ячейке 1 добавление 2 к 70 и вывод на печать ASCII-кода 72, т.е. буквы «Н».&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;+.&lt;/td&gt;
+            &lt;td&gt;В ячейке 2 добавление 1 к 100 = 101, печать буквы «e»&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;+++++++..&lt;/td&gt;
+            &lt;td&gt;В этой же ячейке добавление 7 к 101 = 108, печать «l» дважды&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;+++.&lt;/td&gt;
+            &lt;td&gt;В этой же ячейке добавление 3 к 108 = 111, печать «o»&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;++.&lt;/td&gt;
+            &lt;td&gt;В ячейке 3 добавление 2 к 30 = 32, печать пробела&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;lt;&amp;lt;+++++++++++++++.&lt;/td&gt;
+            &lt;td&gt;В ячейке 1 добавление 15 к 72 = 87, печать «W»&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;.&lt;/td&gt;
+            &lt;td&gt;В ячейке 2 уже есть 111, сразу печать «o»&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;+++.&lt;/td&gt;
+            &lt;td&gt;В этой же ячейке добавление 3 к 111 = 114, печать «r»&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;------.&lt;/td&gt;
+            &lt;td&gt;В этой же ячейке вычитание 6 из 114 = 108, печать «l»&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;--------.&lt;/td&gt;
+            &lt;td&gt;В этой же ячейке вычитание 8 из 108 = 100, печать «d»&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;+.&lt;/td&gt;
+            &lt;td&gt;В ячейке 3 добавление 1 к 32 = 33, печать «!»&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;.&lt;/td&gt;
+            &lt;td&gt;В ячейке 4 уже есть 10, сразу печать перевода строки&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+### Реализация интерпретатора на JavaScript
+
+Реализация интерпретатора **Brainfuck** на **JavaScript** не так уж сложна благодаря простоте языка.
+
+Вот простая реализация интерпретатора **Brainfuck** на **JavaScript**:
+
+```javascript
+class BrainfuckInterpreter {
+    constructor() {
+        // 30000 ячеек памяти, как в стандарте Brainfuck
+        this.memory = new Uint8Array(30000); 
+        this.pointer = 0; // Указатель на текущую ячейку
+        this.input = &apos;&apos;;  // Ввод
+        this.output = &apos;&apos;; // Вывод
+    }
+
+    interpret(code, input = &apos;&apos;) {
+        this.code = code;
+        this.input = input;
+        this.pointer = 0;
+        this.output = &apos;&apos;;
+
+        // Стек для отслеживания начала и конца циклов
+        let loopStack = [];
+
+        for (let i = 0; i &lt; this.code.length; i++) {
+            let instruction = this.code[i];
+
+            switch (instruction) {
+                case &apos;&gt;&apos;:
+                    this.pointer++;
+                    break;
+                case &apos;&lt;&apos;:
+                    this.pointer--;
+                    break;
+                case &apos;+&apos;:
+                    this.memory[this.pointer]++;
+                    break;
+                case &apos;-&apos;:
+                    this.memory[this.pointer]--;
+                    break;
+                case &apos;.&apos;:
+                    this.output += String.fromCharCode(this.memory[this.pointer]);
+                    break;
+                case &apos;,&apos;:
+                    if (this.input.length &gt; 0) {
+                        this.memory[this.pointer] = this.input.charCodeAt(0);
+                        this.input = this.input.substring(1);
+                    } else {
+                        // Если ввод закончился, просто устанавливаем значение ячейки в 0
+                        this.memory[this.pointer] = 0;
+                    }
+                    break;
+                case &apos;[&apos;:
+                    if (this.memory[this.pointer] === 0) {
+                        let depth = 1;
+                        while (depth &gt; 0) {
+                            i++;
+                            if (this.code[i] === &apos;[&apos;) depth++;
+                            if (this.code[i] === &apos;]&apos;) depth--;
+                        }
+                    } else {
+                        loopStack.push(i);
+                    }
+                    break;
+                case &apos;]&apos;:
+                    if (this.memory[this.pointer] !== 0) {
+                        i = loopStack[loopStack.length - 1];
+                    } else {
+                        loopStack.pop();
+                    }
+                    break;
+                default:
+                    // Игнорируем любые другие символы, которые могут встретиться
+                    break;
+            }
+        }
+
+        return this.output;
+    }
+}
+```
+
+Этот код создает класс `BrainfuckInterpreter`, который содержит метод `interpret`, принимающий код **Brainfuck** и ввод, и возвращает результат выполнения кода. Мы используем массив `memory`, чтобы хранить состояние ячеек памяти, и указатель `pointer`, чтобы отслеживать текущую ячейку. Метод `interpret` выполняет каждую инструкцию из кода **Brainfuck**, изменяя состояние `memory` и `pointer` соответственно.
+
+Такая реализация является базовой и может быть расширена для обработки дополнительных функций, таких как ввод-вывод файлов, оптимизация производительности и т.д.
+
+### Примеры использования
+
+**Программа для вывода: Hello World!**
+&gt; ++++++++++[&gt;+++++++&gt;++++++++++&gt;+++&gt;+&lt;&lt;&lt;&lt;-]&gt;++.&gt;+.+++++++..+++.&gt;++.&lt;&lt;+++++++++++++++.&gt;.+++.------.--------.&gt;+.&gt;.
+```javascript
+let interpreter = new BrainfuckInterpreter();
+let code = &apos;++++++++++[&gt;+++++++&gt;++++++++++&gt;+++&gt;+&lt;&lt;&lt;&lt;-]&gt;++.&gt;+.+++++++..+++.&gt;++.&lt;&lt;+++++++++++++++.&gt;.+++.------.--------.&gt;+.&gt;.&apos;;
+let input = &apos;&apos;;
+let result = interpreter.interpret(code, input);
+
+console.log(result); // Hello World!
+```
+
+**Программа для копирования ввода в вывод**
+&gt; ,[.,]
+```javascript
+let interpreter = new BrainfuckInterpreter();
+let code = &apos;,[.,]&apos;;
+let input = &apos;Hello, Brainfuck!&apos;;
+let result = interpreter.interpret(code, input);
+
+console.log(result); // Hello, Brainfuck!
+```
+
+**Программа которая выводит обратный ввод**
+&gt; &amp;gt;,[&gt;,]&lt;[.&lt;]
+```javascript
+let interpreter = new BrainfuckInterpreter();
+let code = &apos;&gt;,[&gt;,]&lt;[.&lt;]&apos;;
+let input = &apos;Hello&apos;;
+let result = interpreter.interpret(code, input);
+
+console.log(result); // olleH
+```
+
+**Программа для очистки командной консоли**
+&gt; ++++++++++[&gt;++++++++++&gt;+&lt;&lt;-]&gt;[&gt;.&lt;-]
+```javascript
+let interpreter = new BrainfuckInterpreter();
+let code = &apos;++++++++++[&gt;++++++++++&gt;+&lt;&lt;-]&gt;[&gt;.&lt;-]&apos;;
+let input = &apos;&apos;;
+let result = interpreter.interpret(code, input);
+
+console.log(result); 
+// Консоль будет очищена.
+```
+
+**Программа кодирования строки ввода в Brainfuck**
+&gt; +++++[&gt;+++++++++&lt;-],[[&gt;--.++&gt;+&lt;&lt;-]&gt;+.-&gt;[&lt;.&gt;-]&lt;&lt;,]
+```javascript
+let interpreter = new BrainfuckInterpreter();
+let code = &apos;+++++[&gt;+++++++++&lt;-],[[&gt;--.++&gt;+&lt;&lt;-]&gt;+.-&gt;[&lt;.&gt;-]&lt;&lt;,]&apos;;
+
+console.log(interpreter.interpret(code, &quot;42&quot;)); 
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++.----------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++.--------------------------------------------------
+```
+
+### Brainfuck Interpreter (Stepik)
+
+Так как [Stepik](/stepik) не поддерживает язык программирования  **Brainfuck**, я добавил его реализацию на **JavaScript** в виде публичного урока. Теперь вы можете использовать этот урок как **Brainfuck Interpreter**!
+
+Пройдите по [ссылке](https://stepik.org/lesson/1258323/
+) и начните пользоваться этим интерпретатором **Brainfuck**. Этот интерпретатор позволит вам запускать программы на языке Brainfuck прямо в вашем браузере, просто вставив код и, при необходимости, ввод данных.
+
+Теперь вам не придется искать другие ресурсы для работы с **Brainfuck** - у вас есть все необходимое прямо на [Stepik](/stepik)! Наслаждайтесь программированием на этом удивительном эзотерическим языке и делитесь своими результатами с сообществом :)</content:encoded></item><item><title>Сравнение строк в JavaScript</title><link>https://awilum.ru/articles/comparing-strings-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/comparing-strings-in-javascript/</guid><description>Сравнение строк в JavaScript</description><pubDate>Fri, 15 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В **JavaScript** есть несколько способов сравнения строк. Они могут отличаться в зависимости от того, каким образом вы хотите выполнить сравнение: по значению (лексикографически) или по ссылке.
+
+
+### Сравнение по символам
+
+**JavaScript** позволяет обращаться к отдельным символам в строке по их индексу. 
+
+```javascript
+let str1 = &quot;apple&quot;;
+let str2 = &quot;banana&quot;;
+
+for (let i = 0; i &lt; str1.length &amp;&amp; i &lt; str2.length; i++) {
+    if (str1[i] !== str2[i]) {
+        console.log(&quot;Strings are not equal at index &quot; + i);
+        break;
+    }
+}
+```
+
+Сравнение строк посимвольно может быть реализовано с помощью `charAt()`
+
+
+```javascript
+let str1 = &quot;apple&quot;;
+let str2 = &quot;banana&quot;;
+
+for (let i = 0; i &lt; str1.length &amp;&amp; i &lt; str2.length; i++) {
+    if (str1.charAt(i) !== str2.charAt(i)) {
+        console.log(&quot;Strings are not equal at index &quot; + i);
+        break;
+    }
+}
+```
+
+### Сравнение с помощью метода `localeCompare()`
+
+Этот метод сравнивает две строки с учетом текущей локали (языка) браузера. Он возвращает число, указывающее на относительное положение строк в лексикографическом порядке.
+
+```javascript
+let str1 = &quot;apple&quot;;
+let str2 = &quot;banana&quot;;
+
+console.log(str1.localeCompare(str2));  // -1 (str1 перед str2 в алфавитном порядке)
+```
+</content:encoded></item><item><title>Как работает функция parseInt() в JavaScript?</title><link>https://awilum.ru/articles/how-the-parseint-function-works-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/how-the-parseint-function-works-in-javascript/</guid><description>Как работает функция parseInt() в JavaScript?</description><pubDate>Fri, 15 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+`parseInt()` - это функция в JavaScript, которая используется для парсинга строки и возвращения целого числа. 
+
+### Параметры функции
+
+`string` (обязательный параметр)  
+Строка, которую вы хотите преобразовать в целое число.
+  
+`radix` (необязательный параметр)  
+Определяет основание системы счисления.   
+Этот параметр может быть числом от 2 до 36.   
+Если он не указан, то по умолчанию используется десятичная система счисления.
+
+### Процесс парсинга
+
+1. Функция начинает считывать строку слева направо.
+2. Если первый символ строки не является допустимым символом числа (например, символы, не относящиеся к числам или пробелы), они игнорируются, и функция продолжает чтение строки до тех пор, пока не встретит допустимый символ или числовую цифру.
+3. Как только встречается допустимый символ или цифра, начинается процесс преобразования этой части строки в число.
+4. Функция продолжает чтение строки до тех пор, пока не достигнет конца строки или не встретит символ, который не является частью числа в указанной системе счисления.
+5. Если `radix` указан, то `parseInt()` считает, что строка представляет собой число в этой системе счисления. Например, если `radix` равен `16`, функция ожидает, что строка представляет собой шестнадцатеричное число.
+
+### Возвращаемое значение
+
+- `parseInt()` возвращает целое число, полученное из строки. Если первый символ строки не является цифрой или знаком минус, `parseInt()` вернет NaN (Not a Number).
+- Если `radix` не определен или равен `0`, и первый символ строки (после игнорирования всех пробелов) является &quot;0&quot;, то **JavaScript** предполагает, что число восьмеричное. Если первый символ не &quot;0&quot;, функция предполагает, что число десятичное.
+
+### Пример использования
+
+```javascript
+// 10
+console.log(parseInt(&quot;10&quot;));   
+
+// 16 (преобразует строку &quot;10&quot; из шестнадцатеричной системы счисления в десятичное число)
+console.log(parseInt(&quot;10&quot;, 16));
+
+// NaN (поскольку &quot;H&quot; не является цифрой)
+console.log(parseInt(&quot;Hello&quot;));
+
+// 11 (поскольку &quot;11&quot; - это первая часть строки, которая может быть преобразована в число)
+console.log(parseInt(&quot;11cats&quot;));
+```</content:encoded></item><item><title>Кодирование длин серий в JavaScript</title><link>https://awilum.ru/articles/run-length-encoding-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/run-length-encoding-in-javascript/</guid><description>Кодирование длин серий в JavaScript</description><pubDate>Fri, 15 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Кодирование длин серий (англ. run-length encoding, RLE) или кодирование повторов — алгоритм сжатия данных, заменяющий повторяющиеся символы (серии) на один символ и число его повторов. Серией называется последовательность, состоящая из нескольких одинаковых символов. При кодировании (упаковке, сжатии) строка одинаковых символов, составляющих серию, заменяется строкой, содержащей сам повторяющийся символ и количество его повторов.
+
+### Принцип работы RLE
+
+1. **Поиск серий.**   
+Строка данных анализируется на наличие серий, то есть последовательностей одинаковых символов.
+2. **Кодирование серий.**   
+Повторяющиеся символы заменяются на один символ и количество его повторов. Например, строка &quot;AAABBBCCC&quot; может быть закодирована как &quot;3A3B3C&quot;.
+3. **Декодирование.**   
+Закодированная строка может быть восстановлена обратно в исходную форму путем раскодирования.
+
+
+### Пример работы RLE
+
+Пусть дана строка: &quot;AAABBBCCCCDDDD&quot;.
+
+Алгоритм RLE обнаруживает следующие серии:
+- &quot;AAA&quot;
+- &quot;BBB&quot;
+- &quot;CCCC&quot;
+- &quot;DDDD&quot;
+
+&lt;br&gt;
+
+Каждая серия заменяется на символ и количество его повторов:
+- &quot;3A&quot;
+- &quot;3B&quot;
+- &quot;4C&quot;
+- &quot;4D&quot;
+
+&lt;br&gt;
+
+Результирующая закодированная строка будет:  
+- &quot;3A3B4C4D&quot;.
+
+&lt;br&gt;
+
+### Преимущества RLE
+1. **Простота.**   
+Алгоритм RLE легко реализовать и понять.
+2. **Эффективность для определенных типов данных.**   
+RLE особенно хорошо работает с данными, содержащими много повторяющихся символов, такими как изображения с большими областями одного цвета или текстовые файлы с повторяющимися символами.
+
+### Недостатки RLE  
+1. **Неэффективность для некоторых типов данных.**   
+В случае, если данные имеют низкую степень повторяемости (например, случайный шум), алгоритм RLE может увеличить размер данных из-за добавления счетчиков.
+2. **Ограничение на сжатие.**   
+RLE не всегда достигает высокой степени сжатия по сравнению с более сложными алгоритмами сжатия данных.
+
+### Релизация на JavaScript
+
+```javascript
+function runLengthEncode(input) {
+    let encoded = &apos;&apos;;
+    let count = 1;
+    
+    // Проходим по всем символам в строке, начиная с первого
+    for (let i = 0; i &lt; input.length; i++) {
+        // Если текущий символ равен следующему, увеличиваем счетчик
+        if (input[i] === input[i + 1]) {
+            count++;
+        } else {
+            // Иначе добавляем текущий символ и количество его повторов к закодированной строке
+            encoded += count + input[i];
+            // Сбрасываем счетчик
+            count = 1;
+        }
+    }
+    
+    return encoded;
+}
+
+function runLengthDecode(input) {
+    let decoded = &apos;&apos;;
+    
+    // Проходим по всей строке
+    for (let i = 0; i &lt; input.length; i++) {
+        // Если текущий символ - число, это количество повторений
+        if (!isNaN(input[i])) {
+            // Повторяем следующий символ указанное количество раз
+            decoded += input[i + 1].repeat(Number(input[i]));
+            // Пропускаем повторенный символ
+            i++;
+        } else {
+            // Если текущий символ не является числом, добавляем его к раскодированной строке
+            decoded += input[i];
+        }
+    }
+    
+    return decoded;
+}
+```
+
+### Пример использования
+
+```javascript
+let originalString = &apos;AAABBBCCCCDDDD&apos;;
+let encodedString = runLengthEncode(originalString);
+let decodedString = runLengthDecode(encodedString);
+
+console.log(&apos;Original: &apos;, originalString);  // Original:  AAABBBCCCCDDDD
+console.log(&apos;Encoded: &apos;, encodedString);    // Encoded:  3A3B4C4D
+console.log(&apos;Decoded: &apos;, decodedString);    // Decoded:  AAABBBCCCCDDDD
+```
+
+&lt;br&gt;
+
+Очевидно, что такой метод кодирования эффективен для данных, в которых преобладают последовательности одинаковых символов, как, например, в простых графических изображениях, таких как иконки и схематические рисунки. Однако он не столь эффективен для изображений с постепенным переходом оттенков, например, фотографий.
+
+Часто встречаемыми форматами для сжатия данных с использованием метода кодирования длин серий (RLE) являются PackBits, PCX и ILBM.
+
+Этот метод сжатия может быть применен к произвольным файлам с двоичными данными, поскольку многие спецификации форматов файлов содержат повторяющиеся байты в области выравнивания данных. Однако современные системы сжатия, такие как Deflate, чаще используют алгоритмы, основанные на LZ77, который является обобщением метода кодирования длин серий и оперирует последовательностями символов вида «BWWBWWBWWBWW».
+
+Звуковые данные, содержащие длинные последовательные серии байт (например, низкокачественные аудио-сэмплы), могут быть сжаты с помощью RLE после применения к ним Дельта-кодирования.</content:encoded></item><item><title>Выход из цикла в JavaScript</title><link>https://awilum.ru/articles/exiting-a-loop-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/exiting-a-loop-in-javascript/</guid><description>Выход из цикла в JavaScript</description><pubDate>Thu, 14 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 Выход из цикла в **JavaScript** может быть достигнут различными способами, в зависимости от типа цикла и требуемого поведения. 
 
 Рассмотрим основные способы выхода из циклов в **JavaScript**.
