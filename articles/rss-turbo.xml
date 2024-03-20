@@ -1,4 +1,190 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Brainfuck интерпретатор на JavaScript</title><link>https://awilum.ru/articles/brainfuck-javascript-interpreter/</link><guid isPermaLink="true">https://awilum.ru/articles/brainfuck-javascript-interpreter/</guid><description>Brainfuck интерпретатор на JavaScript</description><pubDate>Sat, 16 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Итератор в JavaScript</title><link>https://awilum.ru/articles/iterator-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/iterator-in-javascript/</guid><description>Итератор в JavaScript</description><pubDate>Wed, 20 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В **JavaScript** итератор – это объект, который предоставляет последовательный доступ к элементам коллекции, такой как массив или объект. Он позволяет перебирать элементы коллекции по одному и выполнять определенные операции над ними без необходимости знания внутренней структуры этой коллекции. Итераторы широко используются в **JavaScript**, особенно в циклах `for...of`, spread операторах, и методах массива, таких как `map()`, `filter()`, и `reduce()`.
+
+Для создания итератора в **JavaScript** можно использовать методы объекта `Symbol.iterator`. Этот метод должен вернуть объект, который соответствует интерфейсу итератора. Интерфейс итератора включает в себя метод `next()`, который возвращает объект со свойствами `value` и `done`. value представляет текущий элемент в последовательности, а `done` указывает, завершен ли перебор коллекции.
+
+Пример создания итератора для массива:
+
+```javascript
+const myArray = [1, 2, 3];
+const iterator = myArray[Symbol.iterator]();
+
+console.log(iterator.next()); // { value: 1, done: false }
+console.log(iterator.next()); // { value: 2, done: false }
+console.log(iterator.next()); // { value: 3, done: false }
+console.log(iterator.next()); // { value: undefined, done: true }
+```
+
+В этом примере `myArray[Symbol.iterator]()` возвращает объект-итератор для массива `myArray`. Последовательные вызовы метода `next()` возвращают каждый элемент массива в порядке их следования. После последнего элемента метод `next()` возвращает объект с `done: true`.
+
+Итераторы можно также создавать для собственных объектов. Для этого нужно определить метод `Symbol.iterator в прототипе объекта.
+
+Вот пример:
+
+```javascript
+const myObject = {
+  data: [&apos;apple&apos;, &apos;banana&apos;, &apos;orange&apos;],
+  [Symbol.iterator]: function() {
+    let index = 0;
+    return {
+      next: () =&gt; {
+        return index &lt; this.data.length ?
+          { value: this.data[index++], done: false } :
+          { done: true };
+      }
+    };
+  }
+};
+
+const iterator = myObject[Symbol.iterator]();
+
+console.log(iterator.next()); // { value: &apos;apple&apos;, done: false }
+console.log(iterator.next()); // { value: &apos;banana&apos;, done: false }
+console.log(iterator.next()); // { value: &apos;orange&apos;, done: false }
+console.log(iterator.next()); // { done: true }
+```
+
+Это создает объект `myObject`, содержащий массив данных и метод `Symbol.iterator`, который возвращает итератор для перебора элементов этого массива.
+
+Давайте рассмотрим еще несколько примеров использования итераторов в **JavaScript**.
+
+### Использование итераторов в цикле `for...of`
+
+Цикл `for...of` предоставляет удобный способ перебора элементов коллекции с использованием итератора. 
+
+Вот пример:
+
+```javascript
+const myArray = [&apos;apple&apos;, &apos;banana&apos;, &apos;orange&apos;];
+
+for (const item of myArray) {
+  console.log(item);
+}
+
+// apple
+// banana
+// orange
+```
+
+### Создание итератора для пользовательского типа данных
+
+Вы также можете создавать собственные итераторы для пользовательских типов данных. 
+
+Вот пример с пользовательским классом `Range`, представляющим диапазон чисел:
+
+```javascript
+class Range {
+  constructor(start, end) {
+    this.start = start;
+    this.end = end;
+  }
+
+  *[Symbol.iterator]() {
+    for (let i = this.start; i &lt;= this.end; i++) {
+      yield i;
+    }
+  }
+}
+
+const range = new Range(1, 5);
+
+for (const num of range) {
+  console.log(num);
+}
+
+// 1
+// 2
+// 3
+// 4
+// 5
+```
+
+### Использование итераторов в объектах `Map` и `Set`
+
+Объекты `Map` и `Set` также имеют свои итераторы:
+
+```javascript
+const myMap = new Map([
+  [&apos;a&apos;, 1],
+  [&apos;b&apos;, 2],
+  [&apos;c&apos;, 3]
+]);
+
+for (const [key, value] of myMap) {
+  console.log(`${key} =&gt; ${value}`);
+}
+
+// a =&gt; 1
+// b =&gt; 2
+// c =&gt; 3
+
+const mySet = new Set([1, 2, 3, 4, 5]);
+
+for (const item of mySet) {
+  console.log(item);
+}
+
+// 1
+// 2
+// 3
+// 4
+// 5
+```</content:encoded></item><item><title>Как работает метод repeat() в JavaScript?</title><link>https://awilum.ru/articles/how-does-the-repeat-method-work-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/how-does-the-repeat-method-work-in-javascript/</guid><description>Как работает метод repeat() в JavaScript?</description><pubDate>Tue, 19 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Метод `repeat()` в **JavaScript** предназначен для создания новой строки, путем повторения исходной строки заданное количество раз. Он был введен в стандарте **ECMAScript 6 (ES6)** и стал полезным инструментом для манипуляции строками.
+
+Вот пример его использования:
+
+```javascript
+let originalString = &quot;Hello &quot;;
+let repeatedString = originalString.repeat(3);
+
+console.log(repeatedString); // Hello Hello Hello
+```
+
+В этом примере исходная строка `Hello ` повторяется три раза, и результат записывается в переменную `repeatedString`.
+
+Вот как работает метод `repeat()`:
+
+1. Метод `repeat()` принимает один параметр - число, которое указывает, сколько раз нужно повторить исходную строку. Это число должно быть неотрицательным целым числом. Если передается дробное число, он будет округлен до целого числа. Если число отрицательное или неопределенное (NaN), метод вернет пустую строку.
+2. После указания числа повторений метод создает и возвращает новую строку, содержащую исходную строку, повторенную заданное количество раз. Исходная строка остается неизменной.
+3. Повторенные копии исходной строки просто сцепляются вместе, чтобы создать новую строку.
+
+Метод `repeat()` особенно полезен, когда вам нужно создать строку с определенным числом повторений. Например, для создания строки, содержащей повторяющиеся символы или для форматирования вывода.
+
+Если метод `repeat(0)` вызывается на строке, он вернет пустую строку, независимо от содержимого исходной строки.
+
+Обратите внимание, что число повторений не может быть слишком большим, так как это может вызвать переполнение памяти или превышение лимита максимального размера строки в **JavaScript**.</content:encoded></item><item><title>Как работает метод trim() в JavaScript?</title><link>https://awilum.ru/articles/how-the-trim-method-works-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/how-the-trim-method-works-in-javascript/</guid><description>Как работает метод trim() в JavaScript?</description><pubDate>Tue, 19 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+
+Метод `trim()` в **JavaScript** используется для удаления пробелов с начала и конца строки. Этот метод особенно полезен при обработке пользовательского ввода, так как позволяет избавиться от лишних пробелов, которые могут быть введены случайно.
+
+Вот пример использования метода `trim()`:
+
+```javascript
+let str = &quot;   Привет, мир!   &quot;;
+
+console.log(str.trim()); // Привет, мир!
+```
+
+Как видно из примера, метод `trim()` удаляет пробелы с обеих сторон строки, оставляя только символы внутри строки. Это включает в себя пробелы, табуляции, символы новой строки и другие пробельные символы, которые могли бы быть добавлены в строку.
+
+Важно отметить, что метод `trim()` возвращает новую строку, не изменяя исходную строку. Поэтому, если вам нужно сохранить результат удаления пробелов, необходимо присвоить его новой переменной или использовать его в выражении.
+
+```javascript
+let str = &quot;   Привет, мир!   &quot;;
+let trimmedStr = str.trim();
+
+console.log(trimmedStr); // Привет, мир!
+```
+
+Кроме того, если строка не содержит никаких пробельных символов в начале и в конце, метод `trim()` возвращает исходную строку без изменений:
+
+```javascript
+let str = &quot;Привет, мир!&quot;;
+
+console.log(str.trim()); // Привет, мир!
+```
+
+Метод `trim()` позволяет легко обрабатывать строки, удаляя лишние пробелы с их начала и конца, что часто бывает полезно при обработке текста в приложениях **JavaScript**.</content:encoded></item><item><title>Brainfuck интерпретатор на JavaScript</title><link>https://awilum.ru/articles/brainfuck-javascript-interpreter/</link><guid isPermaLink="true">https://awilum.ru/articles/brainfuck-javascript-interpreter/</guid><description>Brainfuck интерпретатор на JavaScript</description><pubDate>Sat, 16 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 **Brainfuck** — это один из эзотерических языков программирования, придуманный Урбаном Мюллером в 1993 году, и он известен своим минимализмом. Название языка можно перевести как &quot;вынос мозга&quot;, оно напрямую происходит от английского выражения &quot;brainfuck&quot; (где &quot;brain&quot; означает мозг, а &quot;fuck&quot; — вынос), подразумевая занятие нелепостями. В **Brainfuck** всего восемь команд, каждая из которых представлена одним символом. Исходный код программы на **Brainfuck** представляет собой простую последовательность этих символов без дополнительного синтаксиса.   
 
 Одним из основных мотивов создания **Brainfuck** было стремление Урбана Мюллера создать язык с наименьшим возможным компилятором. Вдохновение он черпал, в частности, из языка **FALSE**, для которого существовал компилятор размером всего 2044 байта. На сегодняшний день существуют компиляторы **Brainfuck** размером менее 200 байт. Написание программ на языке **Brainfuck** сложно, что иногда заставляет называть его языком для мазохистов. Тем не менее, **Brainfuck** является естественным, полным и простым языком, который может использоваться для определения понятия вычислимости.
