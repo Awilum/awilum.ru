@@ -1,4 +1,118 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Итератор в JavaScript</title><link>https://awilum.ru/articles/iterator-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/iterator-in-javascript/</guid><description>Итератор в JavaScript</description><pubDate>Wed, 20 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Boolean в JavaScript</title><link>https://awilum.ru/articles/boolean-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/boolean-in-javascript/</guid><description>Boolean в JavaScript</description><pubDate>Wed, 20 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+**Boolean** в **JavaScript** представляет собой примитивный тип данных `boolean`, который может иметь только два значения: `true` (истина) или `false` (ложь). Кроме того, в **JavaScript** есть объект-обёртка `Boolean`, который оборачивает примитивные значения `true` или `false` и предоставляет дополнительные методы и свойства.
+
+### Создание Boolean
+
+**Boolean** можно создать с помощью ключевых слов `true` и `false`, либо с использованием функции-конструктора `Boolean()`.
+
+```javascript
+let bool1 = true;
+let bool2 = false;
+let bool3 = new Boolean(true); // Создание через объект-обёртку
+
+console.log(bool1); // true
+console.log(bool2); // false
+console.log(bool3); // [Boolean: true]
+```
+
+### Преобразование в Boolean
+
+В **JavaScript** любое значение может быть преобразовано в `Boolean`. Логические значения можно получить, применяя операторы или функции, которые ожидают логические значения.
+
+```javascript
+let num = 10;
+let boolFromNumber = Boolean(num);     // true, так как num не равен 0
+let boolFromString = Boolean(&quot;Hello&quot;); // true, так как непустая строка
+let boolFromObject = Boolean({});      // true, так как объект существует
+
+console.log(boolFromNumber); // true
+console.log(boolFromString); // true
+console.log(boolFromObject); // true
+```
+
+### Операторы и логические выражения
+
+**JavaScript** предоставляет логические операторы для работы с `Boolean` значениями, такие как `&amp;&amp;` (логическое И), `||` (логическое ИЛИ), и `!` (логическое НЕ).
+
+```javascript
+let x = 5;
+let y = 10;
+let z = 15;
+
+let result = (x &lt; y) &amp;&amp; (y &lt; z);
+
+console.log(result); // true
+```
+
+### Сравнение с другими типами данных
+
+При сравнении значений разных типов **JavaScript** может преобразовывать их в `Boolean` с помощью абстрактного преобразования к типу `Boolean`. Этот процесс называется &quot;вызовом ToBoolean&quot;.
+
+Абстрактная операция `ToBoolean` (к булевому) преобразует свой аргумент к значению типа `Boolean` в соответствии с таблицей ниже: 
+
+&lt;table width=&quot;100%&quot;&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Тип аргумента&lt;/th&gt;
+        &lt;th&gt;Результат&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td width=&quot;300px&quot;&gt;Undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Null&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Boolean&lt;/td&gt;
+        &lt;td&gt;Результат равен входному аргументу (без преобразования).&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Number&lt;/td&gt;
+        &lt;td&gt;Результат false, если аргумент равен +0, −0 или NaN; в противном случае результат – true.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;String&lt;/td&gt;
+        &lt;td&gt;Результат false, если аргумент – пустая строка (длина строки равна нулю); в противном случае результат – true.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Object&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+
+Пример: 
+
+```javascript
+console.log(Boolean(&quot;&quot;));        // false
+console.log(Boolean(0));         // false
+console.log(Boolean(null));      // false
+console.log(Boolean(undefined)); // false
+console.log(Boolean(NaN));       // false
+console.log(Boolean(false));     // false
+console.log(Boolean(&quot;Hello&quot;));   // true
+console.log(Boolean(10));        // true
+console.log(Boolean({}));        // true
+```
+
+### Использование в условных выражениях
+
+`Boolean` значения часто используются в условных выражениях для выполнения различных действий.
+
+```javascript
+let condition = true;
+
+if (condition) {
+    console.log(&quot;Условие истинно&quot;);
+} else {
+    console.log(&quot;Условие ложно&quot;);
+}
+```
+
+### Важные моменты
+
+1. При сравнении значений используйте оператор `===` (строгое равенство), так как он сравнивает значения без преобразования типов данных.
+2. Примитивные значения `true` и `false` рассматриваются как логические ложь и истину соответственно. Однако любые другие значения рассматриваются как логическая ложь только в случае, если они преобразуются в специальные &quot;ложные&quot; значения (например, 0, null, undefined, NaN, &quot;&quot;).</content:encoded></item><item><title>Итератор в JavaScript</title><link>https://awilum.ru/articles/iterator-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/iterator-in-javascript/</guid><description>Итератор в JavaScript</description><pubDate>Wed, 20 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 В **JavaScript** итератор – это объект, который предоставляет последовательный доступ к элементам коллекции, такой как массив или объект. Он позволяет перебирать элементы коллекции по одному и выполнять определенные операции над ними без необходимости знания внутренней структуры этой коллекции. Итераторы широко используются в **JavaScript**, особенно в циклах `for...of`, spread операторах, и методах массива, таких как `map()`, `filter()`, и `reduce()`.
 
 Для создания итератора в **JavaScript** можно использовать методы объекта `Symbol.iterator`. Этот метод должен вернуть объект, который соответствует интерфейсу итератора. Интерфейс итератора включает в себя метод `next()`, который возвращает объект со свойствами `value` и `done`. value представляет текущий элемент в последовательности, а `done` указывает, завершен ли перебор коллекции.
