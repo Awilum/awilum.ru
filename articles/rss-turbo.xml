@@ -157,7 +157,65 @@ console.log(&quot;Сумма элементов массива:&quot;, result);
 Это простой пример императивного программирования на **JavaScript**, где программа последовательно выполняет инструкции, изменяя состояние программы для достижения желаемого результата.
 
 
-Императивное программирование является одной из наиболее распространенных парадигм программирования и используется во многих языках программирования, таких как **C**, **C++**, **Java**, **Python**, и многих других. Оно отличается от декларативного программирования, в котором программа описывает, что должно быть сделано, а не как это сделать.</content:encoded></item><item><title>Удаление циклических ссылок при конвертации в JSON на JavaScript</title><link>https://awilum.ru/articles/removing-circular-references-when-converting-to-json-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/removing-circular-references-when-converting-to-json-in-javascript/</guid><description>Удаление циклических ссылок при конвертации в JSON на JavaScript</description><pubDate>Fri, 22 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Императивное программирование является одной из наиболее распространенных парадигм программирования и используется во многих языках программирования, таких как **C**, **C++**, **Java**, **Python**, и многих других. Оно отличается от декларативного программирования, в котором программа описывает, что должно быть сделано, а не как это сделать.</content:encoded></item><item><title>Удаление всех нечисловых символов из строки в JavaScript</title><link>https://awilum.ru/articles/removing-all-non-numeric-characters-from-a-string-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/removing-all-non-numeric-characters-from-a-string-in-javascript/</guid><description>Удаление всех нечисловых символов из строки в JavaScript</description><pubDate>Fri, 22 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+**JavaScript**, являющийся одним из самых широко используемых языков программирования в веб-разработке, обеспечивает множество возможностей для обработки строк. Одной из распространенных задач является удаление всех нечисловых символов из строки. Это может быть полезно, например, при обработке ввода пользователя или при необходимости извлечения числовых данных из строки.
+
+### Использование регулярных выражений
+
+Регулярные выражения предоставляют мощный инструмент для поиска и замены символов в строках. Для удаления нечисловых символов из строки мы можем использовать метод `replace()` в сочетании с регулярным выражением.
+
+```javascript
+let str = &quot;abc123def456ghi&quot;;
+
+// Используем регулярное выражение для удаления нечисловых символов
+let result = str.replace(/\D/g, &quot;&quot;);
+
+console.log(result); // 123456
+```
+
+В данном примере `/\D/g` - это регулярное выражение, которое соответствует всем нечисловым символам в строке. Флаг `g` указывает на глобальный поиск, чтобы удалить все вхождения.
+
+### Использование метода `split()` и `join()`
+
+Другой способ удаления нечисловых символов из строки - это разделить строку на массив символов, оставив только числа, а затем объединить эти числа обратно в строку.
+
+```javascript
+let str = &quot;abc123def456ghi&quot;;
+
+// Разделяем строку на массив символов и фильтруем только числа
+let resultArray = str.split(&apos;&apos;).filter(char =&gt; !isNaN(char));
+
+// Объединяем отфильтрованные символы обратно в строку
+let result = resultArray.join(&apos;&apos;);
+
+console.log(result); // 123456
+```
+
+В этом примере метод `split(&apos;&apos;)` используется для разделения строки на массив символов. Затем метод `filter()` используется для фильтрации массива, оставляя только числа. Наконец, метод `join(&apos;&apos;)` объединяет отфильтрованные символы обратно в строку.
+
+### Использование цикла и проверки на числовой символ
+
+Также можно пройти по каждому символу в строке с помощью цикла и проверить, является ли символ числом, а затем собрать только числовые символы в новую строку.
+
+```javascript
+let str = &quot;abc123def456ghi&quot;;
+let result = &quot;&quot;;
+
+for (let i = 0; i &lt; str.length; i++) {
+    if (!isNaN(parseInt(str[i]))) {
+        result += str[i];
+    }
+}
+
+console.log(result); // 123456
+```
+
+В этом примере мы используем цикл `for`, чтобы пройти по каждому символу в строке. Для каждого символа мы проверяем, является ли он числом с помощью функции `isNaN()` и `parseInt()`. Если символ является числом, мы добавляем его к результату.
+
+&lt;br&gt;
+
+Удаление всех нечисловых символов из строки в **JavaScript** может быть реализовано несколькими способами, включая использование регулярных выражений, методов `split()` и `join()`, а также цикла и проверки на числовой символ. Выбор метода зависит от конкретной задачи и предпочтений разработчика. 
+</content:encoded></item><item><title>Удаление циклических ссылок при конвертации в JSON на JavaScript</title><link>https://awilum.ru/articles/removing-circular-references-when-converting-to-json-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/removing-circular-references-when-converting-to-json-in-javascript/</guid><description>Удаление циклических ссылок при конвертации в JSON на JavaScript</description><pubDate>Fri, 22 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 При работе с данными в формате **JSON** в **JavaScript** может возникнуть проблема с циклическими ссылками. Это происходит, когда объект содержит ссылку на самого себя или на другой объект, который в свою очередь ссылается на исходный объект, образуя так называемый цикл. При попытке преобразовать такой объект в **JSON** с помощью `JSON.stringify()`, происходит исключение в виде ошибки &quot;TypeError: Converting circular structure to JSON&quot;. Это может стать причиной нежелательного поведения вашего приложения. В этой статье мы рассмотрим, как можно обнаружить и удалить циклические ссылки при конвертации объектов в **JSON** на **JavaScript**.
 
 ### Обнаружение циклических ссылок
@@ -345,7 +403,78 @@ print(&apos;Decoded:&apos;, decoded_string)    # Decoded:  AAABBBCCCCDDDD
 
 Этот метод сжатия может быть применен к произвольным файлам с двоичными данными, поскольку многие спецификации форматов файлов содержат повторяющиеся байты в области выравнивания данных. Однако современные системы сжатия, такие как Deflate, чаще используют алгоритмы, основанные на LZ77, который является обобщением метода кодирования длин серий и оперирует последовательностями символов вида «BWWBWWBWWBWW».
 
-Звуковые данные, содержащие длинные последовательные серии байт (например, низкокачественные аудио-сэмплы), могут быть сжаты с помощью RLE после применения к ним Дельта-кодирования.</content:encoded></item><item><title>String в Java</title><link>https://awilum.ru/articles/string-in-java/</link><guid isPermaLink="true">https://awilum.ru/articles/string-in-java/</guid><description>String в Java</description><pubDate>Fri, 22 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Звуковые данные, содержащие длинные последовательные серии байт (например, низкокачественные аудио-сэмплы), могут быть сжаты с помощью RLE после применения к ним Дельта-кодирования.</content:encoded></item><item><title>Умное обрезание строк в JavaScript</title><link>https://awilum.ru/articles/smart-string-trimming-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/smart-string-trimming-in-javascript/</guid><description>Умное обрезание строк в JavaScript</description><pubDate>Fri, 22 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В **JavaScript** существует несколько способов реализации умного обрезания строк, которые позволяют сохранять целостность слов и при этом обеспечивают нужную длину строки.
+
+### Метод `slice()`
+
+Метод `slice()` используется для извлечения части строки и возвращает новую строку без изменения оригинала. Он принимает два аргумента: начальный и конечный индексы для извлечения подстроки.
+
+```javascript
+function smartTrim(str, maxLength) {
+    if (str.length &lt;= maxLength) return str;
+    let trimmedString = str.slice(0, maxLength);
+    
+    // Найдем последний пробел в обрезанной строке
+    let lastSpaceIndex = trimmedString.lastIndexOf(&apos; &apos;);
+    
+    // Обрежем строку до последнего пробела
+    if (lastSpaceIndex !== -1) {
+        trimmedString = trimmedString.slice(0, lastSpaceIndex);
+    }
+    
+    return trimmedString + &apos;...&apos;;
+}
+
+let longString = &quot;Lorem ipsum dolor sit amet consectetur adipiscing elit.&quot;;
+
+console.log(smartTrim(longString, 30)); // Lorem ipsum dolor sit amet...
+```
+
+В этом примере `smartTrim()` обрезает строку до указанной длины, но также обеспечивает, чтобы строка не была обрезана посередине слова.
+
+### Метод `substring()`
+
+Метод `substring()` также используется для извлечения части строки, но он принимает два аргумента: начальный индекс и индекс конца подстроки.
+
+```javascript
+function smartTrim(str, maxLength) {
+    if (str.length &lt;= maxLength) return str;
+    let trimmedString = str.substring(0, maxLength);
+    let lastSpaceIndex = trimmedString.lastIndexOf(&apos; &apos;);
+    if (lastSpaceIndex !== -1) {
+        trimmedString = trimmedString.substring(0, lastSpaceIndex);
+    }
+    return trimmedString + &apos;...&apos;;
+}
+
+let longString = &quot;Lorem ipsum dolor sit amet consectetur adipiscing elit.&quot;;
+
+console.log(smartTrim(longString, 30)); // Lorem ipsum dolor sit amet...
+```
+
+Обратите внимание, что метод `substring()` работает аналогично методу `slice()`, но не поддерживает отрицательные индексы.
+
+### Использование регулярных выражений
+
+Еще один способ умного обрезания строк - использование регулярных выражений для поиска последнего пробела перед указанной длиной строки.
+
+```javascript
+function smartTrim(str, maxLength) {
+  if (str.length &lt;= maxLength) return str;
+  let trimmedString = str.substring(0, maxLength);
+  trimmedString = trimmedString.replace(/\s+\S*$/, &apos;&apos;);
+  return trimmedString + &apos;...&apos;;
+}
+
+let longString = &quot;Lorem ipsum dolor sit amet consectetur adipiscing elit.&quot;;
+
+console.log(smartTrim(longString, 30)); // Lorem ipsum dolor sit amet...
+```
+
+В этом примере мы используем регулярное выражение `\s+\S*$`, чтобы найти последний пробел перед указанной длиной строки и удалить все символы после него.
+
+</content:encoded></item><item><title>String в Java</title><link>https://awilum.ru/articles/string-in-java/</link><guid isPermaLink="true">https://awilum.ru/articles/string-in-java/</guid><description>String в Java</description><pubDate>Fri, 22 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 В **Java**, `String` представляет собой класс, который используется для работы со строками текста. Строки в **Java** являются объектами, что означает, что они обладают множеством методов для работы с ними. Вот некоторые основные характеристики и функции класса `String` в **Java**:
 
 1. **Неизменяемость (Immutable).**  
@@ -390,7 +519,138 @@ public class Main {
         // Строка в верхнем регистре: ПРИВЕТ, МИР!
     }
 }
-```</content:encoded></item><item><title>Сравнение строк в Java</title><link>https://awilum.ru/articles/comparing-strings-in-java/</link><guid isPermaLink="true">https://awilum.ru/articles/comparing-strings-in-java/</guid><description>Сравнение строк в Java</description><pubDate>Thu, 21 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+```</content:encoded></item><item><title>Работа с Срезами в Python</title><link>https://awilum.ru/articles/working-with-slices-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/working-with-slices-in-python/</guid><description>Работа с Срезами в Python</description><pubDate>Fri, 22 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В **Python** существует мощный и удобный способ доступа к частям списков, строк и других итерируемых объектов - это срезы (**slices**). С помощью срезов вы можете извлекать подмножества данных из последовательностей. Это особенно полезно при работе с массивами, строками и другими структурами данных.
+
+### Что такое срезы?
+
+Срезы - это специальный синтаксис, который позволяет получить подмножество элементов из итерируемого объекта, такого как список, кортеж или строка. Срезы задаются в квадратных скобках `[]` и могут включать три параметра: `начальный индекс`, `конечный индекс` и `шаг`.
+
+Синтаксис срезов:
+
+```
+срез = объект[начало:конец:шаг]
+```
+
+&lt;table style=&quot;width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center; width:200px&quot;&gt;начало&lt;/td&gt;
+			&lt;td&gt;Индекс, с которого начинается срез (включительно). Если не указан, срез начинается с начала объекта.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;конец&lt;/td&gt;
+			&lt;td&gt;Индекс, на котором заканчивается срез (исключительно). Если не указан, срез идет до конца объекта.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align:center&quot;&gt;шаг&lt;/td&gt;
+			&lt;td&gt;Опциональный параметр, определяющий, через сколько элементов брать значения. По умолчанию шаг равен 1.&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+### Примеры срезов
+
+Давайте рассмотрим несколько примеров использования срезов на различных типах данных.
+
+#### Списки
+
+```python
+my_list = [1, 2, 3, 4, 5]
+
+# Получить первые три элемента списка
+slice_1 = my_list[:3]
+print(slice_1)  # [1, 2, 3]
+
+# Получить элементы с индексами от 1 до 3 (не включая 3)
+slice_2 = my_list[1:3]
+print(slice_2)  # [2, 3]
+
+# Получить каждый второй элемент списка
+slice_3 = my_list[::2]
+print(slice_3)  # [1, 3, 5]
+```
+
+#### Строки
+
+```python
+my_string = &quot;Hello, World!&quot;
+
+# Получить первые пять символов строки
+slice_4 = my_string[:5]
+print(slice_4)  # Hello
+
+# Получить символы с индексами от 7 до 11 (не включая 11)
+slice_5 = my_string[7:11]
+print(slice_5)  # World
+
+# Получить строку в обратном порядке
+slice_6 = my_string[::-1]
+print(slice_6)  # !dlroW ,olleH
+```
+
+### Особенности срезов
+
+#### Индексы
+
+Если индекс отрицателен, он отсчитывается с конца последовательности.
+Если индекс начала среза больше или равен индексу конца, возвращается пустая последовательность.
+
+```python
+# Создаем список
+my_list = [1, 2, 3, 4, 5]
+
+# Используем отрицательный индекс для получения последнего элемента списка
+last_element = my_list[-1]
+print(&quot;Последний элемент списка:&quot;, last_element)  # Последний элемент списка: 5
+
+# Используем отрицательный индекс для получения предпоследнего элемента списка
+second_last_element = my_list[-2]
+print(&quot;Предпоследний элемент списка:&quot;, second_last_element)  # Предпоследний элемент списка: 4
+
+# Применяем срез с начальным индексом, большим или равным конечному индексу
+empty_slice = my_list[3:3]
+print(&quot;Пустой срез:&quot;, empty_slice)  # Пустой срез: []
+
+# Применяем срез, где начальный индекс равен конечному индексу
+empty_slice_2 = my_list[2:2]
+print(&quot;Еще один пустой срез:&quot;, empty_slice_2)  # Еще один пустой срез: []
+
+```
+
+#### Проверка границ
+
+Python не выдаст ошибку, если индексы выходят за границы объекта. Вместо этого он автоматически скорректирует индексы до допустимых значений.
+
+```python
+# Создаем список
+my_list = [1, 2, 3, 4, 5]
+
+# Попытка получить элементы с индексами, выходящими за границы списка
+out_of_bounds_slice = my_list[10:20]
+
+# Выводим результат
+print(&quot;Срез за пределами списка:&quot;, out_of_bounds_slice)  # Срез за пределами списка: []
+```
+
+В этом примере мы пытаемся получить срез списка с индексами, которые выходят за его границы `10:20`. Вместо возникновения ошибки **Python** возвращает пустой список, корректируя индексы до допустимых значений.
+
+#### Изменение объектов через срезы
+
+Срезы можно использовать не только для чтения данных, но и для изменения объектов:
+
+```python
+# Создаем список
+my_list = [1, 2, 3, 4, 5]
+
+# Изменяем элементы списка с помощью среза
+my_list[1:4] = [10, 20, 30]
+
+# Выводим измененный список
+print(&quot;Измененный список:&quot;, my_list)  # Измененный список: [1, 10, 20, 30, 5]
+```
+
+В этом примере мы используем срез списка `my_list[1:4]` для изменения элементов с индексами от 1 до 3 (не включительно). После этого среза элементы `[10, 20, 30]` заменяют старые элементы в списке. Таким образом, с помощью срезов мы можем не только получать подмножества данных, но и изменять исходные объекты.</content:encoded></item><item><title>Сравнение строк в Java</title><link>https://awilum.ru/articles/comparing-strings-in-java/</link><guid isPermaLink="true">https://awilum.ru/articles/comparing-strings-in-java/</guid><description>Сравнение строк в Java</description><pubDate>Thu, 21 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 В **Java** сравнение строк можно выполнить с использованием нескольких методов и операторов.
 
 Рассмотрим несколько способов сравнения строк в **Java**.
