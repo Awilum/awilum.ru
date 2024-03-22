@@ -1,4 +1,41 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Декларативное программирование</title><link>https://awilum.ru/articles/declarative-programming/</link><guid isPermaLink="true">https://awilum.ru/articles/declarative-programming/</guid><description>Декларативное программирование</description><pubDate>Fri, 22 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Подсчет слов в строке на Python</title><link>https://awilum.ru/articles/counting-words-in-a-string-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/counting-words-in-a-string-in-python/</guid><description>Подсчет слов в строке на Python</description><pubDate>Fri, 22 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Подсчет слов в строке - это одна из базовых операций при работе с текстовыми данными. Независимо от того, занимаетесь ли вы анализом текста, обработкой естественного языка или разработкой веб-приложений, возможно, вам придется реализовать функцию подсчета слов в строке.
+
+Перед тем как начать кодировать, важно понять, что такое &quot;слово&quot; в контексте данной задачи. В простейшем случае, слово - это последовательность символов, разделенных пробелами. Однако, следует учитывать, что в тексте могут встречаться знаки пунктуации и специальные символы, которые также могут быть частью слова. Например, &quot;Hello!&quot; и &quot;world&quot; считаются двумя разными словами, хотя &quot;Hello&quot; и &quot;world&quot; - это единое слово.
+
+Для подсчета слов в строке можно использовать несколько подходов. Рассмотрим два из них: с использованием встроенных функций Python и регулярных выражений.
+
+### Подход 1: Использование встроенных функций Python
+
+```python
+def count_words(text):
+    words = text.split()  # Разбиваем строку на слова
+    return len(words)     # Возвращаем количество слов
+
+# Пример использования
+text = &quot;Привет, мир! Это пример текста для подсчета слов.&quot;
+print(&quot;Количество слов в тексте:&quot;, count_words(text))
+```
+
+Этот код разбивает строку text на слова, используя метод `split()`, который разделяет строку по пробелам. Затем он возвращает количество полученных слов.
+
+### Подход 2: Использование регулярных выражений
+
+```python
+import re
+
+def count_words_regex(text):
+    words = re.findall(r&apos;\b\w+\b&apos;, text)  # Ищем все последовательности буквенно-цифровых символов
+    return len(words)                      # Возвращаем количество слов
+
+# Пример использования
+text = &quot;Привет, мир! Это пример текста для подсчета слов.&quot;
+print(&quot;Количество слов в тексте:&quot;, count_words_regex(text))
+```
+
+Этот код использует модуль re для поиска всех последовательностей буквенно-цифровых символов, ограниченных границами слов `\b`. Затем он возвращает количество найденных слов.
+
+</content:encoded></item><item><title>Декларативное программирование</title><link>https://awilum.ru/articles/declarative-programming/</link><guid isPermaLink="true">https://awilum.ru/articles/declarative-programming/</guid><description>Декларативное программирование</description><pubDate>Fri, 22 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 **Декларативное программирование** - это парадигма программирования, в которой программист описывает желаемый результат, а не последовательность шагов для его достижения. В этом подходе программа описывает, что должно быть сделано, а не как это должно быть сделано. Декларативное программирование подчеркивает &quot;что&quot; вместо &quot;как&quot;.
 
 Основные принципы декларативного программирования:
@@ -120,7 +157,195 @@ console.log(&quot;Сумма элементов массива:&quot;, result);
 Это простой пример императивного программирования на **JavaScript**, где программа последовательно выполняет инструкции, изменяя состояние программы для достижения желаемого результата.
 
 
-Императивное программирование является одной из наиболее распространенных парадигм программирования и используется во многих языках программирования, таких как **C**, **C++**, **Java**, **Python**, и многих других. Оно отличается от декларативного программирования, в котором программа описывает, что должно быть сделано, а не как это сделать.</content:encoded></item><item><title>String в Java</title><link>https://awilum.ru/articles/string-in-java/</link><guid isPermaLink="true">https://awilum.ru/articles/string-in-java/</guid><description>String в Java</description><pubDate>Fri, 22 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Императивное программирование является одной из наиболее распространенных парадигм программирования и используется во многих языках программирования, таких как **C**, **C++**, **Java**, **Python**, и многих других. Оно отличается от декларативного программирования, в котором программа описывает, что должно быть сделано, а не как это сделать.</content:encoded></item><item><title>Удаление циклических ссылок при конвертации в JSON на JavaScript</title><link>https://awilum.ru/articles/removing-circular-references-when-converting-to-json-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/removing-circular-references-when-converting-to-json-in-javascript/</guid><description>Удаление циклических ссылок при конвертации в JSON на JavaScript</description><pubDate>Fri, 22 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+При работе с данными в формате **JSON** в **JavaScript** может возникнуть проблема с циклическими ссылками. Это происходит, когда объект содержит ссылку на самого себя или на другой объект, который в свою очередь ссылается на исходный объект, образуя так называемый цикл. При попытке преобразовать такой объект в **JSON** с помощью `JSON.stringify()`, происходит исключение в виде ошибки &quot;TypeError: Converting circular structure to JSON&quot;. Это может стать причиной нежелательного поведения вашего приложения. В этой статье мы рассмотрим, как можно обнаружить и удалить циклические ссылки при конвертации объектов в **JSON** на **JavaScript**.
+
+### Обнаружение циклических ссылок
+
+Перед тем, как приступить к удалению циклических ссылок, необходимо обнаружить их. Для этого можно воспользоваться рекурсивной функцией, которая будет проходить по всем свойствам объекта и проверять, не содержат ли они ссылки на родительский объект или другие объекты, которые уже были просмотрены.
+
+Пример функции для обнаружения циклических ссылок:
+
+```javascript
+function hasCycles(obj, stack = new Set()) {
+    if (typeof obj !== &apos;object&apos; || obj === null) {
+        return false;
+    }
+    if (stack.has(obj)) {
+        return true;
+    }
+    stack.add(obj);
+    for (const key in obj) {
+        if (hasCycles(obj[key], stack)) {
+            return true;
+        }
+    }
+    stack.delete(obj);
+    return false;
+}
+```
+
+Эта функция рекурсивно проверяет все свойства объекта, используя стек для отслеживания пройденных объектов. Если она обнаруживает циклическую ссылку, она возвращает `true`, иначе `false`.
+
+### Удаление циклических ссылок
+
+После того, как циклические ссылки обнаружены, их необходимо удалить, чтобы успешно преобразовать объект в **JSON**. Для этого мы можем просто удалить свойства, содержащие циклические ссылки, или заменить их на `null`.
+
+Пример функции для удаления циклических ссылок:
+
+```javascript
+function removeCycles(obj, stack = new Set()) {
+    if (typeof obj !== &apos;object&apos; || obj === null) {
+        return obj;
+    }
+    if (stack.has(obj)) {
+        return null; // Можно также выбросить ошибку или заменить на что-то другое
+    }
+    stack.add(obj);
+    for (const key in obj) {
+        obj[key] = removeCycles(obj[key], stack);
+        if (obj[key] === null) {
+            delete obj[key];
+        }
+    }
+    stack.delete(obj);
+    return obj;
+}
+```
+
+Эта функция также использует рекурсию для прохода по всем свойствам объекта. Если она обнаруживает циклическую ссылку, она удаляет свойство или заменяет его на `null`.
+
+### Пример использования
+
+Рассмотрим пример использования обеих функций на простом объекте:
+
+```javascript
+const obj = {
+    name: &apos;John&apos;,
+    age: 30
+};
+obj.self = obj; // Добавляем циклическую ссылку
+
+console.log(hasCycles(obj)); // true
+const cleanedObj = removeCycles(obj);
+console.log(JSON.stringify(cleanedObj)); // {&quot;name&quot;:&quot;John&quot;,&quot;age&quot;:30}
+```
+
+В этом примере мы добавили циклическую ссылку на объект `self`. После использования функций обнаружения и удаления циклических ссылок, объект был успешно преобразован в **JSON**.
+
+&lt;br&gt;
+
+Удаление циклических ссылок при конвертации объектов в **JSON** на **JavaScript** важно для предотвращения ошибок и нежелательного поведения в приложении. Рекурсивные функции `hasCycles()` и `removeCycles()` могут помочь обнаружить и удалить такие ссылки, обеспечивая безопасное преобразование объектов в **JSON**. Помните, что эти функции могут быть расширены и адаптированы под конкретные требования вашего приложения.</content:encoded></item><item><title>Кодирование длин серий в Python</title><link>https://awilum.ru/articles/run-length-encoding-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/run-length-encoding-in-python/</guid><description>Кодирование длин серий в Python</description><pubDate>Fri, 22 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Кодирование длин серий (англ. run-length encoding, RLE) или кодирование повторов — алгоритм сжатия данных, заменяющий повторяющиеся символы (серии) на один символ и число его повторов. Серией называется последовательность, состоящая из нескольких одинаковых символов. При кодировании (упаковке, сжатии) строка одинаковых символов, составляющих серию, заменяется строкой, содержащей сам повторяющийся символ и количество его повторов.
+
+### Принцип работы RLE
+
+1. **Поиск серий.**   
+Строка данных анализируется на наличие серий, то есть последовательностей одинаковых символов.
+2. **Кодирование серий.**   
+Повторяющиеся символы заменяются на один символ и количество его повторов. Например, строка &quot;AAABBBCCC&quot; может быть закодирована как &quot;3A3B3C&quot;.
+3. **Декодирование.**   
+Закодированная строка может быть восстановлена обратно в исходную форму путем раскодирования.
+
+
+### Пример работы RLE
+
+Пусть дана строка: &quot;AAABBBCCCCDDDD&quot;.
+
+Алгоритм RLE обнаруживает следующие серии:
+- &quot;AAA&quot;
+- &quot;BBB&quot;
+- &quot;CCCC&quot;
+- &quot;DDDD&quot;
+
+&lt;br&gt;
+
+Каждая серия заменяется на символ и количество его повторов:
+- &quot;3A&quot;
+- &quot;3B&quot;
+- &quot;4C&quot;
+- &quot;4D&quot;
+
+&lt;br&gt;
+
+Результирующая закодированная строка будет:  
+- &quot;3A3B4C4D&quot;.
+
+&lt;br&gt;
+
+### Преимущества RLE
+1. **Простота.**   
+Алгоритм RLE легко реализовать и понять.
+2. **Эффективность для определенных типов данных.**   
+RLE особенно хорошо работает с данными, содержащими много повторяющихся символов, такими как изображения с большими областями одного цвета или текстовые файлы с повторяющимися символами.
+
+### Недостатки RLE  
+1. **Неэффективность для некоторых типов данных.**   
+В случае, если данные имеют низкую степень повторяемости (например, случайный шум), алгоритм RLE может увеличить размер данных из-за добавления счетчиков.
+2. **Ограничение на сжатие.**   
+RLE не всегда достигает высокой степени сжатия по сравнению с более сложными алгоритмами сжатия данных.
+
+### Релизация на Python
+
+```python
+def run_length_encode(input_str):
+    encoded = &apos;&apos;
+    count = 1
+    
+    # Iterate through all characters in the string, starting from the first
+    for i in range(len(input_str)):
+        # If the current character is equal to the next one, increase the count
+        if i &lt; len(input_str) - 1 and input_str[i] == input_str[i + 1]:
+            count += 1
+        else:
+            # Otherwise, add the current character and its count to the encoded string
+            encoded += str(count) + input_str[i]
+            # Reset the count
+            count = 1
+    
+    return encoded
+
+def run_length_decode(input_str):
+    decoded = &apos;&apos;
+    i = 0
+    
+    # Iterate through the entire string
+    while i &lt; len(input_str):
+        # If the current character is a digit, it represents the count of repetitions
+        if input_str[i].isdigit():
+            # Repeat the next character the specified number of times
+            decoded += input_str[i + 1] * int(input_str[i])
+            # Skip the repeated character
+            i += 2
+        else:
+            # If the current character is not a digit, add it to the decoded string
+            decoded += input_str[i]
+            i += 1
+    
+    return decoded
+```
+
+### Пример использования
+
+```python
+original_string = &apos;AAABBBCCCCDDDD&apos;
+encoded_string = run_length_encode(original_string)
+decoded_string = run_length_decode(encoded_string)
+
+print(&apos;Original:&apos;, original_string)  # Original: AAABBBCCCCDDDD
+print(&apos;Encoded:&apos;, encoded_string)    # Encoded:  3A3B4C4D
+print(&apos;Decoded:&apos;, decoded_string)    # Decoded:  AAABBBCCCCDDDD
+```
+
+&lt;br&gt;
+
+Очевидно, что такой метод кодирования эффективен для данных, в которых преобладают последовательности одинаковых символов, как, например, в простых графических изображениях, таких как иконки и схематические рисунки. Однако он не столь эффективен для изображений с постепенным переходом оттенков, например, фотографий.
+
+Часто встречаемыми форматами для сжатия данных с использованием метода кодирования длин серий (RLE) являются PackBits, PCX и ILBM.
+
+Этот метод сжатия может быть применен к произвольным файлам с двоичными данными, поскольку многие спецификации форматов файлов содержат повторяющиеся байты в области выравнивания данных. Однако современные системы сжатия, такие как Deflate, чаще используют алгоритмы, основанные на LZ77, который является обобщением метода кодирования длин серий и оперирует последовательностями символов вида «BWWBWWBWWBWW».
+
+Звуковые данные, содержащие длинные последовательные серии байт (например, низкокачественные аудио-сэмплы), могут быть сжаты с помощью RLE после применения к ним Дельта-кодирования.</content:encoded></item><item><title>String в Java</title><link>https://awilum.ru/articles/string-in-java/</link><guid isPermaLink="true">https://awilum.ru/articles/string-in-java/</guid><description>String в Java</description><pubDate>Fri, 22 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 В **Java**, `String` представляет собой класс, который используется для работы со строками текста. Строки в **Java** являются объектами, что означает, что они обладают множеством методов для работы с ними. Вот некоторые основные характеристики и функции класса `String` в **Java**:
 
 1. **Неизменяемость (Immutable).**  
@@ -545,7 +770,7 @@ console.log(iterator.next()); // { value: undefined, done: true }
 
 В этом примере `myArray[Symbol.iterator]()` возвращает объект-итератор для массива `myArray`. Последовательные вызовы метода `next()` возвращают каждый элемент массива в порядке их следования. После последнего элемента метод `next()` возвращает объект с `done: true`.
 
-Итераторы можно также создавать для собственных объектов. Для этого нужно определить метод `Symbol.iterator в прототипе объекта.
+Итераторы можно также создавать для собственных объектов. Для этого нужно определить метод `Symbol.iterator` в прототипе объекта.
 
 Вот пример:
 
