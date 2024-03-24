@@ -64,7 +64,62 @@ print(result)
 
 &lt;br&gt;
 
-Сложение списков поэлементно - это распространенная операция в **Python**, которая может быть полезна во многих сценариях программирования. В этой статье мы рассмотрели три основных способа выполнить эту операцию: использование цикла `for`, функции `zip()` и функции `map()`. Каждый из этих способов имеет свои преимущества, и выбор конкретного метода зависит от конкретной ситуации и предпочтений программиста.</content:encoded></item><item><title>Сравнение словарей в Python</title><link>https://awilum.ru/articles/comparison-of-dictionaries-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/comparison-of-dictionaries-in-python/</guid><description>Сравнение словарей в Python</description><pubDate>Sun, 24 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Сложение списков поэлементно - это распространенная операция в **Python**, которая может быть полезна во многих сценариях программирования. В этой статье мы рассмотрели три основных способа выполнить эту операцию: использование цикла `for`, функции `zip()` и функции `map()`. Каждый из этих способов имеет свои преимущества, и выбор конкретного метода зависит от конкретной ситуации и предпочтений программиста.</content:encoded></item><item><title>Расчет MD5 хеша для больших файлов в Python</title><link>https://awilum.ru/articles/calculate-md5-hash-for-large-files-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/calculate-md5-hash-for-large-files-in-python/</guid><description>Расчет MD5 хеша для больших файлов в Python</description><pubDate>Sun, 24 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+**MD5 (Message Digest Algorithm 5)** — это широко используемый криптографический хеш-алгоритм, который принимает входные данные и выдает фиксированную строку фиксированной длины, представляющую собой уникальную &quot;отпечаток&quot; этих данных. В **Python MD5-хеши** могут быть рассчитаны с использованием встроенного модуля `hashlib`.
+
+Когда речь идет о больших файлах, особенно в сфере обработки данных или сетевых операций, обработка их целиком в памяти может быть неэффективной и невозможной из-за ограничений памяти. Вместо этого файлы могут быть обработаны блоками, чтобы уменьшить нагрузку на память и обеспечить эффективность.
+
+Вот как можно рассчитать **MD5** хеш для больших файлов в **Python**, используя этот метод.
+
+```python
+import hashlib
+
+def calculate_md5(file_path, block_size=65536):
+    &quot;&quot;&quot;
+    Рассчитывает MD5 хеш файла в указанном пути.
+
+    :param file_path: Путь к файлу.
+    :param block_size: Размер блока для чтения файла (по умолчанию 64KB).
+    :return: MD5 хеш файла.
+    &quot;&quot;&quot;
+    md5_hash = hashlib.md5()  # Создаем объект MD5 хеша
+
+    with open(file_path, &quot;rb&quot;) as file:  # Открываем файл в бинарном режиме для чтения
+        buffer = file.read(block_size)  # Читаем файл блоками
+        while buffer:  # Пока блок не пустой (файл не закончился)
+            md5_hash.update(buffer)  # Обновляем хеш с данными из текущего блока
+            buffer = file.read(block_size)  # Читаем следующий блок
+
+    return md5_hash.hexdigest()  # Возвращаем MD5 хеш в виде строки
+```
+
+Этот скрипт открывает файл в бинарном режиме и читает его блоками размером `block_size`, обновляя объект **MD5** хеша на каждом блоке. Это позволяет обрабатывать файлы любого размера без необходимости загружать их целиком в память.
+
+### Пример использования
+
+Предположим, у нас есть файл `example.txt`, который содержит следующий текст:
+
+```
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed nisi vel urna fermentum lacinia.
+```
+
+Мы можем рассчитать его **MD5** хеш, используя функцию `calculate_md5`:
+
+```python
+file_path = &quot;example.txt&quot;
+
+md5_hash = calculate_md5(file_path)
+
+print(&quot;MD5 хеш файла:&quot;, md5_hash)
+```
+
+После запуска этого кода мы получим **MD5** хеш файла:
+
+```
+MD5 хеш файла: 240dc0a8be93aaa1b96ad3d1c9a04299
+```
+
+Этот **MD5** хеш будет уникальным для содержимого файла `example.txt`.</content:encoded></item><item><title>Сравнение словарей в Python</title><link>https://awilum.ru/articles/comparison-of-dictionaries-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/comparison-of-dictionaries-in-python/</guid><description>Сравнение словарей в Python</description><pubDate>Sun, 24 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 **Словари (dict)** в **Python** - это универсальные структуры данных, которые позволяют хранить данные в формате ключ-значение. Они представляют собой коллекции объектов, где каждый элемент имеет уникальный ключ и соответствующее ему значение. В этой статье мы рассмотрим различные методы сравнения словарей в **Python**, включая операции сравнения, функции сравнения и специальные библиотеки.
 
 ### Операции сравнения словарей
@@ -287,7 +342,76 @@ multiline_string = &quot;&quot;&quot;
 2. **Когда использовать символ решетки.**   
 Использование символа решетки удобно для временных многострочных комментариев, которые не требуют переформатирования в документацию или удаления комментариев после их использования.
 
-Важно помнить, что комментарии должны быть понятными и информативными. Хорошая практика включает в себя регулярное обновление комментариев в коде, чтобы они оставались актуальными и полезными для всех, кто работает с кодом.</content:encoded></item><item><title>Получение списка файлов в текущем каталоге на Python</title><link>https://awilum.ru/articles/getting-a-list-of-files-in-the-current-directory-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/getting-a-list-of-files-in-the-current-directory-in-python/</guid><description>Получение списка файлов в текущем каталоге на Python</description><pubDate>Sun, 24 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Важно помнить, что комментарии должны быть понятными и информативными. Хорошая практика включает в себя регулярное обновление комментариев в коде, чтобы они оставались актуальными и полезными для всех, кто работает с кодом.</content:encoded></item><item><title>Разделение списка на два по условию в Python</title><link>https://awilum.ru/articles/dividing-a-list-into-two-by-condition-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/dividing-a-list-into-two-by-condition-in-python/</guid><description>Разделение списка на два по условию в Python</description><pubDate>Sun, 24 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Разделение списка на два по определенному условию - распространенная задача в программировании на **Python**. Это может понадобиться, например, для разделения данных на основе их типа, значения или какого-то другого критерия.
+
+### Использование List Comprehension
+
+**List Comprehension** - это компактный способ создания списка в **Python**. Мы можем использовать его для фильтрации элементов списка в соответствии с заданным условием и создания двух новых списков.
+
+```python
+# Исходный список
+original_list = [10, 20, 30, 40, 50, 60, 70, 80, 90]
+
+# Условие разделения: элементы, большие или равные 50, попадают в один список, остальные - в другой
+list_1 = [x for x in original_list if x &gt;= 50]
+list_2 = [x for x in original_list if x &lt; 50]
+
+print(&quot;Список 1:&quot;, list_1)
+print(&quot;Список 2:&quot;, list_2)
+```
+
+Этот код создает два новых списка `list_1` и `list_2`, разделяя элементы исходного списка в соответствии с заданным условием.
+
+### Использование функции `filter()`
+
+Функция `filter()` позволяет фильтровать элементы последовательности (в данном случае - списка) с использованием заданной функции.
+
+```python
+# Функция для фильтрации
+def condition(x):
+    return x &gt;= 50
+
+# Исходный список
+original_list = [10, 20, 30, 40, 50, 60, 70, 80, 90]
+
+# Разделение списка с помощью filter()
+list_1 = list(filter(condition, original_list))
+list_2 = list(filter(lambda x: not condition(x), original_list))
+
+print(&quot;Список 1:&quot;, list_1)
+print(&quot;Список 2:&quot;, list_2)
+```
+
+Здесь мы определяем функцию `condition()`, которая определяет условие разделения списка. Затем мы используем функцию `filter()` для применения этой функции к исходному списку и создания двух новых списков.
+
+### Использование цикла `for`
+
+Этот метод наиболее явный. Мы можем использовать цикл `for`, чтобы пройти по каждому элементу исходного списка и добавить его в соответствующий список в зависимости от условия.
+
+```python
+# Исходный список
+original_list = [10, 20, 30, 40, 50, 60, 70, 80, 90]
+
+# Условие разделения: элементы, большие или равные 50, попадают в один список, остальные - в другой
+list_1 = []
+list_2 = []
+
+for x in original_list:
+    if x &gt;= 50:
+        list_1.append(x)
+    else:
+        list_2.append(x)
+
+print(&quot;Список 1:&quot;, list_1)
+print(&quot;Список 2:&quot;, list_2)
+```
+
+В этом примере мы используем цикл `for`, чтобы пройти по каждому элементу исходного списка и добавить его в соответствующий список в зависимости от условия.
+
+&lt;br&gt;
+
+Каждый из этих методов позволяет разделить список на два на основе определенного условия. Выбор конкретного метода зависит от вашего стиля программирования и конкретной ситуации, в которой вы работаете.</content:encoded></item><item><title>Получение списка файлов в текущем каталоге на Python</title><link>https://awilum.ru/articles/getting-a-list-of-files-in-the-current-directory-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/getting-a-list-of-files-in-the-current-directory-in-python/</guid><description>Получение списка файлов в текущем каталоге на Python</description><pubDate>Sun, 24 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 В **Python**, работа с файловой системой предоставляет широкий спектр возможностей для манипуляции с файлами и каталогами. Одним из распространенных заданий является получение списка файлов только в текущем каталоге. Это может быть полезно для множества задач, начиная от простого просмотра содержимого каталога до автоматизации процесса обработки файлов.
 
 Для получения списка файлов в текущем каталоге на **Python** мы можем использовать модуль `os`, который предоставляет функции для работы с операционной системой, такие как доступ к файловой системе.
@@ -437,7 +561,98 @@ print(dictionary)  # {&apos;a&apos;: 1, &apos;b&apos;: 2, &apos;c&apos;: 3}
 
 Используя `zip()`, мы можем легко создать словарь из двух списков, где элементы первого списка будут ключами, а элементы второго списка - значениями.
 
-</content:encoded></item><item><title>Сравнение строковых представлений версий в Python</title><link>https://awilum.ru/articles/comparing-string-representations-of-versions-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/comparing-string-representations-of-versions-in-python/</guid><description>Сравнение строковых представлений версий в Python</description><pubDate>Fri, 22 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+</content:encoded></item><item><title>Разбиваем многострочный текст на строки в Python</title><link>https://awilum.ru/articles/splitting-multiline-text-into-lines-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/splitting-multiline-text-into-lines-in-python/</guid><description>Разбиваем многострочный текст на строки в Python</description><pubDate>Sun, 24 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В **Python** существует несколько способов разбить многострочный текст на строки. Это может быть полезно при чтении данных из файла, обработке текстов или анализе данных.
+
+### Метод split()
+
+Метод `split()` является одним из наиболее распространенных способов разбиения строк на подстроки. Он разбивает строку на список строк на основе определенного разделителя.
+
+```python
+text = &quot;&quot;&quot;Это
+многострочный
+текст
+для
+разбивки&quot;&quot;&quot;
+
+lines = text.split(&apos;\n&apos;)
+
+print(lines)
+```
+
+Результат:
+
+```
+[&apos;Это&apos;, &apos;многострочный&apos;, &apos;текст&apos;, &apos;для&apos;, &apos;разбивки&apos;]
+```
+
+### Метод `splitlines()`
+
+Метод `splitlines()` является альтернативой `split()` для разбиения строк на подстроки, основываясь на символах новой строки.
+
+```python
+text = &quot;&quot;&quot;Это
+многострочный
+текст
+для
+разбивки&quot;&quot;&quot;
+
+lines = text.splitlines()
+
+print(lines)
+```
+
+Результат:
+
+```
+[&apos;Это&apos;, &apos;многострочный&apos;, &apos;текст&apos;, &apos;для&apos;, &apos;разбивки&apos;]
+```
+
+### Использование метода `split()` без аргументов
+
+Если не указывать разделитель в методе split(), то он автоматически будет использовать пробельные символы, такие как пробел, табуляция и символы новой строки.
+
+```python
+text = &quot;&quot;&quot;Это
+многострочный
+текст
+для
+разбивки&quot;&quot;&quot;
+
+lines = text.split()
+
+print(lines)
+```
+
+Результат:
+
+```
+[&apos;Это&apos;, &apos;многострочный&apos;, &apos;текст&apos;, &apos;для&apos;, &apos;разбивки&apos;]
+```
+
+### Итерация по строкам
+
+Еще один способ разбить многострочный текст на строки - это использовать цикл для итерации по каждой строке текста.
+
+```python
+text = &quot;&quot;&quot;Это
+многострочный
+текст
+для
+разбивки&quot;&quot;&quot;
+
+lines = []
+for line in text.split(&apos;\n&apos;):
+    lines.append(line)
+
+print(lines)
+```
+
+Результат:
+
+```
+[&apos;Это&apos;, &apos;многострочный&apos;, &apos;текст&apos;, &apos;для&apos;, &apos;разбивки&apos;]
+```</content:encoded></item><item><title>Сравнение строковых представлений версий в Python</title><link>https://awilum.ru/articles/comparing-string-representations-of-versions-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/comparing-string-representations-of-versions-in-python/</guid><description>Сравнение строковых представлений версий в Python</description><pubDate>Fri, 22 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 В мире программирования часто возникает необходимость сравнения версий программного обеспечения. Это может быть полезно, например, при обновлении пакетов или определении совместимости между различными версиями библиотек. В **Python** существует несколько способов сравнения строковых представлений версий, и в этой статье мы рассмотрим несколько из них с примерами.
 
 ### С использованием `split()` и сравнения отдельных компонентов
