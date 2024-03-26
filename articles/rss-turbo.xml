@@ -1,4 +1,350 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Сложение списков поэлементно в Python</title><link>https://awilum.ru/articles/adding-lists-element-wise-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/adding-lists-element-wise-in-python/</guid><description>Сложение списков поэлементно в Python</description><pubDate>Sun, 24 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Добавление элементов в кортеж Python</title><link>https://awilum.ru/articles/adding-elements-to-a-python-tuple/</link><guid isPermaLink="true">https://awilum.ru/articles/adding-elements-to-a-python-tuple/</guid><description>Добавление элементов в кортеж Python</description><pubDate>Tue, 26 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В языке программирования **Python** кортеж **(tuple)** является неизменяемой структурой данных, которая хранит последовательность элементов. Это означает, что после создания кортежа его элементы нельзя изменить, удалить или добавить. Однако, существуют способы добавления элементов в кортеж, которые создают новый кортеж с дополнительными значениями. 
+
+### Создание нового кортежа с помощью оператора `+`
+
+Один из наиболее распространенных способов добавления элементов в кортеж - использование оператора `+`, который объединяет два кортежа в один. При этом создается новый кортеж, который содержит все элементы из обоих исходных кортежей.
+
+```python
+# Исходный кортеж
+tuple1 = (1, 2, 3)
+
+# Добавляемый элемент
+new_element = 4
+
+# Создаем новый кортеж, объединяя исходный кортеж и новый элемент
+new_tuple = tuple1 + (new_element,)
+
+print(new_tuple)  # (1, 2, 3, 4)
+```
+
+Обратите внимание, что в данном примере новый элемент добавляется с использованием запятой после него. Это необходимо, чтобы **Python** правильно интерпретировал его как кортеж из одного элемента.
+
+### Преобразование кортежа в список, добавление элементов и обратное преобразование
+
+Другой способ добавления элементов в кортеж состоит в преобразовании его в список, выполнении необходимых изменений и последующем преобразовании списка обратно в кортеж. Этот метод позволяет выполнять различные операции над элементами кортежа, но требует дополнительных действий по преобразованию типов.
+
+```python
+# Исходный кортеж
+tuple2 = (1, 2, 3)
+
+# Преобразуем кортеж в список
+list_from_tuple = list(tuple2)
+
+# Добавляем новый элемент в список
+list_from_tuple.append(4)
+
+# Преобразуем список обратно в кортеж
+new_tuple2 = tuple(list_from_tuple)
+
+print(new_tuple2)  # (1, 2, 3, 4)
+```
+
+Этот метод удобен, если необходимо выполнить несколько операций над элементами кортежа, но имеет некоторое преобразование типов, что может сказаться на производительности в случае больших кортежей.
+
+### Использование метода `tuple()` для создания нового кортежа
+
+Третий способ заключается в использовании метода `tuple()`, который принимает в качестве аргумента итерируемый объект (например, список) и создает новый кортеж на основе его элементов.
+
+```python
+# Исходный кортеж
+tuple3 = (1, 2, 3)
+
+# Добавляемый элемент
+new_element = 4
+
+# Создаем новый кортеж, включая все элементы исходного кортежа и новый элемент
+new_tuple3 = tuple(tuple3) + (new_element,)
+
+print(new_tuple3)  # Вывод: (1, 2, 3, 4)
+```
+
+Этот метод является более явным и понятным, чем использование оператора `+`, однако он требует создания временного кортежа с помощью функции `tuple()`, что может сказаться на производительности.</content:encoded></item><item><title>Как подсчитать количество True в списке Python</title><link>https://awilum.ru/articles/counting-the-number-of-true-values-in-a-python-list/</link><guid isPermaLink="true">https://awilum.ru/articles/counting-the-number-of-true-values-in-a-python-list/</guid><description>Как подсчитать количество True в списке Python</description><pubDate>Tue, 26 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В **Python**, когда нам нужно подсчитать количество элементов с определенным значением в списке, мы можем воспользоваться различными методами. Один из самых простых способов сделать это - это использовать цикл или функции высшего порядка, такие как `filter()` или `count()`. 
+
+### Использование цикла
+
+```python
+def count_true(lst):
+    count = 0
+    for item in lst:
+        if item == True:
+            count += 1
+    return count
+
+# Пример использования
+my_list = [True, False, True, True, False]
+
+print(&quot;Количество True в списке:&quot;, count_true(my_list))
+```
+
+### Использование функции `filter()`
+
+Функция `filter()` может быть использована для фильтрации элементов списка по определенному условию.
+
+```python
+my_list = [True, False, True, True, False]
+
+true_count = len(list(filter(lambda x: x == True, my_list)))
+
+print(&quot;Количество True в списке:&quot;, true_count)
+```
+
+### Использование метода `count()`
+
+Метод `count()` предоставляет простой способ подсчета количества конкретных элементов в списке.
+
+```python
+my_list = [True, False, True, True, False]
+
+true_count = my_list.count(True)
+
+print(&quot;Количество True в списке:&quot;, true_count)
+```</content:encoded></item><item><title>Получение последних элементов списка в Python</title><link>https://awilum.ru/articles/getting-the-last-elements-of-a-list-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/getting-the-last-elements-of-a-list-in-python/</guid><description>Получение последних элементов списка в Python</description><pubDate>Tue, 26 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Когда вам нужно получить последние элементы списка в **Python**, существует несколько способов сделать это. 
+
+### Использование отрицательного индекса
+
+В Python индексы могут быть отрицательными, что позволяет обращаться к элементам списка с конца. Последний элемент списка имеет индекс `-1`, предпоследний `-2`, и так далее.
+
+```python
+my_list = [1, 2, 3, 4, 5]
+
+last_element = my_list[-1]
+
+print(last_element)  # 5
+```
+
+Этот подход очень прост и интуитивно понятен.
+
+### Использование срезов `slices`
+
+**Срезы** - это способ получения подсписка из списка. Мы можем использовать [срезы](/articles/working-with-slices-in-python/) для получения последних элементов списка.
+
+```python
+my_list = [1, 2, 3, 4, 5]
+
+last_three_elements = my_list[-3:]
+
+print(last_three_elements)  # [3, 4, 5]
+```
+
+Здесь `[-3:]` означает, что мы берем все элементы, начиная с третьего элемента с конца и до конца списка.
+
+### Использование метода `pop()`
+
+Метод `pop()` используется для удаления и возврата элемента с указанным индексом из списка. Если индекс не указан, он по умолчанию удаляет и возвращает последний элемент списка.
+
+```python
+my_list = [1, 2, 3, 4, 5]
+
+last_element = my_list.pop()
+
+print(last_element)  # 5
+```
+
+Этот метод также может быть использован для получения всех последних элементов в определенном количестве.
+
+```python
+my_list = [1, 2, 3, 4, 5]
+
+last_three_elements = [my_list.pop() for _ in range(3)]
+
+print(last_three_elements)  # [5, 4, 3]
+```</content:encoded></item><item><title>Как выводить имя ключа из словаря в Python?</title><link>https://awilum.ru/articles/how-to-get-a-key-name-from-a-dictionary-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/how-to-get-a-key-name-from-a-dictionary-in-python/</guid><description>Как выводить имя ключа из словаря в Python?</description><pubDate>Tue, 26 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В **Python** словарь (**dict**) представляет собой структуру данных, которая хранит пары ключ-значение. Иногда возникает необходимость вывести сами ключи словаря для дальнейшей обработки или анализа. В этой статье мы рассмотрим несколько способов, с помощью которых можно получить и вывести имена ключей из словаря.
+
+### Использование метода `keys()`
+
+Метод `keys()` возвращает представление всех ключей в словаре. Далее можно использовать любую итерацию (например, цикл `for`) для обработки и вывода ключей.
+
+```python
+my_dict = {&apos;a&apos;: 1, &apos;b&apos;: 2, &apos;c&apos;: 3}
+
+# Итерация по ключам и вывод их на экран
+for key in my_dict.keys():
+    print(key)
+```
+
+Этот код выведет:
+
+```
+a
+b
+c
+```
+
+### Прямая итерация по словарю
+
+В **Python** прямая итерация по словарю по умолчанию итерирует по его ключам. Таким образом, можно использовать цикл for для непосредственного вывода ключей.
+
+```python
+my_dict = {&apos;a&apos;: 1, &apos;b&apos;: 2, &apos;c&apos;: 3}
+
+# Прямая итерация по словарю
+for key in my_dict:
+    print(key)
+```
+
+Результат будет таким же, как и в предыдущем примере.
+
+### Применение метода `items()`
+
+Метод `items()` возвращает представление пар ключ-значение в словаре. Мы можем использовать его для вывода ключей.
+
+```python
+my_dict = {&apos;a&apos;: 1, &apos;b&apos;: 2, &apos;c&apos;: 3}
+
+# Применение метода items() и вывод ключей
+for key, value in my_dict.items():
+    print(key)
+```
+
+Этот код также выведет:
+
+```
+a
+b
+c
+```
+
+### Применение генератора списков
+
+**Генераторы списков** - это мощный инструмент в **Python**. Мы можем использовать генератор списка для извлечения ключей из словаря.
+
+```python
+my_dict = {&apos;a&apos;: 1, &apos;b&apos;: 2, &apos;c&apos;: 3}
+
+# Использование генератора списка для извлечения ключей
+keys = [key for key in my_dict]
+
+# Вывод ключей
+for key in keys:
+    print(key)
+```
+
+Результат будет тем же.</content:encoded></item><item><title>Использование мемоизации в Python</title><link>https://awilum.ru/articles/using-memoization-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/using-memoization-in-python/</guid><description>Использование мемоизации в Python</description><pubDate>Tue, 26 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В программировании, особенно в языках с высоким уровнем абстракции, таких как **Python**, оптимизация производительности часто является ключевым аспектом. 
+
+**Мемоизация** - это одна из таких техник, которая может значительно улучшить производительность программы, особенно когда речь идет о вычислениях с повторяющимися результатами. 
+
+### Что такое мемоизация?
+
+Мемоизация - это техника оптимизации, при которой результаты выполнения функции запоминаются (кэшируются), чтобы избежать повторных вычислений при одинаковых входных данных. Это особенно полезно, когда функция вызывается с одними и теми же аргументами несколько раз.
+
+### Пример без мемоизации
+
+Давайте рассмотрим пример функции, которая вычисляет факториал числа без использования мемоизации:
+
+```python
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+```
+
+При каждом вызове `factorial(n)` эта функция будет рекурсивно вызывать себя для вычисления факториала `n-1`, что может привести к избыточным вычислениям.
+
+### Пример с мемоизацией
+
+Теперь мы можем использовать мемоизацию, чтобы избежать повторных вычислений. В **Python** это можно сделать, например, с помощью декоратора и словаря для хранения результатов:
+
+```python
+def memoize(func):
+    cache = {}
+
+    def memoized_func(*args):
+        if args not in cache:
+            cache[args] = func(*args)
+        return cache[args]
+
+    return memoized_func
+
+@memoize
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+```
+
+Теперь функция `factorial` будет кэшировать результаты вычислений, и если она вызывается с теми же аргументами, она просто вернет значение из кэша, избегая повторных вычислений.
+
+### Пример использования мемоизации
+
+Давайте рассмотрим пример использования мемоизации для вычисления факториала:
+
+```python
+print(factorial(5))  # 120
+print(factorial(3))  # 6
+```
+
+При первом вызове `factorial(5)` вычисляется факториал числа `5` и результат `(120)` сохраняется в кэше. При следующем вызове `factorial(3)` функция сначала проверяет кэш и обнаруживает, что результат уже вычислен, поэтому возвращает значение из кэша `(6)`, без повторных вычислений.
+
+&lt;br&gt;
+
+**Мемоизация** - мощный инструмент оптимизации производительности в **Python** и других языках программирования. Она позволяет избежать повторных вычислений и существенно сократить время выполнения программы. При правильном использовании она может быть особенно полезной в вычислительно интенсивных задачах</content:encoded></item><item><title>Использование переменных внутри регулярного выражения Python</title><link>https://awilum.ru/articles/using-variables-inside-a-python-regular-expression/</link><guid isPermaLink="true">https://awilum.ru/articles/using-variables-inside-a-python-regular-expression/</guid><description>Использование переменных внутри регулярного выражения Python</description><pubDate>Tue, 26 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+**Регулярные выражения (Regular Expressions)** - это мощный инструмент для работы с текстом в **Python**. Они позволяют искать, сопоставлять и изменять строки с помощью определенного шаблона. Часто возникает необходимость использовать переменные внутри регулярных выражений для создания более гибких и динамических шаблонов. В этой статье мы рассмотрим различные способы использования переменных в регулярных выражениях на примерах.
+
+### Использование переменных для поиска подстрок
+
+Пример: Найдем все слова, которые начинаются с определенной буквы.
+
+```python
+import re
+
+text = &quot;apple banana orange pear&quot;
+letter = &quot;b&quot;
+
+pattern = r&quot;\b&quot; + letter + r&quot;\w+&quot;
+matches = re.findall(pattern, text)
+
+print(matches)  # [&apos;banana&apos;]
+```
+
+В этом примере мы создаем шаблон, который ищет слова, начинающиеся с определенной буквы, и используем переменную `letter` для указания этой буквы.
+
+### Использование переменных для замены подстрок
+
+Пример: Заменим все вхождения одной подстроки на другую, используя переменные.
+
+```python
+import re
+
+text = &quot;apple banana orange pear&quot;
+old_word = &quot;banana&quot;
+new_word = &quot;grape&quot;
+
+pattern = re.compile(r&quot;\b&quot; + old_word + r&quot;\b&quot;)
+updated_text = pattern.sub(new_word, text)
+
+print(updated_text)  # apple grape orange pear
+```
+
+Здесь мы используем переменные `old_word` и `new_word` для замены всех вхождений `old_word` на `new_word`.
+
+### Использование переменных внутри групп
+
+Пример: Найдем пары слов, разделенные определенным символом.
+
+```python
+import re
+
+text = &quot;apple:banana orange:pear&quot;
+separator = &quot;:&quot;
+
+pattern = re.compile(r&quot;(\w+)&quot; + re.escape(separator) + r&quot;(\w+)&quot;)
+matches = pattern.findall(text)
+
+print(matches)  # [(&apos;apple&apos;, &apos;banana&apos;), (&apos;orange&apos;, &apos;pear&apos;)]
+```
+
+Здесь мы используем переменную `separator`, чтобы разделить слова в тексте и найти пары слов, разделенные этим символом.
+
+&lt;br&gt;
+
+Использование переменных внутри регулярных выражений делает их более гибкими и удобными для работы с динамическими данными. Однако при использовании переменных необходимо учитывать возможные проблемы с экранированием специальных символов и обработкой специальных случаев.</content:encoded></item><item><title>Сложение списков поэлементно в Python</title><link>https://awilum.ru/articles/adding-lists-element-wise-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/adding-lists-element-wise-in-python/</guid><description>Сложение списков поэлементно в Python</description><pubDate>Sun, 24 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 В языке программирования **Python** существует несколько способов сложения списков поэлементно. Это может быть полезным, когда вам необходимо объединить два списка, элемент за элементом, или когда вы хотите применить определенную операцию к соответствующим элементам двух списков. В этой статье мы рассмотрим различные методы сложения списков поэлементно в **Python** с примерами кода.
 
 ### Использование цикла `for`
@@ -526,7 +872,7 @@ print(list(zipped))  # [(1, &apos;a&apos;), (2, &apos;b&apos;)]
 
 #### Пример 3: Распаковка zip объекта
 
-```pytnon
+```python
 pairs = [(1, &apos;a&apos;), (2, &apos;b&apos;), (3, &apos;c&apos;)]
 numbers, letters = zip(*pairs)
 
