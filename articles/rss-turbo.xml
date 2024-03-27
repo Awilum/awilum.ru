@@ -1,4 +1,284 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Добавление элементов в кортеж Python</title><link>https://awilum.ru/articles/adding-elements-to-a-python-tuple/</link><guid isPermaLink="true">https://awilum.ru/articles/adding-elements-to-a-python-tuple/</guid><description>Добавление элементов в кортеж Python</description><pubDate>Tue, 26 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Преобразование символа в ASCII и обратно в Python</title><link>https://awilum.ru/articles/converting-a-character-to-ascii-and-back-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/converting-a-character-to-ascii-and-back-in-python/</guid><description>Преобразование символа в ASCII и обратно в Python</description><pubDate>Wed, 27 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+ASCII (American Standard Code for Information Interchange) - это стандартный кодировочный набор, используемый для представления текстовых данных на компьютерах и других устройствах, совместимых с ASCII. В Python существуют встроенные функции, которые позволяют преобразовывать символы в их ASCII-коды и наоборот. Это часто используется при работе с символьными данными, например, при чтении и записи файлов или в обработке строк.
+
+### Преобразование символа в ASCII
+
+Для преобразования символа в его ASCII-код в Python используется функция ord(). Она принимает один символ в качестве аргумента и возвращает его числовое представление в кодировке ASCII. Вот пример использования:
+
+```python
+char = &apos;A&apos;
+ascii_code = ord(char)
+print(f&quot;ASCII код символа &apos;{char}&apos; равен: {ascii_code}&quot;)
+```
+
+Этот код выведет:
+
+```
+ASCII код символа &apos;A&apos; равен: 65
+```
+
+### Преобразование ASCII в символ
+
+Для преобразования ASCII-кода в символ в Python используется функция chr(). Она принимает целое число (ASCII-код) в качестве аргумента и возвращает соответствующий символ. Вот пример использования:
+
+```python
+ascii_code = 65
+char = chr(ascii_code)
+print(f&quot;Символ с ASCII кодом {ascii_code} равен: &apos;{char}&apos;&quot;)
+```
+
+Этот код также выведет:
+
+```
+Символ с ASCII кодом 65 равен: &apos;A&apos;
+```
+
+### Пример использования
+
+Предположим, у нас есть строка и мы хотим преобразовать каждый символ этой строки в его ASCII-код и затем обратно в символ. Вот как мы можем это сделать:
+
+```python
+original_string = &quot;Hello, World!&quot;
+
+# Преобразование каждого символа в ASCII и обратно в символ
+ascii_list = [ord(char) for char in original_string]
+converted_string = &apos;&apos;.join([chr(code) for code in ascii_list])
+
+print(&quot;Исходная строка:&quot;, original_string)
+print(&quot;ASCII коды символов:&quot;, ascii_list)
+print(&quot;Преобразованная строка:&quot;, converted_string)
+```
+
+Этот код выведет:
+
+```
+Исходная строка: Hello, World!
+ASCII коды символов: [72, 101, 108, 108, 111, 44, 32, 87, 111, 114, 108, 100, 33]
+Преобразованная строка: Hello, World!
+```</content:encoded></item><item><title>Создание утилиты Cowsay на Python</title><link>https://awilum.ru/articles/creating-a-cowsay-utility-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/creating-a-cowsay-utility-in-python/</guid><description>Создание утилиты Cowsay на Python</description><pubDate>Wed, 27 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+**Cowsay** - это забавная утилита командной строки, которая отображает текст в области речи изображения коровы. Она может быть использована для добавления юмористических комментариев к выводу командной строки или для простого развлечения. В этой статье мы создадим свою собственную версию утилиты cowsay на языке **Python**.
+
+### Что такое cowsay?
+
+Cowsay была создана Тони Монро (Tony Monroe) в 1999 году. Она является утилитой командной строки, написанной на Perl, которая генерирует текстовую речь в виде изображения коровы ASCII. С течением времени она стала популярной в мире UNIX и Linux и была портирована на различные языки программирования, включая Python.
+
+### Как работает cowsay?
+
+Cowsay принимает текстовую строку в качестве входных данных и отображает эту строку в области речи коровы ASCII. Она также позволяет выбрать различные варианты изображения, такие как корова, бык, овца и т.д., а также настраивать ширину области речи и другие параметры.
+
+### Создание утилиты cowsay на Python
+
+Давайте создадим нашу собственную версию утилиты cowsay на языке Python. Мы будем использовать стандартную библиотеку Python для обработки ввода и вывода, а также для генерации ASCII-изображений коровы.
+
+```python
+# cowsay.py
+
+def cowsay(text):
+    speech_bubble = &quot; &quot; + &quot;_&quot; * (len(text) + 2) + &quot;\n&quot;
+    speech_bubble += &quot;&lt; &quot; + text + &quot; &gt;\n&quot;
+    speech_bubble += &quot; &quot; + &quot;-&quot; * (len(text) + 2) + &quot;\n&quot;
+    speech_bubble += &quot;        \\   ^__^\n&quot;
+    speech_bubble += &quot;         \\  (oo)\\_______\n&quot;
+    speech_bubble += &quot;            (__)\\       )\\/\\\n&quot;
+    speech_bubble += &quot;                ||----w |\n&quot;
+    speech_bubble += &quot;                ||     ||\n&quot;
+    return speech_bubble
+
+if __name__ == &quot;__main__&quot;:
+    text = input(&quot;Введите текст для cowsay: &quot;)
+    print(cowsay(text))
+```
+
+Этот код определяет функцию `cowsay`, которая принимает текстовую строку в качестве аргумента и возвращает строку с изображением коровы ASCII и введенным текстом внутри области речи.
+
+### Пример использования
+
+Давайте попробуем использовать нашу утилиту cowsay:
+
+```
+$ python cowsay.py
+Введите текст для cowsay: Привет, мир!
+ __________
+&lt; Привет, мир! &gt;
+ ------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+```
+
+&lt;br&gt;
+
+Мы создали простую версию утилиты cowsay на языке **Python**. Хотя она может не иметь всех возможностей оригинальной утилиты, она демонстрирует основные принципы работы и может быть расширена дополнительной функциональностью по вашему желанию :)</content:encoded></item><item><title>Создание простого онлайн сервиса на JavaScript для воспроизведения YouTube видео по кругу</title><link>https://awilum.ru/articles/creating-a-simple-online-service-in-javascript-to-play-youtube-videos-in-a-circle/</link><guid isPermaLink="true">https://awilum.ru/articles/creating-a-simple-online-service-in-javascript-to-play-youtube-videos-in-a-circle/</guid><description>Создание простого онлайн сервиса на JavaScript для воспроизведения YouTube видео по кругу</description><pubDate>Wed, 27 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В этой статье мы рассмотрим, как создать простой онлайн сервис &quot;YouTube Loop Player&quot;, который будет воспроизводить видео с **YouTube** по кругу с возможностью вставки ссылки на видео.
+
+### 1. Начало
+
+Для создания этого простого проекта вам понадобятся:
+
+1. **HTML** для разметки веб-страницы.
+2. **CSS** для стилизации внешнего вида.
+3. **JavaScript** для управления воспроизведением видео и работы с **API YouTube**.
+
+
+### 2. Создание HTML-разметки с Формой для Вставки Ссылки
+
+Начнем с создания простой **HTML-разметки** для нашего проекта. 
+
+Мы добавим форму, в которую пользователь сможет вставить ссылку на **YouTube** видео. 
+
+Вот пример кода:
+
+```html
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;YouTube Loop Player&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;video-container&quot;&gt;
+        &lt;iframe id=&quot;youtube-video&quot; width=&quot;560&quot; height=&quot;315&quot; src=&quot;&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+    &lt;form id=&quot;video-form&quot;&gt;
+        &lt;label for=&quot;video-url&quot;&gt;Введите ссылку на YouTube видео:&lt;/label&gt;&lt;br&gt;
+        &lt;input type=&quot;text&quot; id=&quot;video-url&quot; name=&quot;video-url&quot; placeholder=&quot;Please paste YouTube URL&quot; required&gt;&lt;br&gt;
+        &lt;button type=&quot;submit&quot; id=&quot;video-submit&quot;&gt;Воспроизвести&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+```
+
+### 3. Стилизация с CSS
+
+Добавим стили для улучшения внешнего вида нашего сервиса. 
+
+Пример кода для файла `styles.css`:
+
+```css
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #000;
+}
+
+.video-container {
+    width: 640px;
+    height: 480px;
+    margin: 40px auto;
+}
+
+#youtube-video {
+    width: 100%;
+    height: 100%;
+}
+
+#video-form {
+    margin: 40px auto;
+    width: 640px;
+}
+
+#video-url {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px 4px;
+    background: #000;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+#video-submit {
+    padding: 8px 4px;
+}
+```
+
+### 4. JavaScript для Управления Видео и Обработки Формы
+
+Теперь давайте добавим **JavaScript-код** для управления воспроизведением видео и обработки вставленной ссылки.
+
+Пример кода для файла `script.js`:
+
+```javascript
+// Обработка отправки формы
+document.getElementById(&apos;video-form&apos;).addEventListener(&apos;submit&apos;, function(event) {
+    event.preventDefault(); // Предотвратить отправку формы по умолчанию
+    
+    const videoUrl = document.getElementById(&apos;video-url&apos;).value;
+    const videoId = getVideoId(videoUrl);
+    
+    if (videoId) {
+        // Обновить iframe с новым видео
+        document.getElementById(&apos;youtube-video&apos;).src = `https://www.youtube.com/embed/${videoId}?autoplay=1&amp;loop=1&amp;playlist=${videoId}`;
+    } else {
+        alert(&apos;Пожалуйста, введите корректную ссылку на YouTube видео.&apos;);
+    }
+});
+
+// Функция для получения ID видео из URL
+function getVideoId(url) {
+    const regex = /[?&amp;]v=([^&amp;#]+)/;
+    const match = url.match(regex);
+    return match &amp;&amp; match[1];
+}
+```
+
+Этот **JavaScript**-код будет автоматически обновлять `&lt;iframe&gt;` с новым видео, когда пользователь отправляет форму с ссылкой на **YouTube** видео.
+
+### 5. Завершение
+
+После завершения этих шагов у вас будет рабочий пример онлайн сервиса на **JavaScript**, который воспроизводит **YouTube** видео по кругу с возможностью вставки ссылки на видео. Вы можете разместить вашу страницу на любом веб-хостинге, чтобы делиться ею со всеми желающими.
+
+&lt;br&gt;
+
+&lt;center&gt;
+&lt;img width=&quot;600&quot; src=&quot;https://ik.imagekit.io/awilum/awilum-ru/Screenshot%202024-03-27%20at%2019.32.00.png?updatedAt=1711542837856&quot; alt=&quot;Screenshot-2024-03-27-at-19-32-00&quot; border=&quot;0&quot;&gt;
+&lt;/center&gt;</content:encoded></item><item><title>Округление чисел до ближайшей пятерки в Python</title><link>https://awilum.ru/articles/rounding-numbers-to-the-nearest-5-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/rounding-numbers-to-the-nearest-5-in-python/</guid><description>Округление чисел до ближайшей пятерки в Python</description><pubDate>Wed, 27 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В **Python**, существует несколько способов реализации данной задачи, но в этой статье мы рассмотрим методы, использующие стандартные функции **Python**.
+
+### Округление с помощью функции `round()`
+
+Функция `round()` является встроенной в **Python** и позволяет округлять числа до заданного количества знаков после запятой. Однако, мы можем модифицировать эту функцию, чтобы округлять числа до ближайшей пятерки.
+
+```python
+def round_to_nearest_five(num):
+    return round(num / 5) * 5
+```
+
+Пример использования:
+
+```python
+print(round_to_nearest_five(23))  # 25
+print(round_to_nearest_five(37))  # 35
+print(round_to_nearest_five(41))  # 40
+```
+
+В этой функции мы делим число на `5`, округляем результат до ближайшего целого числа с помощью `round()` и затем умножаем результат на `5`, чтобы получить ближайшее число, кратное пяти.
+
+### Округление с помощью математической операции
+
+Другой способ реализации округления до ближайшей пятерки - использовать математическую операцию.
+
+```python
+def round_to_nearest_five(num):
+    return int(num / 5 + 0.5) * 5
+```
+
+Пример использования:
+
+```python
+print(round_to_nearest_five(23))  # 25
+print(round_to_nearest_five(37))  # 35
+print(round_to_nearest_five(41))  # 40
+```
+
+В этой функции мы делим число на `5`, прибавляем `0.5` (чтобы корректно округлить до ближайшего целого числа), преобразуем результат в целое число с помощью `int()`, а затем умножаем на `5`.
+
+</content:encoded></item><item><title>Добавление элементов в кортеж Python</title><link>https://awilum.ru/articles/adding-elements-to-a-python-tuple/</link><guid isPermaLink="true">https://awilum.ru/articles/adding-elements-to-a-python-tuple/</guid><description>Добавление элементов в кортеж Python</description><pubDate>Tue, 26 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 В языке программирования **Python** кортеж **(tuple)** является неизменяемой структурой данных, которая хранит последовательность элементов. Это означает, что после создания кортежа его элементы нельзя изменить, удалить или добавить. Однако, существуют способы добавления элементов в кортеж, которые создают новый кортеж с дополнительными значениями. 
 
 ### Создание нового кортежа с помощью оператора `+`
@@ -59,7 +339,77 @@ new_tuple3 = tuple(tuple3) + (new_element,)
 print(new_tuple3)  # Вывод: (1, 2, 3, 4)
 ```
 
-Этот метод является более явным и понятным, чем использование оператора `+`, однако он требует создания временного кортежа с помощью функции `tuple()`, что может сказаться на производительности.</content:encoded></item><item><title>Как подсчитать количество True в списке Python</title><link>https://awilum.ru/articles/counting-the-number-of-true-values-in-a-python-list/</link><guid isPermaLink="true">https://awilum.ru/articles/counting-the-number-of-true-values-in-a-python-list/</guid><description>Как подсчитать количество True в списке Python</description><pubDate>Tue, 26 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Этот метод является более явным и понятным, чем использование оператора `+`, однако он требует создания временного кортежа с помощью функции `tuple()`, что может сказаться на производительности.</content:encoded></item><item><title>Проверка наличия нескольких ключей в словаре Python</title><link>https://awilum.ru/articles/checking-for-multiple-keys-in-a-python-dictionary/</link><guid isPermaLink="true">https://awilum.ru/articles/checking-for-multiple-keys-in-a-python-dictionary/</guid><description>Проверка наличия нескольких ключей в словаре Python</description><pubDate>Tue, 26 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В языке программирования **Python** словарь (**dict**) - это структура данных, которая хранит пары ключ-значение. Проверка наличия ключей в словаре является обычной операцией при работе с данными. Иногда может возникнуть необходимость проверить наличие нескольких ключей одновременно. В этой статье мы рассмотрим различные способы проверки наличия нескольких ключей в словаре с примерами.
+
+### Использование оператора `in`
+
+Наиболее простой способ проверки наличия ключей в словаре - использование оператора `in`. Этот оператор возвращает `True`, если указанный ключ присутствует в словаре, и `False` в противном случае. Для проверки наличия нескольких ключей мы можем использовать оператор `in` для каждого ключа по отдельности.
+
+Пример:
+
+```python
+my_dict = {&apos;a&apos;: 1, &apos;b&apos;: 2, &apos;c&apos;: 3}
+
+if &apos;a&apos; in my_dict and &apos;b&apos; in my_dict and &apos;d&apos; in my_dict:
+    print(&quot;Все ключи присутствуют&quot;)
+else:
+    print(&quot;Один или несколько ключей отсутствуют&quot;)
+```
+
+Пример: Проверка наличия ключей в словаре с использованием функции
+
+```python
+def check_keys(dictionary, *keys):
+    return all(key in dictionary for key in keys)
+
+my_dict = {&apos;red&apos;: &apos;красный&apos;, &apos;blue&apos;: &apos;синий&apos;, &apos;green&apos;: &apos;зеленый&apos;}
+
+if check_keys(my_dict, &apos;red&apos;, &apos;blue&apos;, &apos;green&apos;):
+    print(&quot;Все ключи &apos;red&apos;, &apos;blue&apos; и &apos;green&apos; присутствуют&quot;)
+else:
+    print(&quot;Один или несколько ключей отсутствуют&quot;)
+
+# Все ключи &apos;red&apos;, &apos;blue&apos; и &apos;green&apos; присутствуют
+```
+
+### Использование метода `all()`
+
+Метод `all()` в Python принимает итерируемый объект (например, список) и возвращает `True`, если все элементы этого объекта истинны, и `False` в противном случае. Мы можем использовать этот метод с генератором списка для проверки наличия всех ключей в словаре.
+
+Пример:
+
+```python
+my_dict = {&apos;a&apos;: 1, &apos;b&apos;: 2, &apos;c&apos;: 3}
+keys_to_check = [&apos;a&apos;, &apos;b&apos;, &apos;d&apos;]
+
+if all(key in my_dict for key in keys_to_check):
+    print(&quot;Все ключи присутствуют&quot;)
+else:
+    print(&quot;Один или несколько ключей отсутствуют&quot;)
+
+# Один или несколько ключей отсутствуют
+```
+
+### Использование метода `keys()`
+
+Метод `keys()` возвращает представление всех ключей в словаре. Мы можем использовать его вместе с методом `issubset()` для проверки того, содержит ли словарь все ключи из заданного набора.
+
+Пример:
+
+```python
+my_dict = {&apos;a&apos;: 1, &apos;b&apos;: 2, &apos;c&apos;: 3}
+keys_to_check = {&apos;a&apos;, &apos;b&apos;, &apos;d&apos;}
+
+if keys_to_check.issubset(my_dict.keys()):
+    print(&quot;Все ключи присутствуют&quot;)
+else:
+    print(&quot;Один или несколько ключей отсутствуют&quot;)
+
+# Один или несколько ключей отсутствуют
+```
+
+</content:encoded></item><item><title>Как подсчитать количество True в списке Python</title><link>https://awilum.ru/articles/counting-the-number-of-true-values-in-a-python-list/</link><guid isPermaLink="true">https://awilum.ru/articles/counting-the-number-of-true-values-in-a-python-list/</guid><description>Как подсчитать количество True в списке Python</description><pubDate>Tue, 26 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 В **Python**, когда нам нужно подсчитать количество элементов с определенным значением в списке, мы можем воспользоваться различными методами. Один из самых простых способов сделать это - это использовать цикл или функции высшего порядка, такие как `filter()` или `count()`. 
 
 ### Использование цикла
