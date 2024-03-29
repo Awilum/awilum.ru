@@ -1,4 +1,299 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Преобразование символа в ASCII и обратно в JavaScript</title><link>https://awilum.ru/articles/converting-a-character-to-ascii-and-back-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/converting-a-character-to-ascii-and-back-in-javascript/</guid><description>Преобразование символа в ASCII и обратно в JavaScript</description><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Brainfuck интерпретатор на Python</title><link>https://awilum.ru/articles/brainfuck-python-interpreter/</link><guid isPermaLink="true">https://awilum.ru/articles/brainfuck-python-interpreter/</guid><description>Brainfuck интерпретатор на Python</description><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+**Brainfuck** — это один из эзотерических языков программирования, придуманный Урбаном Мюллером в 1993 году, и он известен своим минимализмом. Название языка можно перевести как &quot;вынос мозга&quot;, оно напрямую происходит от английского выражения &quot;brainfuck&quot; (где &quot;brain&quot; означает мозг, а &quot;fuck&quot; — вынос), подразумевая занятие нелепостями. В **Brainfuck** всего восемь команд, каждая из которых представлена одним символом. Исходный код программы на **Brainfuck** представляет собой простую последовательность этих символов без дополнительного синтаксиса.   
+
+Одним из основных мотивов создания **Brainfuck** было стремление Урбана Мюллера создать язык с наименьшим возможным компилятором. Вдохновение он черпал, в частности, из языка **FALSE**, для которого существовал компилятор размером всего 2044 байта. На сегодняшний день существуют компиляторы **Brainfuck** размером менее 200 байт. Написание программ на языке **Brainfuck** сложно, что иногда заставляет называть его языком для мазохистов. Тем не менее, **Brainfuck** является естественным, полным и простым языком, который может использоваться для определения понятия вычислимости.
+
+&gt; **FALSE** — эзотерический язык программирования, созданный в 1993 году Ваутером ван Ортмерссеном с двумя, по его словам, целями: чтобы можно было написать компилятор для него размером не более одного килобайта. придумать синтаксис, который бы выглядел шифровкой, случайным набором символов.
+
+&gt; **Байт (Byte)** — единица хранения и обработки цифровой информации; совокупность битов, обрабатываемая компьютером одновременно.
+
+&lt;br&gt;
+
+Cписок восьми команд языка программирования **Brainfuck**:
+
+&lt;table width=&quot;100%&quot;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Команда&lt;/th&gt;
+            &lt;th&gt;Описание&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;&lt;/td&gt;
+            &lt;td&gt;Перемещение указателя данных на одну ячейку вправо.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;lt;&lt;/td&gt;
+            &lt;td&gt;Перемещение указателя данных на одну ячейку влево.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;+&lt;/td&gt;
+            &lt;td&gt;Увеличение значения текущей ячейки на единицу.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;-&lt;/td&gt;
+            &lt;td&gt;Уменьшение значения текущей ячейки на единицу.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;.&lt;/td&gt;
+            &lt;td&gt;Вывод значения текущей ячейки (как символ ASCII).&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;,&lt;/td&gt;
+            &lt;td&gt;Ввод значения и сохранение его в текущей ячейке (как символ ASCII).&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;[&lt;/td&gt;
+            &lt;td&gt;Начало цикла (переход к соответствующей &lt;code&gt;]&lt;/code&gt;, если значение текущей ячейки равно нулю).&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;]&lt;/td&gt;
+            &lt;td&gt;Конец цикла (переход к соответствующей &lt;code&gt;[&lt;/code&gt;, если значение текущей ячейки не равно нулю).&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+
+Эти простые команды позволяют управлять памятью, изменять ее содержимое и выполнять циклические операции, что достаточно для реализации алгоритмов любой сложности.
+
+Несмотря на свою примитивность, **Brainfuck** с его бесконечным набором ячеек обладает тьюринговской полнотой. Следовательно, по потенциальным возможностям он не уступает &quot;настоящим&quot; языкам программирования, таким как **С**, **Pascal** или **Java**.
+
+**Тьюринговская полнота** - это концепция, связанная с теорией вычислимости, которая определяет способность системы (обычно вычислительной) выполнить любое вычисление, которое может быть выполнено с помощью машины Тьюринга. Машина Тьюринга - это абстрактная модель компьютера, предложенная Аланом Тьюрингом в 1936 году. Она состоит из бесконечной ленты, разделенной на ячейки, и управляющего устройства, способного читать/писать на этой ленте и перемещать головку.&lt;br&gt;&lt;br&gt;
+Система считается тьюринговски полной, если она может быть использована для эмуляции машины Тьюринга, то есть если она способна выполнять любой алгоритм, который может быть представлен в виде машины Тьюринга. Практически это означает, что система может решать широкий класс задач, включая вычисление любой рекурсивной функции или выполнение любого алгоритма.&lt;br&gt;&lt;br&gt;
+Системы с тьюринговской полнотой широко используются в компьютерах и программном обеспечении, поскольку они предоставляют универсальный способ выполнения разнообразных задач. В том числе, они обычно используются для оценки вычислительной мощности различных языков программирования и архитектур компьютеров.
+
+**Brainfuck** подходит для проведения экспериментов в области генетического программирования из-за своей простоты синтаксиса и, как следствие, легкости генерации исходного кода.
+
+В &quot;классическом&quot; варианте **Brainfuck**, созданном Мюллером, размер ячейки составляет один байт, а количество ячеек равно 30 000. При начальной установке указатель находится в крайней левой позиции, а все ячейки заполнены нулями. Увеличение или уменьшение значений ячеек происходит по модулю 256. Ввод-вывод также происходит побайтно, используя кодировку ASCII. Например, при операции ввода (,) символ &quot;1&quot; будет записан в текущую ячейку как число 0x31 (49), а операция вывода (.) над ячейкой, содержащей 0x41 (65), напечатает латинскую букву &quot;A&quot;. В других вариантах языка размер и количество ячеек могут отличаться. Существуют версии, где значения ячеек не являются целочисленными (с плавающей точкой).
+
+### Пример программы Hello World
+
+Пошаговая программа на языке **Brainfuck**, печатающая `Hello World!` с переносом строки (в виде **ASCII-кода**:  `72 101 108 108 111 32 87 111 114 108 100 33 10`):
+
+&gt; ++++++++++[&gt;+++++++&gt;++++++++++&gt;+++&gt;+&lt;&lt;&lt;&lt;-]&gt;++.&gt;+.+++++++..+++.&gt;++.&lt;&lt;+++++++++++++++.&gt;.+++.------.--------.&gt;+.&gt;.
+
+**Разбор программы:**
+
+&lt;table border=&quot;1&quot;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;&lt;/th&gt;
+            &lt;th&gt;Описание&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;++++++++++&lt;/td&gt;
+            &lt;td&gt;Присваивание ячейке 0 значения 10&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;[&lt;/td&gt;
+            &lt;td&gt;Повторять описанные этой скобкой команды, пока значение текущей ячейки 0 не равно нулю&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;+++++++&lt;/td&gt;
+            &lt;td&gt;Приращение ячейки 1 на 7&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;++++++++++&lt;/td&gt;
+            &lt;td&gt;Приращение ячейки 2 на 10&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;+++&lt;/td&gt;
+            &lt;td&gt;Приращение ячейки 3 на 3&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;+&lt;/td&gt;
+            &lt;td&gt;Приращение ячейки 4 на 1&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;-&lt;/td&gt;
+            &lt;td&gt;Декремент ячейки 0 на 1&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;]&lt;/td&gt;
+            &lt;td&gt;Проверка, не равна ли ячейка 0 нулю&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;++.&lt;/td&gt;
+            &lt;td&gt;В ячейке 1 добавление 2 к 70 и вывод на печать ASCII-кода 72, т.е. буквы «Н».&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;+.&lt;/td&gt;
+            &lt;td&gt;В ячейке 2 добавление 1 к 100 = 101, печать буквы «e»&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;+++++++..&lt;/td&gt;
+            &lt;td&gt;В этой же ячейке добавление 7 к 101 = 108, печать «l» дважды&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;+++.&lt;/td&gt;
+            &lt;td&gt;В этой же ячейке добавление 3 к 108 = 111, печать «o»&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;++.&lt;/td&gt;
+            &lt;td&gt;В ячейке 3 добавление 2 к 30 = 32, печать пробела&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;lt;&amp;lt;+++++++++++++++.&lt;/td&gt;
+            &lt;td&gt;В ячейке 1 добавление 15 к 72 = 87, печать «W»&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;.&lt;/td&gt;
+            &lt;td&gt;В ячейке 2 уже есть 111, сразу печать «o»&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;+++.&lt;/td&gt;
+            &lt;td&gt;В этой же ячейке добавление 3 к 111 = 114, печать «r»&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;------.&lt;/td&gt;
+            &lt;td&gt;В этой же ячейке вычитание 6 из 114 = 108, печать «l»&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;--------.&lt;/td&gt;
+            &lt;td&gt;В этой же ячейке вычитание 8 из 108 = 100, печать «d»&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;+.&lt;/td&gt;
+            &lt;td&gt;В ячейке 3 добавление 1 к 32 = 33, печать «!»&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&amp;gt;.&lt;/td&gt;
+            &lt;td&gt;В ячейке 4 уже есть 10, сразу печать перевода строки&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+### Реализация интерпретатора на Python
+
+Реализация интерпретатора **Brainfuck** на **Python** не так уж сложна благодаря простоте языка.
+
+Вот простая реализация интерпретатора **Brainfuck** на **Python**:
+
+```python
+class BrainfuckInterpreter:
+    def __init__(self):
+        # 30000 ячеек памяти, как в стандарте Brainfuck
+        self.memory = bytearray(30000)
+        self.pointer = 0  # Указатель на текущую ячейку
+        self.input = &apos;&apos;   # Ввод
+        self.output = &apos;&apos;  # Вывод
+
+    def interpret(self, code, input_str=&apos;&apos;):
+        self.code = code
+        self.input = input_str
+        self.pointer = 0
+        self.output = &apos;&apos;
+        
+        # Стек для отслеживания начала и конца циклов
+        loop_stack = []
+
+        i = 0
+        while i &lt; len(self.code):
+            instruction = self.code[i]
+
+            if instruction == &apos;&gt;&apos;:
+                self.pointer += 1
+            elif instruction == &apos;&lt;&apos;:
+                self.pointer -= 1
+            elif instruction == &apos;+&apos;:
+                self.memory[self.pointer] += 1
+            elif instruction == &apos;-&apos;:
+                self.memory[self.pointer] -= 1
+            elif instruction == &apos;.&apos;:
+                self.output += chr(self.memory[self.pointer])
+            elif instruction == &apos;,&apos;:
+                if self.input:
+                    self.memory[self.pointer] = ord(self.input[0])
+                    self.input = self.input[1:]
+                else:
+                    # Если ввод закончился, просто устанавливаем значение ячейки в 0
+                    self.memory[self.pointer] = 0
+            elif instruction == &apos;[&apos;:
+                if self.memory[self.pointer] == 0:
+                    depth = 1
+                    while depth &gt; 0:
+                        i += 1
+                        if self.code[i] == &apos;[&apos;:
+                            depth += 1
+                        if self.code[i] == &apos;]&apos;:
+                            depth -= 1
+                else:
+                    loop_stack.append(i)
+            elif instruction == &apos;]&apos;:
+                if self.memory[self.pointer] != 0:
+                    i = loop_stack[-1]
+                else:
+                    loop_stack.pop()
+            else:
+                # Игнорируем любые другие символы, которые могут встретиться
+                pass
+
+            i += 1
+
+        return self.output
+```
+
+Такая реализация является базовой и может быть расширена для обработки дополнительных функций, таких как ввод-вывод файлов, оптимизация производительности и т.д.
+
+### Примеры использования
+
+**Программа для вывода: Hello World!**
+&gt; ++++++++++[&gt;+++++++&gt;++++++++++&gt;+++&gt;+&lt;&lt;&lt;&lt;-]&gt;++.&gt;+.+++++++..+++.&gt;++.&lt;&lt;+++++++++++++++.&gt;.+++.------.--------.&gt;+.&gt;.
+```python
+interpreter = BrainfuckInterpreter()
+code = &apos;++++++++++[&gt;+++++++&gt;++++++++++&gt;+++&gt;+&lt;&lt;&lt;&lt;-]&gt;++.&gt;+.+++++++..+++.&gt;++.&lt;&lt;+++++++++++++++.&gt;.+++.------.--------.&gt;+.&gt;.&apos;
+input_str = &apos;&apos;
+result = interpreter.interpret(code, input_str)
+
+print(result)  # Hello World!
+```
+
+**Программа для копирования ввода в вывод**
+&gt; ,[.,]
+```python
+interpreter = BrainfuckInterpreter()
+code = &apos;,[.,]&apos;
+input_str = &apos;Hello, Brainfuck!&apos;
+result = interpreter.interpret(code, input_str)
+
+print(result)  # Hello, Brainfuck!
+```
+
+**Программа которая выводит обратный ввод**
+&gt; &amp;gt;,[&gt;,]&lt;[.&lt;]
+```python
+interpreter = BrainfuckInterpreter()
+code = &apos;&gt;,[&gt;,]&lt;[.&lt;]&apos;
+input_str = &apos;Hello&apos;
+result = interpreter.interpret(code, input_str)
+
+print(result)  # olleH
+```
+
+**Программа для очистки командной консоли**
+&gt; ++++++++++[&gt;++++++++++&gt;+&lt;&lt;-]&gt;[&gt;.&lt;-]
+```python
+interpreter = BrainfuckInterpreter()
+code = &apos;++++++++++[&gt;++++++++++&gt;+&lt;&lt;-]&gt;[&gt;.&lt;-]&apos;
+input_str = &apos;&apos;
+result = interpreter.interpret(code, input_str)
+
+print(result)  # Консоль будет очищена.
+```
+
+**Программа кодирования строки ввода в Brainfuck**
+&gt; +++++[&gt;+++++++++&lt;-],[[&gt;--.++&gt;+&lt;&lt;-]&gt;+.-&gt;[&lt;.&gt;-]&lt;&lt;,]
+```python
+interpreter = BrainfuckInterpreter()
+code = &apos;+++++[&gt;+++++++++&lt;-],[[&gt;--.++&gt;+&lt;&lt;-]&gt;+.-&gt;[&lt;.&gt;-]&lt;&lt;,]&apos;
+input_str = &quot;42&quot;
+result = interpreter.interpret(code, input_str)
+
+print(result)  # ++++++++++++++++++++++++++++++++++++++++++++++++++++.----------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++.--------------------------------------------------
+```</content:encoded></item><item><title>Преобразование символа в ASCII и обратно в JavaScript</title><link>https://awilum.ru/articles/converting-a-character-to-ascii-and-back-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/converting-a-character-to-ascii-and-back-in-javascript/</guid><description>Преобразование символа в ASCII и обратно в JavaScript</description><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 **JavaScript** предоставляет различные методы для работы с символами и их **ASCII**-кодами. **ASCII** **(American Standard Code for Information Interchange)** - это стандартный набор символов и их соответствующих числовых значений, используемых для представления текста на компьютере.
 
 ### Преобразование символа в ASCII
@@ -533,7 +828,52 @@ echo &quot;Все делители числа $number: &quot; . implode(&quot;, 
 
 &lt;br&gt; 
 
-Нахождение всех делителей натурального числа является важной задачей в программировании, которая может быть решена с помощью простого алгоритма. В **PHP** вышеописанный код позволяет найти все делители заданного числа и может быть легко адаптирован для решения различных задач, связанных с числами.</content:encoded></item><item><title>Вставка списков внутрь другого списка в Python</title><link>https://awilum.ru/articles/inserting-lists-inside-another-list-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/inserting-lists-inside-another-list-in-python/</guid><description>Вставка списков внутрь другого списка в Python</description><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Нахождение всех делителей натурального числа является важной задачей в программировании, которая может быть решена с помощью простого алгоритма. В **PHP** вышеописанный код позволяет найти все делители заданного числа и может быть легко адаптирован для решения различных задач, связанных с числами.</content:encoded></item><item><title>Инициализация массива фиксированного размера в Python</title><link>https://awilum.ru/articles/initializing-a-fixed-size-array-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/initializing-a-fixed-size-array-in-python/</guid><description>Инициализация массива фиксированного размера в Python</description><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В **Python**, массивы фиксированного размера могут быть созданы с использованием различных методов. Фиксированный размер означает, что массив имеет определенное количество элементов, которое задается заранее и не изменяется во время выполнения программы.
+
+### Использование спискового включения
+
+**Списковое включение** - это компактный способ создания списков в **Python**. Мы можем использовать его для создания массива фиксированного размера, указав требуемое количество элементов.
+
+```python
+size = 5
+
+fixed_array = [0] * size
+
+print(fixed_array)  # [0, 0, 0, 0, 0]
+```
+
+В этом примере мы создаем массив фиксированного размера, содержащий `5` элементов, и инициализируем все элементы значением `0`.
+
+### Использование функции `array` из модуля `array`
+
+Модуль `array` в **Python** предоставляет тип данных массива, который может быть использован для создания массивов фиксированного размера с определенным типом данных.
+
+```python
+import array
+
+size = 3
+
+fixed_array = array.array(&apos;i&apos;, [0] * size)  # &apos;i&apos; указывает тип данных (целые числа)
+
+print(fixed_array)  # array(&apos;i&apos;, [0, 0, 0])
+```
+
+В этом примере мы создаем массив фиксированного размера типа `int` (целые числа), содержащий `3` элемента, и инициализируем все элементы значением `0`.
+
+### Использование модуля `numpy`
+
+**Numpy** - это популярная библиотека для работы с массивами в **Python**. Она предоставляет богатый набор функций для работы с массивами фиксированного размера.
+
+```python
+import numpy as np
+
+# Создаем массив из нулей
+zero_array = np.zeros(10)
+
+# Создаем массив без начальной инициализации значений
+empty_array = np.empty(10)
+```</content:encoded></item><item><title>Вставка списков внутрь другого списка в Python</title><link>https://awilum.ru/articles/inserting-lists-inside-another-list-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/inserting-lists-inside-another-list-in-python/</guid><description>Вставка списков внутрь другого списка в Python</description><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 В языке программирования **Python** можно эффективно работать со списками и их вложенными структурами. Одним из распространенных примеров использования списков является вставка одного списка внутрь другого. Это может быть полезно, когда требуется объединить несколько списков в один или создать структуру данных с более сложной иерархией например.
 
 ### Вставка списков с использованием метода `append()`
