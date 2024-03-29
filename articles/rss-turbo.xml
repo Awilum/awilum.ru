@@ -1,4 +1,637 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Преобразование символа в ASCII и обратно в Python</title><link>https://awilum.ru/articles/converting-a-character-to-ascii-and-back-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/converting-a-character-to-ascii-and-back-in-python/</guid><description>Преобразование символа в ASCII и обратно в Python</description><pubDate>Wed, 27 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Преобразование символа в ASCII и обратно в JavaScript</title><link>https://awilum.ru/articles/converting-a-character-to-ascii-and-back-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/converting-a-character-to-ascii-and-back-in-javascript/</guid><description>Преобразование символа в ASCII и обратно в JavaScript</description><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+**JavaScript** предоставляет различные методы для работы с символами и их **ASCII**-кодами. **ASCII** **(American Standard Code for Information Interchange)** - это стандартный набор символов и их соответствующих числовых значений, используемых для представления текста на компьютере.
+
+### Преобразование символа в ASCII
+
+Для преобразования символа в его **ASCII**-код в **JavaScript** используется метод `charCodeAt()`. Этот метод возвращает числовое значение, представляющее **ASCII**-код указанного символа. 
+
+Вот пример использования:
+
+```javascript
+let symbol = &apos;A&apos;;
+let asciiCode = symbol.charCodeAt(0);
+
+console.log(asciiCode); // 65
+```
+
+В этом примере символ `A` преобразуется в его **ASCII**-код, который равен `65`. Обратите внимание, что `charCodeAt()` принимает индекс символа в строке. Первый символ имеет индекс `0`.
+
+### Преобразование ASCII в символ
+
+Для преобразования числового значения **ASCII** в соответствующий символ в **JavaScript** используется метод `String.fromCharCode()`. Этот метод принимает один или несколько числовых аргументов (кодов **ASCII**) и возвращает строку, составленную из символов, соответствующих указанным кодам **ASCII**. 
+
+Вот пример:
+
+```javascript
+let asciiCode = 65;
+let symbol = String.fromCharCode(asciiCode);
+
+console.log(symbol); // A
+```
+
+В этом примере числовое значение `65` преобразуется в символ `A` с помощью `String.fromCharCode()`.
+
+### Преобразование строки в ASCII и обратно
+
+Давайте рассмотрим пример, в котором мы преобразуем строку в ее **ASCII**-представление, а затем обратно:
+
+```javascript
+let inputString = &apos;Hello&apos;;
+let asciiRepresentation = [];
+
+// Преобразование строки в ASCII
+for (let i = 0; i &lt; inputString.length; i++) {
+    asciiRepresentation.push(inputString.charCodeAt(i));
+}
+
+console.log(&apos;ASCII представление строки:&apos;, asciiRepresentation);
+
+// Преобразование ASCII обратно в символы
+let reconstructedString = &apos;&apos;;
+for (let i = 0; i &lt; asciiRepresentation.length; i++) {
+    reconstructedString += String.fromCharCode(asciiRepresentation[i]);
+}
+
+console.log(&apos;Восстановленная строка:&apos;, reconstructedString);
+
+// ASCII представление строки: [ 72, 101, 108, 108, 111 ]
+// Восстановленная строка: Hello
+```
+
+В этом примере мы сначала преобразуем строку `Hello` в ее **ASCII**-представление массива чисел. Затем мы преобразуем массив **ASCII** обратно в строку. Результаты вывода в консоль покажут нам исходную строку и ее восстановленное представление.
+
+</content:encoded></item><item><title>Циклический сдвиг массива в JavaScript</title><link>https://awilum.ru/articles/cyclically-shift-an-array-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/cyclically-shift-an-array-in-javascript/</guid><description>Циклический сдвиг массива в JavaScript</description><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+**Циклический сдвиг массива** - это операция, при которой элементы массива перемещаются влево или вправо на определенное количество шагов, и элементы, выходящие за пределы массива, перемещаются на противоположную сторону массива. Этот процесс широко используется в программировании, особенно в алгоритмах обработки данных и структурах данных.
+
+**JavaScript**, как и многие другие языки программирования, предоставляет различные способы реализации циклического сдвига массива. 
+
+### Использование методов push() и `shift()`
+
+Один из самых простых способов выполнения циклического сдвига - это использование методов `push()` и `shift()`. Метод `push()` добавляет элемент в конец массива, а метод `shift()` удаляет первый элемент массива и возвращает его значение.
+
+```javascript
+function cyclicShift(array, steps) {
+    for (let i = 0; i &lt; steps; i++) {
+        array.push(array.shift());
+    }
+    return array;
+}
+
+// Пример использования:
+let arr = [1, 2, 3, 4, 5];
+let shiftedArr = cyclicShift(arr, 2);
+
+console.log(shiftedArr); // [3, 4, 5, 1, 2]
+```
+
+В этом примере мы передаем массив arr и количество шагов 2 функции `cyclicShift()`. Затем метод `push()` используется для перемещения первого элемента в конец массива, что происходит `steps` раз.
+
+### Использование оператора остатка %
+
+Другой способ выполнения циклического сдвига - использование оператора остатка `%`. Этот метод позволяет избежать создания нового массива и выполнить сдвиг в пределах одного массива.
+
+```javascript
+function cyclicShift(array, steps) {
+    const len = array.length;
+    steps %= len;
+    return array.slice(steps).concat(array.slice(0, steps));
+}
+
+// Пример использования:
+let arr = [1, 2, 3, 4, 5];
+let shiftedArr = cyclicShift(arr, 2);
+
+console.log(shiftedArr); // [3, 4, 5, 1, 2]
+```
+
+Здесь мы используем оператор `%` для вычисления реального количества шагов, после чего с помощью методов `slice()` объединяем две части массива: от `steps` до конца и от начала до `steps`.</content:encoded></item><item><title>Определение типа объекта в Python</title><link>https://awilum.ru/articles/determining-the-type-of-an-object-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/determining-the-type-of-an-object-in-python/</guid><description>Определение типа объекта в Python</description><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В **Python** каждый объект имеет свой тип, который определяет, какие операции можно выполнять над этим объектом и какие методы у него доступны. Определение типа объекта в **Python** является важной задачей, особенно при работе с динамической типизацией, когда тип переменной может меняться во время выполнения программы. 
+
+### Использование функции `type()`
+
+Функция `type()` возвращает тип объекта. Ее можно использовать для определения типа переменной или значения. 
+
+Например:
+
+```python
+x = 5
+print(type(x))  # &lt;class &apos;int&apos;&gt;
+
+y = &quot;Hello, World!&quot;
+print(type(y))  # &lt;class &apos;str&apos;&gt;
+
+z = [1, 2, 3]
+print(type(z))  # &lt;class &apos;list&apos;&gt;
+```
+
+### Использование оператора `isinstance()`
+
+Оператор `isinstance()` проверяет, является ли объект экземпляром определенного класса или типа. Он принимает два аргумента: объект и класс или тип. Возвращает `True`, если объект является экземпляром указанного класса или типа, и `False` в противном случае. 
+
+Пример:
+
+```python
+x = 5
+print(isinstance(x, int))  # True
+
+y = &quot;Hello, World!&quot;
+print(isinstance(y, str))  # True
+
+z = [1, 2, 3]
+print(isinstance(z, list))  # True
+```
+
+### Использование атрибута `__class__`
+
+В **Python** каждый объект имеет атрибут `__class__`, который содержит информацию о его классе. Этот атрибут можно использовать для определения типа объекта. 
+
+Пример:
+
+```python
+x = 5
+print(x.__class__)  # &lt;class &apos;int&apos;&gt;
+
+y = &quot;Hello, World!&quot;
+print(y.__class__)  # &lt;class &apos;str&apos;&gt;
+
+z = [1, 2, 3]
+print(z.__class__)  # &lt;class &apos;list&apos;&gt;
+```
+</content:encoded></item><item><title>Определение номера недели года по дате в Python</title><link>https://awilum.ru/articles/finding-week-number-of-year-by-date-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/finding-week-number-of-year-by-date-in-python/</guid><description>Определение номера недели года по дате в Python</description><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В **Python** есть несколько способов определить номер недели года по заданной дате. Номер недели может быть полезен при организации данных, планировании задач или анализе временных рядов. 
+
+### Использование модуля datetime
+
+Модуль `datetime` в **Python** предоставляет функционал для работы с датами и временем. Для определения номера недели года мы можем использовать метод `isocalendar()`, который возвращает кортеж из года, номера недели и дня недели.
+
+Пример:
+
+```python
+import datetime
+
+# Задаем дату
+date = datetime.date(2024, 1, 1)
+
+# Получаем номер недели года
+week_number = date.isocalendar()[1]
+
+print(&quot;Номер недели года:&quot;, week_number)
+```
+
+Этот код вернет:
+
+```
+Номер недели года: 1
+```
+
+Используя метод `isocalendar()`, мы получаем кортеж, содержащий год, номер недели и день недели для заданной даты. Мы обращаемся к элементу с индексом `[1]`, чтобы получить номер недели года.</content:encoded></item><item><title>Генераторы в JavaScript</title><link>https://awilum.ru/articles/generators-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/generators-in-javascript/</guid><description>Генераторы в JavaScript</description><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+**Генераторы** - это функции, которые могут быть приостановлены на определенном этапе выполнения. Они позволяют возвращать промежуточные результаты без завершения функции. Это значит, что код может выполняться по требованию, поочередно, возвращая значения в процессе.
+
+**Генераторы** определяются с использованием ключевого слова `function*`, и внутри них используется ключевое слово `yield` для возврата значения. 
+
+Вот простой пример:
+
+```javascript
+function* generatorFunction() {
+    yield 1;
+    yield 2;
+    yield 3;
+}
+
+const generator = generatorFunction();
+
+console.log(generator.next().value); // 1
+console.log(generator.next().value); // 2
+console.log(generator.next().value); // 3
+console.log(generator.next().value); // undefined
+```
+
+### Как работают генераторы?
+
+Когда генератор вызывается, он возвращает объект, известный как итератор. Этот итератор имеет метод `next()`, который при каждом вызове возвращает объект с двумя свойствами: `value`, содержащим текущее возвращаемое значение, и `done`, указывающим, завершен ли генератор.
+
+Когда вызывается `yield`, выполнение функции приостанавливается, а переданное значение возвращается как результат вызова `next()`. При каждом последующем вызове `next()` выполнение продолжается с момента приостановки до следующего оператора `yield` или конца функции.
+
+Генераторы позволяют лениво вычислять значения, что означает, что код может вычислять значения только по мере необходимости, что может быть полезно для больших или бесконечных последовательностей.
+
+### Примеры использования генераторов
+
+Генерация последовательностей Фибоначчи:
+
+```javascript
+function* fibonacciSequence() {
+    let prev = 0,
+        curr = 1;
+    while (true) {
+        yield curr;
+        [prev, curr] = [curr, prev + curr];
+    }
+}
+
+const fibonacciGenerator = fibonacciSequence();
+
+console.log(fibonacciGenerator.next().value); // 1
+console.log(fibonacciGenerator.next().value); // 1
+console.log(fibonacciGenerator.next().value); // 2
+console.log(fibonacciGenerator.next().value); // 3
+```
+
+Асинхронные операции с генераторами:
+
+```javascript
+function fetchData() {
+    return new Promise((resolve) =&gt; {
+        setTimeout(() =&gt; {
+            resolve(Math.random());
+        }, 1000);
+    });
+}
+
+function* asyncGenerator() {
+    const data1 = yield fetchData();
+    const data2 = yield fetchData();
+    console.log(&quot;Data 1:&quot;, data1);
+    console.log(&quot;Data 2:&quot;, data2);
+}
+
+const gen = asyncGenerator();
+gen.next().value.then((result1) =&gt; {
+    gen.next(result1).value.then((result2) =&gt; {
+        gen.next(result2);
+    });
+});
+
+// Data 1: 0.47532567805424186
+// Data 2: 0.6717155034354907
+```</content:encoded></item><item><title>Множественная замена подстрок в Python</title><link>https://awilum.ru/articles/multiple-substring-replacement-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/multiple-substring-replacement-in-python/</guid><description>Множественная замена подстрок в Python</description><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+При работе с текстовыми данными в **Python** иногда возникает необходимость заменить одну или несколько подстрок в строке другими значениями. Это может быть полезно, например, при очистке данных, форматировании текста или обработке строковых шаблонов. 
+
+### Метод `str.replace()`
+
+Один из самых простых способов заменить подстроку в строке - использовать метод `replace()` объектов типа `str`. Однако, этот метод позволяет заменить только одну подстроку за раз. Для множественной замены можно применять его последовательно несколько раз.
+
+```python
+text = &quot;Хороший день, хороший мир!&quot;
+text = text.replace(&quot;хороший&quot;, &quot;прекрасный&quot;)
+text = text.replace(&quot;мир&quot;, &quot;вселенная&quot;)
+
+print(text)
+```
+
+Этот код выведет:
+
+```
+Прекрасный день, прекрасная вселенная!
+```
+
+### Регулярные выражения
+
+Для более сложных задач замены подстрок часто используются регулярные выражения. Модуль `re` в **Python** предоставляет мощные средства для работы с регулярными выражениями.
+
+```python
+import re
+
+text = &quot;apple, banana, cherry&quot;
+text = re.sub(r&quot;apple|banana|cherry&quot;, &quot;fruit&quot;, text)
+
+print(text)
+```
+
+Результат выполнения этого кода будет:
+
+```
+fruit, fruit, fruit
+```
+
+В данном примере мы использовали метод `re.sub()`, который заменяет все вхождения указанных подстрок на заданное значение.
+
+### Использование словаря
+
+Для более гибкой и структурированной множественной замены подстрок можно воспользоваться словарем, где ключами будут искомые подстроки, а значениями - строки, на которые они должны быть заменены.
+
+```python
+# Пример использования словаря для множественной замены
+text = &quot;Hello, world! How are you?&quot;
+
+replacements = {
+    &quot;Hello&quot;: &quot;Hi&quot;,
+    &quot;world&quot;: &quot;Earth&quot;,
+    &quot;you&quot;: &quot;everyone&quot;
+}
+
+for old, new in replacements.items():
+    text = text.replace(old, new)
+
+print(text)
+```
+
+Результат выполнения данного кода будет:
+
+```
+Hi, Earth! How are everyone?
+```
+
+Этот метод позволяет более гибко управлять заменой подстрок и легко добавлять новые правила замены.</content:encoded></item><item><title>Разбираемся с NaN в JavaScript</title><link>https://awilum.ru/articles/understanding-nan-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/understanding-nan-in-javascript/</guid><description>Разбираемся с NaN в JavaScript</description><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+**JavaScript**, язык программирования, который имеет свои особенности, среди которых **NaN** **(Not a Number)**. **NaN** представляет собой специальное значение, которое обозначает, что результат операции не является числом. 
+
+В этой статье мы рассмотрим, что такое **NaN**, как его обнаружить и обрабатывать, а также предоставим примеры использования.
+
+### Что такое NaN?
+
+**NaN** в **JavaScript** появляется в результате некорректной математической операции или попытки выполнения операции, которая не может быть определена как число. Например, деление на ноль или попытка преобразования неподходящей строки в число могут вызвать **NaN**.
+
+Пример:
+
+```javascript
+let result = 10 / &apos;строка&apos;;
+
+console.log(result); // NaN
+```
+
+### Как обнаружить NaN?
+
+Для проверки наличия **NaN** в **JavaScript** можно использовать функцию `isNaN()`.
+
+Пример:
+
+```javascript
+console.log(isNaN(&apos;строка&apos;)); // true
+console.log(isNaN(10));       // false
+console.log(isNaN(NaN));      // true
+```
+
+Тем не менее, следует быть осторожным, так как `isNaN()` может вернуть `true` не только для **NaN**, но и для других значений, которые не являются числами. Например, для строк, объектов и т.д.
+
+### Обработка NaN
+
+Обработка **NaN** зависит от конкретной ситуации. В некоторых случаях вы можете просто игнорировать его, а в других — выполнить альтернативные действия или вывести сообщение об ошибке.
+
+Пример:
+
+```javascript
+let result = 10 / &apos;строка&apos;;
+
+if (isNaN(result)) {
+  console.log(&apos;Ошибка: результат не является числом&apos;);
+} else {
+  console.log(&apos;Результат:&apos;, result);
+}
+
+// Ошибка: результат не является числом
+```
+
+### Примеры использования NaN
+
+Проверка на число:
+
+```javascript
+function isNumber(value) {
+    return typeof value === &apos;number&apos; &amp;&amp; !isNaN(value);
+}
+
+console.log(isNumber(42));    // true
+console.log(isNumber(&apos;42&apos;));  // false
+console.log(isNumber(NaN));   // false
+```
+
+Использование при вычислениях:
+
+```javascript
+let total = 0;
+let numbers = [10, 20, &apos;строка&apos;, 30, 40];
+
+for (let num of numbers) {
+  if (!isNaN(num)) {
+    total += Number(num);
+  }
+}
+
+console.log(total); // 100
+```
+
+&lt;br&gt;
+
+**NaN** в **JavaScript** является специальным значением, которое указывает на ошибку в вычислениях или преобразованиях. Проверка на **NaN** и его обработка важны для правильного функционирования ваших программ. Используйте функцию `isNaN()` для определения **NaN** и обрабатывайте его в соответствии с логикой вашей программы.</content:encoded></item><item><title>Объединение словарей в Python</title><link>https://awilum.ru/articles/combining-dictionaries-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/combining-dictionaries-in-python/</guid><description>Объединение словарей в Python</description><pubDate>Thu, 28 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В **Python** словари **(dict)** представляют собой одну из наиболее мощных и часто используемых структур данных. Иногда возникает необходимость объединения нескольких словарей в один для удобства обработки данных или выполнения различных операций.
+
+### Использование метода `update()`
+
+Метод `update()` позволяет объединить два словаря, обновив первый словарь элементами из второго. Если ключи совпадают, значения из второго словаря перезапишут значения в первом.
+
+```python
+dict1 = {&apos;a&apos;: 1, &apos;b&apos;: 2}
+dict2 = {&apos;b&apos;: 3, &apos;c&apos;: 4}
+
+dict1.update(dict2)
+
+print(dict1)
+
+# {&apos;a&apos;: 1, &apos;b&apos;: 3, &apos;c&apos;: 4}
+```
+
+### Использование оператора `**`
+
+В **Python 3.5** и выше можно использовать оператор `**` для распаковки словарей и передачи элементов другому словарю.
+
+```python
+dict1 = {&apos;a&apos;: 1, &apos;b&apos;: 2}
+dict2 = {&apos;b&apos;: 3, &apos;c&apos;: 4}
+
+merged_dict = {**dict1, **dict2}
+
+print(merged_dict)
+
+# {&apos;a&apos;: 1, &apos;b&apos;: 3, &apos;c&apos;: 4}
+```
+
+### Использование метода `dict()` и оператора `**`
+
+В **Python 3.9** и выше можно использовать конструктор `dict()` с оператором `**` для объединения словарей.
+
+```python
+dict1 = {&apos;a&apos;: 1, &apos;b&apos;: 2}
+dict2 = {&apos;b&apos;: 3, &apos;c&apos;: 4}
+
+merged_dict = dict(dict1, **dict2)
+
+print(merged_dict)
+
+# {&apos;a&apos;: 1, &apos;b&apos;: 3, &apos;c&apos;: 4}
+```</content:encoded></item><item><title>Как определить, является ли число харшадом или нет в Python?</title><link>https://awilum.ru/articles/how-to-determine-if-a-number-is-a-harshad-or-not-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/how-to-determine-if-a-number-is-a-harshad-or-not-in-python/</guid><description>Как определить, является ли число харшадом или нет в Python?</description><pubDate>Thu, 28 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Харшадское число, также известное как число Нивена, является числом, которое делится на сумму своих цифр. Другими словами, если число делится на сумму его цифр без остатка, то оно считается харшадским числом. В этой статье мы рассмотрим, как можно определить, является ли число харшадом или нет с помощью **Python**.
+
+Числа харшад, или числа Нивена, — натуральные числа, делящиеся нацело на сумму своих цифр.
+Таким числом является, например, **1729**, так как `1729 = (1 + 7 + 2 + 9) × 91`.
+
+&lt;br&gt;
+
+&lt;table width=&quot;100%&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th colspan=&quot;10&quot;&gt;Первые 50 чисел харшад, не меньших 10&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;10&lt;/td&gt;
+          &lt;td&gt;12&lt;/td&gt;
+          &lt;td&gt;18&lt;/td&gt;
+          &lt;td&gt;20&lt;/td&gt;
+          &lt;td&gt;21&lt;/td&gt;
+          &lt;td&gt;24&lt;/td&gt;
+          &lt;td&gt;27&lt;/td&gt;
+          &lt;td&gt;30&lt;/td&gt;
+          &lt;td&gt;36&lt;/td&gt;
+          &lt;td&gt;40&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;42&lt;/td&gt;
+          &lt;td&gt;45&lt;/td&gt;
+          &lt;td&gt;48&lt;/td&gt;
+          &lt;td&gt;50&lt;/td&gt;
+          &lt;td&gt;54&lt;/td&gt;
+          &lt;td&gt;60&lt;/td&gt;
+          &lt;td&gt;63&lt;/td&gt;
+          &lt;td&gt;70&lt;/td&gt;
+          &lt;td&gt;72&lt;/td&gt;
+          &lt;td&gt;80&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;81&lt;/td&gt;
+          &lt;td&gt;84&lt;/td&gt;
+          &lt;td&gt;90&lt;/td&gt;
+          &lt;td&gt;100&lt;/td&gt;
+          &lt;td&gt;102&lt;/td&gt;
+          &lt;td&gt;108&lt;/td&gt;
+          &lt;td&gt;110&lt;/td&gt;
+          &lt;td&gt;111&lt;/td&gt;
+          &lt;td&gt;112&lt;/td&gt;
+          &lt;td&gt;114&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;117&lt;/td&gt;
+          &lt;td&gt;120&lt;/td&gt;
+          &lt;td&gt;126&lt;/td&gt;
+          &lt;td&gt;132&lt;/td&gt;
+          &lt;td&gt;133&lt;/td&gt;
+          &lt;td&gt;135&lt;/td&gt;
+          &lt;td&gt;140&lt;/td&gt;
+          &lt;td&gt;144&lt;/td&gt;
+          &lt;td&gt;150&lt;/td&gt;
+          &lt;td&gt;152&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;153&lt;/td&gt;
+          &lt;td&gt;156&lt;/td&gt;
+          &lt;td&gt;162&lt;/td&gt;
+          &lt;td&gt;171&lt;/td&gt;
+          &lt;td&gt;180&lt;/td&gt;
+          &lt;td&gt;190&lt;/td&gt;
+          &lt;td&gt;192&lt;/td&gt;
+          &lt;td&gt;195&lt;/td&gt;
+          &lt;td&gt;198&lt;/td&gt;
+          &lt;td&gt;200&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+### Определение функции для проверки Харшадского числа
+
+Для начала определим функцию, которая будет проверять, является ли данное число харшадом или нет. Мы можем использовать следующий алгоритм:
+
+1. Преобразовать число в строку для удобства работы с его цифрами.
+2. Пройти по каждой цифре числа, вычисляя их сумму.
+3. Проверить, делится ли исходное число на сумму его цифр без остатка.
+4. Вернуть булевое значение: `True`, если число является харшадом, и `False` в противном случае.
+
+Давайте реализуем эту функцию:
+
+```python
+def is_harshad(number):
+    # Преобразуем число в строку для работы с его цифрами
+    num_str = str(number)
+    
+    # Вычисляем сумму цифр числа
+    digit_sum = sum(int(digit) for digit in num_str)
+    
+    # Проверяем, делится ли число на сумму его цифр без остатка
+    return number % digit_sum == 0
+```
+
+### Примеры использования функции
+
+Теперь давайте протестируем нашу функцию на нескольких примерах:
+
+```python
+# Пример 1: Проверка харшадского числа
+print(is_harshad(18))  # True
+# 18 / (1 + 8) = 18 / 9 = 2
+
+# Пример 2: Проверка нехаршадского числа
+print(is_harshad(19))  # False
+# 19 / (1 + 9) = 19 / 10 != integer
+
+# Пример 3: Большое харшадское число
+print(is_harshad(1729))  # True
+# 1729 / (1 + 7 + 2 + 9) = 1729 / 19 = 91
+```
+
+</content:encoded></item><item><title>Как найти все делители натурального числа в Python?</title><link>https://awilum.ru/articles/how-to-find-all-divisors-of-a-natural-number-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/how-to-find-all-divisors-of-a-natural-number-in-python/</guid><description>Как найти все делители натурального числа в Python?</description><pubDate>Thu, 28 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В программировании, особенно при работе с числами, часто возникает необходимость найти все делители натурального числа. Делители - это числа, на которые данное число делится нацело.
+
+### Использование цикла и условного оператора
+
+Простейший способ найти все делители - это перебор всех чисел от 1 до самого числа и проверка их на делимость. 
+
+Вот пример кода:
+
+```python
+def find_divisors(n):
+    divisors = []
+    for i in range(1, n + 1):
+        if n % i == 0:
+            divisors.append(i)
+    return divisors
+
+# Пример использования
+number = 36
+
+print(&quot;Делители числа&quot;, number, &quot;:&quot;, find_divisors(number))
+
+# Делители числа 36 : [1, 2, 3, 4, 6, 9, 12, 18, 36]
+```
+
+### Оптимизированный подход
+
+Если число `n` имеет делитель `d`, то оно также имеет делитель `n/d`. 
+
+Мы можем использовать это свойство для оптимизации нашего алгоритма:
+
+```python
+def find_divisors_optimized(n):
+    divisors = []
+    i = 1
+    while i * i &lt;= n:
+        if n % i == 0:
+            if n // i == i:
+                divisors.append(i)
+            else:
+                divisors.append(i)
+                divisors.append(n // i)
+        i += 1
+    divisors.sort() # Сортировка делителей
+    return divisors
+
+# Пример использования
+number = 36
+
+print(&quot;Делители числа&quot;, number, &quot;:&quot;, find_divisors_optimized(number))
+
+# Делители числа 36 : [1, 2, 3, 4, 6, 9, 12, 18, 36]
+```
+
+Этот код также выведет все делители числа `36`, но делает это более эффективно, используя только один цикл вместо перебора всех чисел до `n`.
+</content:encoded></item><item><title>Преобразование символа в ASCII и обратно в Python</title><link>https://awilum.ru/articles/converting-a-character-to-ascii-and-back-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/converting-a-character-to-ascii-and-back-in-python/</guid><description>Преобразование символа в ASCII и обратно в Python</description><pubDate>Wed, 27 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 ASCII (American Standard Code for Information Interchange) - это стандартный кодировочный набор, используемый для представления текстовых данных на компьютерах и других устройствах, совместимых с ASCII. В Python существуют встроенные функции, которые позволяют преобразовывать символы в их ASCII-коды и наоборот. Это часто используется при работе с символьными данными, например, при чтении и записи файлов или в обработке строк.
 
 ### Преобразование символа в ASCII
