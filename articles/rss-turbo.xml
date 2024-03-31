@@ -1,4 +1,426 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Brainfuck интерпретатор на Python</title><link>https://awilum.ru/articles/brainfuck-python-interpreter/</link><guid isPermaLink="true">https://awilum.ru/articles/brainfuck-python-interpreter/</guid><description>Brainfuck интерпретатор на Python</description><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Оценка короткого замыкания в JavaScript</title><link>https://awilum.ru/articles/short-circuit-evaluation-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/short-circuit-evaluation-in-javascript/</guid><description>Оценка короткого замыкания в JavaScript</description><pubDate>Sun, 31 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+**Оценка короткого замыкания**, минимальная оценка или Оценка **Джона Маккарти** **(short-circuit evaluation)** — семантика некоторых логических операторов в языках программирования, в которых второй аргумент выполняется или оценивается, только если первый аргумент выполняет не достаточно для определения значения выражения: когда первый аргумент функции `AND` принимает значение `false`, общее значение должно быть` false` и когда первый аргумент функции `OR` оценивается как `true`, общее значение должно быть `true`.
+
+В **JavaScript** — эта особенность логических операторов, позволяет быстро определить результат булевого выражения.
+
+В **JavaScript**, операторы `&amp;&amp;` и `||` используют оценку короткого замыкания.
+
+
+### Оценка короткого замыкания оператора `&amp;&amp;`
+
+Оператор `&amp;&amp;` возвращает `true`, если оба операнда являются `true`. Если первый операнд равен `false`, вся операция будет равна `false` и второй операнд не будет вычисляться.
+
+```javascript
+let x = 5;
+
+x &lt; 4 &amp;&amp; console.log(&quot;Это никогда не будет напечатано&quot;); // 
+
+x &lt; 6 &amp;&amp; console.log(&quot;Это будет напечатано&quot;);            // Это будет напечатано
+```
+
+Функция `console.log()` возвращает значение `undefined`.
+
+Однако, в данном выражении, `console.log(&quot;Это будет напечатано&quot;)` не является возвращаемым значением, а скорее является &quot;побочным эффектом&quot; (side effect) вызова функции, который заключается в выводе на экран переданного ей аргумента.
+
+В данном случае, выражение `console.log(&quot;Это будет напечатано&quot;)` выполняется только в том случае, когда `x &lt; 6` является истинным. Если `x &lt; 6` ложно, то выражение `console.log(&quot;Это будет напечатано&quot;)` не выполнится и ничего не будет напечатано в консоли.
+
+Так как выражение `console.log(&quot;Это будет напечатано&quot;)` не является возвращаемым значением, то оператор `&amp;&amp;` не будет выполнять второй операнд, если первый операнд оценивается как ложный `false`, и вернет значение первого ложного операнда, которым в данном случае является выражение `console.log(&quot;Это будет напечатано&quot;)`. Однако, если первый операнд оценивается как истинный `true`, то оператор `&amp;&amp;` будет выполнять второй операнд и возвращать его значение, которое в данном случае будет `true`, поскольку выполнение выражения `console.log(&quot;Это будет напечатано&quot;)` завершилось успешно (хотя функция `console.log()` и возвращает значение `undefined`, оно игнорируется в данном случае).  
+
+Еще пример использования оценки короткого замыкания оператора `&amp;&amp;`:
+
+```javascript
+let player = {
+  health: 50,
+  mana: 50,
+  // ...
+};
+
+// Восстанавливаем здоровье или ману игрока, в зависимости от того, какие зелья у него есть.
+let healthPotion = true;
+let manaPotion = false;
+
+player.health += healthPotion &amp;&amp; 50; // Восстановить здоровье на 50 единиц если healthPotion = true
+player.mana += manaPotion &amp;&amp; 25;     // Восстановить ману на 25 единиц если manaPotion = true
+
+console.log(player); // { health: 100, mana: 50 }
+```
+
+В данном примере, мы используем оператор `&amp;&amp;` для восстановления здоровья и маны игрока, в зависимости от наличия у него соответствующих зелий.
+
+Если `healthPotion` равно `true`, то выражение `healthPotion &amp;&amp; 50` будет оценено как `50`, и игроку будет восстановлено `50` единиц здоровья. Если `healthPotion` равно `false`, выражение `healthPotion &amp;&amp; 50` будет оценено как `false`, и никакого восстановления здоровья не произойдет. Аналогично, если `manaPotion` равно true, то выражение `manaPotion &amp;&amp; 25` будет оценено как `25`, и игроку будет восстановлено `25` единиц маны. Если `manaPotion` равно `false`, выражение `manaPotion &amp;&amp; 25` будет оценено как `false`, и никакого восстановления маны не произойдет.
+
+Таким образом, использование оценки короткого замыкания в этом примере позволяет упростить код и избежать дополнительных проверок условий.
+
+### Оценка короткого замыкания оператора `||`
+
+Оператор `||` возвращает `true`, если хотя бы один из операндов равен `true`. Если первый операнд равен `true`, вся операция будет равна `true` и второй операнд не будет вычисляться.
+
+```javascript
+let y = 10;
+
+y &lt; 5 || console.log(&quot;Это будет напечатано&quot;);             // Это будет напечатано
+
+y &lt; 15 || console.log(&quot;Это никогда не будет напечатано&quot;); //
+```
+
+В данном случае левый операнд `y &lt; 5` ложный `false`, так как `y` равно `10`, что не меньше `5`. Поэтому **JavaScript** вычисляет и выполняет правый операнд `console.log(&quot;Это будет напечатано&quot;)`.
+
+Выражение вернет результат выполнения правого операнда, который в данном случае будет равен `undefined`, так как функция `console.log()` не возвращает никакого значения. Кроме того, она выведет сообщение &quot;Это будет напечатано&quot; в консоль.  
+
+
+Еще пример использования оценки короткого замыкания оператора `||`: 
+
+```javascript
+let player = {
+  weapon: &quot;sword&quot;,
+  // ...
+};
+
+// Если игрок не выбрал оружие, устанавливаем значение по умолчанию - unarmed
+player.weapon = player.weapon || &quot;unarmed&quot;;
+
+// Используем выбранное игроком оружие для атаки
+function attack() {
+  if (player.weapon === &quot;sword&quot;) {
+    console.log(&quot;Атака мечом&quot;);
+  } else if (player.weapon === &quot;bow&quot;) {
+    console.log(&quot;Атака луком&quot;);
+  } else {
+    console.log(&quot;Атака оружием...&quot;);
+  }
+}
+
+attack(); // Атака мечом
+```
+
+### Оценка короткого замыкания операторов `&amp;&amp;` и `||` одной инструкцией.
+
+Вы также можете делать оценку коротого замыкания `&amp;&amp;` и `||` одной инструкцией.
+
+Пример:
+
+```javascript
+let score = 100, bonus = true;
+
+bonus &amp;&amp; (score += 25) || (score += 1);
+
+console.log(score); // 125
+```
+
+В примере выше выполняется следующее выражение: `bonus &amp;&amp; (score += 25) || (score += 1)`.
+
+Давайте разберем его на части:
+
+```javascript
+bonus &amp;&amp; (score += 25)
+```
+
+Оператор `&amp;&amp;` выполняет логическую операцию &quot;и&quot; между операндами `bonus` и `(score += 25)`. Если `bonus` является истинным значением `true`, то вычисляется `(score += 25)`, и переменная score увеличивается на `25`. В нашем случае bonus равно `true`, поэтому выражение `(score += 25)` выполняется.
+ 
+&lt;br&gt;&lt;br&gt;
+
+```javascript
+|| (score += 1)
+```
+
+Если предыдущее выражение с использованием `&amp;&amp;` было ложным, тогда оператор `||` выполняет логическую операцию &quot;или&quot; между предыдущим результатом и `(score += 1)`. В этом случае `(score += 1)` увеличивает переменную `score` на `1`. В нашем коде предыдущее выражение с использованием `&amp;&amp;` было выполнено, поэтому это выражение с использованием `||` не выполняется.
+
+​</content:encoded></item><item><title>Преобразование строки в массив JSON в PHP</title><link>https://awilum.ru/articles/converting-a-string-to-a-json-array-in-php/</link><guid isPermaLink="true">https://awilum.ru/articles/converting-a-string-to-a-json-array-in-php/</guid><description>Преобразование строки в массив JSON в PHP</description><pubDate>Sat, 30 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Одним из наиболее распространенных сценариев в веб-разработке является преобразование строки, содержащей данные в формате **JSON**, в массив **PHP**. Этот процесс необходим для обработки данных, полученных, например, от внешнего **API** или из других источников данных. После преобразования данные могут быть легко использованы и обработаны в рамках приложения, написанного на **PHP**.
+
+### Что такое JSON?
+
+**JSON (JavaScript Object Notation)** - это формат обмена данными, основанный на синтаксисе **JavaScript**. Он легко читаем для людей и легко обрабатываем для компьютеров. **JSON** состоит из пар &quot;ключ: значение&quot; и представляет собой или объект, или массив.
+
+Пример **JSON**-объекта:
+
+```json
+{
+    &quot;name&quot;: &quot;John&quot;,
+    &quot;age&quot;: 30,
+    &quot;city&quot;: &quot;New York&quot;
+}
+```
+
+### Преобразование строки JSON в массив PHP
+
+#### Функция `json_decode()`
+
+В **PHP** есть встроенная функция `json_decode()`, которая преобразует строку **JSON** в соответствующую структуру данных **PHP**.
+
+```php
+$json_string = &apos;{&quot;name&quot;: &quot;John&quot;, &quot;age&quot;: 30, &quot;city&quot;: &quot;New York&quot;}&apos;;
+
+// Преобразование строки JSON в массив PHP
+$array_data = json_decode($json_string, true);
+
+// Вывод массива
+print_r($array_data);
+```
+
+Результат:
+
+```
+Array
+(
+    [name] =&gt; John
+    [age] =&gt; 30
+    [city] =&gt; New York
+)
+```
+
+Параметр `true` в `json_decode()` используется для указания, что объект должен быть преобразован в ассоциативный массив.
+
+#### Обработка ошибок
+
+```php
+$json_string = &apos;{&quot;name&quot;: &quot;John&quot;, &quot;age&quot;: 30, &quot;city&quot;: &quot;New York&quot;}&apos;;
+
+// Преобразование строки JSON в массив PHP
+$array_data = json_decode($json_string, true);
+
+if (json_last_error() === JSON_ERROR_NONE) {
+    print_r($array_data);
+} else {
+    echo &apos;Ошибка при разборе JSON: &apos; . json_last_error_msg();
+}
+```
+
+Этот код обрабатывает возможные ошибки при разборе строки **JSON** и выводит сообщение об ошибке в случае неудачи.
+
+Функция `json_last_error()` в **PHP** используется для получения кода последней ошибки, произошедшей при работе с **JSON**. Она предоставляет удобный способ проверки статуса разбора **JSON**-данных после использования функции `json_decode()` или `json_encode()`.
+
+Вот некоторые распространенные коды ошибок **JSON**, которые могут быть возвращены функцией `json_last_error()`:
+
+
+&lt;table align=&quot;center&quot; style=&quot;width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center; width:500px;&quot;&gt;&lt;code&gt;JSON_ERROR_NONE (0)&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Нет ошибки. Этот код возвращается, когда разбор JSON прошел успешно.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;JSON_ERROR_DEPTH (1)&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Превышена максимальная глубина стека.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;JSON_ERROR_DEPTH (1)&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Превышена максимальная глубина стека.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;JSON_ERROR_STATE_MISMATCH (2)&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Некорректный или некорректно заключенный JSON.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;JSON_ERROR_CTRL_CHAR (3)&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Найден неожиданный управляющий символ.&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;JSON_ERROR_SYNTAX (4)&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Синтаксическая ошибка, некорректный JSON.&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+#### Пример с массивом JSON
+
+```php
+$json_string = &apos;[{&quot;name&quot;: &quot;John&quot;, &quot;age&quot;: 30}, {&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 25}]&apos;;
+
+// Преобразование строки JSON в массив PHP
+$array_data = json_decode($json_string, true);
+
+// Вывод массива
+print_r($array_data);
+```
+
+Результат:
+
+```
+Array
+(
+    [0] =&gt; Array
+        (
+            [name] =&gt; John
+            [age] =&gt; 30
+        )
+
+    [1] =&gt; Array
+        (
+            [name] =&gt; Alice
+            [age] =&gt; 25
+        )
+
+)
+```</content:encoded></item><item><title>Решение проблемы шляпного чека</title><link>https://awilum.ru/articles/solution-to-the-hat-check-problem/</link><guid isPermaLink="true">https://awilum.ru/articles/solution-to-the-hat-check-problem/</guid><description>Решение проблемы шляпного чека</description><pubDate>Sat, 30 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Проблема шляпного чека - это классическая задача комбинаторики, которая требует определения количества способов распределения `n` шляп между `n` людьми таким образом, чтобы ни один человек не получил свою собственную шляпу. Эта задача также известна как &quot;проблема нарушения перестановок&quot;.
+
+### Понимание Задачи
+
+Допустим, у нас есть `n` шляп и `n` людей. Нам нужно определить, сколькими способами можно распределить шляпы так, чтобы никто не получил свою собственную шляпу. Для этого мы можем воспользоваться понятием нарушения перестановок.
+
+### Нарушение Перестановок
+
+Нарушение - это перестановка элементов набора такая, что ни один элемент не остается на своем исходном месте. Таким образом, нарушение можно рассматривать как случай, когда элементы &quot;нарушают&quot; свои исходные позиции.
+
+### Реализация на Python
+
+```python
+import math
+
+def calculate_violations(n):
+    # Проверка на корректность входных данных
+    if n &lt;= 0:
+        return &quot;Ошибка: Входное число должно быть положительным целым числом.&quot;
+    
+    # Вычисление факториала числа n
+    factorial_n = math.factorial(n)
+    
+    # Вычисление количества нарушений
+    violations = 0
+    for i in range(n + 1):
+        violations += ((-1) ** i) * (factorial_n / math.factorial(i))
+    
+    # Ответ - количество нарушений
+    return int(violations)
+```
+
+### Пример использования функции с входными данными
+
+```python
+n = 3
+
+result = calculate_violations(n)
+
+print(&quot;Количество нарушений:&quot;, result)
+```
+
+Давайте рассмотрим пример с `n = 3`. 
+
+У нас есть `3` шляпы и `3` человека. Мы хотим определить количество способов, которыми шляпы можно распределить так, чтобы никто не получил свою собственную шляпу.
+
+Используя нашу функцию `calculate_violations(3)`, мы получаем результат: `2`
+
+Это означает, что существует `2` способа распределения шляп так, чтобы никто не получил свою собственную шляпу.</content:encoded></item><item><title>Понимание работы метода toFixed() в JavaScript</title><link>https://awilum.ru/articles/understanding-the-tofixed-method-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/understanding-the-tofixed-method-in-javascript/</guid><description>Понимание работы метода toFixed() в JavaScript</description><pubDate>Sat, 30 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+Метод **toFixed()** в **JavaScript** форматирует число, используя запись с фиксированной запятой.
+
+Синтаксис:
+
+```javascipt
+num.toFixed(digits)
+```
+
+&lt;table align=&quot;center&quot; style=&quot;width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;num&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Число, которое требуется округлить&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style=&quot;text-align: center;&quot;&gt;&lt;code&gt;digits&lt;/code&gt;&lt;/td&gt;
+			&lt;td&gt;Количество знаков после запятой, которые необходимо сохранить. Он должен быть в пределах от 0 до 20. Если этот аргумент не передается, по умолчанию используется значение 0.&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;br&gt;
+
+Работа метода `toFixed()`:
+
+1. **Преобразование в строку.**   
+Первым шагом метод `toFixed()` преобразует число в строку.
+2. **Округление числа.**   
+Затем он округляет это число до указанного количества знаков после запятой. Для этого он добавляет нули или удаляет десятичные знаки, если количество знаков после запятой меньше, чем указано.
+3. **Вывод результата.**   
+Возвращает строковое представление округленного числа.
+
+Пример:
+
+```javascript
+let num = 10.5678;
+
+console.log(num.toFixed());     // 11
+console.log(num.toFixed(2));    // 10.57
+console.log(num.toFixed(0));    // 11
+console.log(num.toFixed(3));    // 10.568
+```
+
+В приведенном выше примере, если `toFixed()` вызывается без аргумента, число будет округлено до ближайшего целого значения. При передаче аргумента метод округляет число до указанного количества десятичных знаков.
+
+### Особенности и ограничения
+
+#### Округление до ближайшего значения
+
+```javascript
+let num1 = 10.5678;
+let num2 = 10.4321;
+
+console.log(num1.toFixed(2));  // 10.57
+console.log(num2.toFixed(2));  // 10.43
+```
+
+Оба числа будут округлены до ближайшего значения. Даже если следующий десятичный знак меньше `5` (как в случае `num2`), метод `toFixed()` все равно округлит число в большую сторону.
+
+#### Возвращаемый тип данных
+
+```
+let num = 15.6789;
+let roundedNum = num.toFixed(2);
+
+console.log(typeof roundedNum); // string
+```
+
+Даже если `num` - число, результат работы метода `toFixed()` будет строкой.</content:encoded></item><item><title>Проверка числовых значений в массивах JavaScript</title><link>https://awilum.ru/articles/validating-numeric-values-in-javascript-arrays/</link><guid isPermaLink="true">https://awilum.ru/articles/validating-numeric-values-in-javascript-arrays/</guid><description>Проверка числовых значений в массивах JavaScript</description><pubDate>Sat, 30 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+В **JavaScript**, как и во многих других языках программирования, массивы могут содержать элементы различных типов данных, включая числа, строки, объекты и другие массивы. Иногда возникает необходимость убедиться, что все элементы в массиве являются числовыми значениями. Это может быть полезно, например, при работе с данными, предполагающими только числовые значения, такими как математические операции или статистические вычисления.
+
+### Проверка с помощью цикла и `typeof`
+
+Один из наиболее распространенных способов проверки типа элементов массива - использование цикла в сочетании с оператором `typeof`. Этот способ позволяет пройти по всем элементам массива и проверить их тип.
+
+```javascript
+function areAllNumeric(arr) {
+    for (let i = 0; i &lt; arr.length; i++) {
+        if (typeof arr[i] !== &apos;number&apos;) {
+            return false;
+        }
+    }
+    return true;
+}
+
+const array1 = [1, 2, 3, 4, 5];
+const array2 = [1, &apos;two&apos;, 3, &apos;four&apos;, 5];
+
+console.log(areAllNumeric(array1)); // true
+console.log(areAllNumeric(array2)); // false
+```
+
+### Проверка с помощью метода `every()`
+
+Метод `every()` массива позволяет проверить, удовлетворяют ли все элементы массива заданному условию, представленному в виде функции обратного вызова.
+
+```javascript
+function isNumeric(value) {
+    return typeof value === &apos;number&apos;;
+}
+
+const array1 = [1, 2, 3, 4, 5];
+const array2 = [1, &apos;two&apos;, 3, &apos;four&apos;, 5];
+
+console.log(array1.every(isNumeric)); // true
+console.log(array2.every(isNumeric)); // false
+```
+
+### Использование метода `every()` вместе с `isNaN()`
+
+Метод `isNaN()` используется для проверки, является ли переданное значение **NaN** (не числом). В комбинации с методом `every()` он может быть использован для проверки всех элементов массива на числовые значения.
+
+```javascript
+const array1 = [1, 2, 3, 4, 5];
+const array2 = [1, &apos;two&apos;, 3, &apos;four&apos;, 5];
+
+console.log(array1.every(value =&gt; !isNaN(value))); // true
+console.log(array2.every(value =&gt; !isNaN(value))); // false
+```</content:encoded></item><item><title>Brainfuck интерпретатор на Python</title><link>https://awilum.ru/articles/brainfuck-python-interpreter/</link><guid isPermaLink="true">https://awilum.ru/articles/brainfuck-python-interpreter/</guid><description>Brainfuck интерпретатор на Python</description><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 **Brainfuck** — это один из эзотерических языков программирования, придуманный Урбаном Мюллером в 1993 году, и он известен своим минимализмом. Название языка можно перевести как &quot;вынос мозга&quot;, оно напрямую происходит от английского выражения &quot;brainfuck&quot; (где &quot;brain&quot; означает мозг, а &quot;fuck&quot; — вынос), подразумевая занятие нелепостями. В **Brainfuck** всего восемь команд, каждая из которых представлена одним символом. Исходный код программы на **Brainfuck** представляет собой простую последовательность этих символов без дополнительного синтаксиса.   
 
 Одним из основных мотивов создания **Brainfuck** было стремление Урбана Мюллера создать язык с наименьшим возможным компилятором. Вдохновение он черпал, в частности, из языка **FALSE**, для которого существовал компилятор размером всего 2044 байта. На сегодняшний день существуют компиляторы **Brainfuck** размером менее 200 байт. Написание программ на языке **Brainfuck** сложно, что иногда заставляет называть его языком для мазохистов. Тем не менее, **Brainfuck** является естественным, полным и простым языком, который может использоваться для определения понятия вычислимости.
@@ -1986,7 +2408,14 @@ for key in keys:
 
 ### Что такое мемоизация?
 
-Мемоизация - это техника оптимизации, при которой результаты выполнения функции запоминаются (кэшируются), чтобы избежать повторных вычислений при одинаковых входных данных. Это особенно полезно, когда функция вызывается с одними и теми же аргументами несколько раз.
+**Мемоизация** - это техника оптимизации, при которой результаты выполнения функции запоминаются (кэшируются), чтобы избежать повторных вычислений при одинаковых входных данных. Это особенно полезно, когда функция вызывается с одними и теми же аргументами несколько раз.
+
+Перед вызовом функции проверяется, вызывалась ли функция ранее:
+
+1. если не вызывалась, то функция вызывается, и результат её выполнения сохраняется;
+2. если вызывалась, то используется сохранённый результат.
+
+Мемоизация может использоваться не только для увеличения скорости работы программы. Например, она используется при взаимно-рекурсивном нисходящем синтаксическом разборе в обобщённом алгоритме нисходящего синтаксического анализа.
 
 ### Пример без мемоизации
 
@@ -2036,11 +2465,7 @@ print(factorial(5))  # 120
 print(factorial(3))  # 6
 ```
 
-При первом вызове `factorial(5)` вычисляется факториал числа `5` и результат `(120)` сохраняется в кэше. При следующем вызове `factorial(3)` функция сначала проверяет кэш и обнаруживает, что результат уже вычислен, поэтому возвращает значение из кэша `(6)`, без повторных вычислений.
-
-&lt;br&gt;
-
-**Мемоизация** - мощный инструмент оптимизации производительности в **Python** и других языках программирования. Она позволяет избежать повторных вычислений и существенно сократить время выполнения программы. При правильном использовании она может быть особенно полезной в вычислительно интенсивных задачах</content:encoded></item><item><title>Использование переменных внутри регулярного выражения Python</title><link>https://awilum.ru/articles/using-variables-inside-a-python-regular-expression/</link><guid isPermaLink="true">https://awilum.ru/articles/using-variables-inside-a-python-regular-expression/</guid><description>Использование переменных внутри регулярного выражения Python</description><pubDate>Tue, 26 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
+При первом вызове `factorial(5)` вычисляется факториал числа `5` и результат `(120)` сохраняется в кэше. При следующем вызове `factorial(3)` функция сначала проверяет кэш и обнаруживает, что результат уже вычислен, поэтому возвращает значение из кэша `(6)`, без повторных вычислений.</content:encoded></item><item><title>Использование переменных внутри регулярного выражения Python</title><link>https://awilum.ru/articles/using-variables-inside-a-python-regular-expression/</link><guid isPermaLink="true">https://awilum.ru/articles/using-variables-inside-a-python-regular-expression/</guid><description>Использование переменных внутри регулярного выражения Python</description><pubDate>Tue, 26 Mar 2024 00:00:00 GMT</pubDate><content:encoded>
 **Регулярные выражения (Regular Expressions)** - это мощный инструмент для работы с текстом в **Python**. Они позволяют искать, сопоставлять и изменять строки с помощью определенного шаблона. Часто возникает необходимость использовать переменные внутри регулярных выражений для создания более гибких и динамических шаблонов. В этой статье мы рассмотрим различные способы использования переменных в регулярных выражениях на примерах.
 
 ### Использование переменных для поиска подстрок
