@@ -1,4 +1,221 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Работа с множествами в Python</title><link>https://awilum.ru/articles/working-with-sets-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/working-with-sets-in-python/</guid><description>Работа с множествами в Python</description><pubDate>Mon, 01 Apr 2024 00:00:00 GMT</pubDate><content:encoded>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Статьи | awilum.ru</title><description>Про разработку программного обеспечения, образование и IT в целом.</description><link>https://awilum.ru/</link><item><title>Экранирование кавычек и специальных символов в JavaScript</title><link>https://awilum.ru/articles/escaping-quotes-and-special-characters-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/escaping-quotes-and-special-characters-in-javascript/</guid><description>Экранирование кавычек и специальных символов в JavaScript</description><pubDate>Mon, 22 Jul 2024 00:00:00 GMT</pubDate><content:encoded>
+В **JavaScript** экранирование кавычек используется для того, чтобы включать кавычки внутри строковых литералов без нарушения синтаксиса.  
+
+Рассмотрим основные способы экранирования кавычек.
+
+### Экранирование одинарных кавычек в строке с одинарными кавычками
+
+Если строка заключена в одинарные кавычки, то одинарные кавычки внутри этой строки нужно экранировать с помощью обратной косой черты `\`:
+
+```javascript
+let singleQuote = &apos;This is how you can include a single quote (\&apos;) inside a single-quoted string.&apos;;
+
+console.log(singleQuote); 
+
+// This is how you can include a single quote (&apos;) inside a single-quoted string.
+```
+
+### Экранирование двойных кавычек в строке с двойными кавычками
+
+Аналогично, если строка заключена в двойные кавычки, то двойные кавычки внутри этой строки нужно экранировать:
+
+```javascript
+let doubleQuote = &quot;This is how you can include a double quote (\&quot;) inside a double-quoted string.&quot;;
+
+console.log(doubleQuote); 
+
+// This is how you can include a double quote (&quot;) inside a double-quoted string.
+```
+
+### Использование разных типов кавычек
+
+Одинарные кавычки внутри строки, заключенной в двойные кавычки, и наоборот, не требуют экранирования:
+
+```javascript
+let mixedQuotes1 = &quot;This is a string with &apos;single quotes&apos; inside double quotes.&quot;;
+let mixedQuotes2 = &apos;This is a string with &quot;double quotes&quot; inside single quotes.&apos;;
+
+console.log(mixedQuotes1);
+// This is a string with &apos;single quotes&apos; inside double quotes.
+
+console.log(mixedQuotes2); 
+// This is a string with &quot;double quotes&quot; inside single quotes.
+```
+
+### Экранирование в шаблонных строках
+
+В шаблонных строках (template literals), которые заключены в обратные кавычки, кавычки также не требуют экранирования, если используются одинарные или двойные кавычки. Однако, если внутри шаблонной строки нужно включить обратную косую черту, её необходимо экранировать:
+
+```javascript
+let templateLiteral = `This is a template literal with &apos;single quotes&apos; and &quot;double quotes&quot;.`;
+
+console.log(templateLiteral); 
+// This is a template literal with &apos;single quotes&apos; and &quot;double quotes&quot;.
+
+let backslash = `This is how you include a backslash (\\) in a template literal.`;
+
+console.log(backslash); 
+// This is how you include a backslash (\) in a template literal.
+```
+
+### Экранирование других специальных символов
+
+Кроме кавычек, в строках могут использоваться и другие специальные символы, которые также требуют экранирования. Например, новая строка `\n`, табуляция `\t` и другие:
+
+```javascript
+let specialCharacters = &apos;This is a string with a newline character.\nAnd this is the new line.&apos;;
+
+console.log(specialCharacters);
+
+// This is a string with a newline character.
+// And this is the new line.
+```</content:encoded></item><item><title>Использование восклицательного знака перед выражением в JavaScript</title><link>https://awilum.ru/articles/using-an-exclamation-mark-before-an-expression-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/using-an-exclamation-mark-before-an-expression-in-javascript/</guid><description>Использование восклицательного знака перед выражением в JavaScript</description><pubDate>Mon, 22 Jul 2024 00:00:00 GMT</pubDate><content:encoded>
+Восклицательный знак в JavaScript используется для логического отрицания (оператор NOT). Его можно применять перед выражением, чтобы изменить его логическое значение на противоположное. 
+
+### Одинарный восклицательный знак `!`
+
+Когда перед выражением ставится один восклицательный знак, значение выражения преобразуется в логическое значение (`true` или `false`) и затем инвертируется.
+
+```javascript
+let a = true;
+console.log(!a); // false
+
+let b = 0;
+console.log(!b); // true
+```
+
+Здесь:  
+- `!a` превращает `true` в `false`.
+- `!b` превращает `0` (что эквивалентно `false`) в `true`.
+
+### Двойной восклицательный знак `!!`
+
+Двойной восклицательный знак используется для явного преобразования значения в логическое значение без его инвертирования. Первый `!` инвертирует значение, а второй `!` возвращает его к исходному логическому значению.
+
+```javascript
+let a = &quot;Hello&quot;;
+console.log(!!a); // true
+
+let b = 0;
+console.log(!!b); // false
+```
+
+Здесь:  
+- `!!a` превращает строку `&quot;Hello&quot;` в логическое значение `true`.
+- `!!b` превращает число `0` в логическое значение `false`.
+
+
+### Важные примеры и случаи
+
+```javascript
+console.log(!!1);         // true
+console.log(!!0);         // false
+console.log(!!&quot;&quot;);        // false
+console.log(!!&quot;string&quot;);  // true
+console.log(!!null);      // false
+console.log(!!undefined); // false
+console.log(!!NaN);       // false
+```</content:encoded></item><item><title>Использование мемоизации в JavaScript</title><link>https://awilum.ru/articles/using-memoization-in-javascript/</link><guid isPermaLink="true">https://awilum.ru/articles/using-memoization-in-javascript/</guid><description>Использование мемоизации в JavaScript</description><pubDate>Mon, 22 Jul 2024 00:00:00 GMT</pubDate><content:encoded>
+**Мемоизация** — это оптимизационная техника в программировании, которая заключается в кешировании результатов выполнения функций для определенных входных данных. Это позволяет избежать повторных вычислений при вызове функции с теми же аргументами, что приводит к сокращению времени выполнения и уменьшению использования ресурсов, таких как CPU и память. Кешированные результаты хранятся в памяти или другом хранилище и возвращаются при повторных вызовах функции с теми же аргументами, вместо выполнения вычислений заново.  
+
+Мемоизация особенно полезна для функций, которые имеют высокую вычислительную сложность и вызываются многократно с одинаковыми входными данными. Это позволяет значительно повысить производительность программы, сократив время выполнения и уменьшив нагрузку на ресурсы системы.
+
+
+Вычисления чисел Фибоначчи без мемоизации и с мемоизацией.
+
+Рассмотрим процесс мемоизации в **JavaScript** на примере вычисление чисел **Фибоначчи**.
+
+Пример вычисления чисел **Фибоначчи без мемоизации**.
+
+```javascript
+function fibonacci(n) {
+  if (n &lt;= 0) {
+    return 0;
+  } else if (n === 1) {
+    return 1;
+  } else {
+    return fibonacci(n - 1) + fibonacci(n - 2);
+  }
+}
+
+console.log(fibonacci(10)); // Время выполнения увеличивается экспоненциально с увеличением n
+```
+
+В этом примере мы видим, как функция `fibonacci` использует рекурсию для вычисления чисел **Фибоначчи**. Однако, с увеличением значения `n`, время выполнения такого алгоритма растет экспоненциально из-за повторных вычислений и дублирования работы.
+
+Чтобы избежать повторных вычислений и значительно улучшить производительность, мы можем использовать подход мемоизации.
+
+Пример вычисления чисел Фибоначчи с мемоизацией.
+
+```javascript
+function fibonacciWithMemoization(n, memo = {}) {
+  if (n in memo) {
+    return memo[n];
+  }
+  
+  if (n &lt;= 0) {
+    return 0;
+  } else if (n === 1) {
+    return 1;
+  } else {
+    memo[n] = fibonacciWithMemoization(n - 1, memo) + fibonacciWithMemoization(n - 2, memo);
+    return memo[n];
+  }
+}
+
+console.log(fibonacciWithMemoization(10)); // Время выполнения оптимизировано благодаря мемоизации
+```
+
+В этой оптимизированной версии функции `fibonacciWithMemoization`, мы используем объект memo для сохранения ранее вычисленных значений. Если значение уже было вычислено ранее, оно извлекается из memo, что позволяет избежать повторных вычислений и уменьшает время выполнения.
+
+Если мы сравним производительность двух этих функций, то мы получим вот такую вот разницу в производительности.
+
+Для функции вычисление чисел Фибоначчи без мемоизации:
+
+```javascript
+const start = performance.now();
+let result = fibonacci(30);
+const end = performance.now();
+
+console.log(`Execution time: ${(end - start).toFixed(4)} ms`);
+
+// Execution time: 9.5915 ms
+```
+
+Для функции вычисление чисел Фибоначчи c мемоизацией: 
+
+```javascript
+const start = performance.now();
+let result = fibonacciWithMemoization(30);
+const end = performance.now();
+
+console.log(`Execution time: ${(end - start).toFixed(4)} ms`);
+
+// Execution time: 0.0427 ms
+```
+
+Как мы можете заметить время выполнения функции вычисление чисел Фибоначчи c оптимизацией значительно меньше.  
+
+В данном коде используется объект performance, предоставляемый браузером, для измерения времени выполнения определенного кода или операций. Объект performance предоставляет различные методы и свойства для измерения производительности и времени выполнения кода в браузере. `performance.now()` - этот метод возвращает текущее время в миллисекундах, с высокой точностью. Он используется для замера времени начала и завершения выполнения определенного кода.
+
+ 
+### Когда стоит применять мемоизацию
+
+Мемоизация не всегда является оптимальным решением для всех сценариев.  
+
+В следующих случаях целесообразно рассмотреть применение мемоизации:
+
+1. Функция должна быть чистой.
+Мемоизацию можно применять только к чистым функциям, которые всегда возвращают одинаковый результат для одних и тех же аргументов.
+
+2. Ограниченный диапазон входных значений.  
+  Мемоизация особенно полезна, когда функция вызывается с ограниченным набором входных значений, чтобы избежать потери памяти на хранение большого объема кешированных данных.
+
+3. Сложные и ресурсоемкие вычисления.  
+  Функции, которые выполняют сложные вычисления, могут значительно ускориться при использовании мемоизации.
+
+4. Избегание повторных запросов.  
+  В приложениях, где происходят повторные запросы к внешним источникам данных (например, API), мемоизация может помочь избежать избыточных запросов.</content:encoded></item><item><title>Работа с множествами в Python</title><link>https://awilum.ru/articles/working-with-sets-in-python/</link><guid isPermaLink="true">https://awilum.ru/articles/working-with-sets-in-python/</guid><description>Работа с множествами в Python</description><pubDate>Mon, 01 Apr 2024 00:00:00 GMT</pubDate><content:encoded>
 **Множество** — это структура данных, представляющая собой набор уникальных элементов без сохранения порядка вставки.
 
 Теория множеств имеет множество приложений в различных областях науки, включая математику, физику, информатику, экономику и т.д.
